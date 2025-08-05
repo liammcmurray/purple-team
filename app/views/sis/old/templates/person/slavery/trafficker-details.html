@@ -1,0 +1,189 @@
+<form class="form" action="list" method="post">
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% call govukFieldset({
+  legend: {
+    text: "Name",
+    classes: "govuk-fieldset__legend--m",
+    isPageHeading: true
+  }
+}) %}
+
+  {{ govukInput({
+    label: {
+      text: 'Given names'
+    },
+    hint: {
+    text: "Their first and middle names"
+  },
+    classes: "govuk-!-width-two-thirds",
+    id: "first-name",
+    name: 'sis-person-trafficker-first-name',
+    value: data ["sis-person-trafficker-first-name"]
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Surname'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "surname",
+    name: 'sis-person-trafficker-surname',
+    value: data ["sis-person-trafficker-surname"]
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Other names they are known by'
+    },
+    hint: {
+    text: "You can enter multiple aliases"
+  },
+    classes: "govuk-!-width-two-thirds",
+    id: "alias",
+    name: "sis-person-trafficker-alias",
+    value: data ["sis-person-trafficker-alias"]
+  }) }}
+
+
+{% endcall %}
+
+<hr>
+<br/>
+
+{{ govukDateInput({
+  id: "dob",
+  name: "sis-person-trafficker-dob",
+  fieldset: {
+    legend: {
+      text: "Date of birth",
+      classes: "govuk-label--m",
+      isPageHeading: true
+    }
+  },
+  hint: {
+    text: "For example, 25 4 2001"
+  }
+}) }}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "If you do not know their date of birth, what is their approximate age?"
+  },
+  hint: {
+    text: "For example, 40"
+  },
+  classes: "govuk-input--width-5",
+  name: "sis-person-trafficker-age",
+  value: data ["sis-person-trafficker-age"]
+}) }}
+
+<hr>
+<br/>
+
+<h2 class="govuk-heading-m">Sex</h2>
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-person-trafficker-sex",
+  value: data["sis-person-trafficker-sex"],
+  fieldset: {
+    legend: {
+      text: ""
+    }
+  },
+  items: [
+    {
+      value: "Male",
+      text: "Male"
+    },
+    {
+      value: "Female",
+      text: "Female"
+    },
+    {
+      value: "X or other",
+      text: "X or other"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know "
+    }
+  ]
+}) }}
+
+<hr>
+<br/>
+<h2 class="govuk-heading-m">Country of nationality</h2>
+<div id="event-name-hint" class="govuk-hint">
+  Start typing to find countries
+</div>
+<div class="govuk-form-group">
+ {% include "pink/current/templates/ref-data/sis-country-list2.html" %}
+</div>
+
+<hr>
+<br/>
+
+{% call govukFieldset({
+  legend: {
+    text: "Distinguishing features",
+    classes: "govuk-fieldset__legend--m",
+    isPageHeading: true
+  }
+}) %}
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+  {{ govukTextarea({
+    label: {
+      text: " "
+    },
+    hint: {
+      text: "For example, tattoos or a strong accent"
+    },
+    classes: "govuk-input--width-25",
+    name: "sis-trafficker-details",
+    value: data ["sis-trafficker-details"]
+  }) }}
+
+{% endcall %}
+<hr>
+<br/>
+
+<h2 class="govuk-heading-m">Reference numbers</h2>
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: "Home Office reference number"
+},
+id: "ho-ref",
+name: "sis-person2-traficker--ho-ref",
+value: data ["sis-person2-traficker--ho-ref"]
+}) }}
+
+{{ govukButton({
+text: "Add another HO reference number",
+href: "",
+classes: "hods-button hods-button--secondary"
+}) }}
+
+
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: "National Offender Management System (NOMS) number"
+},
+id: "noms-ref-traficker",
+name: "person-noms-ref-traficker",
+value: data ["person-noms-ref-traficker"]
+}) }}
+
+<input type="hidden" id="sis-trafficker-person-done" name="sis-trafficker-person-done" value="Yes">

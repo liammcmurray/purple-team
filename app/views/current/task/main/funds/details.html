@@ -1,0 +1,56 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="list" method="post" novalidate>
+
+    <!--<span class="govuk-caption-xl">Immigration abuse details</span>-->
+
+
+    <div class="govuk-form-group">
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+     
+      <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+        Describe who has been abusing public or private funds and how.
+
+      </h1>
+     
+
+ 
+    <textarea class="govuk-textarea" name='sis-funds' value="data['sis-funds']" rows="5" aria-describedby="more-detail-hint"></textarea>
+  
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue"
+}) }}
+
+
+
+
+
+
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

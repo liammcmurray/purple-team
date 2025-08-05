@@ -1,0 +1,98 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Victim exploitation dates
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="link" method="post" novalidate>
+
+
+
+    {% set victimexactPast %}
+    {{ govukDateInput({
+      id: "sis-victim-past-doe",
+      namePrefix: "sis-victim-past-doe",
+      fieldset: {
+        legend: {
+          text: "What is the exact date?"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set victimapproxPast %}
+    {{ govukInput({
+      label: {
+        text: "What is the approximate date or date range?",
+        classes: "govuk-fieldset__legend--m"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-victim-past-date",
+      name: "sis-victim-past-date",
+      value: data ["sis-victim-past-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-victim-event-exact",
+      value: data["sis-victim-event-exact"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the exploitation happened?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: victimexactPast
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: victimapproxPast
+      }
+      }
+      ]
+      }) }}
+
+<input type="hidden" id="sis-working-done" name="sis-working-done" value="Yes">
+
+<input type="hidden" id="sis-offence-details-done" name="sis-offence-details-done" value="Yes">
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

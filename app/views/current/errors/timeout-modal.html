@@ -1,0 +1,160 @@
+{% extends "purple/current/layouts/base.html" %}
+   
+{% block pageTitle %}
+Submit intelligence about immigration or borders
+{% endblock %}
+
+{% block content %}
+<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+ <h1 class="govuk-heading-l">Your session will time out soon</h1>
+ <p>To protect your information, your session will time out in <strong>5 minutes</strong>.</p>
+ <p>If that happens, your answers will not be saved. </p>
+ <button type="submit" class="govuk-button" data-module="govuk-button">
+  Stay on this page
+</button>
+  </div>
+
+</div>
+<style>
+//MODAL DIALOGUE
+.modal-link:link, .modal-link:visited, .modal-link:hover, .modal-link:active, .modal-link:focus {
+	color: #0b0c0c;
+}
+dialog {
+	display: block;
+  margin: 0;
+}
+.no-scroll-html {
+	overflow: hidden;
+}
+.no-scroll {
+	overflow: hidden;
+}
+.modal {
+ position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+
+    background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+	z-index: 666;
+	cursor: pointer;
+}
+.modal-content {
+	font-family: "GDS Transport", arial, sans-serif;
+	font-weight: 400;
+	text-transform: none;
+	line-height: 1.25;
+	-webkit-font-smoothing: antialiased;
+    position: fixed;
+  z-index: 667;
+  max-width: 280px;
+  min-width: 200px;
+  padding: 30px;
+background-color: #fefefe;
+  border: 3px solid #000000;
+    left: 50%;
+    top: 25%;
+    -ms-transform: translate(-50%,-25%);
+    -moz-transform:translate(-50%,-25%);
+    -webkit-transform: translate(-50%,-25%);
+     transform: translate(-50%,-25%);
+}
+@media (min-width: 641px) {
+	.modal-content {
+		font-size: 19px;
+		line-height: 1.31579;
+  	min-width: 580px;
+	}
+  .modal-button {
+    float: left;
+    padding-right: 15px;
+  }
+  .modal-link {
+    display: inline-block;
+    padding-top: 10px;
+  }
+}
+@media (min-height: 300px) {
+	.modal-content {
+    top: 25%;
+	}
+}
+  .modal-link {
+    display: block;
+  }
+
+.no-wrap {
+  white-space: nowrap;
+}
+</style>
+<script>
+  // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+<div class="govuk-grid-row" style="padding-top: 40px;">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Submit immigration and national security intelligence
+    </h1>
+    <p>
+  Use this form to tell us about an immigration offence or a terrorism, radicalisation or national security threat.
+    </p>
+    <p>
+      You can submit:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>referrals made by you or other Home Office employees</li>
+      <li>intelligence sent from trusted third-parties</li>
+    </ul>
+    <p>
+      You will need to complete the form in one go - you cannot save your progress.
+      </p>
+      <p>
+        If you do not do anything for 30 minutes, the service will time out. Your answers will be deleted and you will need to start again.
+           </p>
+    
+      <a href="details-confirm.html" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+  Start now
+  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+  </svg></a>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

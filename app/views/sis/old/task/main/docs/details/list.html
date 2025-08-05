@@ -1,0 +1,92 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Add document details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% if data["sis-doc-one-done"] == "yes" %}
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+               
+
+
+{% include "pink/current/templates/summary/sis-doc-details2.html" %}
+
+  <input type="hidden" id="sis-main-doc-details2" name="sis-main-doc-details2" value="Yes">
+
+
+  <input type="hidden" id="sis-main-doc-details" name="sis-main-doc-details" value="Yes">
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% if data["sub-crime"] == "document-fraud" %}
+{{ govukButton({
+classes: "hods-button--secondary",
+text: "Add another document",
+href: "type2"
+}) }}
+{% else %}
+{% endif %}
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+
+  {% else %}
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  <h1 class="govuk-heading-l">Add document details</h1>
+
+    <p class="govuk-body">You have not added document details yet.</p>
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add document details",
+  href: "type"
+  }) }}
+
+  <br/>
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue without adding",
+    href: "/pink/current/task/list"
+  }) }}
+
+  <input type="hidden" id="sis-main-doc-details2" name="sis-main-doc-details2" value="No">
+
+  {% endif %}
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

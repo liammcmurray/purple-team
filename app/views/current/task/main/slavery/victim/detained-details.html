@@ -1,0 +1,63 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Place of detention
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="list2" method="post" novalidate>
+
+        <h1 class="govuk-heading-l">Place of detention</h1>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="event-name">
+
+            <!--{% if data["sis-person1-victim-first-name"] == "" %}
+            Where has the potential or recognised victim been detained?
+            {% else %}
+            Where has {{ data['sis-person1-victim-first-name'] }} {{ data['sis-person1-victim-surname'] }} been detained?
+            {% endif %}-->
+
+            Name of location
+            
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="sis-slavery-detained" name="sis-slavery-detained" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="event-name">
+            Phone number (optional)          
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="sis-slavery-detained-phone" name="sis-slavery-detained-phone" type="text">
+        </div>
+
+<input type="hidden" id="sis-victim-done" name="sis-victim-done" value="Yes">
+
+<input type="hidden" id="sis-offence-details-done" name="sis-offence-details-done" value="Yes">
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+// Parent wrapper to contain all styles to the green team (and not override any other prorotype work).
+@import "sprint-37";
+@import "sprint-40";
+@import "sprint-42";
+@import "sprint-44";
+@import "sprint-4-6";
+
+.green-team {
+
+  // Resets.
+  .govuk-main-wrapper--auto-spacing:first-child {
+    padding-top: 0;
+  }
+  .govuk-main-wrapper--auto-spacing {
+    padding-top: 0 !important;
+  }
+
+  table {
+    border-bottom-width: 0;
+    margin-bottom: 2em;
+  }
+
+  table td,
+  table th {
+    border-bottom: none;
+  }
+
+  h3.govuk-heading-m {
+    margin-top: 0;
+  }
+
+  section {
+    margin-bottom: 2em;
+    padding: 1em 0;
+  }
+
+  section.heading-xlarge {
+    margin-bottom: 0.5em;
+  }
+
+  section .cop-grid-row-title {
+    color: #ffffff;
+    margin-bottom: 30px;
+    padding: 20px 10px;
+  }
+
+  section div.govuk-grid-row:nth-child(1) {
+    /* background-color: #005ea5; */
+    background-color: #8F23B3;
+  }
+
+  section div.govuk-grid-row:nth-child(1) table,
+  section div.govuk-grid-row:nth-child(1) ul,
+  section div.govuk-grid-row:nth-child(1) h2,
+  section div.govuk-grid-row:nth-child(1) a {
+    color: #fff;
+  }
+
+  section div.govuk-grid-row:nth-child(1) .govuk-table__header,
+  .govuk-table__cell {
+    border: none;
+  }
+
+  h4.heading-small:first-child {
+    margin-top: 0;
+  }
+
+  tbody {
+    vertical-align: top;
+  }
+
+
+  ul li ul {
+    font-weight: normal;
+    /* margin-left: 1em;*/
+    margin-bottom: 1em;
+  }
+
+  ul li ul li ul li {
+    font-weight: normal;
+  }
+
+  // Helper styles.
+  .green {
+    background-color: #00703c !important;
+  }
+  .orange {
+    background-color: #f47738 !important;
+  }
+  .blue {
+    background-color: #1d70b8 !important;
+  }
+  .pink {
+    background-color: #b81d82 !important;
+  }
+   // Gov.uk overrides
+  .govuk-tag {
+    text-transform: none;
+  }
+
+  // Sprint defaults.
+  .sprint-header-block {
+    color: #ffffff !important;
+    margin-bottom: 20px;
+    padding: 20px 10px;
+    h2 {
+      color: #ffffff;
+    }
+  }
+  .sprint-section {
+    margin-bottom: 30px;
+  }
+}

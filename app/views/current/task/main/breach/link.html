@@ -1,0 +1,84 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Where is the person working?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/purple/current/sis-breach-location" method="post">
+      <!--<span class="govuk-caption-xl">Person type</span>
+      <h1 class="govuk-heading-l">
+        What is the location of the offence?
+      </h1>-->
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+
+              {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+              <h1 class="govuk-heading-l" style="margin-bottom:10px;">Where is the suspect or offender working?</h1>
+              {% else %}
+              <h1 class="govuk-heading-l" style="margin-bottom:10px;">Where is {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} working?</h1>
+              {% endif %}
+              
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <!--USE 'location-link' TEMPLATE WHEN LINK CAN BE MORE DYNAMIC-->
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sis-location-link1" name="sis-breach-location-link" type="radio" value="sis-breach-biz-address1">
+              <label class="govuk-label govuk-radios__label" for="sis-breach-biz-address1">
+                Waterstones, 203-206 Piccadilly, St. James, London W1J 9HD
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sis-location-link2" name="sis-breach-location-link" type="radio" value="sis-breach-biz-address2">
+              <label class="govuk-label govuk-radios__label" for="sis-breach-biz-address2">
+                The Queens Arms, 5 South Street, Pimlico,, London SW1 3EA
+              </label>
+            </div>
+
+            <div class="govuk-radios__divider">or</div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sis-location-3" name="sis-breach-location-link" type="radio" value="sis-breach-biz-address3">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">
+                Somewhere else
+              </label>
+            </div>
+
+      </div>
+      <br/>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <input type="hidden" id="sis-main-breach-address" name="sis-main-breach-address" value="Yes">
+
+    <input type="hidden" id="sis-main-breach-done" name="sis-main-breach-done" value="Yes">
+
+    <input type="hidden" id="sis-location-link" name="sis-location-link" value="yes">
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

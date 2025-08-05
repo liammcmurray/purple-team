@@ -1,0 +1,113 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit immigration and national security intelligence
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l govuk-!-margin-top-9">These are the details we have for you</h1>
+
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: [
+                {
+                  key: {
+                    text: "Given names"
+                  },
+                  value: {
+                    text: sisName or "Jane Ellen"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "details",
+                        text: " ",
+                        visuallyHiddenText: "first name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Surname"
+                  },
+                  value: {
+                    text: sisSurname or "Maartsen"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "details",
+                        text: " ",
+                        visuallyHiddenText: "surname"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Email address"
+                  },
+                  value: {
+                    html: sisEmail or "jane.maartsen3@homeoffice.gov.uk"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "details",
+                        text: " ",
+                        visuallyHiddenText: "email"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Phone number"
+                  },
+                  value: {
+                    html: sisPhone or "01874 334"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "details",
+                        text: " ",
+                        visuallyHiddenText: "phone number"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              label: {
+                text: "If your contact details are incorrect, provide an alternative we can use."
+              },
+              classes: "govuk-input--width-30",
+              id: "sis-alt-contact",
+              name: "sis-alt-contact"
+            }) }}
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue",
+          href:"ho-team"
+        }) }}
+
+
+    </div>
+  </div>
+{% endblock %}

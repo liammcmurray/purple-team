@@ -1,0 +1,66 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% call govukFieldset({
+  legend: {
+    text: ""
+  }
+}) %}
+
+  {{ govukInput({
+    label: {
+      text: 'Address line 1'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "address1",
+    name: "sis-location-res-address1",
+    value: data ["sis-location-res-address1"],
+    autocomplete: "address1"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Address line 2'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "address2",
+    name: "sis-location-res-address2",
+    value: data ["sis-location-res-address2"],
+    autocomplete: "address2"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Town or city'
+    },
+    classes: "govuk-!-width-one-half",
+    id: "city",
+    name: "sis-location-res-city",
+    value: data ["sis-location-res-city"],
+    autocomplete: "city"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'County'
+    },
+    classes: "govuk-!-width-one-half",
+    id: "county",
+    name: "sis-location-res-county",
+    value: data ["sis-location-res-county"],
+    autocomplete: "county"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Postcode'
+    },
+    classes: "govuk-!-width-one-third",
+    id: "postcode",
+    name: "sis-location-res-postcode",
+    value: data ["sis-location-res-postcode"],
+    autocomplete: "postcode"
+  }) }}
+
+
+{% endcall %}

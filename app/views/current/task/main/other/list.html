@@ -1,0 +1,233 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Illegal wortking details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            When did the immigration offence happen?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- {{ data ["sis-working-date"] }}-->
+            {{ data ["sis-offence-date"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="date">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Exact date known
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-exact"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        {% if data["sis-other-future-date"] == "" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Exact date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["doe"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Approximate date or date range
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-future-date"] }}{{ data ["sis-other-past-date"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% endif %}
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Location of the immigration offence
+          </dt>
+          <dd class="govuk-summary-list__value">
+            Waterstones<br/>
+            203-206 Piccadilly<br/>
+            St. James<br/>
+            London<br/>
+            W1J 9HD<br/>
+            <br/>
+            The Queens Arms<br/>
+            5 South Street<br/>
+            Pimlico
+            <br/>London SW1 3EA
+            <br/><br/>
+            Somewhere else
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="link">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+
+
+
+       
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-location-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Business sector
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-biz-sector"] }}{{ data ["sis-other-biz-sector-new"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of contact at location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-location-contact"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact person's role
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-location-role"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-location-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data["sis-location-other-address1"] == "" %}{% else %}
+          {{ data['sis-location-other-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-location-other-address2"] == "" %}{% else %}
+          {{ data['sis-location-other-address2'] }} <br/>{% endif %}
+
+          {% if data["sis-location-other-city"] == "" %}{% else %}
+          {{ data['sis-location-other-city'] }} <br/>{% endif %}
+
+          {% if data["sis-location-other-county"] == "" %}{% else %}
+          {{ data['sis-location-other-county'] }} <br/>{% endif %}
+
+          {% if data["sis-location-other-postcode"] == "" %}{% else %}
+          {{ data['sis-location-other-postcode'] }}{% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+
+      </dl>
+    </div>
+  </div>
+
+  <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+ <input type="hidden" id="sis-other-done" name="sis-other-done" value="Yes">
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

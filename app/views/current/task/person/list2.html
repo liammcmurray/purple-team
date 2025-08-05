@@ -1,0 +1,52 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Person details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form class="form" action="/purple/current/task/list" method="post">
+
+  <h1 class="govuk-heading-l">Add another person</h1>
+
+  {% if data["sis-person1-info"] == "yes" %}
+  {% include "purple/current/templates/summary/sis-person1.html" %}
+  {% else %}
+{% endif %}
+
+{% if data["sis-person2-info"] == "yes" %}
+  {% include "purple/current/templates/summary/sis-person2.html" %}
+  {% else %}
+  {% endif %}
+
+  {{ govukButton({
+    classes: "hods-button--secondary",
+    text: "Add another person"
+  }) }}
+  <br/>
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+    {{ govukButton({
+      classes: "hods-button",
+      text: "Continue"
+    }) }}
+
+<input type="hidden" id="sis-person-done" name="sis-person-done" value="Yes">
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}

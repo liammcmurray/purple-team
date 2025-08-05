@@ -1,0 +1,952 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+
+
+{% set assignName1 = data['sis-team'] | default( ) %}
+
+{{ govukSelect({
+id: "sis-team",
+name: "sis-team",
+label: {
+text: "Team"
+},
+hint: {
+    text: "Start typing to see a list of teams"
+},
+items: [
+{
+value: " ",
+text: " ",
+selected: assignName == " x"
+},
+{
+value: "IE-NRC",
+text: "IE NRC",
+selected: assignName == "IE-NRC"
+},
+{
+value: "IE-Nexus",
+text: "IE: Nexus",
+selected: assignName == "IE-Nexus"
+},
+{
+value: "IE-SMU",
+text: "IE: SMU",
+selected: assignName == "IE-SMU"
+},
+{
+value: "IE-CCD",
+text: "IE: CCD",
+selected: assignName == "IE-CCD"
+},
+{
+value: "IE-ISD",
+text: "IE: ISD",
+selected: assignName == "IE-ISD"
+},
+{
+value: "IE-Other",
+text: "IE: Other",
+selected: assignName == "IE-Other"
+},
+{
+value: "UKVI-PM-Nationality",
+text: "UKVI: PM Nationality",
+selected: assignName == "UKVI-PM-Nationality"
+},
+{
+value: "UKVI-PM European",
+text: "UKVI: PM European",
+selected: assignName == "UKVI-PM-European"
+},
+{
+value: "UKVI-PM-Settlement",
+text: "UKVI: PM Settlement",
+selected: assignName == "UKVI-PM-Settlement"
+},
+{
+value: "UKVI-PM-Other",
+text: "UKVI: PM Other",
+selected: assignName == "UKVI-PM-Other"
+},
+{
+value: "UKVI-TM-Tier-1",
+text: "UKVI: TM Tier 1",
+selected: assignName == "UKVI-TM-Tier-1"
+},
+{
+value: "UKVI-TM-Tier-2",
+text: "UKVI: TM Tier 2",
+selected: assignName == "UKVI-TM-Tier-2"
+},
+{
+value: "UKVI-TM-Tier-4",
+text: "UKVI: TM Tier 4",
+selected: assignName == "UKVI-TM-Tier-4"
+},
+{
+value: "UKVI-TM-Tier-5",
+text: "UKVI: TM Tier 5",
+selected: assignName == "UKVI-TM-Tier-5"
+},
+{
+value: "UKVI-TM-Family",
+text: "UKVI: TM Family",
+selected: assignName == "UKVI-TM-Family"
+},
+{
+value: "UKVI-TM-Other",
+text: "UKVI: TM Other",
+selected: assignName == "UKVI-TM-Other"
+},
+{
+value: "UKVI-Asylum",
+text: "UKVI: Asylum",
+selected: assignName == "UKVI-Asylum"
+},
+{
+value: "UKVI-RASI",
+text: "UKVI: RASI",
+selected: assignName == "UKVI-RASI"
+},
+{
+value: "BF-Front-line",
+text: "BF: Front line",
+selected: assignName == "BF-Front-line"
+},
+{
+value: "BF-Other",
+text: "BF: Other",
+selected: assignName == "BF-Other"
+},
+{
+value: "GRO-Referrals",
+text: "GRO Referrals",
+selected: assignName == "GRO-Referrals"
+},
+{
+value: "IE-Returns-Preparation-CMAT",
+text: "IE: Returns Preparation - CMAT",
+selected: assignName == "IE-Returns-Preparation-CMAT"
+},
+{
+value: "IE-Returns-Preparation-Core-Casework",
+text: "IE: Returns Preparation - Core Casework",
+selected: assignName == "IE-Returns-Preparation-Core-Casework"
+},
+{
+value: "IE-Returns-Preparation-Family-Returns",
+text: "IE: Returns Preparation - Family Returns",
+selected: assignName == "IE-Returns-Preparation-Family-Returns"
+},
+{
+value: "CFI-Liverpool",
+text: "CFI Liverpool",
+selected: assignName == "CFI-Liverpool"
+},
+{
+value: "CFI-Manchester",
+text: "CFI Manchester",
+selected: assignName == "CFI-Manchester"
+},
+{
+value: "CFI-Sheffield",
+text: "CFI Sheffield",
+selected: assignName == "CFI-Sheffield"
+},
+{
+value: "CFI-Durham",
+text: "CFI Durham",
+selected: assignName == "CFI-Durham"
+},
+{
+value: "CFI-Humberside",
+text: "CFI Humberside",
+selected: assignName == "CFI-Humberside"
+},
+{
+value: "CFI-Basingstoke",
+text: "CFI Basingstoke",
+selected: assignName == "CFI-Basingstoke"
+},
+{
+value: "CFI-London-West-Eaton-House/Feltham",
+text: "CFI London West Eaton House/Feltham",
+selected: assignName == "CFI-London-West-Eaton-House/Feltham"
+},
+{
+value: "London-East-Becket-House",
+text: "London East Becket House",
+selected: assignName == "London-East-Becket-House"
+},
+{
+value: "CFI-Croydon",
+text: "CFI Croydon",
+selected: assignName == "CFI-Croydon"
+},
+{
+value: "CFI-CPU-Gravesend",
+text: "CFI CPU Gravesend",
+selected: assignName == "CFI-CPU-Gravesend"
+},
+{
+value: "CFI-London-Angel",
+text: "CFI London Angel",
+selected: assignName == "CFI-London-Angel"
+},
+{
+value: "CFI-London-Angel",
+text: "CFI London Angel",
+selected: assignName == "CFI-London-Angel"
+},
+{
+value: "CFI-Heathrow",
+text: "CFI Heathrow",
+selected: assignName == "CFI-Heathrow"
+},
+{
+value: "CFI-Gatwick",
+text: "CFI Gatwick",
+selected: assignName == "CFI-Gatwick"
+},
+{
+value: "CFI-Dover",
+text: "CFI Dover",
+selected: assignName == "CFI-Dover"
+},
+{
+value: "CFI-Cardiff",
+text: "CFI Cardiff",
+selected: assignName == "CFI-Cardiff"
+},
+{
+value: "CFI-Bristol",
+text: "CFI Bristol",
+selected: assignName == "CFI-Bristol"
+},
+{
+value: "CFI-Leeds",
+text: "CFI Leeds",
+selected: assignName == "CFI-Leeds"
+},
+{
+value: "CFI-Solihull",
+text: "CFI Solihull",
+selected: assignName == "CFI-Solihull"
+},
+{
+value: "CFI-East-Midlands",
+text: "CFI East Midlands",
+selected: assignName == "CFI-East-Midlands"
+},
+{
+value: "CFI-Eastern-Region",
+text: "CFI Eastern Region",
+selected: assignName == "CFI-Eastern-Region"
+},
+{
+value: "CFI-Glasgow",
+text: "CFI Glasgow",
+selected: assignName == "CFI-Glasgow"
+},
+{
+value: "CFI-Belfast",
+text: "CFI Belfast",
+selected: assignName == "CFI-Belfast"
+},
+{
+value: "CFCLT-London",
+text: "CFCLT London",
+selected: assignName == "CFCLT-London"
+},
+{
+value: "FI-Sheffield",
+text: "FI Sheffield",
+selected: assignName == "FI-Sheffield"
+},
+{
+value: "FI-Salford",
+text: "FI Salford",
+selected: assignName == "FI-Salford"
+},
+{
+value: "FI-Glasgow",
+text: "FI Glasgow",
+selected: assignName == "FI-Glasgow"
+},
+{
+value: "FI-London-Eaton-House",
+text: "FI London Eaton House",
+selected: assignName == "FI-London-Eaton-House"
+},
+{
+value: "FI-Croydon",
+text: "FI Croydon",
+selected: assignName == "FI-Croydon"
+},
+{
+value: "CFI-Learning-Development",
+text: "CFI Learning &amp; Development",
+selected: assignName == "CFI-Learning-Development"
+},
+{
+value: "CFI-Ops-Support-Assurance",
+text: "CFI Ops Support &amp; Assurance",
+selected: assignName == "CFI-Ops-Support-Assurance"
+},
+{
+value: "IE-ICE-Central-London",
+text: "IE ICE Central London",
+selected: assignName == "IE-ICE-Central-London"
+},
+{
+value: "IE-ICE-North-East-London",
+text: "IE ICE North East London",
+selected: assignName == "IE-ICE-North-East-London"
+},
+{
+value: "IE-ICE-West-London",
+text: "IE ICE West London",
+selected: assignName == "IE-ICE-West-London"
+},
+{
+value: "IE-ICE-South-London",
+text: "IE ICE South London",
+selected: assignName == "IE-ICE-South-London"
+},
+{
+value: "IE-ICE-South-Central",
+text: "IE ICE South Central",
+selected: assignName == "IE-ICE-South-Central"
+},
+{
+value: "IE-ICE-East-England",
+text: "IE ICE East of England",
+selected: assignName == "IE-ICE-East-England"
+},
+{
+value: "IE-ICE-South-East",
+text: "IE ICE South East",
+selected: assignName == "IE-ICE-South-East"
+},
+{
+value: "IE-ICE-Greater-Manchester",
+text: "IE ICE Greater Manchester",
+selected: assignName == "IE-ICE-Greater-Manchester"
+},
+{
+value: "IE-ICE-Yorkshire-Humber",
+text: "IE ICE Yorkshire &amp; Humber",
+selected: assignName == "IE-ICE-Yorkshire-Humber"
+},
+{
+value: "IE-ICE-Yorkshire-Humber",
+text: "IE ICE Yorkshire &amp; Humber",
+selected: assignName == "IE-ICE-Yorkshire-Humber"
+},
+{
+value: "IE-ICE-North-East-Cumbria",
+text: "IE ICE North East &amp; Cumbria",
+selected: assignName == "IE-ICE-North-East-Cumbria"
+},
+{
+value: "IE-ICE-West-Midlands",
+text: "IE ICE West Midlands",
+selected: assignName == "IE-ICE-West-Midlands"
+},
+{
+value: "IE-ICE-East-Midlands",
+text: "IE ICE East Midlands",
+selected: assignName == "IE-ICE-East-Midlands"
+},
+{
+value: "IE-ICE-Wales",
+text: "IE ICE Wales",
+selected: assignName == "IE-ICE-Wales"
+},
+{
+value: "IE-ICE-South-West",
+text: "IE ICE South West",
+selected: assignName == "IE-ICE-South-West"
+},
+{
+value: "IE-ICE-Merseyside",
+text: "IE ICE Merseyside",
+selected: assignName == "IE-ICE-Merseyside"
+},
+{
+value: "IE-ICE-Scotland",
+text: "IE ICE Scotland",
+selected: assignName == "IE-ICE-Scotland"
+},
+{
+value: "IE-ICE-Northern-Ireland",
+text: "IE ICE Northern Ireland",
+selected: assignName == "IE-ICE-Northern-Ireland"
+},
+{
+value: "IE-NRC-Gatekeeper",
+text: "IE NRC Gatekeeper",
+selected: assignName == "IE-NRC-Gatekeeper"
+},
+{
+value: "IE-NRC-OSCU",
+text: "IE NRC OSCU",
+selected: assignName == "IE-NRC-OSCU"
+},
+{
+value: "IE-NRC-Croydon",
+text: "IE NRC Croydon",
+selected: assignName == "IE-NRC-Croydon"
+},
+{
+value: "IE-NRC-Solihull",
+text: "IE NRC Solihull",
+selected: assignName == "IE-NRC-Solihull"
+},
+{
+value: "IE-NRC-Scotland-NI",
+text: "IE NRC Scotland &amp; NI",
+selected: assignName == "IE-NRC-Scotland-NI"
+},
+{
+value: "IE-NRC-London",
+text: "IE NRC London",
+selected: assignName == "IE-NRC-London"
+},
+{
+value: "IE-NRC-Assisted-Returns-Team",
+text: "IE NRC Assisted Returns Team",
+selected: assignName == "IE-NRC-Assisted-Returns-Team"
+},
+{
+value: "IE-NRC-Central-Vol-Deps",
+text: "IE NRC Central Vol Deps",
+selected: assignName == "IE-NRC-Central-Vol-Deps"
+},
+{
+value: "IE-NRC-Outreach-Comms",
+text: "IE NRC Outreach &amp; Comms",
+selected: assignName == "IE-NRC-Outreach-Comms"
+},
+{
+value: "IE-NRC-Data-Matching-Analysis-Team",
+text: "IE NRC Data Matching &amp; Analysis Team",
+selected: assignName == "IE-NRC-Data-Matching-Analysis-Team"
+},
+{
+value: "IE-Scheme-Resolution-Centre-SRC",
+text: "IE Scheme Resolution Centre SRC",
+selected: assignName == "IE-Scheme-Resolution-Centre-SRC"
+},
+{
+value: "UKVI-Appeals",
+text: "UKVI: Appeals",
+selected: assignName == "UKVI-Appeals"
+},
+{
+value: "UKVI-ECAA",
+text: "UKVI: ECAA",
+selected: assignName == "UKVI-ECAA"
+},
+{
+value: "UKVI-Litigation",
+text: "UKVI: Litigation",
+selected: assignName == "UKVI-Litigation"
+},
+{
+value: "UKVI-Subject-Access-Request",
+text: "UKVI: Subject Access Request",
+selected: assignName == "UKVI-Subject-Access-Request"
+},
+{
+value: "UKVI-Complex-Casework",
+text: "UKVI: Complex Casework",
+selected: assignName == "UKVI-Complex-Casework"
+},
+{
+value: "UKVI-Travel-Document-Section",
+text: "UKVI: Travel Document Section",
+selected: assignName == "UKVI-Travel-Document-Section"
+},
+{
+value: "UKVI-Premium-Service-Centre",
+text: "UKVI – Premium Service Centre",
+selected: assignName == "UKVI-Premium-Service-Centre"
+},
+{
+value: "Intel-Development-Croydon-Hub-L2F-IM",
+text: "Intel Development Croydon Hub L2F IM",
+selected: assignName == "Intel-Development-Croydon-Hub-L2F-IM"
+},
+{
+value: "ROM-BECKET-HOUSE",
+text: "ROM BECKET HOUSE",
+selected: assignName == "ROM-BECKET-HOUSE"
+},
+{
+value: "ROM-LUNAR-HOUSE",
+text: "ROM LUNAR HOUSE",
+selected: assignName == "ROM-LUNAR-HOUSE"
+},
+{
+value: "ROM-EATON-HOUSE",
+text: "ROM EATON HOUSE",
+selected: assignName == "ROM-EATON-HOUSE"
+},
+{
+value: "ROM-DALLAS-COURT",
+text: "ROM DALLAS COURT",
+selected: assignName == "ROM-DALLAS-COURT"
+},
+{
+value: "ROM-MIDDLESBROUGH",
+text: "ROM MIDDLESBROUGH",
+selected: assignName == "ROM-MIDDLESBROUGH"
+},
+{
+value: "ROM-SOUTH-YORKSHIRE",
+text: "ROM SOUTH YORKSHIRE",
+selected: assignName == "ROM-SOUTH-YORKSHIRE"
+},
+{
+value: "ROM-WATERSIDE-COURT",
+text: "ROM WATERSIDE COURT",
+selected: assignName == "ROM-WATERSIDE-COURT"
+},
+{
+value: "ROM-SWANSEA",
+text: "ROM SWANSEA",
+selected: assignName == "ROM-SWANSEA"
+},
+{
+value: "ROM-CARDIFF",
+text: "ROM CARDIFF",
+selected: assignName == "ROM-CARDIFF"
+},
+{
+value: "ROM-NORTHERN-IRELAND",
+text: "ROM NORTHERN IRELAND",
+selected: assignName == "ROM-NORTHERN-IRELAND"
+},
+{
+value: "ROM-FESTIVAL-COURT",
+text: "ROM FESTIVAL COURT",
+selected: assignName == "ROM-FESTIVAL-COURT"
+},
+{
+value: "ROM-CAPITAL-BUILDING",
+text: "ROM CAPITAL BUILDING",
+selected: assignName == "ROM-CAPITAL-BUILDING"
+},
+{
+value: "ROM-EAST-MIDLANDS",
+text: "ROM EAST MIDLANDS",
+selected: assignName == "ROM-EAST-MIDLANDS"
+},
+{
+value: "ROM-SANFORD-HOUSE",
+text: "ROM SANFORD HOUSE",
+selected: assignName == "ROM-SANFORD-HOUSE"
+},
+{
+value: "ROM-EAST-ENGLAND",
+text: "ROM EAST OF ENGLAND",
+selected: assignName == "ROM-EAST-ENGLAND"
+},
+{
+value: "ROM-SOUTH-CENTRAL",
+text: "ROM SOUTH CENTRAL",
+selected: assignName == "ROM-SOUTH-CENTRAL"
+},
+{
+value: "ROM-SOUTH-WEST",
+text: "ROM SOUTH WEST",
+selected: assignName == "ROM-SOUTH-WEST"
+},
+{
+value: "IE-CCU",
+text: "IE CCU",
+selected: assignName == "IE-CCU"
+},
+{
+value: "IE-IRC-Colnbrook",
+text: "IE IRC Colnbrook",
+selected: assignName == "IE-IRC-Colnbrook"
+},
+{
+value: "IE-IRC-Harmondsworth",
+text: "IE IRC Harmondsworth",
+selected: assignName == "IE-IRC-Harmondsworth"
+},
+{
+value: "IE-IRC-Brook-Hse",
+text: "IE IRC Brook Hse",
+selected: assignName == "IE-IRC-Brook-Hse"
+},
+{
+value: "IE-IRC-Yarls-Wood",
+text: "IE IRC Yarls Wood",
+selected: assignName == "IE-IRC-Yarls-Wood"
+},
+{
+value: "IE-IRC-Morton-Hall",
+text: "IE IRC Morton Hall",
+selected: assignName == "IE-IRC-Morton-Hall"
+},
+{
+value: "IE-IRC-Dungavel",
+text: "IE IRC Dungavel",
+selected: assignName == "IE-IRC-Dungavel"
+},
+{
+value: "IE-IRC-Campsfield",
+text: "IE IRC Campsfield",
+selected: assignName == "IE-IRC-Campsfield"
+},
+{
+value: "IE-IRC-Tinsley-House",
+text: "IE IRC Tinsley House",
+selected: assignName == "IE-IRC-Tinsley-House"
+},
+{
+value: "HO-BIC-PSG",
+text: "HO BIC PSG",
+selected: assignName == "HO-BIC-PSG"
+},
+{
+value: "IEI-Albania",
+text: "IEI Albania",
+selected: assignName == "IEI-Albania"
+},
+{
+value: "IEI-Bangladesh",
+text: "IEI Bangladesh",
+selected: assignName == "IEI-Bangladesh"
+},
+{
+value: "IEI-Bogota",
+text: "IEI Bogota",
+selected: assignName == "IEI-Bogota"
+},
+{
+value: "IEI-China",
+text: "IEI China",
+selected: assignName == "IEI-China"
+},
+{
+value: "IEI-Egypt",
+text: "IEI Egypt",
+selected: assignName == "IEI-Egypt"
+},
+{
+value: "IEI-Ethiopia",
+text: "IEI Ethiopia",
+selected: assignName == "IEI-Ethiopia"
+},
+{
+value: "IEI-France",
+text: "IEI France",
+selected: assignName == "IEI-France"
+},
+{
+value: "IEI-Germany-Denmark",
+text: "IEI Germany/Denmark",
+selected: assignName == "IEI-Germany-Denmark"
+},
+{
+value: "IEI-Ghana",
+text: "IEI Ghana",
+selected: assignName == "IEI-Ghana"
+},
+{
+value: "IEI-Greece",
+text: "IEI Greece",
+selected: assignName == "IEI-Greece"
+},
+{
+value: "IEI-India-Nepal",
+text: "IEI India/Nepal",
+selected: assignName == "IEI-India-Nepal"
+},
+{
+value: "IEI-Italy",
+text: "IEI Italy",
+selected: assignName == "IEI-Italy"
+},
+{
+value: "IEI-Jordan",
+text: "IEI Jordan",
+selected: assignName == "IEI-Jordan"
+},
+{
+value: "IEI-Jordan",
+text: "IEI Jordan",
+selected: assignName == "IEI-Jordan"
+},
+{
+value: "IEI-Kenya",
+text: "IEI Kenya",
+selected: assignName == "IEI-Kenya"
+},
+{
+value: "IEI-NBTC",
+text: "IEI NBTC",
+selected: assignName == "IEI-NBTC"
+},
+{
+value: "IEI-Netherlands",
+text: "IEI Netherlands",
+selected: assignName == "IEI-Netherlands"
+},
+{
+value: "IEI-New-York-Kingston",
+text: "IEI New York and Kingston",
+selected: assignName == "IEI-New-York-Kingston"
+},
+{
+value: "IEI-Nigeria",
+text: "IEI Nigeria",
+selected: assignName == "IEI-Nigeria"
+},
+{
+value: "IEI-Pakistan",
+text: "IEI Pakistan",
+selected: assignName == "IEI-Pakistan"
+},
+{
+value: "IEI-Philippines",
+text: "IEI Philippines",
+selected: assignName == "IEI-Philippines"
+},
+{
+value: "IEI-Poland",
+text: "IEI Poland",
+selected: assignName == "IEI-Poland"
+},
+{
+value: "IEI-Qatar-Saudi-Arabia",
+text: "IEI Qatar and Saudi Arabia",
+selected: assignName == "IEI-Qatar-Saudi-Arabia"
+},
+{
+value: "IEI-South-Africa",
+text: "IEI South Africa",
+selected: assignName == "IEI-South-Africa"
+},
+{
+value: "IEI-Spain",
+text: "IEI Spain",
+selected: assignName == "IEI-Spain"
+},
+{
+value: "IEI-Sri-Lanka",
+text: "IEI Sri Lanka",
+selected: assignName == "IEI-Sri-Lanka"
+},
+{
+value: "IEI-Thailand",
+text: "IEI Thailand",
+selected: assignName == "IEI-Thailand"
+},
+{
+value: "IEI-Turkey",
+text: "IEI Turkey",
+selected: assignName == "IEI-Turkey"
+},
+{
+value: "IEI-UAE",
+text: "IEI UAE",
+selected: assignName == "IEI-UAE"
+},
+{
+value: "IEI-Vietnam",
+text: "IEI Vietnam",
+selected: assignName == "IEI-Vietnam"
+},
+{
+value: "UKVI-PM-EU-Settlement-Scheme",
+text: "UKVI PM EU Settlement Scheme",
+selected: assignName == "UKVI-PM-EU-Settlement-Scheme"
+},
+{
+value: "UKVI-SVEC",
+text: "UKVI SVEC",
+selected: assignName == "UKVI-SVEC"
+},
+{
+value: "Gateway-MAH-Intake",
+text: "Gateway MAH Intake",
+selected: assignName == "Gateway-MAH-Intake"
+},
+{
+value: "Gateway-MAH-Action",
+text: "Gateway MAH Action",
+selected: assignName == "Gateway-MAH-Action"
+},
+{
+value: "Gateway-MAH-Review",
+text: "Gateway MAH Review",
+selected: assignName == "Gateway-MAH-Review"
+},
+{
+value: "CWI-Croydon",
+text: "CWI Croydon",
+selected: assignName == "CWI-Croydon"
+},
+{
+value: "CWI-Leeds",
+text: "CWI Leeds",
+selected: assignName == "CWI-Leeds"
+},
+{
+value: "CWI-Liverpool",
+text: "CWI Liverpool",
+selected: assignName == "CWI-Liverpool"
+},
+{
+value: "CWI-Sheffield",
+text: "CWI Sheffield",
+selected: assignName == "CWI-Sheffield"
+},
+{
+value: "IE-Rapid-Response-Team",
+text: "IE Rapid Response Team",
+selected: assignName == "IE-Rapid-Response-Team"
+},
+{
+value: "FI-Cardiff",
+text: "FI Cardiff",
+selected: assignName == "FI-Cardiff"
+},
+{
+value: "FI-East-Midlands",
+text: "FI East Midlands",
+selected: assignName == "FI-East-Midlands"
+},
+{
+value: "FI-Durham",
+text: "FI Durham",
+selected: assignName == "FI-Durham"
+},
+{
+value: "FI-Leeds",
+text: "FI Leeds",
+selected: assignName == "FI-Leeds"
+},
+{
+value: "FI-Liverpool",
+text: "FI Liverpool",
+selected: assignName == "FI-Liverpool"
+},
+{
+value: "FI-Dover",
+text: "FI Dover",
+selected: assignName == "FI-Dover"
+},
+{
+value: "IE-Clandestine-Brigade",
+text: "IE Clandestine Brigade",
+selected: assignName == "IE-Clandestine-Brigade"
+},
+{
+value: "CTC-CORT-Essex",
+text: "CTC-CORT- Essex",
+selected: assignName == "CTC-CORT-Essex"
+},
+{
+value: "CTC-CORT-Kent",
+text: "CTC-CORT- Kent",
+selected: assignName == "CTC-CORT-Kent"
+},
+{
+value: "IE-Joint-Enhanced-Casework-Team",
+text: "IE: Joint Enhanced Casework Team",
+selected: assignName == "IE-Joint-Enhanced-Casework-Team"
+},
+{
+value: "UKVI-PM-BN(O)",
+text: "UKVI: PM BN(O)",
+selected: assignName == "UKVI-PM-BN(O)"
+},
+{
+value: "Single-Competent-Authority",
+text: "Single Competent Authority",
+selected: assignName == "Single-Competent-Authority"
+},
+{
+value: "IE-ICE-North-East-London",
+text: "IE ICE North East London",
+selected: assignName == "IE-ICE-North-East-London"
+},
+{
+value: "UKVI-Liverpool-Visits",
+text: "UKVI Liverpool Visits",
+selected: assignName == "UKVI-Liverpool-Visits"
+},
+{
+value: "Immigration-Enforcement-Competent-Authority-IECA",
+text: "Immigration Enforcement Competent Authority (IECA)",
+selected: assignName == "Immigration-Enforcement-Competent-Authority-IECA"
+},
+{
+value: "OIU-London-Central-East",
+text: "OIU London Central and East",
+selected: assignName == "OIU-London-Central-East"
+},
+{
+value: "OIU-London-North-South",
+text: "OIU London North and South",
+selected: assignName == "OIU-London-North-South"
+},
+{
+value: "OIU-London-West",
+text: "OIU London West",
+selected: assignName == "OIU-London-West"
+},
+{
+value: "OIU-South-Central",
+text: "OIU South Central",
+selected: assignName == "OIU-South-Central"
+},
+{
+value: "OIU-South-East",
+text: "OIU South East",
+selected: assignName == "OIU-South-East"
+},
+{
+value: "OIU-Scotland-Northern-Ireland",
+text: "OIU Scotland and Northern Ireland ",
+selected: assignName == "OIU-Scotland-Northern-Ireland"
+},
+{
+value: "OIU-East-England-East-Midlands-West-Midland",
+text: "OIU East of England / East Midlands / West Midland",
+selected: assignName == "OIU-East-England-East-Midlands-West-Midland"
+},
+{
+value: "OIU-North-East-Yorkshire-Humber",
+text: "OIU North East, Yorkshire and Humber",
+selected: assignName == "OIU-North-East-Yorkshire-Humber"
+},
+{
+value: "OIU-Greater-Manchester-Merseyside-S.W.-Wales",
+text: "OIU Greater Manchester / Merseyside / S.W. / Wales",
+selected: assignName == "OIU-Greater-Manchester-Merseyside-S.W.-Wales"
+},
+{
+value: "IEI-Dublin",
+text: "IEI Dublin",
+selected: assignName == "IEI-Dublin"
+}
+]
+}) }}

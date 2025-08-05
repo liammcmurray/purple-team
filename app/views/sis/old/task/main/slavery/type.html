@@ -1,0 +1,195 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="details" method="post" novalidate>
+
+      <!--<span class="govuk-caption-xl">Documents</span>-->
+      <h1 class="govuk-heading-l">What type of exploitation has happened?</h1>
+      <div id="waste-hint" class="govuk-hint">
+        Select all that apply.
+      </div>
+
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+                              {% set sisSlaverysother %}
+                              {{ govukInput({
+                                name: 'sis-slavery-type',
+                                value: data['sis-slavery-type'],
+                                classes: "govuk-!-width-one-third",
+                                label: {
+                                  text: "Type of exploitation"
+                                }
+                              }) }}
+                            {% endset -%}
+
+                            {{ govukCheckboxes({
+                              name: 'sis-slavery-type',
+                              value: data['sis-slavery-type'],
+                              fieldset: {
+                                legend: {
+                                  text: ""
+                                }
+                              },
+                              items: [
+                                {
+                                  value: "Labour exploitation - victims exploited for multiple purposes in isolated environments",
+                                  text: "Labour exploitation - victims exploited for multiple purposes in isolated environments",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Labour expolitation - victims work directly for offenders",
+                                  text: "Labour exploitation - victims work directly for offenders",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Labour exploitation - victims work for someone other than offenders",
+                                  text: "Labour exploitation - victims work for someone other than offenders"
+                                },
+                                {
+                                  value: "Domestic servitude - exploited by partner",
+                                  text: "Domestic servitude - exploited by partner",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Domestic servitude - exploited by relatives",
+                                  text: "Domestic servitude - exploited by relatives",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Domestic servitude - exploiters not related to victims",
+                                  text: "Domestic servitude - exploiters not related to victims",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Child sexual exploitation - group offending",
+                                  text: "Child sexual exploitation - group offending",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Child sexual exploitation - single exploiter",
+                                  text: "Child sexual exploitation - single exploiter",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Sexual exploitation - forced sex work in fixed location",
+                                  text: "Sexual exploitation - forced sex work in fixed location",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Sexual exploitation - forced sex work in changing location",
+                                  text: "Sexual exploitation - forced sex work in changing location",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Sexual exploitation - trafficking for personal gratification",
+                                  text: "Sexual exploitation - trafficking for personal gratification",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Criminal exploitation - forced gang-related criminality",
+                                  text: "Criminal exploitation - forced gang-related criminality",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Criminal exploitation - forced labour in illegal activities",
+                                  text: "Criminal exploitation - forced labour in illegal activities",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Criminal exploitation - forced acquisitive crime",
+                                  text: "Criminal exploitation - forced acquisitive crime",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Criminal exploitation - forced begging",
+                                  text: "Criminal exploitation - forced begging",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Criminal exploitation - trafficking for forced sham marriage",
+                                  text: "Criminal exploitation - trafficking for forced sham marriage",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                {
+                                  value: "Criminal exploitation - financial fraud",
+                                  text: "Criminal exploitation - financial fraud",
+                                  hint: {
+                                    text: ""
+                                  }
+                                },
+                                 {
+      divider: "or"
+    },
+                                {
+                                  value: "Other",
+                                  text: "Other",
+                                  conditional: {
+                                    html: sisSlaverysother
+                                  },
+                                  hint: {
+                                    text: ""
+                                  }
+                                }
+                              ]
+                            }) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

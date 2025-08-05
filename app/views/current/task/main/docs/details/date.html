@@ -1,0 +1,289 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Seized or detained date
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="list" action="list" method="post" novalidate>
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+ {% if data["sis-doc-two-done"] == "yes" %}
+    {% if data["sis-main-docs-seized"] == "Seized (permanently held)" %}
+
+{% set SeizedexactFuture %}
+    {{ govukDateInput({
+      id: "sis-seized-future-doe",
+      namePrefix: "sis-seized-future-doe",
+      value: data ["sis-seized-future-doe"],
+      fieldset: {
+        legend: {
+          text: "What is the exact date?"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set SeizedapproxFuture %}
+    {{ govukInput({
+      label: {
+        text: "Enter the approximate date or date range, if you know it",
+        classes: "govuk-fieldset__legend--m"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-seized-future-date",
+      name: "sis-seized-future-date",
+      value: data ["sis-seized-future-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-seized-exact",
+      value: data["sis-seized-exact"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the documents were seized?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: SeizedexactFuture
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: SeizedapproxFuture
+      }
+      }
+      ]
+      }) }}
+    {% else %}
+    {% endif %}
+
+    {% if data["sis-main-docs-seized"] == "Detained (temporarily held)" %}
+
+   {% set DetainedexactFuture %}
+    {{ govukDateInput({
+      id: "sis-detained-future-doe",
+      namePrefix: "sis-detained-future-doe",
+      value: data ["sis-detained-future-doe"],
+      fieldset: {
+        legend: {
+          text: "What is the exact date?"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set DetainedapproxFuture %}
+    {{ govukInput({
+      label: {
+        text: "Enter the approximate date or date range, if you know it",
+        classes: "govuk-fieldset__legend--m"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-detained-future-date",
+      name: "sis-detained-future-date",
+      value: data ["sis-detained-future-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-detained-exact",
+      value: data["sis-detained-exact"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the documents were detained?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: DetainedexactFuture
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: DetainedapproxFuture
+      }
+      }
+      ]
+      }) }}
+    {% else %}
+    {% endif %}
+
+    {% else %}
+    {% if data["sis-main-docs-seized"] == "Seized (permanently held)" %}
+
+{% set SeizedexactFuture %}
+    {{ govukDateInput({
+      id: "sis-seized-future-doe",
+      namePrefix: "sis-seized-future-doe",
+      value: data ["sis-seized-future-doe"],
+      fieldset: {
+        legend: {
+          text: "What is the exact date?"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set SeizedapproxFuture %}
+    {{ govukInput({
+      label: {
+        text: "Enter the approximate date or date range, if you know it",
+        classes: "govuk-fieldset__legend--m"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-seized-future-date",
+      name: "sis-seized-future-date",
+      value: data ["sis-seized-future-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-seized-exact",
+      value: data["sis-seized-exact"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the document was seized?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: SeizedexactFuture
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: SeizedapproxFuture
+      }
+      }
+      ]
+      }) }}
+    {% else %}
+    {% endif %}
+
+    {% if data["sis-main-docs-seized"] == "Detained (temporarily held)" %}
+
+   {% set DetainedexactFuture %}
+    {{ govukDateInput({
+      id: "sis-detained-future-doe",
+      namePrefix: "sis-detained-future-doe",
+      value: data ["sis-detained-future-doe"],
+      fieldset: {
+        legend: {
+          text: "What is the exact date?"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set DetainedapproxFuture %}
+    {{ govukInput({
+      label: {
+        text: "Enter the approximate date or date range, if you know it",
+        classes: "govuk-fieldset__legend--m"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-detained-future-date",
+      name: "sis-detained-future-date",
+      value: data ["sis-detained-future-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-detained-exact",
+      value: data["sis-detained-exact"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the document was detained?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: DetainedexactFuture
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: DetainedapproxFuture
+      }
+      }
+      ]
+      }) }}
+    {% else %}
+    {% endif %}
+      {% endif %}  
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

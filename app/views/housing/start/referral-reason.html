@@ -1,0 +1,83 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Does this referral need to be assessed and investigated?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   <!--<span class="govuk-caption-xl">Safeguarding</span>-->
+
+    <form class="form" action="/housing/task/list" method="post">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set specificHtml %}
+{{ govukInput({
+  id: "specific-team",
+  name: "SpecificTeam",
+  type: "email",
+  autocomplete: "email",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Who needs to see this, and what do they need to do?"
+  }
+}) }}
+{% endset -%}
+
+
+    {{ govukRadios({
+      classes: "govuk-radios",
+      name: "sis-self-referral",
+      value: data["sis-self-referral"],
+      fieldset: {
+        legend: {
+          text: "Why are you making this referral?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+     
+      items: [
+        {
+          value: "To be reviewed by the appropriate team",
+          text: "To be reviewed by the appropriate team"
+        },
+        {
+        value: "To be sent to a specific person or team in Home Office Intelligence",
+          text: "To be sent to a specific person or team in Home Office Intelligence",
+          conditional: {
+        html: specificHtml
+      }
+        },
+         {
+          value: "To record a case that I am working on (self-tasking)",
+          text: "To record a case that I am working on (self-tasking)"
+        }
+  
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

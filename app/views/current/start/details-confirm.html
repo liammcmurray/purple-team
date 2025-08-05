@@ -1,0 +1,124 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – These are the details we have for you
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+            <!--<span class="govuk-caption-xl">Your details</span>-->
+
+            <h1 class="govuk-heading-l">These are the details we have for you</h1>
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: [
+                {
+                  key: {
+                    text: "Given names"
+                  },
+                  value: {
+                    text: sisName
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "details",
+                        text: " ",
+                        visuallyHiddenText: "first name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Surname"
+                  },
+                  value: {
+                    text: sisSurname
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "details",
+                        text: " ",
+                        visuallyHiddenText: "surname"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Email address"
+                  },
+                  value: {
+                    html: sisEmail
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "details",
+                        text: " ",
+                        visuallyHiddenText: "email"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Phone number"
+                  },
+                  value: {
+                    html: sisPhone
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "details",
+                        text: " ",
+                        visuallyHiddenText: "phone number"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }) }}
+
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              label: {
+                text: "If your email address or phone number is incorrect, tell us how we can contact you."
+              },
+              classes: "govuk-input--width-40",
+              id: "sis-alt-contact",
+              name: "sis-alt-contact"
+            }) }}
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue",
+          href:"ho-team"
+        }) }}
+
+
+    </div>
+  </div>
+{% endblock %}

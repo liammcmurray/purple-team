@@ -1,0 +1,139 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Does the crime involve and vehicles, transport or travel?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/purple/current/sis-smug-vehicles" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {% if data["sis-cland-uk"] == "Yes" %}
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+          <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+            How did the suspect or offender enter the country?  
+          </h1>
+          {% else %}
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="more-detail">
+              How did {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} enter the country?  
+            </label>
+          </h1>
+          {% endif %}
+        </legend>
+
+        {{ govukRadios({
+          name: "sis-cland",
+          value: data ["sis-cland"],
+          fieldset: {
+            legend: {
+              text: ""
+            }
+          },
+          items: [
+            {
+              value: "Air",
+              text: "Air"
+            },
+            {
+              value: "Rail",
+              text: "Rail"
+            },
+            {
+              value: "Road",
+              text: "Road"
+            },
+            {
+              value: "Sea",
+              text: "Sea"
+            },
+            {
+      divider: "or"
+    },
+            {
+              value: "Other",
+              text: "Other method of entry"
+            }
+          ]
+        }) }}
+
+        {% else %}
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+          <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+            How will the suspect or offender enter the country?  
+          </h1>
+          {% else %}
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="more-detail">
+              How will {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} enter the country?  
+            </label>
+          </h1>
+          {% endif %}
+        </legend>
+
+        {{ govukRadios({
+          name: "sis-cland",
+          value: data ["sis-cland"],
+          fieldset: {
+            legend: {
+              text: ""
+            }
+          },
+          items: [
+          {
+            value: "Air",
+            text: "Air"
+          },
+          {
+            value: "Rail",
+            text: "Rail"
+          },
+          {
+            value: "Road",
+            text: "Road"
+          },
+          {
+            value: "Sea",
+            text: "Sea"
+          },
+          {
+    divider: "or"
+  },
+          {
+            value: "Other",
+            text: "Other method of entry"
+          }
+          ]
+        }) }}
+
+        {% endif %}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

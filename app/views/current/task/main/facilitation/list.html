@@ -1,0 +1,154 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Add business
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+  <form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+      <h1 class="govuk-heading-l">Check your answers</h1>
+ {% if data["sub-crime"] == "facilitation" %}
+  
+       <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+
+   <h2 class="govuk-summary-card__title">Facilitation details</h2>
+     <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+          <span class="govuk-visually-hidden"> person 1</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="govuk-summary-card__content">
+
+    <dl class="govuk-summary-list">
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Suspected of facilitation
+          </dt>
+          <dd class="govuk-summary-list__value">
+          
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details about the suspects
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            When did the facilitation happen?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-facilitation-date'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="date">
+              Change<span class="govuk-visually-hidden">name of educational establishment</span>
+            </a>
+          </dd>
+          </div>
+ <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Immigration offences facilitated
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['facilitaton-crime'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="details">
+              Change<span class="govuk-visually-hidden">name of educational establishment</span>
+            </a>
+          </dd>
+          </div>
+
+
+              </dl>
+    </div>
+  </div>
+  
+       {% include "purple/current/templates/summary/secondary-person1.html" %}
+
+            {% else %}
+   
+    
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            When did the facilitation happen?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-facilitation-date'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="date">
+              Change<span class="govuk-visually-hidden">name of educational establishment</span>
+            </a>
+          </dd>
+          </div>
+ <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Immigration offences facilitated
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['facilitaton-crime'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="details">
+              Change<span class="govuk-visually-hidden">name of educational establishment</span>
+            </a>
+          </dd>
+          </div>
+        </dl>
+    
+     {% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+  <input type="hidden" id="sis-rep-done" name="sis-rep-done" value="Yes">
+
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

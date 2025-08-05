@@ -1,0 +1,182 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Smuggling dates
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="check-answers" method="post" novalidate>
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+{% set pastHtml %}
+{{ govukDateInput({
+  id: "past-crime-time",
+  namePrefix: "past-crime-time",
+  fieldset: {
+    legend: {
+      text: "When did it happen?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, 27 3 2025"
+  }
+}) }}
+{% endset -%}
+
+{% set nowHtml %}
+{{ govukDateInput({
+  id: "now-crime-time",
+  namePrefix: "passport-issued",
+  fieldset: {
+    legend: {
+      text: "When did it start happening?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, 27 3 2035"
+  }
+}) }}
+{% endset -%}
+
+{% set futureHtml2 %}
+{{ govukDateInput({
+  id: "future-crime-time",
+  namePrefix: "future-crime-time",
+  fieldset: {
+    legend: {
+      text: "Provide details, if you know them",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, 27 3 2035"
+  }
+}) }}
+
+{{ govukInput({
+  label: {
+    text: "Approximate time"
+  },
+  id: "event-time",
+  name: "eventTime",
+  classes: "govuk-input--width-5"
+}) }}
+{% endset -%}
+
+
+{% set futureHtml %}
+  {{ govukRadios({
+  name: "sis-smuggle-date-future",
+  fieldset: {
+    legend: {
+      text: "When will it happen?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "Select one option"
+  },
+  items: [
+    {
+      value: "Next 24 hours",
+      text: "In the next 24 hours"
+    },
+    {
+      value: "More than 24 hours in the future",
+      text: "Date more than 24 hours in the future",
+      conditional: {
+        html: futureHtml2
+      }
+    },
+    {
+      value: "Do not know",
+      text: "Don't know"
+    }
+  ]
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  name: "sis-smuggling-crime-time",
+  fieldset: {
+    legend: {
+      text: "When is the smuggling happening?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Select one option"
+  },
+  items: [
+    {
+      value: "Already happened",
+      text: "Already happened",
+      conditional: {
+        html: pastHtml
+      }
+    },
+    {
+      value: "Happening now",
+      text: "Happening now",
+      conditional: {
+        html: nowHtml
+      }
+    },
+    {
+      value: "Ongoing",
+      text: "Ongoing",
+      conditional: {
+        html: nowHtml
+      }
+    },
+    {
+      value: "Not yet happened",
+      text: "Not yet happened",
+      conditional: {
+        html: futureHtml
+      }
+    },
+    {
+      value: "Unknown",
+      text: "Unknown"
+    }
+  ]
+}) }}
+
+<input type="hidden" id="sis-smuggling-details-done" name="sis-smuggling-details-done" value="Yes">
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Is there danger to life, or are any children or vulnerable people at risk?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   <!--<span class="govuk-caption-xl">Safeguarding</span>-->
+
+    <form class="form" action="/pink/current/event-happening2" method="post">
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+Location 1: Events
+    </h1>  
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      name: "event-happening2",
+      value: data["event-happening2"],
+      fieldset: {
+        legend: {
+          text: "Do you know of any relevant events happening at this location?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--s"
+        } 
+      },
+      items: [
+        {
+          value: "Yes",
+          text: "Yes"
+        },
+        {
+          value: "No",
+          text: "No"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

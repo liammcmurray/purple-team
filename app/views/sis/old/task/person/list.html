@@ -1,0 +1,304 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Person details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form class="form" action="/pink/current/task/list" method="post">
+ 
+<!--<span class="govuk-caption-xl">Business details/span>-->
+{% if data["sis-person1-info"] == "yes" or data["sis-person2-info"] == "yes" %}
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+  {% if data["sis-person1-info"] == "yes" %}
+
+    <!--MODERN SLAVERY CARDS-->
+      {% if data["start-crime"] == "slavery" %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Legal representative details</h1>
+      <p class="govuk-body">Complete as much about the legal representative as you can.</p>
+
+
+      <form class="form" action="detained" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+      {% call govukFieldset({
+          legend: {
+            text: "Name",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+          <div class="govuk-form-group">
+              <label class="govuk-label" for="event-name">
+                Given names
+              </label>
+            <div id="event-name-hint" class="govuk-hint">
+              Their first and middle names
+            </div>
+            <input class="govuk-input govuk-!-width-two-thirds" id="sis-person-legal-first-name" name="sis-person-legal-first-name" type="text">
+          </div>
+
+          {{ govukInput({
+            label: {
+              text: 'Surname'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "surname",
+            name: 'sis-person-legal-surname',
+            value: data ["sis-person-legal-surname"],
+            autocomplete: "surname"
+          }) }}
+
+        {% endcall %}
+
+        <hr>
+        <br/>
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+      
+          {{ govukInput({
+            label: {
+              text: 'Email address'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-email",
+            name: "sis-person-legal-email",
+            value: data ["sis-person-legal-email"]
+          }) }}
+      
+          {{ govukInput({
+            label: {
+              text: 'Phone number'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-phone",
+            name: "sis-person-legal-phone",
+            value: data ["sis-person-legal-phone"]
+          }) }}
+      
+        {% endcall %}
+        
+        <hr>
+        <br/>
+             {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Employer",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+         
+
+          {{ govukInput({
+            label: {
+              text: 'Name of the organisation they work for'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "surname",
+            name: 'sis-person1-legal-employer',
+            value: data ["sis-person1-legal-employer"],
+            autocomplete: "surname"
+          }) }}
+
+        {% endcall %}
+<br/>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}
+
+        {% if data["sis-victim-person2-done"] == "Yes" %}
+        {% include "pink/current/templates/summary/slavery/sis-person2-victim.html" %}
+        {% else %}{% endif %}
+
+        {% if data["sis-victim-person-done"] == "Yes" %}
+        {% include "pink/current/templates/summary/slavery/sis-person-victim.html" %}
+        {% else %}{% endif %}
+      
+        {% if data["sis-trafficker-person-done"] == "Yes" %}
+        {% include "pink/current/templates/summary/slavery/sis-person-trafficker.html" %}
+        {% else %}{% endif %}
+
+        {% if data["sis-responder-person-done"] == "Yes" %}
+        {% include "pink/current/templates/summary/slavery/sis-person-responder.html" %}
+        {% else %}{% endif %}
+
+      {% else %}{% endif %}
+    <!--END-->
+
+     <!--SHAM MARRIAGE, ILLEGAL WORKING, OVERSTAYER CARDS, HOUSING-->
+        {% if data["start-crime"] == "facilitation" or data["start-crime"] == "other" or data["start-crime"] == "marriage" or data["start-crime"] == "illegal-working" or data["start-crime"] == "conditions" or data["start-crime"] == "clandestine" or data["start-crime"] == "overstayer" or data["start-crime"] == "deception" or data["start-crime"] == "housing" or data["start-crime"] == "rep-abuse" or data["start-crime"] == "s24" or data ["start-crime"] == "terrorism"%}
+
+        {% include "pink/current/templates/summary/sis-person1.html" %}
+
+      {% else %}{% endif %}
+    <!--END-->
+  
+  {% else %}{% endif %}
+
+  {% if data["sis-person2-info"] == "yes" %}
+  {% include "pink/current/templates/summary/sis-person2.html" %}
+  {% else %}{% endif %}
+
+  {% if data["sis-person3-info"] == "yes" %}
+  {% include "pink/current/templates/summary/sis-person3.html" %}
+  {% else %}{% endif %}
+
+  <!--DOC FRAUD CARDS - add extra button -->
+{% if data["start-crime"] == "document-fraud" %}
+{% if data["sis-person2-info"] == "yes" %}{% else %}
+<!--{% from "govuk/components/button/macro.njk" import govukButton %}
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add genuine ID details of person",
+  href: "details2"
+}) }}-->
+{% endif %}
+<br/>
+{% else %}{% endif %}
+<!--END -->
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% if data["start-crime"] == "s24" %}
+
+  {% if data["sis-person2-info"] == "yes" %}
+
+   {{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another person",
+  href: "type3"
+  }) }}
+  <br>
+    {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+
+  {% else %}
+ {{ govukButton({
+  classes: "hods-button",
+  text: "Add Party 2",
+  href: "details2"
+  }) }}
+
+  {% endif %}
+
+{% else %}
+
+{% if data["sis-person2-info"] == "yes" %}
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another person",
+  href: "type3"
+}) }}
+<br>
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+{% else %}
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another person",
+  href: "type2"
+}) }}
+<br>
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+{% endif %}
+{% endif %}
+<br/>
+
+ 
+
+<input type="hidden" id="sis-person-done" name="sis-person-done" value="Yes">
+
+{% else %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<h1 class="govuk-heading-l">Add a person</h1>
+
+  <p class="govuk-body">You have not added a person yet.</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+classes: "hods-button--secondary",
+text: "Add a person",
+href: "type"
+}) }}
+
+<br/>
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue without adding",
+  href: "/pink/current/task/list"
+}) }}
+
+<input type="hidden" id="sis-person-done" name="sis-person-done" value="No">
+
+{% endif %}
+
+</form>
+
+  </div>
+  </div>
+
+{% endblock %}

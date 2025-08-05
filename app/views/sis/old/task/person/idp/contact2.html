@@ -1,0 +1,93 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Other details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Person 2: Address</h1>
+      <form class="form" action="/pink/current/sis-person2-idp-address" method="post">
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% set personAddress %}
+{{ govukRadios({
+name: "sis-person2-idp-address-uk",
+value: data["sis-person2-idp-address-uk"],
+classes: "govuk-radios--inline",
+fieldset: {
+legend: {
+text: "Is the address in the UK?"
+}
+},
+items: [
+{
+value: "Yes",
+text: "Yes"
+},
+{
+value: "No",
+text: "No"
+}
+]
+}) }}
+{% endset -%}
+
+  {{ govukRadios({
+    name: "sis-person2-idp-address",
+    value: data["sis-person2-idp-address"],
+    fieldset: {
+    legend: {
+    text: "Do you know their address?",
+    classes: "govuk-fieldset__legend--m"
+    }
+    },
+    hint: {
+    text: "This could be any type of address, including home or work address."
+  },
+    items: [
+    {
+    value: "Yes",
+    text: "Yes",
+    conditional: {
+      html: personAddress
+    }
+    },
+    {
+    value: "No",
+    text: "No"
+    }
+    ]
+    }) }}
+
+  
+
+<input type="hidden" id="sis-person2-info" name="sis-person2-info" value="yes">
+
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+    }) }}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

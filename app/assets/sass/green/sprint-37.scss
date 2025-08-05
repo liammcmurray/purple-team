@@ -1,0 +1,156 @@
+// Parent wrapper to contain all styles to the green team (and not override any other prorotype work).
+.green-team {
+
+  &.update-profile {
+    #cop-back {display: none;}
+  }
+
+  &.your-profile {
+    #gov-back {display: none;}
+    #profile-confirm-details {display:none;}
+  }
+
+  .cop-dl {
+    display: inline;
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    .cop-dl__term {
+      box-sizing: border-box;
+      float: left;
+      clear: left;
+      padding-right: 5px;
+      margin-top: 0;
+      min-width: 20%;
+      padding: 0;
+      width: auto;
+    }
+    .cop-dl__definition {
+      margin-bottom: 5px;
+      width: auto;
+    }
+  }
+
+  .cop-all-locations,
+  .cop-all-teams {
+    // Hidden field.
+    display: none;
+  }
+
+  .cop-tasks {
+    border-top: 1px solid #b1b4b6;
+  }
+
+  .cop-tasks .cop-task-hours,
+  .cop-tasks .cop-tasks__hours {
+    display: none; // Table purely for js sorting, not visible.
+  }
+  // Search filter.
+  .dataTables_filter {
+    float: right;
+    label {
+      display: inline;
+    }
+    input {
+      display: inline-block;
+      margin-left: 15px;
+      width: 220px;
+    }
+    button {
+      display: inline-block;
+      margin-left: 18px;
+    }
+  }
+  // Table filter.
+  .cop-task-filter {
+    background-color: #ffffff;
+    box-shadow: inset 0 0 0 1px #b1b4b6;
+    margin-top: 72px;
+  }
+  .cop-task-filter__header {
+    background-color: #b1b4b6;
+    font-size: 0;
+    padding: 10px 20px;
+    text-align: justify;
+    .govuk-heading-m,
+    .govuk-heading-s {
+      margin: 0;
+    }
+  }
+  .cop-task-filter__apply {
+    font-size: 19px;
+    padding: 20px 20px 0 20px;
+    .cop-apply-filters {
+      display: block;
+    }
+  }
+  .cop-task-filter__options {
+    padding: 20px;
+    .govuk-checkboxes__label {
+      font-size: 19px;
+    }
+  }
+  .cop-tasks {
+    .cop-tasks__reference {
+        min-width: 200px;
+    }
+  }
+  .custom-datatables-fieldset {
+    clear: both;
+  }
+
+  .dataTables_info {
+    float: right;
+    font-family: "GDS Transport", arial, sans-serif;
+    font-size: 19px;
+  }
+  .dataTables_paginate {
+    font-size: 19px;
+    a {
+      color: #1d70b8;
+      min-width: 25px;
+      padding: 5px;
+      text-align: center;
+      text-decoration: none;
+      &:hover {
+        color: 003078;
+        cursor: pointer;
+      }
+      &.disabled {
+        display: none;
+      }
+    }
+    .next:after,
+    .previous:before {
+      display: inline-block;
+      height: 10px;
+      width: 10px;
+      border-style: solid;
+      color: #0b0c0c;
+      background: transparent;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      content: "";
+    }
+    .next:after {
+      border-width: 0 3px 3px 0;
+      margin-left: 5px;
+    }
+    .previous:before {
+      border-width: 3px 0 0 3px;
+      margin-right: 5px;
+    }
+    .paginate_button {
+      height: 25px;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    .current {
+      color: #0b0c0c;
+      font-weight: bold;
+      &:hover {
+        cursor:default;
+      }
+    }
+  }
+}

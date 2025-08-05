@@ -1,0 +1,26 @@
+/* Changes the colour of the tags and makes text in sentence case */
+
+.cop-tasklist {
+  @extend .app-task-list;
+  .app-task-list__tag {
+    font-weight: normal;
+    text-transform: none;
+  }
+  .app-task-list__tag-completed {
+    background-color: #005EA5;
+    color: #fff;
+  }
+  .app-task-list__tag-not-started {
+    background-color: #5C6367;
+    color: #fff;
+  }
+  .app-task-list__tag-cannot-start-yet {
+    background-color: #5C6367;
+    color: #fff;
+  }
+  .app-task-list__tag-in-progress {
+    background-color: white;
+    color: black;
+    border: 1px solid #bfc1c3;
+  }
+}

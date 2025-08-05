@@ -1,0 +1,103 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Document fraud sender details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="sender-details2" method="post">
+
+      <!--<span class="govuk-caption-xl">Location</span>-->
+      <h1 class="govuk-heading-l">Sender's details</h1>
+      <p>Complete as much about the sender as you can.</p>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: false
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: 'Name or business name'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-doc-sender-biz-name",
+            name: "sis-doc-sender-biz-name",
+            value: data["sis-doc-sender-biz-name"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Website'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-doc-sender-website",
+            name: "sis-doc-sender-website",
+            value: data["sis-doc-sender-website"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Social media'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-doc-sender-social",
+            name: "sis-doc-sender-social",
+            value: data["sis-doc-sender-social"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Phone number'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-doc-sender-phone",
+            name: "sis-doc-sender-phone",
+            value: data["sis-doc-sender-phone"]
+          }) }}
+
+
+        {% endcall %}
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+<input type="hidden" id="sis-biz-info" name="sis-biz-info" value="yes">
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

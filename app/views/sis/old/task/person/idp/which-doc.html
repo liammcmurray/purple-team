@@ -1,0 +1,58 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<form class="form" action="list" method="post">
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Which documents belong to this person?
+      </h1>
+    </legend>
+     <div id="waste-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="which-doc" name="which-doc" type="checkbox" value="{{ data ['sis-idp1-first-name'] }} {{ data ['sis-idp1-surname'] }} - {{ data ['sis-main-idp1-number'] }}">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          {{ data ['sis-idp1-first-name'] }} {{ data ['sis-idp1-surname'] }} - {{ data ['sis-main-idp1-number'] }}
+        </label>
+      </div>
+       <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="which-do2c" name="which-doc" type="checkbox" value="{{ data ['sis-idp2-first-name'] }} {{ data ['sis-idp2-surname'] }} - {{ data ['sis-main-idp2-number'] }}">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          {{ data ['sis-idp2-first-name'] }} {{ data ['sis-idp2-surname'] }} - {{ data ['sis-main-idp2-number'] }}
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<input type="hidden" id="sis-person1-info" name="sis-person1-info" value="Yes">
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

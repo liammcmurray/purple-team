@@ -1,0 +1,212 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="/pink/current/task/person/list" method="post" novalidate>
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+             <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+Person 1: Occupation details
+    </h1>  
+    </legend>
+     {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+<p class="govuk-body">Complete as much about their occupation as you can.</p>
+<h2 class="govuk-heading-m">Occupation</h2>
+
+
+
+{% set studyHtml %}
+{{ govukInput({
+  id: "person-study",
+  name: "person-study",
+  type: "person-study",
+  classes: "govuk-!-width-full-width",
+  label: {
+    text: "Main subjects"
+  }
+}) }}
+{% endset -%}
+
+{% set otherHtml %}
+{{ govukInput({
+  id: "other-occupation",
+  name: "other-occupation",
+  type: "other-occupation",
+  classes: "govuk-!-width-full-width",
+  label: {
+    text: "Type of occupation"
+  }
+}) }}
+{% endset -%}
+
+{{ govukCheckboxes({
+  name: "terrorism-person-occupation",
+  fieldset: {
+    legend: {
+      text: ""
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Working",
+      text: "Working"
+      
+    },
+    {
+      value: "Student",
+      text: "Student",
+      conditional: {
+        html: studyHtml
+      }
+    },
+    {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: otherHtml
+      }
+    },
+     {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+      <hr>
+  <br>
+
+          <h2 class="govuk-heading-m">Employer or sponsor</h2>
+{{ govukInput({
+    label: {
+      text: 'Company name'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "person-company-name",
+    name: "person-company-name",
+    value: ""
+  }) }}
+
+<label class="govuk-label" for="more-detail">
+    Sector
+  </label>
+{% include "pink/current/templates/ref-data/sis-sector-list.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "If the business sector is not in the list, what is the sector?"
+  },
+  name: 'sis-other-biz-sector',
+  value: data["sis-other-biz-sector"],
+  classes: "govuk-!-width-one-half"
+}) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Email address'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "person-company-email",
+    name: "person-company-email",
+    value: ""
+  }) }}
+
+
+  {{ govukInput({
+    label: {
+      text: 'Phone number'
+    },
+    classes: "govuk-!-width-one-third",
+    id: "person-company-phone",
+    name: "person-company-phone",
+    value: ""
+  }) }}
+   <hr>
+  <br>
+
+          <h2 class="govuk-heading-m">Educational establishment</h2>
+
+          {{ govukInput({
+    label: {
+      text: 'Establishment name'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "education-name",
+    name: "education-name",
+    value: ""
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Email address'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "education-email",
+    name: "education-email",
+    value: ""
+  }) }}
+
+
+  {{ govukInput({
+    label: {
+      text: 'Phone number'
+    },
+    classes: "govuk-!-width-one-third",
+    id: "education-phone",
+    name: "education-phone",
+    value: ""
+  }) }}
+      </fieldset>
+      </div>        
+      
+<input type="hidden" id="sis-immigration-done" name="sis-immigration-done" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-sector-list')
+    })
+
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+
+/* The style for the change link on a heading on check your answers */
+.cop-title-change-link {
+    font-weight: 400;
+    font-size: 19px;
+    float: right;
+  }
+
+/* From tablet only, as the widths below desktop should be different, as the summary list changes shape. */
+@include govuk-media-query($from: tablet) {
+  .cop-check-answers .govuk-summary-list__key {
+    width: 50%;
+  }
+
+  .cop-check-answers .govuk-summary-list__value {
+    width: 35%;
+  }
+
+  .cop-check-answers .govuk-summary-list__actions {
+    width: 15%;
+  }
+
+  .eab2-check-answers {
+    @extend .cop-check-answers;
+  }
+}

@@ -1,0 +1,124 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who are you reporting for illegal working?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<form class="form" action="list" method="post">
+
+  {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+  {% from "govuk/components/input/macro.njk" import govukInput %}
+
+  {% call govukFieldset({
+    legend: {
+      text: "Document 1: Verification",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  }) %}
+
+  {% set docVerify %}
+{{ govukInput({
+  label: {
+    text: "Which agency or department verified it?"
+  },
+  name: 'sis-main-idp-verifier',
+  value: data["sis-main-idp-verifier"],
+  classes: "govuk-!-width-one-half"
+}) }}
+{% endset -%}
+
+  {% set docFraud %}
+   <label class="govuk-label" for="more-detail">
+    Type of forgery
+  </label>
+{% include "purple/current/templates/ref-data/sis-forgery-list.html" %}
+{% endset -%}
+
+
+
+{{ govukRadios({
+  name: "sis-add-idp-real",
+  value: data ['sis-add-idp-real'],
+  fieldset: {
+    legend: {
+      text: "Do you believe this document is genuine or fraudulent?"
+    }
+  },
+  items: [
+    {
+      value: "Genuine",
+      text: "Genuine"
+    },
+    {
+      value: "Fraudulent",
+      text: "Fraudulent",
+      conditional: {
+          html: docFraud
+        }
+    },
+         {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know"
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  name: "sis-main-idp-verify",
+  value: data["sis-main-idp-verify"],
+  fieldset: {
+    legend: {
+      text: "Has this been verified?"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+          html: docVerify
+        }
+    },
+    {
+      value: "No",
+      text: "No"
+    },
+         {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know"
+    }
+  ]
+}) }}
+
+{% endcall %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

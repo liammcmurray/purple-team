@@ -1,0 +1,85 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who is suspected of illegally working?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="/pink/current/overstayer-secondary-person" method="post" novalidate>
+
+ <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+Who do you suspect of overstaying their visa or permission?
+      </h1>
+    </legend>
+  
+        <div id="waste-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+  {% if data["sis-person1-first-name"] == "" %}   {% else %} 
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="secondary-offence-role" name="secondary-offence-role" type="checkbox" value="Person 1">
+        <label class="govuk-label govuk-checkboxes__label" for="secondary-offence-role">
+         {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }}
+        </label>
+      </div>
+{% endif %} 
+  {% if data["sis-person2-first-name"] == "" %}   {% else %} 
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="secondary-offence-role-2" name="secondary-offence-role" type="checkbox" value="Person 2">
+        <label class="govuk-label govuk-checkboxes__label" for="secondary-offence-role-2">
+              {{ data['sis-person2-first-name'] }} {{ data['sis-person2-surname'] }}
+        </label>
+      </div>
+      {% endif %} 
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="secondary-offence-role-3" name="secondary-offence-role" type="checkbox" value="Someone else">
+        <label class="govuk-label govuk-checkboxes__label" for="secondary-offence-role-3">
+          Someone else
+        </label>
+      </div>
+       <div class="govuk-checkboxes__divider">or</div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="secondary-offence-role-4" name="secondary-offence-role" type="checkbox" value="I do not know">
+        <label class="govuk-label govuk-checkboxes__label" for="secondary-offence-role-4">
+          I do not know
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+  
+
+
+
+<input type="hidden" id="sis-working-done" name="sis-working-done" value="Yes">
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

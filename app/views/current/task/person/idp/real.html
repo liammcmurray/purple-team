@@ -1,0 +1,86 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who are you reporting for illegal working?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<span class="govuk-caption-xl">Person type</span>-->
+
+<form class="form" action="/purple/current/sis-docs-real2" method="post">
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+  {% if data["sis-docs-real"] == "Yes" %}
+
+  {{ govukRadios({
+    classes: "govuk-radios--inline",
+    name: "sis-docs-real2",
+    value: data [sis-docs-real2],
+    fieldset: {
+      legend: {
+        text: "Do you have details of this person's fraudulent identity?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "Yes",
+        text: "Yes"
+      },
+      {
+        value: "No",
+        text: "No"
+      }
+    ]
+  }) }}
+
+{% else %}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  name: "sis-docs-real2",
+  value: data [sis-docs-real2],
+  fieldset: {
+    legend: {
+      text: "Do you have details of this person's genuine identity?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+{% endif %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

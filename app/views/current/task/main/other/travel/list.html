@@ -1,0 +1,600 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Clandestine entry
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+
+      <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+    <h2 class="govuk-summary-card__title">Person 1: {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }}</h2>
+    </div>
+      <div class="govuk-summary-card__content">
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+           Is {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} currently in the UK?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-uk"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="date">
+            Change<span class="govuk-visually-hidden">answer</span>
+            </a>
+        </dd>
+      </div>
+ {% if data["sis-other-uk"] == "I do not know" %}  {% else %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {% if data["sis-other-uk"] == "No" %}
+            Which documents is {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} planning to use to enter the country?
+{% else %}
+Which documents did {{ data['sis-person1-victim-first-name'] }} {{ data['sis-person1-victim-surname'] }} use to enter the country?
+         {% endif %}
+         
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["other-docs"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+{% endif %}
+ {% if data["other-docs"] == "Valid UK visa or permission" %}
+  <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {% if data["sis-other-uk"] == "No" %}
+            What type of visa or permission has {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} applied for?
+{% else %}
+What type of visa or permission did {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} enter the country with?
+         {% endif %}
+         
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sisVisaType"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+       {% else %} 
+ {% endif %}
+
+  {% if data["other-docs"] == "None, they plan to enter clandestinely" or data["other-docs"] == "None, they entered clandestinely"%}
+  <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {% if data["sis-other-uk"] == "No" %}
+  How will {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} enter the country?
+{% else %}
+How did {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} enter the country?
+         {% endif %}
+         
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-route"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+       {% else %} 
+ {% endif %}
+
+        <!--IF VEHICLE IS INVOLVED-->
+
+{% if data["sis-other-route"] == "Rail" or data["sis-other-route"] == "Sea" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+  {% if data["sis-other-uk"] == "Yes" %}
+            Arrived inside a vehicle
+  {% else %}
+            Will arrive inside a vehicle
+  {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-other-vehicle"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="vehicle">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+{% else %}{% endif %}
+
+{% if data["sis-other-vehicle"] == "Yes" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Vehicle registration number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-vehicle-reg"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="vehicle">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of vehicle
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-vehicle-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="vehicle">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Make
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-vehicle-make"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="vehicle">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Model
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-vehicle-model"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="vehicle">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Colour
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-vehicle-colour"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="vehicle">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+{% else %}{% endif %}
+
+        <!--AIR DETAILS-->
+
+{% if data["sis-other-route"] == "Air" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Airline company
+          </dt>
+          <dd class="govuk-summary-list__value">
+            British Airways{{ data ["sis-airline-list"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Flight number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            BA056 {{ data ["sis-flight-number-other"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Country of departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-country"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Port of departure 
+          </dt>
+          <dd class="ngovuk-summary-list__value">
+{{ data ["sis-airport-list"] }}Paris Charles De Gaulle 
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+             6 November 2023 {{ data ["sis-air-dod"] }}
+          </dd> 
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Port of arrival
+          </dt>
+          <dd class="govuk-summary-list__value">
+            London Heathrow {{ data ["sis-uk-air-ports"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of arrival
+          </dt>
+          <dd class="govuk-summary-list__value">
+            6 November 2023 {{ data ["sis-air-doa"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+             </a>
+        </dd>
+      </div>
+{% else %}{% endif %}
+{% if data["sis-other-route"] == "Road" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Vehicle registration number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-road-vehicle-reg"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of vehicle
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-road-vehicle-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Make
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-road-vehicle-make"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Model
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-road-vehicle-model"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Colour
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-road-vehicle-colour"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of arrival
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-road-doa"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}
+        {% endif %}
+
+        <!--SEA DETAILS-->
+
+        {% if data["sis-other-route"] == "Sea" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of boat
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-sea-boat-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of boat
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-sea-boat-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Country of departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-country"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Port or place of departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-sea-port"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-sea-dod"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Port of arrival
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-sea-port-a"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Place of arrival, if it was not at a port
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-sea-place-a"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of arrival
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-sea-doa"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}
+        {% endif %}
+
+        <!--RAIL DETAILS-->
+
+        {% if data["sis-other-route"] == "Rail" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Country of departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-country"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Station of departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-rail-port"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of departure
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-rail-dod"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Station of arrival
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-rail-arrival-station"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of arrival
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-rail-doa"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="route">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}
+        {% endif %}
+
+  
+    </dl>
+  </div>
+</div>
+
+ <!--End of Journey 1 -->
+
+ 
+  
+
+
+
+ 
+
+  <input type="hidden" id="sis-travel-done" name="sis-travel-done" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue"
+}) }}
+
+
+
+
+
+
+
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

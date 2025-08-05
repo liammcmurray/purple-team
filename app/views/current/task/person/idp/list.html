@@ -1,0 +1,218 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Person details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form class="form" action="/purple/current/task/list" method="post">
+
+<!--<span class="govuk-caption-xl">Business details/span>-->
+{% if data["sis-person1-info"] == "yes" or data["sis-person2-info"] == "yes" or data["entered-before-2"] == "Yes" or data["entered-before"] == "Yes"%}
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+  {% if data["sis-person1-info"] == "yes" and data["entered-before"] == "No" %}
+  {% include "purple/current/templates/summary/idp/sis-person1.html" %}
+  {% else %}{% endif %}
+
+  {% if data["sis-person2-info"] == "yes" and data["entered-before-2"] == "No" %}
+  {% include "purple/current/templates/summary/idp/sis-person2.html" %}
+  {% else %}{% endif %}
+
+  {% if data["sis-person3-info"] == "yes" %}
+  {% include "purple/current/templates/summary/idp/sis-person3.html" %}
+  {% else %}{% endif %}
+{% if data["entered-before"] == "Yes" %}
+  <div class="govuk-summary-card">
+<div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+            <h2 class="govuk-summary-card__title">Person 1
+</div>
+<div class="govuk-summary-card__content">
+  <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Person's role
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-idp-role"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="type">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Person's details given in a document
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["entered-before"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="same-details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Document details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["which-doc"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="which-doc">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        </dl>
+            </div>
+</div> 
+
+
+  {% else %}{% endif %}
+  {% if data["entered-before-2"] == "Yes" %}
+
+    <div class="govuk-summary-card">
+<div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+            <h2 class="govuk-summary-card__title">Person 2
+</div>
+<div class="govuk-summary-card__content">
+   <dl class="govuk-summary-list">
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            What is this person's role?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-idp-role2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="type2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Given this person's details in a document
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["entered-before-2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="same-details2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Document details
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["which-doc-2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="which-doc2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        </dl>
+         </div>
+</div> 
+
+  {% else %}{% endif %}
+
+  <!--DOC FRAUD CARDS - add extra button -->
+{% if data["start-crime"] == "idp" %}
+{% if data["sis-person2-info"] == "yes" %}{% else %}
+<!--{% from "govuk/components/button/macro.njk" import govukButton %}
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add genuine ID details of person",
+  href: "details2"
+}) }}-->
+{% endif %}
+<br/>
+{% else %}{% endif %}
+<!--END -->
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% if data["sis-person2-info"] == "yes" %}
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another person",
+  href: ""
+}) }}
+{% else %}
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another person",
+  href: "type2"
+}) }}
+{% endif %}
+
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+<input type="hidden" id="sis-person-done" name="sis-person-done" value="Yes">
+
+{% else %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<h1 class="govuk-heading-l">Add a person</h1>
+
+  <p class="govuk-body">You have not added a person yet.</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+classes: "hods-button--secondary",
+text: "Add a person",
+href: "type"
+}) }}
+
+<br/>
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue without adding",
+  href: "/purple/current/task/list"
+}) }}
+
+<input type="hidden" id="sis-person-done" name="sis-person-done" value="No">
+
+{% endif %}
+
+</form>
+
+  </div>
+  </div>
+
+{% endblock %}

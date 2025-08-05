@@ -1,0 +1,84 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Has the person already entered the UK?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="/purple/current/sis-other-vehicle" method="post" novalidate>
+ <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+ {% if data["sis-other-uk"] == "No" %}
+        {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Did Person 1 plan to arrive inside a vehicle?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Did {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} plan to arrive inside a vehicle?</h1>
+        {% endif %}
+    {% else %}
+ {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Did Person 1 arrive inside a vehicle?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Did {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} arrive inside a vehicle?</h1>
+        {% endif %}
+
+          {% endif %}
+
+</legend>
+
+
+
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukRadios({
+      name: "sis-other-vehicle",
+      value: data ["sis-other-vehicle"],
+      fieldset: {
+        legend: {
+          text: ""
+        }
+      },
+      items: [
+        {
+          value: "Yes",
+          text: "Yes"
+        },
+        {
+          value: "No",
+          text: "No"
+        },
+             {
+      divider: "or"
+    },
+        {
+          value: "I do not know",
+          text: "I do not know"
+        }
+      ]
+    }) }}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+</fieldset>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-event-done" name="sis-event-done" value="Yes">
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

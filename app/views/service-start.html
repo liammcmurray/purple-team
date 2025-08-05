@@ -1,0 +1,58 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit immigration and national security intelligence
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-top-9">Submit immigration and national security intelligence</h1>
+
+      <p>Use this form to tell us about an immigration offence or a terrorism, radicalisation or national security threat.</p>
+      <p>You can submit:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>referrals made by you or other Home Office employees</li>
+        <li>intelligence sent from trusted third-parties</li>
+      </ul>
+
+      <p>Your information will allow Intelligence teams to investigate harm, threat activities and immigration offences. It will also help identify trends for future targeting.</p>
+
+      {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+      {{ govukWarningText({
+        html: "You will need to complete the form in one go - you cannot save your progress.<br><br>
+        If you do not do anything for 30 minutes, the service will time out. Your answers will be deleted and you will need to start again.",
+        iconFallbackText: "Warning"
+      }) }}
+
+      
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Start now",
+        href: "sis/details-confirm",
+        isStartButton: true
+      }) }}
+
+      <section class="more">
+        <h2 class="gem-c-heading__text gem-c-heading--font-size-27">Before you start</h2>
+        <p>To complete this form you'll need details of the person, business, or location involed in the crime. You may also need to upload a supporting document such as:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>birth certificate</li>
+          <li>marriage certificate</li>
+          <li>national identity card</li>
+          <li>passport</li>
+          <li>evidence photograph</li>
+        </ul>
+
+        <p>You’ll also need to provide details of the source of this information, if it was not you.</p>
+      </section>
+
+    </div>
+  </div>
+
+{% endblock %}

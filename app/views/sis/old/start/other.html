@@ -1,0 +1,95 @@
+{% extends "layouts/default.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who did you receive this intelligence from?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<span class="govuk-caption-xl">Intelligence source</span>-->
+
+<form class="form" action="other-details" method="post">
+
+ <h1 class="govuk-heading-l">Which government department did you receive the intelligence from?</h1>
+
+
+  {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    text: " "
+  },
+  items: [
+  {
+    value: " ",
+    text: "Select department"
+  },
+  {
+      value: "Department for Work and Pensions (DWP)",
+      text: "Department for Work and Pensions (DWP)"
+    },
+    {
+      value: "Driver and Vehicle Licensing Agency (DVLA)",
+      text: "Driver and Vehicle Licensing Agency (DVLA)"
+    },
+    {
+      value: "HM Revenue & Customs (HMRC)",
+      text: "HM Revenue & Customs (HMRC)"
+    }
+  ]
+}) }}
+
+<!--{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-team-other-source",
+  value: data["sis-team-other-source"],
+  fieldset: {
+    legend: {
+      text: "Which government department did you receive the intelligence from?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+    value: "crimestoppers",
+    text: "Crimestoppers"
+    },
+    {
+    value: "police",
+    text: "Police"
+    },
+    {
+    value: "ndfu",
+    text: "DWP or DVLA"
+    },
+    {
+    value: "hmrc",
+    text: "HMRC"
+    }
+  ]
+}) }}-->
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

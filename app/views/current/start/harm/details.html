@@ -1,0 +1,71 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Is there danger to life, or are any children or vulnerable people at risk?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   <!--<span class="govuk-caption-xl">Safeguarding</span>-->
+
+    <form class="form" action="/purple/current/sis-harm" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% set harmReport %}
+
+      {{ govukInput({
+        classes: "govuk-!-width-one-half",
+        label: {
+          text: "Which organisation did you report this to?"
+        },
+        id: "harm-report",
+        name: "harm-report"
+      }) }}
+      {% endset -%}
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      name: "sis-harm",
+      value: data["sis-harm"],
+      fieldset: {
+        legend: {
+          text: "Is there danger to life, or are any children or vulnerable people at risk?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "harm-yes",
+          text: "Yes"
+        },
+        {
+          value: "harm-no",
+          text: "No"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

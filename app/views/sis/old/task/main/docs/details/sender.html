@@ -1,0 +1,62 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Document fraud sender details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+      {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+      <form class="form" action="/pink/current/sis-docs-sender" method="post">
+
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  name: "sis-docs-sender-confirm",
+  value: data["sis-docs-sender-confirm"],
+  fieldset: {
+    legend: {
+      text: "Were the sender's details on the package?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-doc-two-done" name="sis-doc-two-done" value="yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

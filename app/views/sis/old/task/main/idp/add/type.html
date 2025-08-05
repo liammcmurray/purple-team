@@ -1,0 +1,119 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="/pink/current/sis-main-idp-doc-one-type" method="post" novalidate>
+
+      <!--<span class="govuk-caption-xl">Documents</span>-->
+      <h1 class="govuk-heading-l">Which document details do you want to add?</h1>
+
+      {%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+        {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+        {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+
+                              {% set sisDocsother %}
+                              {{ govukInput({
+                                name: "sis-main-idp-doc-one-type",
+                                value: data["sis-main-idp-doc-one-type"],
+                                classes: "govuk-!-width-one-third",
+                                label: {
+                                  text: "Document type"
+                                }
+                              }) }}
+                            {% endset -%}
+
+                            {{ govukRadios({
+                              name: "sis-main-idp-doc-one-type",
+                              value: data["sis-main-idp-doc-one-type"],
+                              fieldset: {
+                                legend: {
+                                  text: ""
+                                }
+                              },
+                                   items: [
+                          {
+                            value: "Bank document",
+                            text: "Bank document"
+                          },
+                          {
+                            value: "Birth certificate",
+                            text: "Birth certificate"
+                          },
+                           {
+                            value: "Biometric residence permit (BRP)",
+                            text: "Biometric residence permit (BRP)"
+                          },
+                          {
+                            value: "Driving licence",
+                            text: "Driving licence"
+                          },
+                          {
+                            value: "Educational document",
+                            text: "Educational document"
+                          },
+                          {
+                            value: "Identity card",
+                            text: "Identity card"
+                          },
+                          {
+                            value: "Marriage certificate",
+                            text: "Marriage certificate"
+                          },
+                          {
+                            value: "Passport",
+                            text: "Passport"
+                          },
+                          {
+                            value: "Payslip",
+                            text: "Payslip"
+                          },
+                         {
+                            value: "Travel document",
+                            text: "Travel document"
+                          },
+                           {
+                            value: "Visa",
+                            text: "Visa"
+                          },
+
+                          {
+                            divider: "or"
+                          },
+                          {
+                            value: "Other",
+                            text: "Other",
+                            conditional: {
+                              html: sisDocsother
+                            }
+                          }
+                        ]
+                            }) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

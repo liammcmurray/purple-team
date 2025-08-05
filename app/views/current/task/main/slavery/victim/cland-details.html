@@ -1,0 +1,84 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – How did the person enter the country?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>
+<h1 class="govuk-heading-l" style="margin-bottom: 0;">How did the person, or people, enter the country clandestinely?</h1>-->
+
+      <form class="form" action="/purple/current/sis-cland-victim" method="post">
+
+        {% if data["sis-person1-victim-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;" >How did Su Minh enter the country?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;" >How did {{ data['sis-person1-victim-first-name'] }} {{ data['sis-person1-victim-surname'] }} enter the country?</h1>
+        {% endif %}
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "sis-cland-victim",
+          value: data ["sis-cland-victim"],
+          fieldset: {
+            legend: {
+              text: ""
+            }
+          },
+          items: [
+            {
+              value: "Air",
+              text: "Air"
+            },
+            {
+              value: "Rail",
+              text: "Rail"
+            },
+            {
+              value: "Road",
+              text: "Road"
+            },
+            {
+              value: "Sea",
+              text: "Sea"
+            },
+            {
+              value: "Other",
+              text: "Other method of entry"
+            },
+            {
+      divider: "or"
+    },
+            {
+              value: "I do not know",
+              text: "I do not know"
+            }
+          ]
+        }) }}
+
+       
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

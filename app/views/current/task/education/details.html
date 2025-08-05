@@ -1,0 +1,63 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Business details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+      {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+      <form class="form" action="list" method="post">
+
+        <h1 class="govuk-heading-l">Educational establishment 1: Details</h1>
+        <p class="govuk-body">Complete as much about the educational establishment as you can.</p>
+
+        <h2 class="govuk-heading-m">Name</h2>
+
+        {% call govukFieldset({
+          legend: {
+            text: ""
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: 'Establishment name'
+            },
+            classes: 'govuk-!-width-two-thirds',
+            name: 'sis-ed-name',
+            value: data["sis-ed-name"]
+          }) }}
+
+          <h2 class="govuk-heading-m">Address</h2>
+
+          {% include "purple/current/templates/education-form.html" %}
+
+          {% endcall %}
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-ed-details" name="sis-ed-details" value="yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

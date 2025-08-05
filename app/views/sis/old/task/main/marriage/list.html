@@ -1,0 +1,320 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Marriage abuse
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+ <h1 class="govuk-heading-l">Check your answers</h1>
+{% if data["secondary-offence-role"] == "Someone else" %}
+
+       <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+
+   <h2 class="govuk-summary-card__title">Shame marriage or civil partnership details</h2>
+     <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+          <span class="govuk-visually-hidden"> person 1</span>
+        </a>
+      </li>
+    </ul>
+
+
+  
+  </div>
+  <div class="govuk-summary-card__content">
+        {% else %}{% endif %}
+
+      <dl class="govuk-summary-list">
+        {% if data["sub-crime"] == "marriage" %}
+
+  <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+                 Suspected of entering a sham marriage or civil partnership
+                </dt>
+                <dd class="govuk-summary-list__value">
+         
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="secondary-role">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+                  <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+Details about the suspects    
+        </dt>
+        <dd class="govuk-summary-list__value">
+Yes
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+        {% else %}
+        {% endif %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+                  Has the marriage or civil partnersip taken place?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-marriage-date"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="date">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              <div class="govuk-summary-list__row" >
+              {% if data["sis-marriage-date"] == "Yes" %}
+
+                {% if data["sis-marriage-event-exact"] == "Yes" %}
+           
+                  <dt class="govuk-summary-list__key">
+                    Exact date
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data ["sis-marriage-past-doe"]}}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="details">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                </dd>
+   
+                {% else %}
+                <dt class="govuk-summary-list__key">
+                  Aproximate date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-marriage-past-date"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="details">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                </dd>
+                {% endif %}
+     </div>
+                {% else %}
+             </div>
+
+              <div class="govuk-summary-list__row" >
+                {% if data["sis-marriage-event-exact"] == "Yes" %}
+                <dt class="govuk-summary-list__key">
+                  Exact date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-marriage-future-doe"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="details">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                </dd>
+                {% else %}
+                <dt class="govuk-summary-list__key">
+                  Aproximate date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-marriage-future-date"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="details">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                </dd>
+                {% endif %}
+           </div>
+                {% endif %}
+                
+                
+        
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name of location
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-marriage-location-name"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="address">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Type of location
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-marriage-location-type"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="address">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data["sis-location-other-address1"] == "" %}{% else %}
+                  {{ data['sis-location-other-address1'] }} <br/>{% endif %}
+
+                  {% if data["sis-location-other-address2"] == "" %}{% else %}
+                  {{ data['sis-location-other-address2'] }} <br/>{% endif %}
+
+                  {% if data["sis-location-other-city"] == "" %}{% else %}
+                  {{ data['sis-location-other-city'] }}<br/>{% endif %}
+
+                  {% if data["sis-location-other-county"] == "" %}{% else %}
+                  {{ data['sis-location-other-county'] }}<br/>{% endif %}
+
+                  {% if data["sis-location-other-postcode"] == "" %}{% else %}
+                  {{ data['sis-location-other-postcode'] }}<br/>{% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="address">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+{% if data["sub-crime"] == "marriage" %}
+{% else %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Paid or promised money
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["marriage-payment"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="payment">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              {% if data["marriage-payment"] == "Yes" %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Who is being paid?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["marriage-paid"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="payment">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+              {% else %}{% endif %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Did someone facilitate this marriage or civil partnersip?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["arrange-marriage"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="arrange">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              {% if data["arrange-marriage"] == "Yes" %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Who facilitated the marriage or civil partnersip?
+                </dt>
+                {% if data["sis-marriage-person-link"] == "sis-somewhere-else" %}
+                <dd class="govuk-summary-list__value">
+                  {{ data ["marriage-facilitator"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="organiser">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                </dd>
+                  {% else %}
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-person1-first-name"] }}  {{ data ["sis-person1-surname"] }}
+                  {{ data ["sis-person2-first-name"] }}  {{ data ["sis-person3-surname"] }}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="link">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              {% endif %}
+              </div>
+
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Why do you suspect them of facilitating the marriage or civil partnership?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ['marriage-facilitator2']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="organiser">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              {% else %}{% endif %}
+{% endif %}
+            </dl>
+
+          </div>
+        </div>
+{% if data["secondary-offence-role"] == "Someone else" %}
+       {% include "pink/current/templates/summary/secondary-person1.html" %}
+                    {% else %}{% endif %}
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+  <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+  <input type="hidden" id="sis-marriage-done" name="sis-marriage-done" value="Yes">
+  </form>
+
+  </div>
+  </div>
+{% endblock %}

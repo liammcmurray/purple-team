@@ -1,0 +1,174 @@
+<div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+
+    <h2 class="govuk-summary-card__title">Person (n)</h2>
+    <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+          Delete<span class="govuk-visually-hidden"> person</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+
+      {% if data["sis-responder"] == "responder-someone-else" or data["sis-responder"] == "responder-someone-else2" or data["sis-responder"] == "responder-someone-else3" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Person's role
+        </dt>
+        <dd class="govuk-summary-list__value">
+          First responder
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="type">
+          Change<span class="govuk-visually-hidden">person's role</span>
+        </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Given names
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person-responder-first-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">given names</span>
+        </a>
+      </dd>
+      </div>
+<div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person-responder-surname'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">given names</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person-responder-email'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">email address</span>
+        </a>
+        </dd>
+      </div>
+        <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Employer
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person-responder-org-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">given names</span>
+        </a>
+      </dd>
+      </div>
+
+      {% else %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Person's role
+        </dt>
+        <dd class="govuk-summary-list__value">
+          First responder
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="type">
+          Change<span class="govuk-visually-hidden">person's role</span>
+        </a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          First responder's given names
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-other-details-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <!--<a class="govuk-link" href=" ">
+          Change<span class="govuk-visually-hidden">given names</span>
+        </a>-->
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-other-details-surname'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+       <!-- <a class="govuk-link" href=" ">
+          Change<span class="govuk-visually-hidden">surname</span>
+        </a>-->
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-other-details-email'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <!--<a class="govuk-link" href=" ">
+          Change<span class="govuk-visually-hidden">email address</span>
+        </a>-->
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Secondary email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-other-details-email-secondary'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <!--<a class="govuk-link" href=" ">
+          Change<span class="govuk-visually-hidden">email address</span>
+        </a>-->
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Phone number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-other-details-phone'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <!--<a class="govuk-link" href=" ">
+          Change<span class="govuk-visually-hidden">email address</span>
+        </a>-->
+        </dd>
+      </div>
+
+      {% endif %}
+
+    </dl>
+  </div>
+</div>

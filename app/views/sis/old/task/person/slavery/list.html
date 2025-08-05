@@ -1,0 +1,107 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Person details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form class="form" action="/pink/current/task/list" method="post">
+
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {% if data["sis-victim-person-done"] == "Yes" or data["sis-trafficker-person-done"] == "Yes" or data["sis-responder-person-done"] == "Yes" %}
+
+  <h1 class="govuk-heading-l">Check your answers</h1>
+
+  {% if data["sis-victim-person-done"] == "Yes" %}
+  {% include "pink/current/templates/summary/slavery/sis-person-victim.html" %}
+  {% else %}{% endif %}
+
+  {% if data["sis-victim-person-done2"] == "Yes" %}
+  {% include "pink/current/templates/summary/slavery/sis-person-victim2.html" %}
+  {% else %}{% endif %}
+  
+
+  {% if data["sis-trafficker-person-done"] == "Yes" %}
+  {% include "pink/current/templates/summary/slavery/sis-person-trafficker.html" %}
+  {% else %}{% endif %}
+
+  {% if data["sis-responder-person-done"] == "Yes" %}
+  {% include "pink/current/templates/summary/slavery/sis-person-responder.html" %}
+  {% else %}{% endif %}
+
+  {% if data["sis-victim-person-done"] == "Yes" and data["sis-trafficker-person-done"] == "Yes" %}
+
+  {{ govukButton({
+    classes: "hods-button--secondary",
+    text: "Add another person",
+    href: "type3"
+  }) }}
+
+  {% else %}
+  
+  {{ govukButton({
+    classes: "hods-button--secondary",
+    text: "Add another person",
+    href: "type2"
+  }) }}
+
+  {% endif %}
+
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+<input type="hidden" id="sis-person-done" name="sis-person-done" value="Yes">
+
+{% else %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+<h1 class="govuk-heading-l">Add a person</h1>
+
+  <p class="govuk-body">You have not added a person yet.</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+classes: "hods-button--secondary",
+text: "Add a person",
+href: "type"
+}) }}
+
+<br/>
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue without adding",
+  href: "/pink/current/task/list"
+}) }}
+
+<input type="hidden" id="sis-person-done" name="sis-person-done" value="No">
+
+{% endif %}
+
+</form>
+
+  </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,204 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The person you are reporting
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--DOC FRAUD TITLE-->
+
+      <h1 class="govuk-heading-l">Document 1: Identity details</h1>
+      <p>Complete as much about the identity from the document as you can.</p>
+
+      <!--END-->
+
+      <form class="form" action="contact" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Name",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: 'Given names'
+            },
+            hint: {
+            text: "Their first and middle names"
+          },
+            classes: "govuk-!-width-two-thirds",
+            name: 'sis-doc1-first-name',
+            value: data ["sis-doc1-first-name"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Surname'
+            },
+            classes: "govuk-!-width-two-thirds",
+            name: 'sis-doc1-surname',
+            value: data ["sis-doc1-surname"]
+          }) }}
+
+        {% endcall %}
+
+        <hr>
+        <br/>
+
+        {{ govukDateInput({
+          id: "dob",
+          name: "sis-doc1-dob",
+          fieldset: {
+            legend: {
+              text: "Date of birth",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "For example, 25 4 2001"
+          }
+        }) }}
+        <hr>
+        <br/>
+
+        <h2 class="govuk-heading-m">Sex</h2>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "sis-doc1-sex",
+          value: data["sis-doc1-sex"],
+          fieldset: {
+            legend: {
+              text: ""
+            }
+          },
+          items: [
+            {
+              value: "Male",
+              text: "Male"
+            },
+            {
+              value: "Female",
+              text: "Female"
+            },
+            {
+              value: "X or other",
+              text: "X or other"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I do not know",
+              text: "I do not know "
+            }
+          ]
+        }) }}
+        
+        <hr>
+        <br/>
+        <h2 class="govuk-heading-m">Country of nationality</h2>
+        <div id="event-name-hint" class="govuk-hint">
+          Start typing to find countries
+        </div>
+        <div class="govuk-form-group">
+         {% include "purple/current/templates/ref-data/sis-country-list.html" %}
+        </div>
+        
+  <hr>
+  <br/>
+
+  {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: 'Email address'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: 'sis-doc1-email',
+          value: data ["sis-doc1-email"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Phone number'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: 'sis-doc1-phone',
+          value: data ["sis-doc1-phone"]
+        }) }}
+
+        {% endcall %}
+
+  <hr>
+  <br/>
+
+  <h2 class="govuk-heading-m">Home Office reference number</h2>
+
+  {{ govukInput({
+  classes: "govuk-!-width-one-half",
+  label: {
+  text: " "
+  },
+  name: "sis-doc1-ho-ref",
+  value: data ["sis-doc1-ho-ref"]
+  }) }}
+
+  {{ govukButton({
+  text: "Add another HO reference number",
+  href: "",
+  classes: "hods-button hods-button--secondary"
+  }) }}
+
+  <br/><br/>
+
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

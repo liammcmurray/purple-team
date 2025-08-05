@@ -1,0 +1,169 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Illegal wortking details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+ 
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+           Type of information
+          </dt>
+          <dd class="govuk-summary-list__value">
+    
+        
+                  {% if data ["sis-terrorism-behaviours-done"] == 'Yes' %}
+                    <span>Behaviours</span><br>
+                       {% else %}{% endif %}
+                  {% if data ["sis-terrorism-id-done"] == 'Yes' %}
+                    <span>Identity and travel documents</span><br>
+                       {% else %}{% endif %}
+                  {% if data ["sis-terrorism-extremist-done"] == 'Yes' %}
+                    <span>Links to extremist groups</span><br>
+                       {% else %}{% endif %}
+                  {% if data ["sis-terrorism-money-done"] == 'Yes' %}
+                    <span>Money and funds</span><br>
+                       {% else %}{% endif %}
+                  {% if data ["sis-terrorism-property-done"] == 'Yes' %}
+                    <span>Personal property</span><br>
+                       {% else %}{% endif %}
+                  {% if data ["sis-terrorism-travel-done"] == 'Yes' %}
+                    <span>Travel history</span><br>
+                  {% else %}{% endif %}
+
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="start">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% if data ["sis-terrorism-behaviours-done"] == 'Yes' %}
+   <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Behaviours
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {{ data ["behaviours-detail"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="behaviours">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         {% else %}{% endif %}
+          {% if data ["sis-terrorism-id-done"] == 'Yes' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Identity and travel documents
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["travel-docs-detail"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="travel-docs">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         {% else %}{% endif %}
+          {% if data ["sis-terrorism-extremist-done"] == 'Yes' %}
+   <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+           Links to extremist groups
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {{ data ["extremist-group-detail"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="extremist-groups">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+          {% if data ["sis-terrorism-money-done"] == 'Yes' %}
+          <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Money and funds
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["money-detail"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="money">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         {% else %}{% endif %}
+             {% if data ["sis-terrorism-property-done"] == 'Yes' %}
+   <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+           Personal property
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {{ data ["property-detail"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="property">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         {% else %}{% endif %} 
+   {% if data ["sis-terrorism-travel-done"] == 'Yes' %}
+          <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Travel history
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["travel-pattern-detail"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="travel-pattern">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+    {% else %}{% endif %}
+</dl>
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

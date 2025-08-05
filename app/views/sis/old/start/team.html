@@ -1,0 +1,163 @@
+{% extends "layouts/default.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who did you receive this intelligence from?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<form class="form" action="/pink/current/sis-team" method="post">
+
+{% set policeForce %}
+{{ govukInput({
+  name: "sis-team-source-police",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Police force"
+  }
+}) }}
+{% endset -%}
+ 
+{% set groOffice %}
+{{ govukInput({
+  name: "sis-team-source-gro",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Register office name"
+  }
+}) }}
+{% endset -%}
+
+{% set portName %}
+{{ govukInput({
+  name: "sis-team-source-port",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Port or company"
+  }
+}) }}
+{% endset -%}
+
+{% set otherDept %}
+<label class="govuk-label" for="sort">
+  Government department 
+</label>
+<div id="subject-hint" class="govuk-hint">
+  Start typing to search
+</div>
+{% include "pink/current/templates/ref-data/sis-dept.html" %}
+{% endset -%}
+
+{% set otherOrg %}
+{{ govukInput({
+  name: "sis-team-source-org",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Organisation"
+  }
+}) }}
+{% endset -%}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-team-source",
+  value: data["sis-team-source"],
+  fieldset: {
+    legend: {
+      text: "Who did you receive this intelligence from?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+    text: "I identified it myself, in the course of my work",
+    value: "myself"
+    },
+    {
+    value: "employee",
+    text: "Another Home Office employee: I'm completing this on their behalf"
+    },
+    {
+    value: "dwp",
+    text: "Department for Work and Pensions (DWP)"
+    },
+    {
+    value: "dvla",
+    text: "Driver and Vehicle Licensing Agency (DVLA)"
+    },
+    
+    {
+    value: "hmrc",
+    text: "HM Revenue & Customs (HMRC) "
+    },
+    {
+    value: "police",
+    text: "Police",
+    conditional: {
+      html: policeForce
+    }
+    },
+    {
+    value: "ports",
+    text: "Port, airline, train company or ferry company",
+    conditional: {
+    html: portName
+    }
+    },
+    {
+    value: "gro",
+    text: "Register office",
+    conditional: {
+      html: groOffice
+    }
+    },
+    {
+    value: "other",
+    text: "Other UK government department",
+    conditional: {
+    html: otherDept
+    }
+    },
+    {
+    value: "other-org",
+    text: "Other organisation",
+    conditional: {
+    html: otherOrg
+    }
+    }
+  ]
+}) }}
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-dept')
+    })
+
+</script>
+{% endblock %}

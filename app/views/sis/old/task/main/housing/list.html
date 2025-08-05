@@ -1,0 +1,245 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Marriage abuse
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <h1 class="govuk-heading-l">Check your answers</h1>
+
+{% if data["secondary-offence-role"] == "Someone else" %}
+
+       <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+
+   <h2 class="govuk-summary-card__title">Abuse of access to housing details</h2>
+     <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+          <span class="govuk-visually-hidden"> person 1</span>
+        </a>
+      </li>
+    </ul>
+
+
+  
+  </div>
+  <div class="govuk-summary-card__content">
+        {% else %}{% endif %}
+
+            <dl class="govuk-summary-list">
+   {% if data["sub-crime"] == "housing" %}
+            <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+Suspected of abuse of access to housing  
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data [""] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+                  <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+Details about the suspects    
+        </dt>
+        <dd class="govuk-summary-list__value">
+Yes
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      {% else %}{% endif %}    
+      
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Abuse of access to housing location
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+
+                  52 Nunhead Lane, London SE12 3DG
+
+                  {% if data["sis-housing-location-link"] == 'sis-housing-address1' %}
+                  52 Nunhead Lane, London SE12 3DG
+                  {% else %}{% endif %}
+
+                  {% if data["sis-housing-location-link"] == 'sis-housing-address2' %}
+                  629 Fulham Road, SW3 6SU
+                  {% else %}{% endif %}
+
+                  {% if data["sis-housing-location-link"] == 'sis-housing-address1' and data["sis-housing-location-link"] == 'sis-housing-address2'%}
+                  52 Nunhead Lane, London SE12 3DG<br/>
+                  629 Fulham Road, SW3 6SU
+                  {% else %}{% endif %}
+
+                  {% if data["sis-housing-location-link"] == 'sis-housing-address3' %}
+                  629 Fulham Road, SW3 6SU
+                  {% else %}{% endif %}
+
+                  {% if data["sis-housing-location-link"] == 'somewhere-else' %}
+                  Somewhere else
+                  {% else %}{% endif %}
+
+                  {% if data["sis-housing-location-link"] == 'sis-housing-address1' and data["sis-housing-location-link"] == 'sis-housing-address2' %}
+                  52 Nunhead Lane, London SE12 3DG<br/>
+                  629 Fulham Road, SW3 6SU
+                  {% else %}{% endif %}
+
+                  
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="link">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              {% if data["sis-housing-location-link"] == "somewhere-else" %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data["sis-housing-location-address1"] == "" %}{% else %}
+                  {{ data['sis-housing-location-address1'] }} <br/>{% endif %}
+
+                  {% if data["sis-housing-location-address2"] == "" %}{% else %}
+                  {{ data['sis-housing-location-address2'] }} <br/>{% endif %}
+
+                  {% if data["sis-housing-location-city"] == "" %}{% else %}
+                  {{ data['sis-housing-location-city'] }}<br/>{% endif %}
+
+                  {% if data["sis-housing-location-county"] == "" %}{% else %}
+                  {{ data['sis-housing-location-county'] }}<br/>{% endif %}
+
+                  {% if data["sis-housing-location-postcode"] == "" %}{% else %}
+                  {{ data['sis-housing-location-postcode'] }}<br/>{% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="address">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+              {% else %}{% endif %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Exact date known
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-housing-date"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="details">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              <div class="govuk-summary-list__row" >
+
+                {% if data["sis-housing-date"] == "Yes" %}
+                  <dt class="govuk-summary-list__key">
+                    Exact date
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    {{ data ["sis-housing-doe"]}}
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="details">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                  </dd>
+                {% else %}
+                <dt class="govuk-summary-list__key">
+                  Aproximate date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-housing-date-range"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="details">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                </dd>
+                {% endif %}
+                
+              </div>
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Monthly rent known
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-housing-cost"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="cost">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+              {% if data["sis-housing-cost"] == "Yes" %}
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Rent amount
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-housing-cost-amount"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="cost">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+              {% else %}{% endif %}
+   
+            </dl>
+
+          </div>
+        </div>
+{% if data["secondary-offence-role"] == "Someone else" %}
+       {% include "pink/current/templates/summary/secondary-person1.html" %}
+        {% else %}{% endif %}
+       
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+  <input type="hidden" id="sis-housing-done" name="sis-housing-done" value="Yes">
+
+
+  </form>
+
+  </div>
+  </div>
+{% endblock %}

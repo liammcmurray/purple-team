@@ -1,0 +1,261 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Business details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+      {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+ <!--LEGAL REP START SECTION-->
+      {% if data["start-crime"] == "rep-abuse" %}
+
+         <h1 class="govuk-heading-l">Business 2: Details</h1>
+        <p>Complete as much about the business as you can.</p>
+      <form class="form" action="list" method="post">
+
+
+      {% call govukFieldset({
+        legend: {
+          text: "Name",
+          classes: "govuk-fieldset__legend--m",
+          isPageHeading: true
+        }
+      }) %}
+    
+        {{ govukInput({
+          label: {
+            text: 'Business or agency name '
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "sis-rep-biz-name2",
+          name: "sis-rep-biz-name2",
+          value: data ["sis-rep-biz-name2"]
+        }) }}
+    
+      {% endcall %}
+  <hr>
+        <br/>
+          {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: 'Email address'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: 'sis-rep2-email',
+          value: data ["sis-rep2-email"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Phone number'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: 'sis-rep2-phone',
+          value: data ["sis-rep2-phone"]
+        }) }}
+
+        {% endcall %}
+
+  <hr>
+        <br/>
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% call govukFieldset({
+  legend: {
+    text: "Address",
+    classes: "govuk-fieldset__legend--m",
+    isPageHeading: true
+  }
+}) %}
+
+  {{ govukInput({
+    label: {
+      text: 'Address line 1'
+    },
+    name: "sis-person2-address-uk-1",
+    value: data['sis-person2-address-uk-1'],
+    classes: "govuk-!-width-two-thirds"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Address line 2'
+    },
+    name: "sis-person2-address-uk-2",
+    value: data['sis-person2-address-uk-2'],
+    classes: "govuk-!-width-two-thirds"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Town or city"
+    },
+    classes: "govuk-!-width-one-third",
+    name: "sis-person2-address-uk-city-1",
+    value: data['sis-person2-address-uk-2']
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "County"
+    },
+    classes: "govuk-!-width-one-third",
+    name: "sis-person2-address-uk-county-1",
+    value: data['sis-person2-address-uk-county-1']
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Postcode"
+    },
+    classes: "govuk-input--width-10",
+    name: "sis-person2-address-uk-postcode-1",
+    value: data['sis-person2-address-uk-postcode-1']
+  }) }}
+
+{% endcall %}
+<input type="hidden" id="sis-biz-info2" name="sis-biz-info2" value="yes">
+      {% else %}
+      <!--END-->
+
+      <form class="form" action="address2" method="post">
+
+        <h1 class="govuk-heading-l">Business 2: Details</h1>
+        <p>Complete as much about the business as you can.</p>
+
+        <h2 class="govuk-heading-m">Name</h2>
+
+        {% call govukFieldset({
+          legend: {
+            text: ""
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: 'Name of business'
+            },
+            classes: 'govuk-!-width-two-thirds',
+            name: 'sis-business-name2',
+            value: data["sis-business-name2"]
+          }) }}
+
+          <hr>
+          <br/>
+
+          <h2 class="govuk-heading-m">Sector</h2>
+
+{% include "purple/current/templates/ref-data/sis-sector-list2.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "If the business sector is not in the list, what is the sector?"
+  },
+  name: 'sis-other-biz-sector2',
+  value: data["sis-other-biz-sector2"],
+  classes: "govuk-!-width-one-half"
+}) }}
+
+<hr>
+<br/>
+
+<h2 class="govuk-heading-m">Role</h2>
+
+          {{ govukInput({
+            label: {
+              text: 'How is the business involved in the offence?'
+            },
+            classes: "govuk-!-width-two-thirds",
+            name: 'sis-business-role',
+            value: data["sis-business-role"]
+          }) }}
+
+          <hr>
+          <br/>
+
+          <h2 class="govuk-heading-m">Owner or manager</h2>
+
+          {{ govukInput({
+            label: {
+              text: 'Given names'
+            },
+            classes: "govuk-!-width-one-half",
+            name: 'sis-business-fullname2',
+            value: data["sis-business-fullname2"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Surname'
+            },
+            classes: "govuk-!-width-one-half",
+            name: 'sis-business-surname2',
+            value: data["sis-business-surname2"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Job title'
+            },
+            classes: "govuk-!-width-one-half",
+            name: 'sis-business-job2',
+            value: data["sis-business-job2"]
+          }) }}
+
+        {% endcall %}
+
+
+        {% set hoBizref %}
+        {{ govukInput({
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: "HO reference number"
+          },
+          name: 'sis-business-ho-ref2',
+          value: data["sis-business-ho-ref2"]
+        }) }}
+        <br/>
+
+        {{ govukButton({
+          text: "Add another HO reference number",
+          href: "other",
+          classes: "hods-button hods-button--secondary"
+        }) }}
+        {% endset -%}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

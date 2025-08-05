@@ -1,0 +1,119 @@
+{% extends "layouts/default.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What are the details of the person you are completing this on behalf of?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Intelligence source</span>-->
+
+      <form class="form" action="/pink/current/start/crime" method="post">
+
+
+{% call govukFieldset({
+  legend: {
+    text: "Details of the person who gave you the intelligence",
+    classes: "govuk-fieldset__legend--l",
+    isPageHeading: true
+  }
+}) %}
+
+<p class="govuk-body">Complete as much about the person as you can.</p>
+
+
+  {{ govukInput({
+  label: {
+    text: "Name",
+    classes: "govuk-label--m"
+  },
+ 
+  classes: "govuk-!-width-two-thirds",
+  value: "",
+  name: "sis-other-details-name"
+}) }}
+
+
+<hr>
+<br>
+<label>
+  <h2 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="more-detail">
+      Contact details
+    </label>
+  </h1>
+  <div id="more-detail-hint" class="govuk-hint">
+    Leave these details blank if the person should not be contacted directly.
+  </div>
+
+  {{ govukInput({
+    label: {
+      text: 'Email address'
+    },
+    classes: "govuk-!-width-two-thirds",
+    name: "sis-other-details-email",
+    value: ""
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Secondary email address'
+    },
+    hint: {
+      text: "For example, the email address of a department or team "
+    },
+    classes: "govuk-!-width-two-thirds",
+    name: "sis-other-details-email-secondary",
+    value: ""
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Phone number'
+    },
+    classes: "govuk-!-width-one-third",
+    id: "sis-other-details-phone",
+    name: "sis-other-details-phone",
+    value: ""
+  }) }}
+
+{% endcall %}
+
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+       </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-team')
+    })
+
+</script>
+{% endblock %}

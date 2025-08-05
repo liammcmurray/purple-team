@@ -1,0 +1,111 @@
+<style>
+  .autocomplete__input {
+    background-color:#ffffff;
+  }
+</style>
+
+<div class="cop-autocomplete govuk-!-width--one-half">
+
+{{ govukSelect({
+    id: "sis-road-vehicle-type",
+  name: "sis-road-vehicle-type",
+  value: data ["sis-road-vehicle-type"],
+  label: {
+    text: "Type of vehicle"
+  },
+    hint: {
+      text: countryHint | default("", false)
+    },
+    value: countryValue or data[countryName or countryID or "country"] or "",
+    items: [
+  {
+      value: "",
+      text: "Select type of vehicle"
+  },
+  {
+    value: "7.5 Tonne Van",
+    text: "7.5 Tonne Van"
+  },
+  {
+    value: "Bulk Carrier",
+    text: "Bulk Carrier"
+  },
+  {
+    value: "Car",
+    text: "Car"
+  },
+  {
+    value: "Car Transporter",
+    text: "Car Transporter"
+  },
+  {
+    value: "Caravan",
+    text: "Caravan"
+  },
+  {
+    value: "Coach",
+    text: "Coach"
+  },
+  {
+    value: "Container",
+    text: "Container"
+  },
+  {
+    value: "Glass Carrier",
+    text: "Glass Carrier"
+  },
+  {
+    value: "HGV Canvas Sided",
+    text: "HGV Canvas Sided"
+  },
+  {
+    value: "HGV Flatbed",
+    text: "HGV Flatbed"
+  },
+  {
+    value: "HGV Hard-sided",
+    text: "HGV Hard-sided"
+  },
+  {
+    value: "HGV Refrigerated",
+    text: "HGV Refrigerated"
+  },
+  {
+    value: "HGV Tanker",
+    text: "HGV Tanker"
+  },
+  {
+    value: "Lorry",
+    text: "Lorry"
+  },
+  {
+    value: "Lorry and Drag",
+    text: "Lorry and Drag"
+  },
+  {
+    value: "Minibus",
+    text: "Minibus"
+  },
+  {
+    value: "MotorBike",
+    text: "MotorBike"
+  },
+  {
+    value: "Motorhome",
+    text: "Motorhome"
+  },
+  {
+    value: "Unaccompanied Trailer (soft)",
+    text: "Unaccompanied Trailer (soft)"
+  },
+  {
+    value: "Van",
+    text: "Van"
+  },
+  {
+    value: "Van Trailer",
+    text: "Van Trailer"
+  }
+    ]
+  }) }}
+  </div>

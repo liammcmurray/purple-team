@@ -1,0 +1,85 @@
+<form class="form" action="list" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% call govukFieldset({
+  legend: {
+    text: "Name",
+    classes: "govuk-fieldset__legend--m",
+    isPageHeading: true
+  }
+}) %}
+
+  {{ govukInput({
+    label: {
+      text: 'Given names'
+    },
+    hint: {
+    text: "Their first and middle names"
+  },
+          classes: "govuk-!-width-two-thirds",
+          id: "first-name",
+          name: 'sis-person-responder-first-name',
+          value: data ["sis-person-responder-first-name"]
+        }) }}
+
+      {{ govukInput({
+    label: {
+      text: 'Surname'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "surname",
+    name: 'sis-person1-responder-surname',
+    value: data ["sis-person1-responder-surname"],
+    autocomplete: "surname"
+  }) }}
+        {% endcall %}
+ <hr>
+ 
+        <br/>
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+      
+          {{ govukInput({
+            label: {
+              text: 'Email address'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-email",
+            name: "sis-person-responder-email",
+            value: data ["sis-person-responder-email"]
+          }) }}
+      
+        {% endcall %}
+ <hr>
+        <br/>
+
+         {% call govukFieldset({
+          legend: {
+            text: "Employer",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: 'Name of the organisation they work for'
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "first-name",
+          name: 'sis-person-responder-org-name',
+          value: data ["sis-person-responder-org-name"]
+        }) }}
+        {% endcall %}
+       
+
+        <input type="hidden" id="sis-responder-person-done" name="sis-responder-person-done" value="Yes">

@@ -1,0 +1,97 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Document fraud sender details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/purple/current/sis-docs-sender-address" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {% set senderAddressuk %}
+          {{ govukRadios({
+          name: "sis-sender-address-uk",
+          value: data["sis-sender-address-uk"],
+          classes: "govuk-radios--inline",
+          fieldset: {
+          legend: {
+          text: "Is the address in the UK?"
+          }
+          },
+          items: [
+          {
+          value: "Yes",
+          text: "Yes"
+          },
+          {
+          value: "No",
+          text: "No"
+          }
+          ]
+          }) }}
+          {% endset -%}
+
+          {{ govukRadios({
+          name: "sis-docs-sender-address",
+          value: data["sis-docs-sender-address"],
+          fieldset: {
+          legend: {
+          text: "Was the sender's address included?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+          }
+          },
+          items: [
+          {
+          value: "Yes",
+          text: "Yes",
+          conditional: {
+            html: senderAddressuk
+          }
+          },
+          {
+          value: "No",
+          text: "No"
+          }
+          ]
+          }) }}
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+<input type="hidden" id="sis-biz-info" name="sis-biz-info" value="yes">
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

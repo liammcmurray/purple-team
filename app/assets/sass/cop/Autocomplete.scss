@@ -1,0 +1,27 @@
+/* Changes the colour of the tags and makes text in sentence case */
+
+.cop-autocomplete {
+  @extend .govuk-form-group;
+
+  .autocomplete {
+    &__input {
+      background-color: white;
+      cursor: text;
+
+      &--show-all-values {
+        padding: 5px 34px 5px 5px; /* Space for arrow. Other padding should match .autocomplete__input--default. */
+      }
+    }
+
+    &__dropdown-arrow-down{
+      pointer-events: none;
+      z-index: auto;
+    }
+
+    &__menu {
+      &--overlay {
+        box-shadow: auto
+      }
+    }
+  }  
+}

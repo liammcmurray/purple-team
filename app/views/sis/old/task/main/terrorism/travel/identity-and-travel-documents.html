@@ -1,0 +1,68 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+ 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="terrorism-check-route" method="post" novalidate>
+
+
+
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+   Identity and travel documents
+    </label>
+  </h1>
+  <p>
+Tell us any information you have about identity and travel documents that raise suspicions.
+
+    </p>
+
+
+    <p>This could be:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>counterfeit, stolen or fraudulently obtained documents</li>
+
+  <li>multiple lost passports</li>
+    <li>someone using different names on their documents</li>
+  <li>anything else you found suspicious</li>
+
+</ul>
+</p>
+    <h2 class="govuk-heading-m">
+  Describe in detail which identity or travel documents raise suspicions and why.
+  </h2>
+  <textarea class="govuk-textarea" id="travel-docs-detail" name="travel-docs-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+<input type="hidden" id="sis-terrorism-id-done" name="sis-terrorism-id-done" value="Yes">
+
+<input type="hidden" id="sis-terrorism-activities-done" name="sis-terrorism-activities-done" value="Yes">
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

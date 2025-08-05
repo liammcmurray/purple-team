@@ -1,0 +1,75 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<form class="form" action="/purple/current/start/harm/details" method="post">
+ {% if data["sis-idp-number"] == "1" %}
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        What type of inadequately documented passenger are you reporting?
+      </h1>
+    </legend>
+     {% else %}
+     <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        What type of inadequately documented passengers are you reporting?
+      </h1>
+    </legend>
+    {% endif %}
+       <div id="waste-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+ <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="sis-idp-type" name="sis-idp-type" type="checkbox" value="Denied boarding">
+        <label class="govuk-label govuk-checkboxes__label" for="sis-idp-type">
+          Denied boarding
+        </label>
+      </div>
+         <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="sis-idp-type" name="sis-idp-type" type="checkbox" value="Inadequately documented arrival">
+        <label class="govuk-label govuk-checkboxes__label" for="sis-idp-type">
+          Inadequately documented arrival
+        </label>
+      </div>
+         <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="sis-idp-type" name="sis-idp-type" type="checkbox" value="Non-genuine standard visitor">
+        <label class="govuk-label govuk-checkboxes__label" for="sis-idp-type">
+          Non-genuine standard visitor
+        </label>
+      </div>
+
+
+    </div>
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

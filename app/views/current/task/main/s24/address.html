@@ -1,0 +1,67 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The address where the working is happening
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="s24-report" method="post">
+
+        {% if data["sis-s24-date"] == "Yes" %}
+        <h1 class="govuk-heading-l">
+          Where did the marriage or civil partnership take place?
+        </h1>
+          {% else %}
+          <h1 class="govuk-heading-l">
+            Where will the marriage or civil partnership take place?
+          </h1>
+          {% endif %}
+
+          <p class= "govuk-body">Complete as much about the location as you can.</p>
+
+        <h2 class="govuk-heading-m">Location details</h2>
+
+      {{ govukInput({
+        label: {
+          text: "Name of location",
+          classes: " ",
+          isPageHeading: false
+        },
+        id: "sis-s24-location-name",
+        classes: "govuk-input--width-20",
+        name: "sis-s24-location-name",
+        value: data ["sis-s24-location-name"]
+      }) }}
+
+
+      {% include "purple/current/templates/other-location-form.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-main-breach-done" name="sis-main-breach-done" value="Yes">
+
+<input type="hidden" id="sis-main-breach-address" name="sis-main-breach-address" value="Yes">
+
+<input type="hidden" id="sis-breach-location-link" name="sis-breach-location-link" value="no">
+
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}

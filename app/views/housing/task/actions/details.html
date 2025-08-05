@@ -1,0 +1,154 @@
+{% extends "layouts/default-sis.html" %}
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Case actions
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+  <!--<span class="govuk-caption-xl">Further actions</span>-->
+
+   <h1 class="govuk-heading-l">Related intelligence</h1>
+
+    <form class="form" action="/housing/task/list" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {% set casePrevious %}
+      {{ govukInput({
+      id: "case-previous-yes",
+      name: "case-previous-yes",
+      value: data ["case-previous-yes"],
+      classes: "govuk-!-width-one-third",
+      label: {
+      text: "Reference numbers"
+      }
+      }) }}
+      {% endset -%}
+
+
+
+{% set caseOp %}
+
+{{ govukInput({
+  id: "case-refer",
+  name: "case-refer",
+  value: data ["case-refer"],
+  classes: "govuk-!-width-one-third",
+  label: {
+  text: "Operation name"
+  }
+  }) }}
+
+{% endset -%}
+
+{% set caseTeam %}
+{{ govukTextarea({
+id: "case-team-name",
+name: "case-team-name",
+value: data ["case-team-name"],
+classes: "govuk-!-width-two-thirds",
+label: {
+text: "Who needs to be involved and what do they need to do?"
+}
+}) }}
+{% endset -%}
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+{{ govukRadios({
+  name: "case-previous",
+  value: data ["case-previous"],
+  fieldset: {
+    legend: {
+      text: "Is this an update on previous intelligence you have submitted?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "case-yes",
+      text: "Yes",
+      conditional: {
+        html: casePrevious
+      }
+    },
+    {
+      value: "case-no",
+      text: "No"
+    },
+         {
+      divider: "or"
+    },
+    {
+      value: "case-idk",
+      text: "I do not know"
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  name: "case-op",
+  value: data ["case-op"],
+  fieldset: {
+    legend: {
+      text: "Is this linked to an operation?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "op-yes",
+      text: "Yes",
+      conditional: {
+        html: caseOp
+      }
+    },
+    {
+      value: "op-no",
+      text: "No"
+    },
+         {
+      divider: "or"
+    },
+    {
+      value: "op-idk",
+      text: "I do not know"
+    }
+  ]
+}) }}
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <input type="hidden" id="sis-actions-done" name="sis-actions-done" value="Yes">
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

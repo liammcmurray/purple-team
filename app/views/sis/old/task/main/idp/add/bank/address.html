@@ -1,0 +1,187 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The address of the person you are reporting
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+
+<form class="form" action="/pink/current/task/main/idp/add/bank-details" method="post">
+
+{% if data["sis-docs-address-bank-uk"] == "Yes" %}
+
+  <h1 class="govuk-heading-l">Document 1: UK address</h1>
+
+  <p class="govuk-body">Complete as much about the address as you can.</p>
+
+  <h2 class="govuk-heading-m">Address</h2>
+
+  {{ govukInput({
+    label: {
+      text: 'Address line 1'
+    },
+    classes: "govuk-!-width-two-thirds",
+    name: "sis-doc1-address-uk-1",
+    value: data ["sis-doc1-address-uk-1"]
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Address line 2'
+    },
+    classes: "govuk-!-width-two-thirds",
+    name: "sis-doc1-address-uk-2",
+    value: data ["sis-doc1-address-uk-2"]
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Town or city'
+    },
+    classes: "govuk-!-width-two-thirds",
+    name: "sis-doc1-address-uk-city-1",
+    value: data ["sis-doc1-address-uk-city-1"]
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'County'
+    },
+    classes: "govuk-!-width-two-thirds",
+    name: "sis-doc1-address-uk-county-1",
+    value: data ["sis-doc1-address-uk-county-1"]
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Postcode'
+    },
+    classes: "govuk-!-width-one-third",
+    name: "sis-doc1-address-uk-postcode-1",
+    value: data ["sis-doc1-address-uk-postcode-1"]
+  }) }}
+
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+  text: "Add another address",
+  classes: "hods-button--secondary"
+  }) }}
+
+  <br/><br/>
+
+  {{ govukButton({
+  text: "Continue"
+  }) }}
+
+
+{% else %}
+
+
+<h1 class="govuk-heading-l">Document 1: Non-UK address</h1>
+
+  <p class="govuk-body">Complete as much about the address as you can.</p>
+
+              <h2 class="govuk-heading-m">Address</h2>
+
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 1'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "sis-person1-int-address1",
+                name: "sis-person1-int-address1",
+                value: data ["sis-person1-int-address1"]
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 2'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "sis-person1-int-address2",
+                name: "sis-person1-int-address2",
+                value: data ["sis-person1-int-address2"]
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 3'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "sis-person1-address3",
+                name: "sis-person1-int-address3",
+                value: data ["sis-person1-int-address3"]
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 4'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "sis-person1-int-address4",
+                name: "sis-person1-int-address4",
+                value: data ["sis-person1-int-address4"]
+              }) }}
+
+              {{ govukInput({
+                label: {
+                  text: 'Address line 5'
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "sis-person1-int-address5",
+                name: "sis-person1-int-address5",
+                value: data ["sis-person1-int-address5"]
+              }) }}
+
+      <label class="govuk-fieldset__legend" for="event-name">
+        Country
+      </label>
+      {% include "pink/current/templates/ref-data/sis-country-list.html" %}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Add another address",
+        classes: "hods-button--secondary"
+      }) }}
+
+      <br/><br/>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+
+{% endif %}
+
+  
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

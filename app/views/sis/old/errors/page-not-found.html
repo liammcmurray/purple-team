@@ -1,0 +1,35 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Page not found
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="complete" method="post">
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+<h1 class="govuk-heading-l">Page not found</h1>
+
+<p class="govuk-body">If you typed the web address, check it is correct.</p>
+<p class="govuk-body">If you pasted the web address, check you copied the entire address.</p>
+<p class="govuk-body">Or go to the homepage <a href="/pink/current/start/intro" rel="noreferrer noopener" class="govuk-link govuk-link--no-visited-state">to start the form</a>.</p>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

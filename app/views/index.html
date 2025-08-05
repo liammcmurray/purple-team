@@ -1,19 +1,89 @@
-{% extends "layouts/main.html" %}
-
-{% set pageName="Home" %}
+{% set serviceName = "Evaluate an allegation" %}
+{% extends "layouts/landing.html" %}
+{% block pageTitle %} Purple Team | Index {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+    <h2 class="govuk-heading-l">Submit immigration and national security intelligence (SIS Form)</h2>
+    
+    <section class="sprint-section">
+      <span class="govuk-caption-m">August 2025</span>
+      <h3 class="govuk-heading-m">New user journey for Abuse of access to housing journey</h3>
+      <p>Also includes new service start, new document upload pattern, and new interstitial page for deleting/changing a section</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="housing/start/intro">Service start</a></li>
+      </ul>
+    </section>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
+    <section class="sprint-section">
+      <span class="govuk-caption-m">July 2025</span>
+      <h3 class="govuk-heading-m">Smuggling journey</h3>
+      <p>New user journey based on IMS smuggling form, using current SIS components</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="current/start/intro">Start page</a></li>
+      </ul>
+    </section>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <section class="sprint-section">
+      <span class="govuk-caption-m">July 2025</span>
+      <h3 class="govuk-heading-m">Start page</h3>
+      <p>Updating the start page to better inform users of what they need before they start, and of the 30 minute time llimit.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="service-start">Service start</a></li>
+      </ul>
+    </section>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <section class="sprint-section">
+      <span class="govuk-caption-m">July 2025</span>
+      <h2 class="govuk-heading-m">Abuse of access to housing</h2>
+      <p>Updated full journey for reporting an abuse of access to housing, with new common, and unique patterns.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><stong class="govuk-tag--turquoise">Being designed</stong> Mural journey here: <a href="https://app.mural.co/t/mbtbf6246/m/mbtbf6246/1746607539448/2623eee2da8bf7fd48c6735dda85dc8e03221e6f?wid=0-1751453833604&outline=open">https://app.mural.co/t/mbtbf6246/m/mbtbf6246/1746607539448/2623eee2da8bf7fd48c6735dda85dc8e03221e6f?wid=0-1751453833604&outline=open</a></li>
+        <!--<li><a href="/abuse-access/task-list">Task list</a></li>-->
+      </ul>
+    </section>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <section class="sprint-section">
+      <span class="govuk-caption-m">June 2025</span>
+      <h3 class="govuk-heading-m">Document upload</h3>
+      <p>Updated document upload journey with changes to content, and addition of <a href="https://design.homeoffice.gov.uk/components?name=Loading%20spinner">loading spinner</a> for large file uploads.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="irf/document-upload">Document upload</a></li>
+        <li><a href="irf/document-upload-spinner">Document upload (large file)</a></li>
+        <li><a href="irf/document-list">Document check answers</a></li>
+        <li><a href="irf/document-delete">Document delete</a></li>
+      </ul>
+    </section>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <section class="sprint-section">
+      <span class="govuk-caption-m">April 2025</span>
+      <h3 class="govuk-heading-m">Interuption Card (TIPM-1543)</h3>
+      <p>Design based on <a href="https://design-patterns.service.justice.gov.uk/components/interruption-card/">MoJ Interruption Card</a>. Triggers when the user makes a change in an ealrier section of the task list that affects later sections.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="irf/interruption">Interstitial page</a></li>
+      </ul>
+    </section>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-l">IMS replacement (Themis)</h2>
+    
+    <section class="sprint-section">
+      <span class="govuk-caption-m">April 2025</span>
+      <h3 class="govuk-heading-m">Case ingest, triage, and allocate flow (RED Team)</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="case-list">Initial case list</a></li>
+        <li><a href="case-summary">Case summary/details/allocation journey</a></li>
+      </ul>
+    </section>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  
   </div>
 </div>
 

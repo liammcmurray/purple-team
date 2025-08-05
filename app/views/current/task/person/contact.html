@@ -1,0 +1,345 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Other details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data["start-crime"] == "facilitation" or data["start-crime"] == "other" or data["start-crime"] == "illegal-working" or data["start-crime"] == "rep-abuse" or data["start-crime"] == "conditions" or data["start-crime"] == "slavery" or data["start-crime"] == "marriage" or data["start-crime"] == "clandestine" or data["start-crime"] == "overstayer" or data["start-crime"] == "deception" or data["start-crime"] == "housing" or data["start-crime"] == "rep-abuse"  %}
+      <h1 class="govuk-heading-l">Person 1: Address</h1>
+      <form class="form" action="/purple/current/sis-person1-address" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% set personAddress %}
+{{ govukRadios({
+name: "sis-person1-address-uk",
+value: data["sis-person1-address-uk"],
+classes: "govuk-radios--inline",
+fieldset: {
+legend: {
+text: "Is the address in the UK?"
+}
+},
+items: [
+{
+value: "Yes",
+text: "Yes"
+},
+{
+value: "No",
+text: "No"
+}
+]
+}) }}
+{% endset -%}
+
+  {{ govukRadios({
+    name: "sis-person1-address-known",
+    value: data["sis-person1-address-known"],
+    fieldset: {
+    legend: {
+    text: "Do you know their address?",
+    classes: "govuk-fieldset__legend--m"
+    }
+    },
+    hint: {
+    text: "This could be any type of address, including home or work address."
+  },
+    items: [
+    {
+    value: "Yes",
+    text: "Yes",
+    conditional: {
+      html: personAddress
+    }
+    },
+    {
+    value: "No",
+    text: "No"
+    }
+    ]
+    }) }}
+        
+   {% else %}{% endif %}
+
+ {% if data["start-crime"] == "s24" %}
+  {% if data["sis-person2-info"] == "yes" %}
+      <h1 class="govuk-heading-l">Person 3: Address</h1>
+  {% else %}  
+   <h1 class="govuk-heading-l">Party 1: Address</h1>
+  {% endif %}
+      <form class="form" action="/purple/current/sis-person1-address-s24" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% set personAddress %}
+{{ govukRadios({
+name: "sis-person1-address-uk",
+value: data["sis-person1-address-uk"],
+classes: "govuk-radios--inline",
+fieldset: {
+legend: {
+text: "Is the address in the UK?"
+}
+},
+items: [
+{
+value: "Yes",
+text: "Yes"
+},
+{
+value: "No",
+text: "No"
+}
+]
+}) }}
+{% endset -%}
+
+  {{ govukRadios({
+    name: "sis-person1-address-known",
+    value: data["sis-person1-address-known"],
+    fieldset: {
+    legend: {
+    text: "Do you know their address?",
+    classes: "govuk-fieldset__legend--m"
+    }
+    },
+    items: [
+    {
+    value: "Yes",
+    text: "Yes",
+    conditional: {
+      html: personAddress
+    }
+    },
+    {
+    value: "No",
+    text: "No"
+    }
+    ]
+    }) }}
+        
+   {% else %}{% endif %}
+ {% if data["start-crime"] == "terrorism" %}
+      <h1 class="govuk-heading-l">Person 1: Address</h1>
+      <form class="form" action="/purple/current/sis-person1-address-terrorism" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% set personAddress %}
+{{ govukRadios({
+name: "sis-person1-address-uk",
+value: data["sis-person1-address-uk"],
+classes: "govuk-radios--inline",
+fieldset: {
+legend: {
+text: "Is the address in the UK?"
+}
+},
+items: [
+{
+value: "Yes",
+text: "Yes"
+},
+{
+value: "No",
+text: "No"
+}
+]
+}) }}
+{% endset -%}
+
+  {{ govukRadios({
+    name: "sis-person1-address-known",
+    value: data["sis-person1-address-known"],
+    fieldset: {
+    legend: {
+    text: "Do you know their address?",
+    classes: "govuk-fieldset__legend--m"
+    }
+    },
+    hint: {
+    text: "This could be any type of address, including home or work address."
+  },
+    items: [
+    {
+    value: "Yes",
+    text: "Yes",
+    conditional: {
+      html: personAddress
+    }
+    },
+    {
+    value: "No",
+    text: "No"
+    }
+    ]
+    }) }}
+        
+   {% else %}{% endif %}
+     
+
+
+      <!--DOC FRAUD START SECTION-->
+      {% if data["start-crime"] == "document-fraud" %}
+      {% if data["sis-docs-real"] == "Yes" %}
+      <h1 class="govuk-heading-l">Person 1: Genuine address details</h1>
+      {% else %}
+      <h1 class="govuk-heading-l">Person 1: Address details from their fraudulent document</h1>
+      {% endif %}
+      <form class="form" action="/purple/current/sis-person1-docs-address" method="post">
+      {% else %}{% endif %}
+      <!--END-->
+
+  
+
+
+  
+
+<!--DOC FRAUD ADDRESS-->
+{% if data["start-crime"] == "document-fraud" %}
+
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+  {% if data["sis-docs-real"] == "Yes" %}
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+  {% set personAddress %}
+{{ govukRadios({
+name: "sis-person1-address-known",
+value: data["sis-person1-address-known"],
+classes: "govuk-radios--inline",
+fieldset: {
+legend: {
+text: "Is the address in the UK?"
+}
+},
+items: [
+{
+value: "Yes",
+text: "Yes"
+},
+{
+value: "No",
+text: "No"
+}
+]
+}) }}
+{% endset -%}
+
+  {{ govukRadios({
+    name: "sis-person1-docs-address",
+    value: data["sis-person1-docs-address"],
+    fieldset: {
+    legend: {
+    text: "Do you know their address?",
+    classes: "govuk-fieldset__legend--m"
+    }
+    },
+    hint: {
+    text: "This could be any type of address, including home or work address."
+  },
+    items: [
+    {
+    value: "Yes",
+    text: "Yes",
+    conditional: {
+      html: personAddress
+    }
+    },
+    {
+    value: "No",
+    text: "No"
+    }
+    ]
+    }) }}
+
+  {% else %}
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% set personAddress %}
+{{ govukRadios({
+name: "sis-person1-address-known",
+value: data["sis-person1-address-known"],
+classes: "govuk-radios--inline",
+fieldset: {
+legend: {
+text: "Is the address in the UK?"
+}
+},
+items: [
+{
+value: "Yes",
+text: "Yes"
+},
+{
+value: "No",
+text: "No"
+}
+]
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+name: "sis-person1-docs-address",
+value: data["sis-person1-docs-address"],
+fieldset: {
+legend: {
+text: "Is there an address on the fraudulent document?",
+classes: "govuk-fieldset__legend--m"
+}
+},
+items: [
+{
+value: "Yes",
+text: "Yes",
+conditional: {
+  html: personAddress
+}
+},
+{
+value: "No",
+text: "No"
+}
+]
+}) }}
+
+{% endif %}
+
+{% else %}{% endif %}
+<!--END-->
+
+<input type="hidden" id="sis-person-done" name="sis-person-done"" value="Yes">
+<input type="hidden" id="sis-person1-info" name="sis-person1-info" value="yes">
+
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+    }) }}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

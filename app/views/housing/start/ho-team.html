@@ -1,0 +1,310 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – These are the details we have for you
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Where in the Home Office do you work?</h1>
+      <div class="govuk-form-group">
+        <div class="cop-autocomplete">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+{% set sisTeamOther %}
+{{ govukInput({
+  id: "other-team",
+  name: "other-team",
+  classes: "govuk-!-width-one-half",
+  label: {
+    text: "Team name"
+  }
+}) }}
+{% endset -%}
+
+{% set sisBFTeam %}
+   <label class="govuk-label" for="more-detail">
+   Team name
+  </label>
+  <div id="subject-hint" class="govuk-hint">
+Start typing to find teams
+</div>
+
+{% include "/current/templates/ref-data/sis-bf-team.html" %}
+
+{% endset -%}
+
+{% set sisCFITeam %}
+   <label class="govuk-label" for="more-detail">
+   Team name
+  </label>
+  <div id="subject-hint" class="govuk-hint">
+Start typing to find teams
+</div>
+
+{% include "/current/templates/ref-data/sis-cfi-team.html" %}
+
+{% endset -%}
+
+{% set sisHOITeam %}
+   <label class="govuk-label" for="more-detail">
+   Team name
+  </label>
+  <div id="subject-hint" class="govuk-hint">
+Start typing to find teams
+</div>
+
+{% include "/current/templates/ref-data/sis-hoi-team.html" %}
+
+{% endset -%}
+
+{% set sisICETeam %}
+   <label class="govuk-label" for="more-detail">
+   Team name
+  </label>
+  <div id="subject-hint" class="govuk-hint">
+Start typing to find teams
+</div>
+
+{% include "/current/templates/ref-data/sis-ice-team.html" %}
+
+{% endset -%}
+
+{% set sisIETeam %}
+   <label class="govuk-label" for="more-detail">
+   Team name
+  </label>
+  <div id="subject-hint" class="govuk-hint">
+Start typing to find teams
+</div>
+
+{% include "/current/templates/ref-data/sis-ie-team.html" %}
+
+{% endset -%}
+
+{% set sisImmTeam %}
+   <label class="govuk-label" for="more-detail">
+   Team name
+  </label>
+  <div id="subject-hint" class="govuk-hint">
+Start typing to find teams
+</div>
+
+{% include "/current/templates/ref-data/sis-imm-team.html" %}
+
+{% endset -%}
+
+{% set sisNationalTeam %}
+   <label class="govuk-label" for="more-detail">
+   Team name
+  </label>
+  <div id="subject-hint" class="govuk-hint">
+Start typing to find teams
+</div>
+
+{% include "/current/templates/ref-data/sis-national-team.html" %}
+
+{% endset -%}
+
+{% set sisVisaTeam %}
+   <label class="govuk-label" for="more-detail">
+   Team name
+  </label>
+  <div id="subject-hint" class="govuk-hint">
+Start typing to find teams
+</div>
+
+{% include "/current/templates/ref-data/sis-visa-team.html" %}
+
+{% endset -%}
+
+{{ govukRadios({
+    id: ho-areaID or "sis-ho-area",
+    name: "sis-ho-area",
+    label: {
+      text: ho-areaLabelText or ""
+    },
+    value: ho-areaValue or data[ho-areaName or ho-areaID or "ho-area"] or "",
+    items: [
+  {
+      value: "Border Force",
+      text: "Border Force",
+      conditional: {
+        html: sisBFTeam
+      }
+  },
+  {
+      value: "CFI & FI​",
+      text: "CFI & FI​",
+       conditional: {
+        html: sisCFITeam
+      }
+  },
+   {
+    value: "GRO Referral​",
+    text: "GRO Referral​"
+},
+  {
+      value: "HO Intelligence​",
+      text: "HO Intelligence​",
+       conditional: {
+        html: sisHOITeam
+      }
+  },
+  {
+      value: "ICE / ROM / NCCU / RRT​",
+      text: "ICE / ROM / NCCU / RRT​",
+        conditional: {
+        html: sisICETeam
+      }
+  },
+    {
+      value: "Illegal Migration Operations Command​",
+      text: "Illegal Migration Operations Command​"
+  },
+  {
+      value: "Immigration Enforcement - Detention Services​",
+      text: "Immigration Enforcement - Detention Services",
+        conditional: {
+        html: sisIETeam
+      }
+  },
+  {
+      value: "Immigration Enforcement - Other​",
+      text: "Immigration Enforcement - Other​",
+       conditional: {
+        html: sisImmTeam
+      }
+  },
+  {
+      value: "National Returns Progression Command​",
+      text: "National Returns Progression Command​",
+         conditional: {
+        html: sisNationalTeam
+      }
+  },
+
+ 
+
+  {
+      value: "SBOC International Operations​",
+      text: "SBOC International Operations​"
+  },
+  {
+      value: "SBOC Landside Operations​",
+      text: "SBOC Landside Operations​"
+  },
+  {
+      value: "Single Competent Authority ",
+      text: "Single Competent Authority "
+  },
+    {
+      value: "Visa, Information and Passports​",
+      text: "Visa, Information and Passports​",
+       conditional: {
+        html: sisVisaTeam
+      }
+  },
+  {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: sisTeamOther
+      }
+  }
+    ]
+  }) }}
+            </div>
+</div>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue",
+          href:"harm/details"
+        }) }}
+
+
+    </div>
+  </div>
+{% endblock %}
+ 
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-bf-team')
+    })
+
+</script>
+
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-cfi-team')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-hoi-team')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-ice-team')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-ie-team')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-imm-team')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-national-team')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-visa-team')
+    })
+
+</script>
+
+{% endblock %}
+
+<!--BRING BACK ACCESSIBLE AUTOCOMPLETE SCRIPT IF ABLE TO USE COMPONENT ON BUILD, 
+  THIS CAN BE COPIED FROM FILES V6 AND BELOW-->

@@ -1,0 +1,55 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Where is the illegal working happening?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="date" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+Who do you want to add offence details about next?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="sis-victim-detained-location" name="sis-victim-detained-location" type="checkbox" value="address">
+                  <label class="govuk-label govuk-radios__label" for="sis-victim-detained-location">
+                    Person 1: {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }}
+                  </label>
+                </div>
+                <div class="govuk-radios__divider">or</div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="sis-victim-detained-location" name="sis-victim-detained-location" type="checkbox" value="somewhere-else">
+                  <label class="govuk-label govuk-radios__label" for="sis-victim-detained-location">
+                    Person 2
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

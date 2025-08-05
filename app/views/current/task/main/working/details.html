@@ -1,0 +1,163 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Illegal working dates
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="link" method="post" novalidate>
+
+    <!--<span class="govuk-caption-xl">Immigration abuse details</span>
+    <h1 class="govuk-heading-l">Illegal working end date</h1>-->
+
+    {% if data["sis-working-date"] == "Already happened" %}
+
+    {% set locationexactPast %}
+    {{ govukDateInput({
+      id: "doe",
+      namePrefix: "doe",
+      fieldset: {
+        legend: {
+          text: "What is the exact date?",
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set locationapproxPast %}
+    {{ govukInput({
+      label: {
+        text: "What is the approximate date or date range?"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-working-past-date",
+      name: "sis-working-past-date",
+      value: data ["sis-working-past-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-event-exact",
+      value: data["sis-person1-working-address"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the illegal working happened?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: locationexactPast
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: locationapproxPast
+      }
+      }
+      ]
+      }) }}
+
+{% else %}
+
+{% set locationexactFuture %}
+{{ govukDateInput({
+  id: "doe",
+  namePrefix: "doe",
+  fieldset: {
+    legend: {
+      text: "What is the exact date?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "For example, 20 05 2023"
+  }
+}) }}
+{% endset -%}
+
+{% set locationapproxFuture %}
+{{ govukInput({
+  label: {
+    text: "What is the approximate date or date range?"
+  },
+  hint: {
+    text: " "
+  },
+  classes: "govuk-input--width-10",
+  id: "sis-working-future-date",
+  name: "sis-working-future-date",
+  value: data ["sis-working-future-date"]
+  }) }}
+{% endset -%}
+
+{{ govukRadios({
+  name: "sis-event-exact",
+  value: data["sis-person1-working-address"],
+  fieldset: {
+  legend: {
+  text: "Do you know the exact date when the illegal working will happen?",
+  classes: "govuk-fieldset__legend--l"
+  }
+  },
+  items: [
+  {
+  value: "Yes",
+  text: "Yes",
+  conditional: {
+    html: locationexactFuture
+  }
+  },
+  {
+  value: "No",
+  text: "No",
+  conditional: {
+    html: locationapproxFuture
+  }
+  }
+  ]
+  }) }}
+
+{% endif %}
+
+<input type="hidden" id="sis-working-done" name="sis-working-done" value="Yes">
+
+<input type="hidden" id="sis-offence-details-done" name="sis-offence-details-done" value="Yes">
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

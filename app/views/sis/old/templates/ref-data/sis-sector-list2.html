@@ -1,0 +1,119 @@
+<style>
+
+    .autocomplete__wrapper {
+      width:400px;
+    }
+
+    .autocomplete__input {
+      background-color:#ffffff;
+    }
+      </style>
+
+    <div class="cop-autocomplete">
+
+    {{ govukSelect({
+        id: "sis-biz-sector2",
+        name: "sis-biz-sector2",
+        value: data["sis-biz-sector2"],
+        label: {
+          text: "What is the business sector?"
+        },
+        hint: {
+          text: " "
+        },
+        items: [
+      {
+          value: "",
+          text: "Select business sector"
+      },
+      {
+          value: "Agriculture and other rural sectors",
+          text: "Agriculture and other rural sectors"
+      },
+      {
+          value: "Beauty industry (nail bars, tanning salons, barbers)",
+          text: "Beauty industry (nail bars, tanning salons, barbers)"
+      },
+      {
+          value: "Car washes",
+          text: "Car washes"
+      },
+      {
+          value: "Cleaning",
+          text: "Cleaning"
+      },
+      {
+          value: "Construction",
+          text: "Construction"
+      },
+      {
+          value: "Financial and professional services",
+          text: "Financial and professional services"
+      },
+      {
+          value: "Food, drink and tobacco retail",
+          text: "Food, drink and tobacco retail"
+      },
+      {
+          value: "Food processing",
+          text: "Food processing"
+      },
+      {
+          value: "Health and care services ",
+          text: "Health and care services "
+      },
+      {
+          value: "Hospitality and leisure",
+          text: "Hospitality and leisure"
+      },
+      {
+          value: "Manufacturing and engineering",
+          text: "Manufacturing and engineering"
+      },
+      {
+          value: "Media, culture, graphical",
+          text: "Media, culture, graphical"
+      },
+      {
+          value: "Postal and telecommunications services",
+          text: "Postal and telecommunications services"
+      },
+      {
+          value: "Public service sector",
+          text: "Public service sector"
+      },
+      {
+          value: "Residential",
+          text: "Residential"
+      },
+      {
+          value: "Restaurants, takeaways and cafes",
+          text: "Restaurants, takeaways and cafes"
+      },
+      {
+          value: "Retail (non-food)",
+          text: "Retail (non-food)"
+      },
+      {
+          value: "Security",
+          text: "Security"
+      },
+      {
+          value: "Shipping, ports, fisheries and inland waterways",
+          text: "Shipping, ports, fisheries and inland waterways"
+      },
+      {
+          value: "Textiles, clothing and footwear manufacture",
+          text: "Textiles, clothing and footwear manufacture"
+      },
+      {
+          value: "Transport (including civil aviation, railways and road transport)",
+          text: "Transport (including civil aviation, railways and road transport)"
+      },
+      {
+          value: "Utilities (water, gas, electricity)",
+          text: "Utilities (water, gas, electricity)"
+      }
+        ]
+      }) }}
+      </div>

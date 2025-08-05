@@ -1,0 +1,167 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+
+
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+     Vulnerability to radicalisation
+    </label>
+  </h1>
+ 
+   {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "travel-activites",
+  fieldset: {
+    legend: {
+      text: "Which behaviours, views and emotions has John Smith shown? "
+    
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Feelings of anger or injustice",
+      text: "Feelings of anger or injustice"
+    },
+        {
+      value: "Feelings of threat or insecurity",
+      text: "Feelings of threat or insecurity"
+    },
+        {
+      value: "Need for identity or belonging",
+      text: "Need for identity or belonging"
+    },
+        {
+      value: "Need for status",
+      text: "Need for status"
+    },
+        {
+      value: "Need for excitement or adventure",
+      text: "Need for excitement or adventure"
+    },
+        {
+      value: "Dominance and control",
+      text: "Dominance and control"
+    },
+        {
+      value: "Susceptibility to indoctrination",
+      text: "Susceptibility to indoctrination"
+    },
+        {
+      value: "Political or moral motivation",
+      text: "Political or moral motivation"
+    },
+        {
+      value: "Opportunistic involvement",
+      text: "Opportunistic involvement"
+    },
+        {
+      value: "Family or friends supporting extremism",
+      text: "Family or friends supporting extremism"
+    },
+        {
+      value: "Transitional periods",
+      text: "Transitional periods"
+    },
+        {
+      value: "Group influence and control",
+      text: "Group influence and control"
+    },
+        {
+      value: "Over-identification with group",
+      text: "Over-identification with group"
+    },
+        {
+      value: "'Them and us' thinking",
+      text: "'Them and us' thinking"
+    },
+            {
+      value: "Dehumanisation of enemy",
+      text: "Dehumanisation of enemy"
+    },
+        {
+      value: "Attitudes that justify offending",
+      text: "Attitudes that justify offending"
+    },
+        {
+      value: "Harmful means to an end",
+      text: "Harmful means to an end"
+    },
+            {
+      value: "Harmful objectives",
+      text: "Harmful objectives"
+    },
+        {
+      value: "Capability, knowledge or skills - for example, they may have been trained by extremist groups",
+      text: "Capability, knowledge or skills - for example, they may have been trained by extremist groups"
+    },
+        {
+      value: "Access to networks or funding",
+      text: "Access to networks or funding"
+    },
+     {
+      value: "Criminal history",
+      text: "Criminal history"
+    },
+
+     {
+      divider: "or"
+    },
+    {
+      value: "None of the above",
+      text: "None of the above",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+<br>
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <p>
+Explain how and where they have shown these behaviours, views and emotions. 
+    </p>
+
+  
+  <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+ 
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+<input type="hidden" id="sis-radicalisation-done" name="sis-radicalisation-done" value="Yes">
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

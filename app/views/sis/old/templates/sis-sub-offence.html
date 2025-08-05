@@ -1,0 +1,355 @@
+{% if data["sub-crime"] == "conditions" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+{% if data["sis-breach-done"] == "Yes" %}
+<span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/breach/list" aria-describedby="eligibility-status">
+Breach of conditions details
+  </a>
+</span>
+<strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+{% else %}
+<span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/breach/secondary-role" aria-describedby="eligibility-status">
+Breach of conditions details
+  </a>
+</span>
+<strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+{% endif %}
+</li>
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+Breach of conditions details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}
+
+{% else %}
+{% endif %}
+
+
+{% if data ["sub-crime"] == "illegal-working" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+{% if data["sis-working-done"] == "Yes" %}
+<span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/working/list" aria-describedby="eligibility-status">
+  Illegal working details
+  </a>
+</span>
+<strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+{% else %}
+<span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/working/secondary-role" aria-describedby="eligibility-status">
+  Illegal working details
+  </a>
+</span>
+<strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+{% endif %}
+</li>
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+    Illegal working details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}
+
+{% else %}
+{% endif %}
+
+
+{% if data["sub-crime"] == "marriage" %}
+
+ {% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+  <!-- MARRIAGE ABUSE LINK -->
+  <li class="app-task-list__item">
+    {% if data["sis-marriage-done"] == "Yes" %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/marriage/list" aria-describedby="eligibility-status">
+        Sham marriage or civil partnership details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+    {% else %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/marriage/secondary-role" aria-describedby="eligibility-status">
+        Sham marriage or civil partnership details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+    {% endif %}
+    </li>
+
+  {% else %}
+  <li class="app-task-list__item">
+    <span class="app-task-list__task-name"><p style="margin-bottom: 0;">Sham marriage or civil partnership details</p></span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+  </li>
+  {% endif %}
+
+  {% else %}
+  {% endif %}
+
+
+
+{% if data["sub-crime"] == "clandestine" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+{% if data["sis-cland-done"] == "Yes" %}
+<span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/breach/list" aria-describedby="eligibility-status">
+  Clandestine entry details
+  </a>
+</span>
+<strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+{% else %}
+<span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/clandestine/secondary-role" aria-describedby="eligibility-status">
+Clandestine entry details
+  </a>
+</span>
+<strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+{% endif %}
+</li>
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+  Clandestine entry details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}
+
+{% else %}
+{% endif %}
+
+{% if data["sub-crime"] == "document-fraud" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+{% if data["sis-main-doc-details"] == "Yes" %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/docs/add/list" aria-describedby="eligibility-status">
+      Document fraud details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+    {% else %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/docs/add/type" aria-describedby="eligibility-status">
+      Document fraud details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+    {% endif %}
+</li>
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+  Document fraud details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}
+
+{% else %}
+{% endif %}
+
+{% if data["sub-crime"] == "overstayer" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+    {% if data["sis-overstayer-done"] == "Yes" %}
+    <span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/overstayer/list" aria-describedby="eligibility-status">
+      Overstaying visa details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+    {% else %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/overstayer/secondary-role" aria-describedby="eligibility-status">
+      Overstaying visa details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+    {% endif %}
+</li>
+
+  {% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+Overstaying visa details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+  {% endif %}
+
+{% else %}
+{% endif %}
+
+{% if data["sub-crime"] == "rep-abuse" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+{% if data["sis-rep-done"] == "Yes" %}
+    <span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/rep/secondary-role" aria-describedby="eligibility-status">
+     Representative abuse details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+    {% else %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/rep/secondary-role" aria-describedby="eligibility-status">
+    Representative abuse details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+    {% endif %}
+</li>
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+  Representative abuse details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}
+
+{% else %}
+{% endif %}
+
+
+{% if data["sub-crime"] == "housing" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+{% if data["sis-housing-done"] == "Yes" %}
+    <span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/housing/list" aria-describedby="eligibility-status">
+    Abuse of access to housing details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+    {% else %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/housing/secondary-role" aria-describedby="eligibility-status">
+     Abuse of access to housing details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+    {% endif %}
+</li>
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+Abuse of access to housing details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}
+
+{% else %}
+{% endif %}
+
+
+{% if data["sub-crime"] == "deception" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+{% if data["sis-deception-done"] == "Yes" %}
+    <span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/deception/list" aria-describedby="eligibility-status">
+      Leave by deception details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+    {% else %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/deception/secondary-role" aria-describedby="eligibility-status">
+     Leave by deception details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+    {% endif %}
+</li>
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+Leave by deception details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}
+
+{% else %}
+{% endif %}
+{% if data["sub-crime"] == "facilitation" %}
+{% if data["sis-person-done"] == "Yes" or data["sis-business-done"] == "Yes" or data["sis-ed-done"] == "Yes" or data["sis-group-done"] == "Yes" or data["sis-location-done"] == "Yes" %}
+
+<li class="app-task-list__item">
+{% if data["sis-facilitation-done"] == "Yes" %}
+    <span class="app-task-list__task-name">
+  <a href="/pink/current/task/main/facilitation/list" aria-describedby="eligibility-status">
+Facilitation details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+    {% else %}
+    <span class="app-task-list__task-name">
+      <a href="/pink/current/task/main/facilitation/secondary-role" aria-describedby="eligibility-status">
+Facilitation details
+      </a>
+    </span>
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+    {% endif %}
+</li>
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+Facilitation details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}
+
+{% else %}
+{% endif %}
+
+
+
+

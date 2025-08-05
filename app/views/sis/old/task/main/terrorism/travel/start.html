@@ -1,0 +1,111 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="terrorism-start-route" method="post" novalidate>
+
+
+    <div class="govuk-form-group">
+ 
+  
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukCheckboxes({
+  name: "terrorism-indicators",
+  fieldset: {
+    legend: {
+      text: "What type of information do you have about the suspects?",
+      classes: "govuk-fieldset__legend--l"
+    
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "behaviours",
+      text: "Behaviours",
+      hint: {
+        text: "For example, expressing extremist views online or during an interview with law enforcement"
+      }
+    },
+    {
+      value: "identity-and-travel-documents",
+      text: "Identity and travel documents",
+       hint: {
+        text: "For example, counterfeit documents"
+      }
+    },
+     {
+      value: "links-to-extremist-groups",
+      text: "Links to extremist groups",
+       hint: {
+        text: "For example, training with extremist groups"
+      }
+    },
+     {
+      value: "money-and-funds",
+      text: "Money and funds",
+       hint: {
+        text: "For example, carrying large amounts of cash in or out of the UK"
+      }
+    },
+    {
+      value: "personal-property",
+      text: "Personal property",
+       hint: {
+        text: "For example, material about weaponry or explosives found in their possession"
+      }
+    },
+     {
+      value: "travel-history",
+      text: "Travel history",
+     hint: {
+        text: "For example, travelling to or through conflict zones"
+      }
+    },
+     {
+      divider: "or"
+    },
+    {
+      value: "list",
+      text: "None of the above",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+
+
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who are you reporting for illegal working?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<form class="form" action="/pink/current/sis-slavery-legal2" method="post">
+
+  {% if data["sis-person2-victim-first-name"] == "" %}
+  <h1 class="govuk-heading-l" style="margin-bottom:0;" >Does the potential or recognised victim have a legal representative?</h1>
+  {% else %}
+
+  
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Does {{ data['sis-person2-victim-first-name'] }} {{ data['sis-person2-victim-surname'] }} have a legal representative?</h1>
+
+  
+        {% endif %}
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+  {{ govukRadios({
+    name: "sis-slavery-legal2",
+    value: data [sis-slavery-legal2],
+    fieldset: {
+      legend: {
+        text: " ",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "Yes",
+        text: "Yes"
+      },
+      {
+        value: "No",
+        text: "No"
+      },
+      {
+              divider: "or"
+            },
+      {
+        value: "I do not know",
+        text: "I do not know"
+      }
+    ]
+  }) }}
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <input type="hidden" id="sis-victim-person-done2" name="sis-victim-person-done2" value="Yes">
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

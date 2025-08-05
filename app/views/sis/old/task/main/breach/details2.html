@@ -1,0 +1,49 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Breach of visa conditions
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>
+<h1 class="govuk-heading-l">Breach of visa conditions</h1>-->
+
+      <form class="form" action="/pink/current/breach-secondary-two" method="post">
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+        {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+               <h1 class="govuk-heading-l" style="margin-bottom:10px;">What type of conditions has the suspect or offender breached?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">What type of conditions has {{ data['sis-person2-first-name'] }} {{ data['sis-person2-surname'] }} breached?</h1>
+        {% endif %}
+
+        {% include "pink/current/templates/list/visa-type.html" %}
+
+      </fieldset>
+      </div> 
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Document Upload - Internal Referral Form
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="document-list" action="" method="post">
+        <h1 class="govuk-heading-l">Check your answers</h1>
+
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Document 1"
+            },
+            actions: {
+              items: [
+                {
+                  href: "document-delete",
+                  text: "Delete",
+                  visuallyHiddenText: "this document"
+                }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "Type of document"
+              },
+              value: {
+                html: "Birth Certificate"
+              }
+            },
+            {
+              key: {
+                text: "File uploaded"
+              },
+              value: {
+                html: "IMG-74382.png"
+              }
+            }
+          ]
+        }) }}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+<div class="govuk-form-group">
+        {{ govukButton({
+          classes: "hods-button--secondary",
+          text: "Add another document",
+          href: "doc-upload"
+        }) }}
+</div>
+<div class="govuk-form-group">
+        {{ govukButton({
+          classes: "hods-button",
+          text: "Continue"
+        }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

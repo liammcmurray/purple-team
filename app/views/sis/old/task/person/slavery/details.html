@@ -1,0 +1,67 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The person you are reporting
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Person 1: Details</h1>
+      <p class="govuk-body">Complete as much about the person as you can.</p>
+
+      <!--FORM START IS ON TEMPLATES BELOW-->
+
+      {% if data["sis-slavery-role"] == "Potential or recognised victim of modern slavery and human traficking" %}
+      {% include "pink/current/templates/person/slavery/victim-details.html" %}
+      {% else %}{% endif %}
+
+      {% if data["sis-slavery-role"] == "Trafficker" %}
+      {% include "pink/current/templates/person/slavery/trafficker-details.html" %}
+      {% else %}{% endif %}
+
+      {% if data["sis-slavery-role"] == "First responder" %}
+      {% include "pink/current/templates/person/slavery/responder-details.html" %}
+      {% else %}{% endif %}
+
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+<script type="text/javascript">
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('#sis-country2')
+  })
+
+</script>
+{% endblock %}

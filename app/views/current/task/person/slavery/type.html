@@ -1,0 +1,80 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/purple/current/sis-slavery-role" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who do you want to add?
+            </h1>
+          </legend>
+               
+ <div id="waste-hint" class="govuk-hint">
+  You can add another person later. {% if data["sub-offence-source"] == "sub-yes" %}You should tell us about everyone involved in the offences. 
+                  {% else %}
+                      {% endif %}
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-slavery-role" name="sis-slavery-role" type="radio" value="Potential or recognised victim of modern slavery and human traficking">
+        <label class="govuk-label govuk-radios__label" for="sis-slavery-role">
+          Potential or recognised victim of modern slavery and human traficking
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-slavery-role" name="sis-slavery-role" type="radio" value="Trafficker">
+        <label class="govuk-label govuk-radios__label" for="sis-slavery-role">
+          Trafficker
+        </label>
+      </div>
+     <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-slavery-role" name="sis-slavery-role" type="radio" value="First responder">
+        <label class="govuk-label govuk-radios__label" for="sis-slavery-role">
+          First responder
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-slavery-role" name="sis-slavery-role" type="radio" value="Other" data-aria-controls="conditional-contact-3">
+        <label class="govuk-label govuk-radios__label" for="sis-slavery-role">
+          Other
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-text">
+            Person's role
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="sis-slavery-role-other" name="sis-slavery-role-other">
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

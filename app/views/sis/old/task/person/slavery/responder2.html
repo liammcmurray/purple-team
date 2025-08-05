@@ -1,0 +1,57 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who is the first responder?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/pink/current/sis-responder2" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Who is the first responder?
+                </h1>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input"  name="sis-responder2" type="radio" value="sis-responder-name2">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    {{data ["sis-other-details-name"]}} {{data ["sis-other-details-surname"]}}
+                  </label>
+                </div>
+                <div class="govuk-radios__divider">or</div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" name="sis-responder2" type="radio" value="responder-someone-else2">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">
+                    Someone else
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <input type="hidden" id="sis-responder-person-done" name="sis-responder-person-done" value="Yes">
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

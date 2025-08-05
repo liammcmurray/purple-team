@@ -1,0 +1,71 @@
+.hods-width-container .govuk-main-wrapper {
+  padding-top: 8px;
+
+  .govuk-back-link {
+    margin-bottom: 32px;
+  }
+}
+.govuk-phase-banner__content .govuk-body-s {
+  margin-bottom: 0;
+}
+// Match live COP widths.
+div.hods-width-container,
+div.govuk-width-container {
+  max-width: 1160px;
+}
+div.hods-footer__container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.cop-title-change-link {
+  font-weight: 400;
+  font-size: 19px;
+  float: right;
+}
+
+.eab2-check-answers .cop-change-link-column {
+  width: 15%;
+  text-align: right;
+  padding-right: 0;
+}
+
+.eab2-check-answers .govuk-summary-list__key {
+  width: 50%;
+}
+
+.eab2-check-answers .govuk-summary-list__value {
+  width: 35%;
+}
+
+// .eab2-check-answers .person-container {
+//   background-color: #ffffff;
+//   border: 1px solid grey;
+//   padding: 25px;
+//   margin-bottom: 50px;
+// }
+
+.eab2-tasklist {
+  .app-task-list__tag-completed {
+    background-color: #005EA5;
+    color: #fff;
+    font-weight: normal;
+    text-transform: none;
+  }
+  .app-task-list__tag-not-started {
+    background-color: #5C6367;
+    color: #fff;
+    font-weight: normal;
+    text-transform: none;
+  }
+  .app-task-list__tag-cannot-start-yet {
+    background-color: #5C6367;
+    color: #fff;
+    font-weight: normal;
+    text-transform: none;
+  }
+}
+
+.hods-pagination__list-items {
+  padding-inline-start: 0;
+}

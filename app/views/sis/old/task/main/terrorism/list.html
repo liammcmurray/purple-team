@@ -1,0 +1,441 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Illegal wortking details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+    <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+      <h2 class="govuk-summary-card__title">Location 1</h2>
+      <ul class="govuk-summary-card__actions">
+        <!--<li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> person </span>
+          </a>
+        </li>-->
+        <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+            <span class="govuk-visually-hidden"> offence</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+      <dl class="govuk-summary-list">
+
+    
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-terrorism-location-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        {% if data["sis-terrorism-location-type"] == "Business" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Business sector
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-biz-sector"] }}{{ data ["sis-biz-sector-new"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+   
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of contact at location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-terrorism-location-contact"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact person's role
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-terrorism-location-role"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- {{ data ["sis-working-date"] }}-->
+            {{ data ["sis-terrorism-location-name"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data["sis-location-other-address1"] == "" %}{% else %}
+          {{ data['sis-location-other-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-location-other-address2"] == "" %}{% else %}
+          {{ data['sis-location-other-address2'] }} <br/>{% endif %}
+
+          {% if data["sis-location-other-city"] == "" %}{% else %}
+          {{ data['sis-location-other-city'] }} <br/>{% endif %}
+
+          {% if data["sis-location-other-county"] == "" %}{% else %}
+          {{ data['sis-location-other-county'] }} <br/>{% endif %}
+
+          {% if data["sis-location-other-postcode"] == "" %}{% else %}
+          {{ data['sis-location-other-postcode'] }}{% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+      {% if data["event-happening"] == "Yes" %} 
+ 
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Event date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["event-date"] }}{{ data ["estimate-time"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Event time
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["event-time-hour"]}}:{{data["event-time-minute"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Event frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["frequency"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Social media
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["event-social-media"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            About the event
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["event"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+{% else %} 
+{% endif %} 
+      </dl>
+    </div>
+  </div>
+{% if data["sis-location-done2"] == "Yes" %}
+    <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+      <h2 class="govuk-summary-card__title">Location 2</h2>
+      <ul class="govuk-summary-card__actions">
+        <!--<li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> person </span>
+          </a>
+        </li>-->
+        <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+            <span class="govuk-visually-hidden"> offence</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+      <dl class="govuk-summary-list">
+
+ 
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-terrorism-location-type2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        {% if data["sis-terrorism-location-type2"] == "Business" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Business sector
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-biz-sector2"] }}{{ data ["sis-biz-sector-new2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+   
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of contact at location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-terrorism-location-contact2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Contact person's role
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-terrorism-location-role2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+               <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <!-- {{ data ["sis-working-date"] }}-->
+            {{ data ["sis-terrorism-location-name2"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data["sis-location2-other-address1"] == "" %}{% else %}
+          {{ data['sis-location2-other-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-location2-other-address2"] == "" %}{% else %}
+          {{ data['sis-location2-other-address2'] }} <br/>{% endif %}
+
+          {% if data["sis-location2-other-city"] == "" %}{% else %}
+          {{ data['sis-location2-other-city'] }} <br/>{% endif %}
+
+          {% if data["sis-location2-other-county"] == "" %}{% else %}
+          {{ data['sis-location2-other-county'] }} <br/>{% endif %}
+
+          {% if data["sis-location2-other-postcode"] == "" %}{% else %}
+          {{ data['sis-location2-other-postcode'] }}{% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+  {% if data["event-happening2"] == "Yes" %} 
+ 
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Event date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["event-date2"] }}{{ data ["estimate-time2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Event time
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data["event-time2-hour"]}}:{{data["event-time2-minute"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Event frequency
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["frequency2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Social media
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["event-social-media2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            About the event
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["event2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="event2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+              {% else %}{% endif %}
+      </dl>
+    </div>
+  </div>
+
+{% else %}
+{% endif %}
+  <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% if data["sis-location-done2"] == "Yes" %}
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another location",
+  href: ""
+}) }}
+{% else %}
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another location",
+  href: "address2"
+}) }}
+
+{% endif %}
+<br>
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+  </form>
+
+  </div>
+  </div>
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

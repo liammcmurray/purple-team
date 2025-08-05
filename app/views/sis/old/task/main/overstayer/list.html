@@ -1,0 +1,229 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Clandestine entry
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+{% if data["sub-crime"] == "overstayer" %}
+  
+       <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+
+   <h2 class="govuk-summary-card__title">Overstaying visa details</h2>
+     <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+          <span class="govuk-visually-hidden"> person 1</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="govuk-summary-card__content">
+
+    <dl class="govuk-summary-list">
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Suspected of overstaying visa 
+          </dt>
+          <dd class="govuk-summary-list__value">
+          
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details about the suspects
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+              </dl>
+    </div>
+  </div>
+        {% else %}{% endif %}
+    <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+      <h2 class="govuk-summary-card__title">
+     Person 1: {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }}</h2>
+       
+      </h2>
+     <ul class="govuk-summary-card__actions">
+          <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+            <span class="govuk-visually-hidden"> location</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+
+
+               {% if data["sub-crime"] == "overstayer" %}
+       {% include "pink/current/templates/summary/secondary-person1.html" %}
+
+            {% else %}
+        {% endif %}
+     
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of visa or permission 
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sisVisaType"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  {% if data["sis-overstayer2"] == "Yes" %}
+<div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+      <h2 class="govuk-summary-card__title">
+        {% if data["sis-person2-first-name"] == "" %}
+        Person 2
+        {% else %} 
+        Person 2: {{ data['sis-person2-first-name'] }} {{ data['sis-person2-surname'] }}
+        {% endif %}
+      </h2>
+    <ul class="govuk-summary-card__actions">
+         <!-- <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+            Delete<span class="govuk-visually-hidden"> location</span>
+          </a>
+        </li>-->
+      </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of visa or permission 
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sisVisaType"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  {% else %} {% endif %}
+
+  <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+  <input type="hidden" id="sis-overstayer-done" name="sis-overstayer-done" value="Yes">
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% if data["sis-person2-info"] == "yes" %}
+
+{% if data["sis-overstayer2"] == "Yes" %}
+
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue"
+}) }}
+
+
+{% else %}
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue to next person",
+    href: "details2"
+  }) }}
+
+  {% endif %}
+
+{% else %}  {% endif %}
+
+{% if data["sis-person1-info"] == "yes" %}
+
+{% if data["sis-person2-info"] == "yes" %}{% else %} 
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+  {% endif %}
+
+{% else %}  {% endif %}
+
+
+
+  <!--{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+        <h1 class="govuk-heading-l">Breach of visa conditions</h1>
+
+      <p class="govuk-body">You have not added a breach of visa conditions yet.</p>
+
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+    classes: "hods-button--secondary",
+    text: "Add a breach of visa conditions",
+    href: "details"
+  }) }}
+
+  <br/>
+
+    {{ govukButton({
+      classes: "hods-button",
+      text: "Continue",
+      href: "/pink/current/task/list"
+    }) }}
+
+    <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="No">
+
+-->
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

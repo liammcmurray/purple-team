@@ -1,0 +1,98 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – How did the person enter the country?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>
+<h1 class="govuk-heading-l" style="margin-bottom: 0;">How did the person, or people, enter the country clandestinely?</h1>-->
+
+      <form class="form" action="/purple/current/sis-other-route" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+   
+    {% if data["sis-other-uk"] == "No" %}
+        {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">How will Person 1 enter the country?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">How will {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} enter the country?</h1>
+        {% endif %}
+    {% else %}
+ {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">How did Person 1 enter the country?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">How did {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} enter the country?</h1>
+        {% endif %}
+
+          {% endif %}
+
+    </legend>
+        {{ govukRadios({
+          name: "sis-other-route",
+          value: data ["sis-other-route"],
+          fieldset: {
+            legend: {
+              text: ""
+            }
+          },
+          items: [
+            {
+              value: "Air",
+              text: "Air"
+            },
+            {
+              value: "Rail",
+              text: "Rail"
+            },
+            {
+              value: "Road",
+              text: "Road"
+            },
+            {
+              value: "Sea",
+              text: "Sea"
+            },
+            {
+      divider: "or"
+    },
+            {
+              value: "Other",
+              text: "Other method of entry"
+            }
+          ]
+        }) }}
+
+        
+</div>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

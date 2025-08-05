@@ -1,0 +1,564 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<span class="govuk-caption-xl">Person type</span>-->
+
+    {% if data["start-crime"] == "illegal-working" %}
+    <form class="form" action="details3" method="post">
+     
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who do you want to add?
+            </h1>
+          </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-person3-role" name="sis-person3-role" type="radio" value="Suspect or offender working illegally">
+        <label class="govuk-label govuk-radios__label" for="sis-person3-role">
+          Suspect or offender working illegally
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-person3-role" name="sis-person3-role" type="radio" value="Personal sponsor">
+        <label class="govuk-label govuk-radios__label" for="sis-person3-role">
+          Personal sponsor
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-person3-role" name="sis-person3-role" type="radio" value="Witness">
+        <label class="govuk-label govuk-radios__label" for="sis-person3-role">
+          Witness
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-person3-role" name="sis-person3-role" type="radio" value="Other" data-aria-controls="conditional-sis-rep-suspect-3">
+        <label class="govuk-label govuk-radios__label" for="sis-person3-role">
+          Other
+        </label>
+      </div>
+ <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sis-rep2-suspect-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sis-person3-role">
+            Person's role
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="rep-other-role2" name="rep-other-role2" type="tel" autocomplete="tel">
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>    
+    {% else %}{% endif %}
+
+    {% if data["start-crime"] == "marriage" %}
+<form class="form" action="details3" method="post">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set marriageOther %}
+{{ govukInput({
+  id: "marriageOther",
+  name: "marriageOther",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Person's role"
+  }
+}) }}
+{% endset -%}
+
+
+{{ govukRadios({
+  name: "sis-sham-person3",
+  value: data ["sis-sham-person3"],
+  fieldset: {
+    legend: {
+      text: "Who do you want to add?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: " "
+  },
+  items: [
+    {
+      value: "Suspect or offender entering a sham marriage or civil partnership",
+      text: "Suspect or offender entering a sham marriage or civil partnership"
+    },
+    {
+      value: "Personal sponsor",
+      text: "Personal sponsor",
+      conditional: {
+        html: phoneHtml
+      }
+    },
+    {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: marriageOther
+      }
+    }
+  ]
+}) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>    
+    {% else %}{% endif %}
+
+ {% if data["start-crime"] == "s24" %}
+
+ 
+
+  <form class="form" action="details" method="post">
+     
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who do you want to add?
+            </h1>
+          </legend>
+              <div id="waste-hint" class="govuk-hint">
+  You can add another person later.  {% if data["sub-offence-source"] == "sub-yes" %}You should tell us about everyone involved in the offences. 
+                  {% else %}
+                      {% endif %}
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-s24-person" name="sis-s24-person" type="radio" value="Credible third person">
+        <label class="govuk-label govuk-radios__label" for="sis-person-role">
+        Credible third person
+        </label>
+      </div>
+    <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-s24-person" name="sis-s24-person" type="radio" value="Personal sponsor">
+        <label class="govuk-label govuk-radios__label" for="sis-person-role">
+        Personal sponsor
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-s24-person" name="sis-s24-person" type="radio" value="Other" data-aria-controls="conditional-contact-3">
+        <label class="govuk-label govuk-radios__label" for="sis-other-person">
+          Other
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="sis-s24-person">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-text">
+            Person's role
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="sis-doc-other" name="sis-doc-other">
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>  
+  
+    {% else %}{% endif %}
+
+ {% if data["start-crime"] == "terrorism" %}
+
+ 
+<form class="form" action="details3" method="post">
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
+
+{{ govukCheckboxes({
+  name: "sis-terrorism-person3",
+  value: data ["sis-terrorism-person3"],
+  fieldset: {
+    legend: {
+      text: "Who do you want to add?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Vulnerable to radicalisation",
+      text: "Vulnerable to radicalisation"
+    },
+     {
+      value: "Suspected of radicalising others",
+      text: "Suspected of radicalising others"
+    },
+     {
+      value: "Suspected links to terrorism",
+      text: "Suspected links to terrorism"
+    }
+  ]
+}) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>    
+    {% else %}{% endif %}
+
+{% if data["start-crime"] == "document-fraud" %}
+
+<form class="form" action="/purple/current/doc-suspect" method="post">
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Who do you want to add?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-doc-suspect" name="sis-doc-suspect" type="radio" value="Suspect or offender">
+        <label class="govuk-label govuk-radios__label" for="sis-doc-suspect">
+          {% if data["start-crime"] == "document-fraud" %}
+          Suspect or offender using fraudulent documents
+          {% else %}
+          Suspect or offender
+          {% endif %}
+        </label>
+      </div>
+      <!--<div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-doc-suspect" name="sis-doc-suspect" type="radio" value="Helper">
+        <label class="govuk-label govuk-radios__label" for="sis-doc-suspect">
+          Helper
+        </label>
+      </div>-->
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-doc-suspect" name="sis-doc-suspect" type="radio" value="Other" data-aria-controls="conditional-contact-3">
+        <label class="govuk-label govuk-radios__label" for="sis-doc-suspect">
+          Other role
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-text">
+            What is this person's connection to the suspect or offender?
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="sis-doc-other" name="sis-doc-other">
+        </div>
+      </div>
+
+    </div>
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+    {% else %}{% endif %}
+
+    {% if data["start-crime"] == "rep-abuse" %}
+    <form class="form" action="details3" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who do you want to add?
+            </h1>
+          </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-rep-suspect3" name="sis-rep-suspect3" type="radio" value="Client">
+        <label class="govuk-label govuk-radios__label" for="sis-rep-suspect3">
+          Client
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-rep-suspect3" name="sis-rep-suspect3" type="radio" value="Legal representative">
+        <label class="govuk-label govuk-radios__label" for="sis-rep-suspect3">
+          Legal representative
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-rep-suspect3" name="sis-rep-suspect3" type="radio" value="Other" data-aria-controls="conditional-sis-rep-suspect-3">
+        <label class="govuk-label govuk-radios__label" for="sis-rep-suspect3">
+          Other
+        </label>
+      </div>
+ <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sis-rep2-suspect-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sis-rep-suspect3">
+            Person's role
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="rep-other-role2" name="rep-other-role2" type="tel" autocomplete="tel">
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>    
+    {% else %}{% endif %}
+
+    {% if data["start-crime"] == "working" or data["start-crime"] == "conditions" %}
+    <form class="form" action="details3" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who do you want to add?
+            </h1>
+          </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Suspect or offender">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Suspect or offender breaching their conditions
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Personal sponsor">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Personal sponsor
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Witness">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Witness
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-rep-suspect3" name="sis-rep-suspect3" type="radio" value="Other" data-aria-controls="conditional-sis-rep-suspect-3">
+        <label class="govuk-label govuk-radios__label" for="sis-rep-suspect3">
+          Other
+        </label>
+      </div>
+ <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sis-rep2-suspect-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sis-rep-suspect3">
+            Person's role
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="rep-other-role2" name="rep-other-role2" type="tel" autocomplete="tel">
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+    {% else %}{% endif %}
+
+    {% if data["start-crime"] == "clandestine" %}
+    <form class="form" action="details3" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who do you want to add?
+            </h1>
+          </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Suspect or offender">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Suspect or offender entering the UK clandestinely 
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Personal sponsor">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Personal sponsor
+        </label> 
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Witness">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Witness
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Other" data-aria-controls="conditional-sis-rep-suspect-3">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Other
+        </label>
+      </div>
+ <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sis-rep2-suspect-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sis-role-of-person3">
+            Person's role
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="rep-other-role2" name="rep-other-role2" type="tel" autocomplete="tel">
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+    {% else %}{% endif %}
+
+    {% if data["start-crime"] == "overstayer" %}
+    <form class="form" action="details3" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who do you want to add?
+            </h1>
+          </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Suspect or offender">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Suspect or offender overstaying their visa
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Witness">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Witness
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-role-of-person3" name="sis-role-of-person3" type="radio" value="Other" data-aria-controls="conditional-sis-rep-suspect-3">
+        <label class="govuk-label govuk-radios__label" for="sis-role-of-person3">
+          Other
+        </label>
+      </div>
+ <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sis-rep2-suspect-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sis-role-of-person3">
+            Person's role
+          </label>
+          <input class="govuk-input govuk-!-width-one-third" id="rep-other-role2" name="rep-other-role2" type="tel" autocomplete="tel">
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+    {% else %}{% endif %}
+
+
+    {% if data["start-crime"] == "housing" %}
+    <form class="form" action="details3" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% set housing3Other %}
+{{ govukInput({
+  id: "sis-housing-person3",
+  name: "sis-housing-person32",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Person's role"
+  }
+}) }}
+{% endset -%}
+
+      {{ govukRadios({
+        name: "sis-housing-person3",
+        value: data ["sis-housing-person3"],
+        fieldset: {
+          legend: {
+            text: "Who do you want to add?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: " "
+        },
+        items: [
+          {
+            value: "Tenant or lodger living in the accommodation",
+            text: "Tenant or lodger living in the accommodation"
+          },
+          {
+            value: "Landlord, letting agent or tenant subletting the accommodation",
+            text: "Landlord, letting agent or tenant subletting the accommodation"
+          },
+          {
+            value: "Visitor to the accommodation or location",
+            text: "Visitor to the accommodation or location"
+          },
+          {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: housing3Other
+      }
+    }
+        ]
+      }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+    {% else %}{% endif %}
+
+
+  </div>
+</div>
+
+{% endblock %}

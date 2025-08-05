@@ -1,0 +1,60 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Are you sure you want to delete this organised crimed group?
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   <!--<span class="govuk-caption-xl">Safeguarding</span>-->
+
+    <form class="form" action="../start/intro" method="post">
+
+  
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukRadios({
+
+      name: "sis-delete",
+      value: data["sis-delete"],
+      fieldset: {
+        legend: {
+          text: "Are you sure you want to delete Organised crime group 1: Brown Bears?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+    
+      items: [
+        {
+          value: "Yes, delete this group",
+          text: "Yes, delete this group"
+        },
+        {
+          value: "No, keep this group",
+          text: "No, keep this group"
+        }
+      ]
+    }) }}
+{% endblock %}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Change to an answer
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Updating your answer will affect other sections of this referral</h1>
+
+      <p>If you make this change to <strong>Person 1 ({{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }})</strong>, any information you have given in these sections will be deleted:
+        <ul class="govuk-list">
+          <li><strong>Abuse of access to housing details</strong></li>
+        </ul>
+
+      <p>This is to ensure we only capture the correct information. You will have to re-enter the information.</p>
+
+      <form class="form" action="" method="post">
+
+     {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Cancel",
+          classes: "govuk-button, hods-button--secondary",
+          href: "list"
+        }) }}
+      </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

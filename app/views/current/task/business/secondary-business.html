@@ -1,0 +1,159 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders - Business details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+      {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+ <!--LEGAL REP START SECTION-->
+ 
+
+         <h1 class="govuk-heading-l">Business 1: Details</h1>
+        <p>Complete as much about the business as you can.</p>
+      <form class="form" action="/purple/current/task/main/rep/list" method="post">
+
+
+      {% call govukFieldset({
+        legend: {
+          text: "Name",
+          classes: "govuk-fieldset__legend--m",
+          isPageHeading: true
+        }
+      }) %}
+     
+        {{ govukInput({
+          label: {
+            text: 'Business or agency name '
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "sis-rep-biz-name",
+          name: "sis-rep-biz-name",
+          value: data ["sis-rep-biz-name"]
+        }) }}
+    
+      {% endcall %}
+  <hr>
+        <br/>
+         
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: 'Email address'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: 'sis-rep1-email',
+          value: data ["sis-rep1-email"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Phone number'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: 'sis-rep1-phone',
+          value: data ["sis-rep1-phone"]
+        }) }}
+
+        {% endcall %}
+
+  <hr>
+        <br/>
+  
+
+
+{% call govukFieldset({
+  legend: {
+    text: "Address",
+    classes: "govuk-fieldset__legend--m",
+    isPageHeading: true
+  }
+}) %}
+
+  {{ govukInput({
+    label: {
+      text: 'Address line 1'
+    },
+    name: "sis-person1-address-uk-1",
+    value: data['sis-person1-address-uk-1'],
+    classes: "govuk-!-width-two-thirds"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Address line 2'
+    },
+    name: "sis-person1-address-uk-2",
+    value: data['sis-person1-address-uk-2'],
+    classes: "govuk-!-width-two-thirds"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Town or city"
+    },
+    classes: "govuk-!-width-one-third",
+    name: "sis-person1-address-uk-city-1",
+    value: data['sis-person1-address-uk-2']
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "County"
+    },
+    classes: "govuk-!-width-one-third",
+    name: "sis-person1-address-uk-county-1",
+    value: data['sis-person1-address-uk-county-1']
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Postcode"
+    },
+    classes: "govuk-input--width-10",
+    name: "sis-person1-address-uk-postcode-1",
+    value: data['sis-person1-address-uk-postcode-1']
+  }) }}
+
+{% endcall %}
+<input type="hidden" id="sis-biz-info" name="sis-biz-info" value="yes">
+      
+      
+  
+
+        <input type="hidden" id="sis-biz-address-next" name="sis-biz-address-next" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

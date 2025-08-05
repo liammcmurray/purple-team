@@ -1,0 +1,75 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="details" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who do you want to add?
+            </h1>
+          </legend>
+          <div id="waste-hint" class="govuk-hint">You can add another person later.  {% if data["sub-offence-source"] == "sub-yes" %}You should tell us about everyone involved in the offences{% else %}{% endif %}
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sis-housing-person" name="sis-housing-person" type="radio" value="Tenant or lodger living in the accommodation">
+              <label class="govuk-label govuk-radios__label" for="sis-role-of-person">
+               Tenant or lodger living in the accommodation
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sis-housing-person" name="sis-housing-person" type="radio" value="Landlord, letting agent or tenant subletting the accommodation">
+              <label class="govuk-label govuk-radios__label" for="ssis-housing-person">
+            Landlord, letting agent or tenant subletting the accommodation
+              </label>
+            </div>
+               <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sis-housing-person" name="sis-housing-person" type="radio" value="Visitor to the accommodation or location">
+              <label class="govuk-label govuk-radios__label" for="ssis-housing-person">
+            Visitor to the accommodation or location
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sis-housing-person" name="sis-housing-person" type="radio" value="Other" data-aria-controls="conditional-contact-3">
+              <label class="govuk-label govuk-radios__label" for="sis-housing-person">
+                Other
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="sis-housing-person">
+                  Person's role
+                </label>
+                <input class="govuk-input govuk-!-width-two-thirds" id="sis-doc-other" name="sis-doc-other">
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

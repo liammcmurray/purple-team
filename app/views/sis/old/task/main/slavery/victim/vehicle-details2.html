@@ -1,0 +1,91 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Road vehicle details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="country2" method="post">
+
+        <!--<span class="govuk-caption-xl">Person 1</span>-->
+        <h1 class="govuk-heading-l">What are the vehicle details?</h1>
+
+        <p class="govuk-body">Complete as much about the vehicle as you can.</p>
+
+        <!--<div id="sign-in-hint" class="govuk-hint">
+        For journeys with connecting flights, give details for the last connection that you are aware of
+        </div>-->
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+        label: {
+        text: "Vehicle registration number"
+        },
+        id: "sis-vehicle-reg2",
+        name: "sis-vehicle-reg2",
+        value: data ["sis-vehicle-reg2"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+        {% include "pink/current/templates/ref-data/sis-vehicle-types.html" %}
+
+        {{ govukInput({
+        label: {
+        text: "Make"
+        },
+        id: "sis-vehicle-make2",
+        name: "sis-vehicle-make2",
+        value: data ["sis-vehicle-make2"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+        {{ govukInput({
+        label: {
+        text: "Model"
+        },
+        id: "sis-vehicle-model2",
+        name: "sis-vehicle-model2",
+        value: data ["sis-vehicle-model2"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+        {{ govukInput({
+        label: {
+        text: "Colour"
+        },
+        id: "sis-vehicle-colour2",
+        name: "sis-vehicle-colour2",
+        value: data ["sis-vehicle-colour2"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+
+        <input type="hidden" id="sis-cland-done2" name="sis-cland-done2" value="Yes">
+
+        <input type="hidden" id="sis-offence-details-done" name="sis-offence-details-done" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

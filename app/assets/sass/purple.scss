@@ -1,0 +1,42 @@
+//
+// For guidance on how to add CSS and SCSS see:
+// https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
+// 
+
+// Add extra styles here
+@import "partials/masthead";
+// @import "partials/subnav"; - mixins brokey
+
+body.purple-team {
+  // Override margin for account menu in header
+  .hods-header__main > *:last-child {
+      margin-right: 0;
+  }
+
+  // Add white background to form elements
+  .govuk-checkboxes__label::before, .govuk-radios__label:before {
+      background: white;
+  }
+
+  a.govuk-button--start:visited {
+    color: white;
+  }
+
+  .autocomplete__input {
+    background-color: white;
+    cursor: text;
+  }
+
+  .autocomplete__input--show-all-values {
+    padding: 5px 34px 5px 5px; /* Space for arrow. Other padding should match .autocomplete__input--default. */
+  }
+
+  .autocomplete__dropdown-arrow-down{
+    pointer-events: none;
+    z-index: auto;
+  }
+
+  .autocomplete__menu--overlay {
+      box-shadow: auto
+  }
+}

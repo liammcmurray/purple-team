@@ -1,0 +1,141 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Add business
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+  <form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+{% if data["sis-ed-details"] == "yes" %}
+
+      <h1 class="govuk-heading-l">Check your answers</h1>
+
+      <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+        <h2 class="govuk-summary-card__title">Educational establishment 1</h2>
+        <ul class="govuk-summary-card__actions">
+          <!--<li class="govuk-summary-card__action"> <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden"> business </span>
+            </a>
+          </li>-->
+          <li class="govuk-summary-card__action"> <a class="govuk-link" href="list">
+              Delete<span class="govuk-visually-hidden">Educational establishment 1</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of educational establishment
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-ed-name'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="details">
+              Change<span class="govuk-visually-hidden">name of educational establishment</span>
+            </a>
+          </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              {% if data["sis-ed-address1"] == "" %}{% else %}
+              {{ data['sis-ed-address1'] }} <br/>{% endif %}
+
+              {% if data["sis-ed-address2"] == "" %}{% else %}
+              {{ data['sis-ed-address2'] }} <br/>{% endif %}
+
+              {% if data["sis-ed-city"] == "" %}{% else %}
+              {{ data['sis-ed-city'] }} <br/>{% endif %}
+
+              {% if data["sis-ed-county"] == "" %}{% else %}
+              {{ data['sis-ed-county'] }} <br/>{% endif %}
+              
+              {% if data["sis-ed-postcode"] == "" %}{% else %}
+              {{ data['sis-ed-postcode'] }}{% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="details">
+              Change<span class="govuk-visually-hidden">Address</span>
+            </a>
+          </dd>
+          </div>
+
+        </dl>
+      </div>
+    </div>
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another educational establishment",
+  href: "details"
+}) }}
+
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+  <input type="hidden" id="sis-ed-done" name="sis-ed-done" value="Yes">
+
+{% else %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+    <h1 class="govuk-heading-l">Add an educational establishment</h1>
+
+    <p class="govuk-body">You have not added an educational establishment yet.</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add an educational establishment",
+  href: "details"
+}) }}
+
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue without adding",
+    href: "/pink/current/task/list"
+  }) }}
+
+  <input type="hidden" id="sis-ed-done" name="sis-ed-done" value="No">
+
+{% endif %}
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+.home-container {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-column-gap: 1.875rem;
+  grid-row-gap: 1.875rem;
+
+  .card-link {
+    margin-top: 5px;
+  }
+}
+
+.hods-card {
+  border: 1px solid #cbcbcb;
+
+  .hods-card__heading {
+    background-color: #e2e2e2;
+    padding: 1.5625rem;
+    .hods-card__count {
+    }
+    .govuk-heading-l {
+      font-size: 2rem;
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+    .hods-card__title.govuk-heading-m {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+    .hods-card__subtitle {
+      display: block;
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+  }
+  .hods-card__body {
+    padding: 0.6875rem 1.5625rem 1.5625rem;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+
+    .govuk-link,
+    a {
+      font-family: "Roboto",arial,sans-serif!important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-weight: 400;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.25;
+      line-height: 1.875rem;
+    }
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .hods-card {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: column;
+      flex-flow: column;
+
+    .hods-card__body .govuk-link,
+    .hods-card__body a {
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.31579;
+    }
+  }
+}
+
+.cop-optgroup {
+  optgroup {
+    font-weight: bold;
+  }
+}

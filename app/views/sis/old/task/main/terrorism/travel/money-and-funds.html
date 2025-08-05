@@ -1,0 +1,68 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="terrorism-check-route" method="post" novalidate>
+
+
+
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+     Money and funds
+    </label>
+  </h1>
+<p>
+Tell us any information you have about money and funds that raise suspicions.
+    </p>
+    <p>This could be:</p>
+    <ul class="govuk-list govuk-list--bullet">
+<li>carrying large amounts of cash in or out of the UK</li>
+<li>hawala - informal system of money transfers avoiding the formal banking system</li>
+<li>unusually high use of prepaid cash cards</li>
+<li>substantial loans to finance travel</li>
+<li>suspicion of money laundering under the Proceeds of Crime Act 2002</li>
+<li>anything else you found suspicious</li>
+
+</ul>
+</p>
+
+   <h2 class="govuk-heading-m">
+Describe in detail who has engaged in suspicious activities and how.
+  </h2>
+  <textarea class="govuk-textarea" id="money-detail" name="money-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+ 
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+<input type="hidden" id="sis-terrorism-activities-done" name="sis-terrorism-activities-done" value="Yes">
+
+<input type="hidden" id="sis-terrorism-money-done" name="sis-terrorism-money-done" value="Yes">
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Document fraud details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+      {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+      <form class="form" action="address" method="post">
+
+        
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+{{ govukRadios({
+  name: "sis-docs-helper-uk",
+  value: data["sis-docs-helper-uk"],
+  classes: "govuk-radios--inline",
+  fieldset: {
+    legend: {
+      text: "Is the helper's address in the UK?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-doc-one-done" name="sis-doc-one-done" value="yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,477 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The person you are reporting
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--DOC FRAUD TITLE-->
+{% if data["start-crime"] == "document-fraud" %}
+
+  {% if data["sis-docs-real"] == "Yes" %}
+      <h1 class="govuk-heading-l">Person 1: Genuine identity details</h1>
+      <p>Complete as much about the genuine identity as you can.</p>
+  {% else %}
+      <h1 class="govuk-heading-l">Person 1: Identity details from their fraudulent document</h1>
+      <p>Complete as much about the identity from the fraudulent document as you can.</p>
+  {% endif %}
+{% else %}
+{% endif %}
+
+{% if data ["start-crime"] == "s24" %}  
+    
+ <h1 class="govuk-heading-l">Party 1: Details</h1>
+      <p class="govuk-body">Complete as much about the person as you can.</p>
+ 
+{% else %}
+{% endif %}
+{% if data["start-crime"] == "other" or data["start-crime"] == "illegal-working" or data["start-crime"] == "marriage" or data["start-crime"] == "conditions" or data["start-crime"] == "clandestine" or data["start-crime"] == "overstayer" or data["start-crime"] == "housing" or data["start-crime"] == "rep-abuse" or data["start-crime"] == "deception" or data["start-crime"] == "facilitation" or data["start-crime"] == "slavery" or data["start-crime"] == "terrorism" or data["start-crime"] == "deception" %}
+      <h1 class="govuk-heading-l">Person 1: Details</h1>
+      <p class="govuk-body">Complete as much about the person as you can.</p>
+{% else %}
+{% endif %}
+      <!--END-->
+
+      <form class="form" action="contact" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Name",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: 'Given names'
+            },
+            hint: {
+            text: "Their first and middle names"
+          },
+            classes: "govuk-!-width-two-thirds",
+            id: "first-name",
+            name: 'sis-person1-first-name',
+            value: data ["sis-person1-first-name"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Surname'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "surname",
+            name: 'sis-person1-surname',
+            value: data ["sis-person1-surname"],
+            autocomplete: "surname"
+          }) }}
+
+          {% if data["sis-docs-real"] == "No" or data["sis-rep-suspect"] == "Legal representative"%}{% else %}
+          {{ govukInput({
+            label: {
+              text: 'Other names they are known by'
+            },
+            hint: {
+            text: "You can enter multiple aliases"
+          },
+            classes: "govuk-!-width-two-thirds",
+            id: "alias",
+            name: "sis-person1-alias",
+            value: data ["sis-person1-alias"],
+            autocomplete: "alias"
+          }) }}
+          {% endif %}
+
+
+        {% endcall %}
+
+        <hr>
+        <br/>
+
+        {{ govukDateInput({
+          id: "dob",
+          name: "sis-person1-dob",
+          fieldset: {
+            legend: {
+              text: "Date of birth",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "For example, 25 4 2001"
+          }
+        }) }}
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {% if data["start-crime"] == "document-fraud" %}{% else %}
+        {{ govukInput({
+          label: {
+            text: "If you do not know their date of birth, what is their approximate age?"
+          },
+          hint: {
+            text: "For example, 40"
+          },
+          classes: "govuk-input--width-5",
+          id: "event-name",
+          name: "sis-person1-age",
+          value: data ["sis-person1-age"]
+        }) }}
+        {% endif %}
+
+        <hr>
+        <br/>
+
+        <h2 class="govuk-heading-m">Sex</h2>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "sis-person1-sex",
+          value: data["sis-person1-sex"],
+          fieldset: {
+            legend: {
+              text: ""
+            }
+          },
+          items: [
+            {
+              value: "Male",
+              text: "Male"
+            },
+            {
+              value: "Female",
+              text: "Female"
+            },
+            {
+              value: "X or other",
+              text: "X or other"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I do not know",
+              text: "I do not know "
+            }
+          ]
+        }) }}
+        
+        {% if data["sis-rep-suspect"] == "Legal representative" %}{% else %}
+        <hr>
+        <br/>
+        <h2 class="govuk-heading-m">Country of nationality</h2>
+        <div id="event-name-hint" class="govuk-hint">
+          Start typing to find countries
+        </div>
+        <div class="govuk-form-group">
+         {% include "pink/current/templates/ref-data/sis-country-list.html" %}
+        </div>
+        {% endif %}
+
+        {% if data["start-crime"] == "housing" or data["sub-crime"] == "housing" %}
+
+        <hr>
+        <br/>
+
+        <h2 class="govuk-heading-m">Identity document number</h2>
+        <div class="govuk-form-group">
+        <div id="event-name-hint" class="govuk-hint">
+          For example, passport, identity card or driving licence
+        </div>
+        <input class="govuk-input govuk-input--width-20" id="sis-person-id-number" name="sis-person-id-number" type="text">
+        </div>
+
+        <!--{% set personDoctype %}
+{{ govukInput({
+  name: "sis-person-id-type",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Document type"
+  }
+}) }}
+{% endset -%}
+
+
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-person-id-type",
+  fieldset: {
+    legend: {
+      text: "Identity document",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Passport",
+      text: "Passport"
+    },
+    {
+      value: "Identity card",
+      text: "Identity card"
+    },
+    {
+      value: "Driving licence",
+      text: "Driving licence"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: personDoctype
+      }
+    }
+  ]
+}) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Identity document number'
+          },
+          classes: "govuk-!-width-one-third",
+          name: "sis-person-id-number",
+          value: data ["sis-person-id-number"]
+        }) }}   -->
+        
+        {% else %}{% endif %}
+
+        <hr>
+        <br/>
+
+        <h2 class="govuk-heading-m">Contact details</h2>
+
+        {% call govukFieldset({
+          legend: {
+            text: ""
+          }
+        }) %}
+      
+          {{ govukInput({
+            label: {
+              text: 'Email address'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-email",
+            name: "sis-person-email",
+            value: data ["sis-person-email"]
+          }) }}
+      
+          {{ govukInput({
+            label: {
+              text: 'Phone number'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-phone",
+            name: "sis-person-phone",
+            value: data ["sis-person-phone"]
+          }) }}
+      
+     
+  {% if data["start-crime"] == "terrorism" %}
+  {{ govukInput({
+            label: {
+              text: 'Social media or gaming details'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-social-gaming",
+            name: "sis-social-gaming",
+            value: data ["sis-social-gaming"]
+          }) }}
+    {% else %} 
+    {% endif %}   
+   {% endcall %}
+   
+  {% if data["start-crime"] == "document-fraud" %}
+  <hr>
+  <br/>
+  {% if data["sis-docs-real"] == "Yes" %}
+  <h2 class="govuk-heading-m">Home Office reference number</h2>
+  {% else %}
+  <h2 class="govuk-heading-m">Home Office reference number attached to this identity</h2>
+  {% endif %}
+
+  {{ govukInput({
+  classes: "govuk-!-width-one-half",
+  label: {
+  text: " "
+  },
+  id: "ho-ref",
+  name: "sis-person-ho-ref2",
+  value: data ["sis-person-ho-ref2"]
+  }) }}
+
+  {{ govukButton({
+  text: "Add another HO reference number",
+  href: "",
+  classes: "hods-button hods-button--secondary"
+  }) }}
+
+  <br/>
+<br/>
+  {% else %}
+  {% endif %}
+  {% if data["start-crime"] == "s24" %}
+  <hr>
+  <br/>
+  <h2 class="govuk-heading-m">Reference numbers</h2>
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: "Home Office reference number"
+},
+id: "ho-ref",
+name: "s24-person-ho-ref1",
+value: data ["s23-person-ho-ref1"]
+}) }}
+
+{{ govukButton({
+text: "Add another HO reference number",
+href: "",
+classes: "hods-button hods-button--secondary"
+}) }}
+
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: "GRO reference number"
+},
+id: "gro-ref",
+name: "s24-person-gro-ref",
+value: data ["s24-person-gro-ref"]
+}) }}
+
+<br/>
+ {% else %}
+{% endif %}
+
+{% if data["start-crime"] == "slavery" %}
+  <hr>
+  <br/>
+  <h2 class="govuk-heading-m">Reference numbers</h2>
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: "Home Office reference number"
+},
+id: "ho-ref",
+name: "s24-person-ho-ref1",
+value: data ["s23-person-ho-ref1"]
+}) }}
+
+{{ govukButton({
+text: "Add another HO reference number",
+href: "",
+classes: "hods-button hods-button--secondary"
+}) }}
+
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: "National Referral Mechanism (NRM) number"
+},
+id: "nrm-ref",
+name: "person-nrm-ref",
+value: data ["person-nrm-ref"]
+}) }}
+
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: "National Offender Management System (NOMS) number"
+},
+id: "noms-ref",
+name: "person-noms-ref",
+value: data ["person-noms-ref"]
+}) }}
+<br/>
+
+
+{% else %}
+{% endif %}
+
+
+{% if data["start-crime"] == "housing" 
+or data["start-crime"] == "conditions" 
+or data["start-crime"] == "clandestine" 
+or data["start-crime"] == "document-fraud" 
+or data["start-crime"] == "facilitation" 
+or data["start-crime"] == "illegal-working" 
+or data["start-crime"] == "idp" 
+or data["start-crime"] == "deception" 
+or data["start-crime"] == "overstayer" 
+or data["start-crime"] == "rep-abuse" 
+or data["start-crime"] == "marriage" 
+or data["start-crime"] == "terrorism" 
+or data["start-crime"] == "other" %}
+ <hr>
+  <br/>
+  <h2 class="govuk-heading-m">Home Office reference number</h2>
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: " "
+},
+id: "sis-person-ho-ref1",
+name: "sis-person-ho-ref1",
+value: data ["sis-person-ho-ref1"]
+}) }}
+
+{{ govukButton({
+text: "Add another HO reference number",
+href: "",
+classes: "hods-button hods-button--secondary"
+}) }}
+
+<br/>
+
+{% else %}
+{% endif %}
+<br/>
+
+
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

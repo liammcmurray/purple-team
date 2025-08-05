@@ -1,0 +1,319 @@
+{% extends "layouts/default.html" %}
+{% set serviceName = "Evaluate an allegation" %}
+{% set pageTitle = "Case Details" %}
+{% set containerClasses = "govuk-!-margin-top-7" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="hods-status-message" style="margin-bottom: 30px;">
+        <div>
+          <div class="hods-status-message__status">
+            Unassigned
+          </div>
+          <!--<p class="hods-status-message__extra">
+            Due for review 31 May 2021
+          </p>-->
+        </div>
+        <ul class="hods-status-message__actions">
+          <li
+            class="hods-status-message__actions__item hods-status-message__actions__item--active"
+          >
+            <a
+              class="hods-status-message__actions__link hods-status-message__actions__link--active"
+              href="#"
+            >
+              Take this case
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+
+      <h1 class="govuk-heading-xl">1010001318901 <strong class="govuk-tag govuk-tag--blue">New</strong></h1>
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <nav class="hods-header__navigation" style="margin: -30px 0 60px -10px;">
+        <ul aria-label="Top Level Navigation" class="hods-header__navigation-list">
+                    <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-summary">Summary</a>
+          </li>
+          <li class="hods-header__navigation-list__item hods-header__navigation-list__item--active">
+            <a class="hods-header__navigation-list__link" href="case-details">Details</a>
+          </li>
+                    <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-history">History</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-assess">Triage</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-allocate">Allocate</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+
+
+
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Case details</h1>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-font-size-24">The allegation</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-two-thirds">Alleged crime</th>
+            <td class="govuk-table__cell">immigration, Fake marriage</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Are children involved?</th>
+            <td class="govuk-table__cell">Not sure</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">When is it happening?</th>
+            <td class="govuk-table__cell">Ongoing</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">When did it start?</th>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Does the crime involve any vehicles, transport or travel?</th>
+            <td class="govuk-table__cell">I don't know</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Tell us which of the following the crime involves:</th>
+            <td class="govuk-table__cell">None of these</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Do you know where the crime takes place, took place or will take place?</th>
+            <td class="govuk-table__cell">No</td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-font-size-24">The people</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-two-thirds">First name</th>
+            <td class="govuk-table__cell">Robert</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Family name</th>
+            <td class="govuk-table__cell">Examplename</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Other name</th>
+            <td class="govuk-table__cell">Bobby, Bob, middle name Joseph I think</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Date of birth</th>
+            <td class="govuk-table__cell">02/05/1994</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Approximate age</th>
+            <td class="govuk-table__cell">25-34</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Nationality</th>
+            <td class="govuk-table__cell">Scotland</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Place of Birth</th>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Gender</th>
+            <td class="govuk-table__cell">Male</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Passport</th>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Identity card</th>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">NINO</th>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Where is the person now?</th>
+            <td class="govuk-table__cell">In the UK</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">UK address</th>
+            <td class="govuk-table__cell">42 broom lane, teddington, sw33 7rf</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Type of address</th>
+            <td class="govuk-table__cell">home address</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Mobile number</th>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Telephone number</th>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">email address</th>
+            <td class="govuk-table__cell"></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">does the person have a job?</th>
+            <td class="govuk-table__cell">Not sure</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">does the person study?</th>
+            <td class="govuk-table__cell">Not sure</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">does the person have a car?</th>
+            <td class="govuk-table__cell">Not sure</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Please tell us anything else about the person you are reporting that you think we should know</th>
+            <td class="govuk-table__cell">they are really rude and don't mow their lawn</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-font-size-24">The Organisation</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-two-thirds">Organisation name</th>
+            <td class="govuk-table__cell">not sure</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-font-size-24">Attached documents</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-two-thirds">Document 1</th>
+            <td class="govuk-table__cell"><a href="/assets/certificate.jpg">photo280124.jpg</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-two-thirds">Document 2</th>
+            <td class="govuk-table__cell"><a href="/assets/certificate.jpg">photo260124.jpg</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-two-thirds">Document 3</th>
+            <td class="govuk-table__cell"><a href="/assets/certificate.jpg">photo270124.jpg</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="govuk-table govuk-!-margin-bottom-9">
+        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-font-size-24">About you</caption>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header govuk-!-width-two-thirds">How did you find out about this crime?</th>
+            <td class="govuk-table__cell">Heard them in the pub saying they were paid to marry this woman to get her in the country, he was very proud and was showing off the watch he bought</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Does anyone else know about the crime?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Have you reported the crime before?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Do you know the person?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Can we act on this information without putting you or others at risk?</th>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">First name</th>
+            <td class="govuk-table__cell">Lucas</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Family name</th>
+            <td class="govuk-table__cell">Baker</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Date of birth</th>
+            <td class="govuk-table__cell">12/01/2001</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Nationality</th>
+            <td class="govuk-table__cell">England</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Gender</th>
+            <td class="govuk-table__cell">Male</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Can we contact you if required, to discuss the information you have provided?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Are you over 18?</th>
+            <td class="govuk-table__cell">Yes</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Contact number</th>
+            <td class="govuk-table__cell">0335177831</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">When to contact</th>
+            <td class="govuk-table__cell">5pm Tuesday</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third-from-desktop">
+
+    </div>
+  </div>
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-button-group">
+        <a id="confirm" href="case-taken" class="hods-button" data-module="govuk-button">
+          Take this case
+        </a>
+        <button class="hods-button hods-button--secondary" onclick="history.back()" data-module="govuk-button">
+          Back to case list
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+{% endblock %}

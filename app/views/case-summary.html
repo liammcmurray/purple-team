@@ -1,0 +1,184 @@
+{% extends "layouts/default.html" %}
+{% set serviceName = "Evaluate an allegation" %}
+{% set pageTitle = "Case Summary" %}
+{% set containerClasses = "govuk-!-margin-top-7" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="hods-status-message" style="margin-bottom: 30px;">
+        <div>
+          <div class="hods-status-message__status">
+            Unassigned
+          </div>
+          <!--<p class="hods-status-message__extra">
+            Due for review 31 May 2021
+          </p>-->
+        </div>
+        <ul class="hods-status-message__actions">
+          <li
+            class="hods-status-message__actions__item hods-status-message__actions__item--active"
+          >
+            <a
+              class="hods-status-message__actions__link hods-status-message__actions__link--active"
+              href="#"
+            >
+              Take this case
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+
+      <h1 class="govuk-heading-xl">1010001318901 <strong class="govuk-tag govuk-tag--blue">New</strong></h1>
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <nav class="hods-header__navigation" style="margin: -30px 0 60px -10px;">
+        <ul aria-label="Top Level Navigation" class="hods-header__navigation-list">
+          <li class="hods-header__navigation-list__item hods-header__navigation-list__item--active">
+            <a class="hods-header__navigation-list__link" href="case-summary">Summary</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-details">Details</a>
+          </li>
+                    <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-history">History</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-assess">Triage</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-allocate">Allocate</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+
+
+
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Case status
+          </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Harm level
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Unassessed
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="case-assess">Change<span class="govuk-visually-hidden"> harm level</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Assigned team
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Unassigned
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> assigned team</span></a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Last update
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Added to intake queue
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="#">View history</a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Details
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="#">View details</a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Source
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Public Allegation Form
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Alleged crime
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Immigration, Fake marriage
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Location
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Croydon, CR0 2WF
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Allegation
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Heard them in the pub saying they were paid to marry this woman to get her in the country, he was very proud and was showing off the watch he bought. He's always been dodgy.
+              </dd>
+            </div>
+            
+          </dl>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+
+    <div class="govuk-grid-column-one-third-from-desktop">
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

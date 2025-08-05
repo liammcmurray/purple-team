@@ -1,0 +1,114 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Where is the illegal working happening?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/pink/current/sis-working-location" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            {% if data["sis-working-date"] == "Already happened" %}
+            <h1 class="govuk-fieldset__heading"> Where was the illegal working? </h1>
+            {% else %}{% endif %}
+            {% if data["sis-working-date"] == "Ongoing" %}
+            <h1 class="govuk-fieldset__heading"> Where is the illegal working happening?</h1>
+            {% else %}{% endif %}
+            {% if data["sis-working-date"] == "Will happen in the future" %}
+            <h1 class="govuk-fieldset__heading">Where will the illegal working be?</h1>
+            {% else %}{% endif %}
+        {% if data["sis-event-done"] !== "Yes" %}
+            <h1 class="govuk-fieldset__heading">Where is the illegal working happening?</h1>
+            {% else %}{% endif %}
+            
+
+          </legend>
+          <div id="waste-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+            <!--INCLUDE SIS-LOCATION-LINK TEMPLATE WHEN BRANCHING WORKS-->
+
+            <!--<div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="sis-location-link1a" name="sis-working-location-link" type="checkbox" value="sis-working-address1">
+              <label class="govuk-label govuk-checkboxes__label" for="sis-working-address1">
+                Waterstones, 203-206 Piccadilly, St. James, London W1J 9HD
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="sis-location-link1b" name="sis-working-location-link" type="checkbox" value="sis-working-address1">
+              <label class="govuk-label govuk-checkboxes__label" for="sis-working-address1">
+                The Queens Arms, 5 South Street, Pimlico,, London SW1 3EA
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="sis-location-3" name="sis-working-location-link" type="checkbox" value="sis-working-address3">
+              <label class="govuk-label govuk-checkboxes__label" for="sis-working-address3">
+                Somewhere else
+              </label>
+            </div>-->
+
+            {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+            {{ govukCheckboxes({
+              name: "sis-working-location-link",
+              fieldset: {
+                legend: {
+                  text: ""
+                }
+              },
+              items: [
+                {
+                  value: "sis-working-address1",
+                  text: "Waterstones, 203-206 Piccadilly, St. James, London W1J 9HD"
+                },
+                {
+                  value: "sis-working-address1",
+                  text: "The Queens Arms, 5 South Street, Pimlico,, London SW1 3EA"
+                },
+                 {
+      divider: "or"
+    },
+                {
+                  value: "sis-working-address3",
+                  text: "Somewhere else"
+                }
+              ]
+            }) }}
+
+      </div>
+      <br/>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <input type="hidden" id="sis-main-breach-address" name="sis-main-breach-address" value="Yes">
+
+    <input type="hidden" id="sis-main-breach-done" name="sis-main-breach-done" value="Yes">
+
+    <input type="hidden" id="sis-location-link" name="sis-location-link" value="yes">
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

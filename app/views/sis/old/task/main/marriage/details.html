@@ -1,0 +1,156 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Victim exploitation dates
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="address" method="post" novalidate>
+
+{% if data["sis-marriage-date"] == "Yes" %}
+
+    {% set marriageexactPast %}
+    {{ govukDateInput({
+      id: "sis-marriage-past-doe",
+      namePrefix: "sis-marriage-past-doe",
+      fieldset: {
+        legend: {
+          text: "What is the exact date?"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set marriageapproxPast %}
+    {{ govukInput({
+      label: {
+        text: "What is the approximate date or date range?",
+        classes: "govuk-fieldset__legend--m"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-marriage-past-date",
+      name: "sis-marriage-past-date",
+      value: data ["sis-marriage-past-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-marriage-event-exact",
+      value: data["sis-marriage-event-exact"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the marriage or civil partnership took place?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: marriageexactPast
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: marriageapproxPast
+      }
+      }
+      ]
+      }) }}
+
+{% else %}
+
+{% set marriageexactFuture %}
+    {{ govukDateInput({
+      id: "sis-marriage-future-doe",
+      namePrefix: "sis-marriage-future-doe",
+      fieldset: {
+        legend: {
+          text: "What is the exact date?"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set marriageapproxFuture %}
+    {{ govukInput({
+      label: {
+        text: "What is the approximate date or date range?",
+        classes: "govuk-fieldset__legend--m"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-marriage-future-date",
+      name: "sis-marriage-future-date",
+      value: data ["sis-marriage-future-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-marriage-event-exact",
+      value: data["sis-marriage-event-exact"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the marriage or civil partnership will take place?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: marriageexactFuture
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: marriageapproxFuture
+      }
+      }
+      ]
+      }) }}
+
+{% endif %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

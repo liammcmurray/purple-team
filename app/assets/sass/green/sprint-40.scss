@@ -1,0 +1,59 @@
+// Parent wrapper to contain all styles to the green team (and not override any other prorotype work).
+.green-team {
+
+  // Reset for faking button as a link
+  .cop-button-to-link-reset {
+    border: 0 none;
+    border-radius: 0;
+    background: 0 none;
+    color: #1d70b8;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      text-decoration: underline;
+    }
+  }
+  .app-task-list__items {
+    padding-left: 0;
+  }
+  .app-task-list__tag,
+  .app-task-list__task-completed {
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .govuk-table__row {
+    border-bottom: 1px solid #b1b4b6;
+  }
+
+  .cop-home-card {
+    .cop-home-card__container {
+      border: 1px solid #DFDFDF;
+      min-height: 180px; /* Just for the prototype */
+    }
+    .cop-home-card__header {
+      background-color: #F3F2F1;
+      line-height: 0.85em;
+      margin:0;
+      padding: 15px 20px;
+    }
+    .cop-home-card__header--task {
+      font-size: 40px;
+    }
+    .cop-home-card__num {
+      display: block;
+      font-size: 19px;
+    }
+    .cop-home-card__footer {
+      padding: 15px 20px;
+    }
+    .cop-home-card__link {
+      line-height: 2rem;
+    }
+  }
+}

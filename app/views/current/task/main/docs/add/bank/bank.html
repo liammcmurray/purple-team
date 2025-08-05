@@ -1,0 +1,61 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Document fraud sender details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+<form class="form" action="../bank-details" method="post">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+<h1 class="govuk-heading-l">Document 1: Banking</h1>
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  name: "sis-docs-banking",
+  value: data["sis-docs-banking"],
+  fieldset: {
+    legend: {
+      text: "Are there banking details on the document?"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}

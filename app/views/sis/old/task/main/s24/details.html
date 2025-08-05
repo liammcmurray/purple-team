@@ -1,0 +1,97 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Victim exploitation dates
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="address" method="post" novalidate>
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set marriageexactFuture %}
+    {{ govukDateInput({
+      id: "sis-s24-future-doe",
+      namePrefix: "sis-s24-future-doe",
+      value: data ["sis-s24-future-doe"],
+      fieldset: {
+        legend: {
+          text: "What is the exact date?"
+        }
+      },
+      hint: {
+        text: "For example, 20 05 2023"
+      }
+    }) }}
+    {% endset -%}
+
+    {% set marriageapproxFuture %}
+    {{ govukInput({
+      label: {
+        text: "Enter the approximate date or date range, if you know it",
+        classes: "govuk-fieldset__legend--m"
+      },
+      hint: {
+        text: " "
+      },
+      classes: "govuk-input--width-10",
+      id: "sis-s24-future-date",
+      name: "sis-s24-future-date",
+      value: data ["sis-s24-future-date"]
+      }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "sis-s24-event-exact",
+      value: data["sis-s24-event-exact"],
+      fieldset: {
+      legend: {
+      text: "Do you know the exact date when the marriage or civil partnership will take place?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: marriageexactFuture
+      }
+      },
+      {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: marriageapproxFuture
+      }
+      }
+      ]
+      }) }}
+
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

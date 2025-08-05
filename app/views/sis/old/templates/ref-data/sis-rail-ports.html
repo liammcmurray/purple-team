@@ -1,0 +1,199 @@
+<style>
+    .autocomplete__input {
+      background-color:#ffffff;
+    }
+  </style>
+  
+  <div class="cop-autocomplete govuk-!-width--two-thirds">
+
+{{ govukSelect({
+    id: ukairportsID or "sis-rail-ports",
+    name: "sis-rail-ports",
+    label: {
+      text: ukairportsText or ""
+    },
+    hint: {
+      text: ukairportsHint | default("", false)
+    },
+    value: ukairportsValue or data[ukairportsName or ukairportsID or "Station of departure"] or "",
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+   {
+      value: "Aime - La Plagne",
+      text: "Aime - La Plagne"
+  }, 
+  {
+      value: "Amsterdam Centraal Train Station",
+      text: "Amsterdam Centraal Train Station"
+  },
+   {
+      value: "Ashford International",
+      text: "Ashford International"
+  },
+   {
+      value: "Avignon",
+      text: "Avignon"
+  },
+   {
+      value: "Barking Rail Freight Terminal - London",
+      text: "Barking Rail Freight Terminal - London"
+  },
+   {
+      value: "Birch Coppice",
+      text: "Birch Coppice"
+  },
+   {
+      value: "Bolton",
+      text: "Bolton"
+  },
+   {
+      value: "Bourg-Saint-Maurice",
+      text: "Bourg-Saint-Maurice"
+  },
+   {
+      value: "Brent",
+      text: "Brent"
+  },
+   {
+      value: "Brussels Eurostar Terminal",
+      text: "Brussels Eurostar Terminal"
+  },
+   {
+      value: "Burton upon Trent",
+      text: "Burton upon Trent"
+  },
+   {
+      value: "Calais Frethun",
+      text: "Calais Frethun"
+  },
+   {
+      value: "Chessy Disneyland Resort",
+      text: "Chessy Disneyland Resort"
+  },
+   {
+      value: "Coatbridge",
+      text: "Coatbridge"
+  },
+   {
+      value: "Coquelles",
+      text: "Coquelles"
+  },
+   {
+      value: "Daventry Rail Freight Terminal",
+      text: "Daventry Rail Freight Terminal"
+  },
+   {
+      value: "Dollands Moor Freight Yard",
+      text: "Dollands Moor Freight Yard"
+  },
+   {
+      value: "East Midlands Gateway Strategic Rail Freight Interchange",
+      text: "East Midlands Gateway Strategic Rail Freight Interchange"
+  },
+   {
+      value: "Ebbsfleet International",
+      text: "Ebbsfleet International"
+  },
+   {
+      value: "Eurotunnel Folkestone Terminal Cheriton",
+      text: "Eurotunnel Folkestone Terminal Cheriton"
+  },
+ 
+   {
+      value: "Felixstowe Rail Freight",
+      text: "Felixstowe Rail Freight"
+  },
+   {
+      value: "Gare de Calais - Frethun",
+      text: "Gare de Calais - Frethun"
+  },
+   {
+      value: "Grangemouth Rail Freight",
+      text: "Grangemouth Rail Freight"
+  },
+   {
+      value: "Hams Hall Rail Freight Terminal",
+      text: "Hams Hall Rail Freight Terminal"
+  },
+   {
+      value: "Immingham Rail Freight",
+      text: "Immingham Rail Freight"
+  },
+   {
+      value: "Lille Europe",
+      text: "Lille Europe"
+  },
+   {
+      value: "London Thamesport Rail Freight",
+      text: "London Thamesport Rail Freight"
+  },
+   {
+      value: "Marseille Saint Charles",
+      text: "Marseille Saint Charles"
+  },
+   {
+      value: "Moutiers",
+      text: "Moutiers"
+  },
+   {
+      value: "Paris Gare Du Nord",
+      text: "Paris Gare Du Nord"
+  },
+   {
+      value: "Port of Bristol Rail Freight",
+      text: "Port of Bristol Rail Freight"
+  },
+   {
+      value: "Port of Southampton Rail Freight",
+      text: "Port of Southampton Rail Freight"
+  },
+   {
+      value: "Rotterdam Central Station",
+      text: "Rotterdam Central Station"
+  },
+   {
+      value: "Seaforth Dock Rail Freight",
+      text: "Seaforth Dock Rail Freight"
+  },
+   {
+      value: "Stourton/Leeds",
+      text: "Stourton/Leeds"
+  },
+   {
+      value: "St Pancras",
+      text: "St Pancras"
+  },
+   {
+      value: "Teesport Rail Freight",
+      text: "Teesport Rail Freight"
+  },
+   {
+      value: "Telford International Railfreight Park",
+      text: "Telford International Railfreight Park"
+  },
+   {
+      value: "Tottenham",
+      text: "Tottenham"
+  },
+   {
+      value: "Trafford Park Euroterminal",
+      text: "Trafford Park Euroterminal"
+  },
+   {
+      value: "Wakefield Europort",
+      text: "Wakefield Europort"
+  },   
+  {
+      value: "Wembley European Freight Operations Centre",
+      text: "Wembley European Freight Operations Centre"
+  },
+ {
+      value: "Wentloog Freightliner Terminal",
+      text: "Wentloog Freightliner Terminal"
+  }
+    ]
+  }) }}
+  </div>

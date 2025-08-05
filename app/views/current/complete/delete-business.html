@@ -1,0 +1,61 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Are you sure you want to delete this business?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   <!--<span class="govuk-caption-xl">Safeguarding</span>-->
+
+    <form class="form" action="../start/intro" method="post">
+
+  
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukRadios({
+
+      name: "sis-delete",
+      value: data["sis-delete"],
+      fieldset: {
+        legend: {
+          text: "Are you sure you want to delete Business 1: Alphabet?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+    
+      items: [
+        {
+          value: "Yes, delete this business",
+          text: "Yes, delete this business"
+        },
+        {
+          value: "No, keep this business",
+          text: "No, keep this business"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

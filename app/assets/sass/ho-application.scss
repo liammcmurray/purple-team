@@ -1,0 +1,29 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+$govuk-new-link-styles: true;
+
+@import "node_modules/home-office-kit/sass/settings";
+
+/* Change the page width to match the COP width */
+$govuk-page-width: 1160px;
+@import ".tmp/sass/_plugins.scss";
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+@import "node_modules/govuk-prototype-kit/lib/assets/sass/patterns/contents-list";
+@import "node_modules/govuk-prototype-kit/lib/assets/sass/patterns/mainstream-guide";
+@import "node_modules/govuk-prototype-kit/lib/assets/sass/patterns/pagination";
+@import "node_modules/govuk-prototype-kit/lib/assets/sass/patterns/related-items";
+@import "node_modules/govuk-prototype-kit/lib/assets/sass/patterns/task-list";
+
+@import "../css/accessible-autocomplete.css";
+@import "../css/address-lookup.css";
+@import "cop/all";
+
+// THEMIS NONSENSE
+@import "purple";
+
+// Overides
+a:visited[href="#"]
+{
+  color: #1d70b8;
+}

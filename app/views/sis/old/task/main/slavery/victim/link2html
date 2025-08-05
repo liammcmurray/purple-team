@@ -1,0 +1,67 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Where is the illegal working happening?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/pink/current/sis-victim-detained-location2" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+            {% if data["sis-person2-victim-first-name"] == "" %}
+            Where has the potential or recognised victim been detained?
+            {% else %}
+
+            <h1 class="govuk-heading-l" style="margin-bottom:10px;">Where has {{ data['sis-person2-victim-first-name'] }} {{ data['sis-person2-victim-surname'] }} been detained?</h1>
+
+            
+            {% endif %}
+                </h1>
+              </legend>
+              <div class="govuk-checkboxes" data-module="govuk-radios">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="sis-victim-detained-location2" name="sis-victim-detained-location2" type="checkbox" value="address">
+                  <label class="govuk-label govuk-checkboxes__label" for="sis-victim-detained-location2">
+                    Colnbrook Immigration Removal Centre
+                    <!--{{data ["sis-person1-address-uk-1"]}} 
+                    {{data ["sis-person1-address-uk-2"]}} 
+                    {{data ["sis-person1-address-uk-city-1"]}} 
+                    {{data ["sis-person1-address-uk-county-1"]}} 
+                    {{data ["sis-person1-address-uk-postcode-1"]}}-->
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__divider">or</div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="sis-victim-detained-location2" name="sis-victim-detained-location2" type="checkbox" value="somewhere-else">
+                  <label class="govuk-label govuk-checkboxes__label" for="sis-victim-detained-location2">
+                    Somewhere else
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

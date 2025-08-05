@@ -1,0 +1,167 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Document fraud details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+      {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+      <form class="form" action="/purple/current/seized-detained" method="post">
+ {% if data["sis-doc-two-done"] == "yes" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set docSeized %}
+{{ govukInput({
+  label: {
+    text: "Which organisation or department seized them?"
+  },
+  name: 'sis-main-docs-seized-details',
+  value: data["sis-main-docs-seized-details"],
+  classes: "govuk-!-width-one-half"
+}) }}
+{% endset -%}
+
+{% set docDetained %}
+{{ govukInput({
+  label: {
+    text: "Which organisation or department detained them?"
+  },
+  name: 'sis-main-docs-detained-details',
+  value: data["sis-main-docs-detained-details"],
+  classes: "govuk-!-width-one-half"
+}) }}
+{% endset -%}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-main-docs-seized",
+  value: data["sis-main-docs-seized"],
+  fieldset: {
+    legend: {
+      text: "Have the documents been seized or detained?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Seized (permanently held)",
+      text: "Seized (permanently held)",
+      conditional: {
+          html: docSeized
+        }
+    },
+    {
+      value: "Detained (temporarily held)",
+      text: "Detained (temporarily held)",
+      conditional: {
+          html: docDetained
+        } 
+    },
+     {
+      value: "Neither seized or detained",
+      text: "Neither seized or detained"
+    },
+     {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know"
+    }
+  ]
+}) }}
+{% else %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set docSeized %}
+{{ govukInput({
+  label: {
+    text: "Which organisation or department seized it?"
+  },
+  name: 'sis-main-docs-seized-details',
+  value: data["sis-main-docs-seized-details"],
+  classes: "govuk-!-width-one-half"
+}) }}
+{% endset -%}
+
+{% set docDetained %}
+{{ govukInput({
+  label: {
+    text: "Which organisation or department detained it?"
+  },
+  name: 'sis-main-docs-detained-details',
+  value: data["sis-main-docs-detained-details"],
+  classes: "govuk-!-width-one-half"
+}) }}
+{% endset -%}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-main-docs-seized",
+  value: data["sis-main-docs-seized"],
+  fieldset: {
+    legend: {
+      text: "Has the document been seized or detained?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Seized (permanently held)",
+      text: "Seized (permanently held)",
+      conditional: {
+          html: docSeized
+        }
+    },
+    {
+      value: "Detained (temporarily held)",
+      text: "Detained (temporarily held)",
+      conditional: {
+          html: docDetained
+        } 
+    },
+     {
+      value: "Neither seized or detained",
+      text: "Neither seized or detained"
+    },
+     {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know"
+    }
+  ]
+}) }}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-doc-one-done" name="sis-doc-one-done" value="yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

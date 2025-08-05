@@ -1,0 +1,113 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="/pink/current/other-docs" method="post" novalidate>
+
+  {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+      <h1 class="govuk-heading-l" style="margin-bottom:10px;">Which documents did [Name] use to enter the country?</h1>
+  {% else %}
+
+      <h1 class="govuk-heading-l" style="margin-bottom:10px;">Which documents did {{ data['sis-person1-victim-first-name'] }} {{ data['sis-person1-victim-surname'] }} use to enter the country?</h1>
+    
+
+  {% endif %}
+      
+
+      {%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+        {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+        {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+   {% if data["sis-other-uk"] == "No" %}
+                  {{ govukRadios({
+                              name: 'other-docs',
+                              value: data['other-docs'],
+                              fieldset: {
+                                legend: {
+                                  text: ""
+                                }
+                              },
+                              items: [
+                                {
+                                  value: "Fraudulent travel documents",
+                                  text: "Fraudulent travel documents"
+                                },
+                                {
+                                  value: "Valid UK visa or permission",
+                                  text: "Valid UK visa or permission"
+                                },
+                                {
+                                  value: "None, they plan to enter clandestinely",
+                                  text: "None, they plan to enter clandestinely"
+                                },
+                                {
+                                  divider: "or"
+                                },
+                                {
+                                  value: "I do not know",
+                                  text: "I do not know"
+                                }
+                              ]
+                            }) }}
+
+  {% else %}
+                            {{ govukRadios({
+                              name: 'other-docs',
+                              value: data['other-docs'],
+                              fieldset: {
+                                legend: {
+                                  text: ""
+                                }
+                              },
+                              items: [
+                                {
+                                  value: "Fraudulent travel documents",
+                                  text: "Fraudulent travel documents"
+                                },
+                                {
+                                  value: "Valid UK visa or permission",
+                                  text: "Valid UK visa or permission"
+                                },
+                                {
+                                  value: "None, they entered clandestinely",
+                                  text: "None, they entered clandestinely"
+                                },
+                                {
+                                  divider: "or"
+                                },
+                                {
+                                  value: "I do not know",
+                                  text: "I do not know"
+                                }
+                              ]
+                            }) }}
+
+                             {% endif %}
+<input type="hidden" id="sis-other1" name="sis-other1" value="Yes">
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

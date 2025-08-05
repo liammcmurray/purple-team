@@ -1,0 +1,45 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Sorry, there is a problem with the service
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="complete" method="post">
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+<h1 class="govuk-heading-l">Sorry, there is a problem with the service</h1>
+
+<p class="govuk-body">Try again later.</p>
+<p class="govuk-body">We have saved your answers. They will be available for 30 minutes.</p>
+<p class="govuk-body">If you need to contact the IT support team, you can:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li><a href="" rel="noreferrer noopener" class="govuk-link govuk-link--no-visited-state" target="_blank">report an issue on ITnow (opens in a new tab)</a></li>
+  <li>call the service desk on 0300 073 4444</li>
+</ul>
+<p class="govuk-body">If you have any safeguarding concerns, you should alert the relevant authority.</p>
+   
+{{ govukButton({
+      text: "Try again"
+    }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

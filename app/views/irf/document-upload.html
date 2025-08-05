@@ -1,0 +1,39 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Document Upload - Internal Referral Form
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="document-upload" action="" method="post">
+
+        <h1 class="govuk-heading-l">Upload a document</h1>
+        <p class="govuk-body">You can upload any evidence, if you have it.</p>
+
+                <h2 class="govuk-heading-m">Type of document</h2>
+        {% include "/purple/includes/document-uploader.html" %}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+        classes: "hods-button",
+        text: "Continue",
+        href: "document-list"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

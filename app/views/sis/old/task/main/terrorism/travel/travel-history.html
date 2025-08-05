@@ -1,0 +1,65 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="list" method="post" novalidate>
+
+
+ 
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+     Travel history
+    </label>
+  </h1>
+  <p>
+Tell us any information you have about suspicious travel activities.
+    </p>
+    <p>This could be:</p>
+    <ul class="govuk-list govuk-list--bullet">
+  <li>journeys with multiple stops - to hide the place of departure or final destination</li>
+  <li>lack of plausible reasons for frequent trips</li>
+  <li>travelling to or through conflict zones or <a href="https://www.mi5.gov.uk/international-terrorism" class="govuk-link govuk-link--no-visited-state" rel="noreferrer noopener" target="_blank">areas known for terrorist activities (opens in a new tab)</a></li>
+  <li>travelling with a group of people as a cover story</li>
+  <li>anything else you found suspicious</li>
+   
+</ul>
+</p>
+
+   <h2 class="govuk-heading-m">
+Describe in detail who has engaged in suspicious travel activities and how. 
+  </h2>
+  
+  <textarea class="govuk-textarea" id="travel-pattern-detail" name="travel-pattern-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-terrorism-travel-done" name="sis-terrorism-travel-done" value="Yes">
+<input type="hidden" id="sis-terrorism-activities-done" name="sis-terrorism-activities-done" value="Yes">
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

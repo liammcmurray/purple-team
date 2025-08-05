@@ -1,0 +1,111 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+    <!--<span class="govuk-caption-xl">Immigration abuse details</span>-->
+
+
+    <div class="govuk-form-group">
+
+      {% if data["start-crime"] == "document-fraud" and data["idp-involved"] == "No" %}
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--l" for="more-detail">
+           Additional information
+        </label>
+      </h1>
+        <p>Tell us if there is any information you have not told us about.</p>
+        <p>This could be:
+        <ul class="govuk-list govuk-list--bullet">
+      <li>how the documents were discovered</li>
+      <li>why you suspect they are fraudulent</li>
+      <li>any further information you have about who supplied the documents</li>
+      </ul>
+      </p>
+      {% else %}{% endif %}
+
+    {% if data["start-crime"] == "housing" %}
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="more-detail">
+        Additional information
+      </label>
+    </h1>
+      <p>Tell us if there is any information you have not told us about.</p>
+      <p>This could be:
+      <ul class="govuk-list govuk-list--bullet">
+    <li>the circumstances of the offence</li>
+    <li>how you discovered it, your suspicions and your findings</li>
+    <li>any safeguarding or urgency concerns</li>
+    <li>any suspicious signs of wealth</li>
+    <li>any other information which might help us investigate</li>
+    </ul>
+    </p>
+    {% else %}{% endif %}
+
+    {% if data["start-crime"] == "other" or data["start-crime"] == "conditions" or data["start-crime"] == "slavery" or data["start-crime"] == "overstayer" or data["start-crime"] == "clandestine" or data["start-crime"] == "facilitation" or data["start-crime"] == "illegal-working" or data["start-crime"] == "marriage" or data["start-crime"] == "rep-abuse" or data["start-crime"] == "deception" or data["start-crime"] == "idp" or data["sub-crime"] == "idp" or data["idp-involved"] == "Yes" or data["start-crime"] == "s24"%}
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+      Additional information
+    </label>
+  </h1>
+  <p>Tell us if there is any information you have not told us about.</p>
+    <p>This could be:
+    <ul class="govuk-list govuk-list--bullet">
+  <li>the circumstances of the offence</li>
+  <li>how you discovered it, your suspicions and your findings</li>
+  <li>any safeguarding or urgency concerns</li>
+  <li>any other information which might help us investigate</li>
+</ul>
+</p>
+{% else %}{% endif %}
+
+    {% if data["start-crime"] == "terrorism"%}
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+      Additional information
+    </label>
+  </h1>
+  <p>Tell us if there is any information you have not told us about.</p>
+    <p>This could be:
+    <ul class="govuk-list govuk-list--bullet">
+  <li>more about your suspicions and findings</li>
+
+  <li>any safeguarding or urgency concerns</li>
+  <li>any other information which might help us investigate</li>
+</ul>
+</p>
+{% else %}{% endif %}
+ 
+    <textarea class="govuk-textarea" name='sis-more-detail' value="data['sis-more-detail']" rows="5" aria-describedby="more-detail-hint"></textarea>
+  </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+<input type="hidden" id="sis-extra-done" name="sis-extra-done" value="Yes">
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

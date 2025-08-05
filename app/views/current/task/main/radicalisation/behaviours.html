@@ -1,0 +1,167 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %} 
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="circs" method="post" novalidate>
+
+
+
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+     Behaviours 
+    </label>
+  </h1>
+    <p>
+Give as much detail as you can about the behaviours.
+    </p>
+   {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "radicalisation-behaviour",
+  fieldset: {
+    legend: {
+      text: "Which behaviours are you aware of? ",
+      classes: "govuk-fieldset__legend--m"
+    
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Absenteism",
+      text: "Absenteism"
+    },
+        {
+      value: "Abuse",
+      text: "Abuse"
+    },
+        {
+      value: "Appearance or use of symbolism",
+      text: "Appearance or use of symbolism"
+    },
+        {
+      value: "Alchohol",
+      text: "Alchohol"
+    },
+        {
+      value: "Anti-social behaviour",
+      text: "Anti-social behaviour"
+    },
+        {
+      value: "Change in appearance",
+      text: "Change in appearance"
+    },
+        {
+      value: "Becoming socially isolated",
+      text: "Becoming socially isolated"
+    },
+        {
+      value: "Closed to challenge",
+      text: "Closed to challenge"
+    },
+        {
+      value: "Confrontational",
+      text: "Confrontational"
+    },
+        {
+      value: "Desire to travel to conflict",
+      text: "Desire to travel to conflict"
+    },
+        {
+      value: "Drug use",
+      text: "Drug use"
+    },
+        {
+      value: "Expression of extremist views",
+      text: "Expression of extremist views"
+    },
+        {
+      value: "Fixated on a topic",
+      text: "Fixated on a topic"
+    },
+        {
+      value: "Honour-based violence",
+      text: "Honour-based violence"
+    },
+            {
+      value: "Legitimising use of violence",
+      text: "Legitimising use of violence"
+    },
+        {
+      value: "Quick to anger",
+      text: "Quick to anger"
+    },
+        {
+      value: "Seeking to recruit ideology",
+      text: "Seeking to recruit ideology"
+    },
+            {
+      value: "Self-harm",
+      text: "Self-harm"
+    },
+        {
+      value: "'Them and us' language",
+      text: "'Them and us' language"
+    },
+        {
+      value: "Use of inflammatory language",
+      text: "Use of inflammatory language"
+    },
+    
+
+     {
+      divider: "or"
+    },
+    {
+      value: "None of the above",
+      text: "None of the above",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+<br>
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+<h2 class="govuk-heading-">
+Explain who has shown these behaviours or similar ones, and in what context.
+    </h2>
+
+  
+  <textarea class="govuk-textarea" id="behaviour-reason" name="behaviour-reason" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+ 
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-radicalisation-done" name="sis-radicalisation-done" value="Yes">
+
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,377 @@
+<div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+    <h2 class="govuk-summary-card__title">Document 1</h2>
+    <ul class="govuk-summary-card__actions">
+      <!--<li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+          Change<span class="govuk-visually-hidden"> person </span>
+        </a>
+      </li>-->
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+          Delete<span class="govuk-visually-hidden"> document</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Document type
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-main-doc-one-type'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="type">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Document number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-main-docs1-number'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Given names
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-doc1-first-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-doc1-surname'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-doc1-dob'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sex
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-doc1-sex'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Country of nationality
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-country'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-doc1-email'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Phone number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-doc1-phone'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Home Office reference number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-doc1-ho-ref'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address known
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-docs-address'] }} {{ data ['sis-docs-address-bank'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="contact">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      {% if data["sis-docs-address"] == "Yes" or data["sis-docs-address-bank"] == "Yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address in the UK
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-docs-address-uk'] }} {{ data ['sis-docs-address-bank-uk'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="contact">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["sis-docs-address-uk"] == "Yes" %}
+
+          {% if data["sis-doc1-address-uk-1"] == "" %}{% else %}
+          {{ data['sis-doc1-address-uk-1'] }} <br/>{% endif %}
+
+          {% if data["sis-doc1-address-uk-2"] == "" %}{% else %}
+          {{ data['sis-doc1-address-uk-2'] }} <br/>{% endif %}
+
+          {% if data["sis-doc1-address-uk-city-1"] == "" %}{% else %}
+          {{ data['sis-doc1-address-uk-city-1'] }} <br/>{% endif %}
+
+          {% if data["sis-doc1-address-uk-county-1"] == "" %}{% else %}
+          {{ data['sis-doc1-address-uk-county-1'] }} <br/>{% endif %}
+
+          {% if data["sis-doc1-address-uk-postcode-1"] == "" %}{% else %}
+          {{ data['sis-doc1-address-uk-postcode-1'] }}{% endif %}
+
+          {% else %}
+
+          {% if data["sis-person1-int-address1"] == "" %}{% else %}
+          {{ data['sis-person1-int-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address2"] == "" %}{% else %}
+          {{ data['sis-person1-int-address2'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address3"] == "" %}{% else %}
+          {{ data['sis-person1-address3'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address4"] == "" %}{% else %}
+          {{ data['sis-person1-int-address4'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address5"] == "" %}{% else %}
+          {{ data['sis-person1-int-address5'] }}<br/>{% endif %}
+
+          {% if data["sis-country"] == "" %}{% else %}
+          {{ data['sis-country'] }}{% endif %}
+
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      {% else %}{% endif %}
+
+      {% if data["sis-main-doc-one-type"] == "Bank document" %}
+      {% else %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Banking details
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-docs-banking-other'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      {% endif %}
+
+      {% if data["sis-main-doc-one-type"] == "Bank document" or data["sis-docs-banking-other"] == "Yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sort code
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-docs-bank-sort-code'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Account number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-docs-bank-acc'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Cardholder's name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-docs-bank-card-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Card number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-docs-bank-card-number'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Card type
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-docs-bank-card-type'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      {% else %}{% endif %}
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Genuine or fraudulent document
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-add-docs-real"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="real">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Been verified
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-main-docs-verify"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="real">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      {% if data["sis-main-docs-verify"] == "Yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Agency or department who verified it
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-main-docs-verifier"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      {% else %}{% endif %}      
+
+    
+
+    </dl>
+  </div>
+  </div>

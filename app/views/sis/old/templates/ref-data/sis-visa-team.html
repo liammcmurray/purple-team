@@ -1,0 +1,237 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+
+{{ govukSelect({
+    id: visa-teamID or "sis-visa-team",
+    name: "sis-visa-team",
+    value: data["sis-visa-team"],
+    label: {
+      text: visateamLabelText or ""
+    },
+    hint: {
+      text: visateamHint | default("", false)
+    },
+    value: visateamValue or data[visateamName or visateamID or "visa-team" or ""],
+    
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+
+  {
+      value: "ACSC Further Submissions Unit",
+      text: "ACSC Further Submissions Unit"
+  },
+    {
+      value: "Admin Review",
+      text: "Admin Review"
+  },
+  
+  {
+      value: "Appeals",
+      text: "Appeals"
+  },
+  {
+      value: "ASRA",
+      text: "ASRA"
+  },
+  
+  {
+      value: "Asylum",
+      text: "Asylum"
+  },
+    {
+      value: "BN(O)",
+      text: "BN(O)"
+  },
+  
+  {
+      value: "Central Correspondence",
+      text: "Central Correspondence"
+  },
+    {
+      value: "Chief Caseworker Unit",
+      text: "Chief Caseworker Unit"
+  },
+  
+  {
+      value: "Citizenship",
+      text: "Citizenship"
+  },
+    {
+      value: "Complex Casework",
+      text: "Complex Casework"
+  },
+  
+  {
+      value: "EU Settlement Scheme",
+      text: "EU Settlement Scheme"
+  },
+    {
+      value: "European Casework",
+      text: "European Casework"
+  },
+  
+  {
+      value: "Family & Human Rights Unit (FHRU) ",
+      text: "Family & Human Rights Unit (FHRU) "
+  },
+    {
+      value: "Frontier Worker",
+      text: "Frontier Worker"
+  },
+  
+  {
+      value: "Litigation",
+      text: "Litigation"
+  },
+    {
+      value: "Marriage & Family",
+      text: "Marriage & Family"
+  },
+  
+  {
+      value: "Other",
+      text: "Other"
+  },
+    {
+      value: "Post Decision Casework",
+      text: "Post Decision Casework"
+  },
+  
+  {
+      value: "Premium Service Centre",
+      text: "Premium Service Centre"
+  },
+    {
+      value: "Settlement",
+      text: "Settlement"
+  },
+  
+  {
+      value: "Status Review Unit",
+      text: "Status Review Unit"
+  },
+    {
+      value: "Study",
+      text: "Study"
+  },
+  
+  {
+      value: "Subject Access Request",
+      text: "Subject Access Request"
+  },
+    {
+      value: "SVEC",
+      text: "SVEC"
+  },
+  
+  {
+      value: "Travel Document Section",
+      text: "Travel Document Section"
+  },
+    {
+      value: "Ukraine Schemes",
+      text: "Ukraine Schemes"
+  },
+  
+  {
+      value: "Verification & Enrichment Abu Dhabi",
+      text: "Verification & Enrichment Abu Dhabi"
+  },
+    {
+      value: "Verification & Enrichment Beijing",
+      text: "Verification & Enrichment Beijing"
+  },
+  
+  {
+      value: "Verification & Enrichment Croydon",
+      text: "Verification & Enrichment Croydon"
+  },
+    {
+      value: "Verification & Enrichment Delhi",
+      text: "Verification & Enrichment Delhi"
+  },
+  
+  {
+      value: "Verification & Enrichment Istanbul",
+      text: "Verification & Enrichment Istanbul"
+  },
+
+  {
+      value: "Verification & Enrichment Liverpool",
+      text: "Verification & Enrichment Liverpool"
+  },
+      {
+      value: "Verification & Enrichment Pretoria",
+      text: "Verification & Enrichment Pretoria"
+  },
+  
+  {
+      value: "Verification & Enrichment Sheffield",
+      text: "Verification & Enrichment Sheffield"
+  },
+    {
+      value: "Visit Visa Abu Dhabi",
+      text: "Visit Visa Abu Dhabi"
+  },
+  
+  {
+      value: "Visit Visa Croydon",
+      text: "Visit Visa Croydon"
+  },
+
+  {
+      value: "Visit Visa Delhi",
+      text: "Visit Visa Delhi"
+  },
+      {
+      value: "Visit Visa Istanbul",
+      text: "Visit Visa Istanbul"
+  },
+  
+  {
+      value: "Visit Visa Liverpool",
+      text: "Visit Visa Liverpool"
+  },
+    {
+      value: "Visit Visa Pretoria",
+      text: "Visit Visa Pretoria"
+  },
+  
+  {
+      value: "Visit Visa Sheffield",
+      text: "Visit Visa Sheffield"
+  },
+
+  {
+      value: "Work Non-Sponsored",
+      text: "Work Non-Sponsored"
+  },
+
+  {
+      value: "Work Sponsored",
+      text: "Work Sponsored"
+  },
+
+  {
+      value: "Work Sponsored Creative",
+      text: "Work Sponsored Creative"
+  }
+   ]
+
+
+  }) }}
+  </div>

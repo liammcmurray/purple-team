@@ -1,0 +1,42 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+
+{{ govukSelect({
+    id: bf-teamID or "sis-bf-team",
+    name: "sis-bf-team",
+    value: data["sis-bf-team"],
+    label: {
+      text: bfteamLabelText or ""
+    },
+    hint: {
+      text: bfteamHint | default("", false)
+    },
+    value: bfteamValue or data[bfteamName or bfteamID or "bf-team" or ""],
+    
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  {
+      value: "BF Front Line",
+      text: "BF Front Line"
+  },
+  {
+      value: "BF Other",
+      text: "BF Other​"
+  }
+   ]
+  }) }}
+  </div>

@@ -1,0 +1,141 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The person you are reporting
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Legal representative details</h1>
+      <p class="govuk-body">Complete as much about the legal representative as you can.</p>
+
+
+      <form class="form" action="detained" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+      {% call govukFieldset({
+          legend: {
+            text: "Name",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+          <div class="govuk-form-group">
+              <label class="govuk-label" for="event-name">
+                Given names
+              </label>
+            <div id="event-name-hint" class="govuk-hint">
+              Their first and middle names
+            </div>
+            <input class="govuk-input govuk-!-width-two-thirds" id="sis-person-legal-first-name" name="sis-person-legal-first-name" type="text">
+          </div>
+
+          {{ govukInput({
+            label: {
+              text: 'Surname'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "surname",
+            name: 'sis-person-legal-surname',
+            value: data ["sis-person-legal-surname"],
+            autocomplete: "surname"
+          }) }}
+
+        {% endcall %}
+
+        <hr>
+        <br/>
+
+        {% call govukFieldset({
+          legend: {
+            text: "Contact details",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+      
+          {{ govukInput({
+            label: {
+              text: 'Email address'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-email",
+            name: "sis-person2-legal-email",
+            value: data ["sis-person2-legal-email"]
+          }) }}
+      
+          {{ govukInput({
+            label: {
+              text: 'Phone number'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-phone",
+            name: "sis-person2-legal-phone",
+            value: data ["sis-person2-legal-phone"]
+          }) }}
+      
+        {% endcall %}
+        
+        <hr>
+        <br/>
+             {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Employer",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+         
+
+          {{ govukInput({
+            label: {
+              text: 'Name of the organisation they work for'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "surname",
+            name: 'sis-person2-legal-employer',
+            value: data ["sis-person2-legal-employer"],
+            autocomplete: "surname"
+          }) }}
+
+        {% endcall %}
+<br/>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

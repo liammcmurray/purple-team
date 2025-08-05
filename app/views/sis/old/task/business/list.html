@@ -1,0 +1,459 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Add business
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+  <form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+    <!--<span class="govuk-caption-xl">Location</span>-->
+
+{% if data["sis-biz-info"] == "yes" or data["sis-biz-info2"] == "yes"%}
+
+    <h1 class="govuk-heading-l">Check your answers</h1>
+
+  {% if data["sis-biz-info"] == "yes" %}
+
+ <!--LEGAL REP START SECTION-->
+    {% if data["start-crime"] == "rep-abuse" %}
+ <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+        <h2 class="govuk-summary-card__title">Business 1</h2>
+        <ul class="govuk-summary-card__actions">
+          <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+              Delete<span class="govuk-visually-hidden"> business </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of business
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-name1'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden">name of business</span>
+            </a>
+          </dd>
+          </div>
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-rep1-email'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business2">
+              Change<span class="govuk-visually-hidden">Email address</span>
+            </a>
+          </dd>
+          </div>
+              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Phone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-rep1-phone'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business2">
+              Change<span class="govuk-visually-hidden">Phone number</span>
+            </a>
+          </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              {% if data["sis-biz-address1-line1"] == "" %}{% else %}
+              {{ data['sis-biz-address1-line1'] }} <br/>{% endif %}
+
+              {% if data["sis-biz-address1-line2"] == "" %}{% else %}
+              {{ data['sis-biz-address1-line2'] }} <br/>{% endif %}
+
+              {% if data["sis-biz-address1-city"] == "" %}{% else %}
+              {{ data['sis-biz-address1-city'] }} <br/>{% endif %}
+
+              {% if data["sis-biz-address1-county"] == "" %}{% else %}
+              {{ data['sis-biz-address1-county'] }} <br/>{% endif %}
+
+              {% if data["sis-biz-address1-postcod"] == "" %}{% else %}
+              {{ data['sis-biz-address1-postcode'] }} <br/>{% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="address">
+              Change<span class="govuk-visually-hidden">Address</span>
+            </a>
+          </dd>
+          </div>
+
+        </dl>
+      </div>
+    </div>
+
+
+  {% else %}
+      <!--END-->
+
+
+      <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+        <h2 class="govuk-summary-card__title">Business 1</h2>
+        <ul class="govuk-summary-card__actions">
+          <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+              Delete<span class="govuk-visually-hidden"> business </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of business
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-name1'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden">name of business</span>
+            </a>
+          </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sector
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-biz-sector'] }}{{ data['sis-other-biz-sector'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden">Sector</span>
+            </a>
+          </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Role
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-role'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden">Sector</span>
+            </a>
+          </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Given names of owner or manager
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-fullname'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden"> HO reference numbers</span>
+            </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Surname of owner or manager
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-surname'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden"> HO reference numbers</span>
+            </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Job title
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-job'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden"> HO reference numbers</span>
+            </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+
+              {% if data["sis-biz-address1-line1"] == "" %}{% else %}
+              {{ data['sis-biz-address1-line1'] }} <br/>{% endif %}
+
+              {% if data["sis-biz-address1-line2"] == "" %}{% else %}
+              {{ data['sis-biz-address1-line2'] }} <br/>{% endif %}
+
+              {% if data["sis-biz-address1-city"] == "" %}{% else %}
+              {{ data['sis-biz-address1-city'] }} <br/>{% endif %}
+
+              {% if data["sis-biz-address1-county"] == "" %}{% else %}
+              {{ data['sis-biz-address1-county'] }} <br/>{% endif %}
+
+              {% if data["sis-biz-address1-postcod"] == "" %}{% else %}
+              {{ data['sis-biz-address1-postcode'] }} <br/>{% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="address">
+              Change<span class="govuk-visually-hidden">Address</span>
+            </a>
+          </dd>
+          </div>
+
+        </dl>
+      </div>
+    </div>
+
+    {% endif %}
+  {% else %}
+  {% endif %}
+    
+
+{% if data["sis-biz-info2"] == "yes" %}
+  {% if data["start-crime"] == "rep-abuse" %}
+  <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+        <h2 class="govuk-summary-card__title">Business 2</h2>
+        <ul class="govuk-summary-card__actions">
+          <!--<li class="govuk-summary-card__action"> <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden"> business </span>
+            </a>
+          </li>-->
+          <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+              Delete<span class="govuk-visually-hidden"> business </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of business
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-name2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business2">
+              Change<span class="govuk-visually-hidden">Name of business</span>
+            </a>
+          </dd>
+          </div>
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-rep2-email'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business2">
+              Change<span class="govuk-visually-hidden">Email address</span>
+            </a>
+          </dd>
+          </div>
+              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Phone number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-rep2-phone'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business2">
+              Change<span class="govuk-visually-hidden">Phone number</span>
+            </a>
+          </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data ["sis-biz-address2-line1"]}}<br/>
+              {{ data ["sis-biz-address2-line2"]}}<br/>
+              {{ data ["sis-biz-city2"]}} {{ data ["sis-biz-county2"]}}<br/>
+              {{ data ["sis-biz-postcode2"]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="address2">
+              Change<span class="govuk-visually-hidden">Address</span>
+            </a>
+          </dd>
+          </div>
+
+        </dl>
+      </div>
+    </div>
+
+
+  {% else %}
+      <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+        <h2 class="govuk-summary-card__title">Business 2</h2>
+        <ul class="govuk-summary-card__actions">
+          <!--<li class="govuk-summary-card__action"> <a class="govuk-link" href="business">
+              Change<span class="govuk-visually-hidden"> business </span>
+            </a>
+          </li>-->
+          <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+              Delete<span class="govuk-visually-hidden"> business </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of business
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-name2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business2">
+              Change<span class="govuk-visually-hidden">name of business</span>
+            </a>
+          </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sector
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-biz-sector2'] }}{{ data['sis-other-biz-sector2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business2">
+              Change<span class="govuk-visually-hidden">Sector</span>
+            </a>
+          </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of business owner or manager
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sis-business-fullname2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="business2">
+              Change<span class="govuk-visually-hidden"> HO reference numbers</span>
+            </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data ["sis-biz-address2-line1"]}}<br/>
+              {{ data ["sis-biz-address2-line2"]}}<br/>
+              {{ data ["sis-biz-city2"]}} {{ data ["sis-biz-county2"]}}<br/>
+              {{ data ["sis-biz-postcode2"]}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="address2">
+              Change<span class="govuk-visually-hidden">Address</span>
+            </a>
+          </dd>
+          </div>
+
+        </dl>
+      </div>
+    </div>
+    {% endif %}
+  {% else %}
+  {% endif %}
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another business",
+  href: "business2"
+}) }}
+
+<br/>
+
+{{ govukButton({
+classes: "hods-button",
+text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-business-done" name="sis-business-done" value="Yes">
+
+{% else %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+    <h1 class="govuk-heading-l">Add a business</h1>
+
+    <p class="govuk-body">You have not added a business yet.</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add a business",
+  href: "business"
+}) }}
+
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue without adding",
+    href: "/pink/current/task/list"
+  }) }}
+
+  <input type="hidden" id="sis-business-done" name="sis-business-done" value="No">
+
+{% endif %}
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

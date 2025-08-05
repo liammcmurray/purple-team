@@ -1,0 +1,251 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The person you are reporting
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-l">Person 1: Details</h1>
+      <p class="govuk-body">Complete as much about the person as you can.</p>
+
+
+      <form class="form" action="/pink/current/secondary-person-details" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Name",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: 'Given names'
+            },
+            hint: {
+            text: "Their first and middle names"
+          },
+            classes: "govuk-!-width-two-thirds",
+            id: "first-name",
+            name: 'secondary-person1-first-name',
+            value: data ["secondary-person1-first-name"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Surname'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "surname",
+            name: 'secondary-person1-surname',
+            value: data ["secondary-person1-surname"],
+            autocomplete: "surname"
+          }) }}
+
+          
+          {{ govukInput({
+            label: {
+              text: 'Other names they are known by'
+            },
+            hint: {
+            text: "You can enter multiple aliases"
+          },
+            classes: "govuk-!-width-two-thirds",
+            id: "alias",
+            name: "secondary-person1-alias",
+            value: data ["secondary-person1-alias"],
+            autocomplete: "alias"
+          }) }}
+     
+
+        {% endcall %}
+
+        <hr>
+        <br/>
+
+        {{ govukDateInput({
+          id: "dob",
+          name: "secondary-person1-dob",
+          fieldset: {
+            legend: {
+              text: "Date of birth",
+              classes: "govuk-label--m",
+              isPageHeading: true
+            }
+          },
+          hint: {
+            text: "For example, 25 4 2001"
+          }
+        }) }}
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+   
+        {{ govukInput({
+          label: {
+            text: "If you do not know their date of birth, what is their approximate age?"
+          },
+          hint: {
+            text: "For example, 40"
+          },
+          classes: "govuk-input--width-5",
+          id: "event-name",
+          name: "secondary-person1-age",
+          value: data ["secondary-person1-age"]
+        }) }}
+
+        <hr>
+        <br/>
+
+        <h2 class="govuk-heading-m">Sex</h2>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "secondary-person1-sex",
+          value: data["secondary-person1-sex"],
+          fieldset: {
+            legend: {
+              text: ""
+            }
+          },
+          items: [
+            {
+              value: "Male",
+              text: "Male"
+            },
+            {
+              value: "Female",
+              text: "Female"
+            },
+            {
+              value: "X or other",
+              text: "X or other"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "I do not know",
+              text: "I do not know "
+            }
+          ]
+        }) }}
+        
+       
+        <hr>
+        <br/>
+        <h2 class="govuk-heading-m">Country of nationality</h2>
+        <div id="event-name-hint" class="govuk-hint">
+          Start typing to find countries
+        </div>
+        <div class="govuk-form-group">
+         {% include "pink/current/templates/ref-data/sis-country-list.html" %}
+        </div>
+
+
+    
+        <hr>
+        <br/>
+
+   
+
+        <h2 class="govuk-heading-m">Contact details</h2>
+
+        {% call govukFieldset({
+          legend: {
+            text: ""
+          }
+        }) %}
+      
+          {{ govukInput({
+            label: {
+              text: 'Email address'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "secondary-email",
+            name: "secondary-person-email",
+            value: data ["secondary-person-email"]
+          }) }}
+      
+          {{ govukInput({
+            label: {
+              text: 'Phone number'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "secondary-phone",
+            name: "secondary-person-phone",
+            value: data ["secondary-person-phone"]
+          }) }}
+      
+
+
+ 
+   {% endcall %}
+   
+ 
+ <hr>
+  <br/>
+  <h2 class="govuk-heading-m">Home Office reference number</h2>
+{{ govukInput({
+classes: "govuk-!-width-one-half",
+label: {
+text: " "
+},
+id: "secondary-person-ho-ref1",
+name: "secondary-person-ho-ref1",
+value: data ["secondary-person-ho-ref1"]
+}) }}
+
+{{ govukButton({
+text: "Add another HO reference number",
+href: "",
+classes: "hods-button hods-button--secondary"
+}) }}
+
+<br/>
+
+
+<br/>
+
+
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

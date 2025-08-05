@@ -1,0 +1,137 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Location details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<style>
+.govuk-summary-list__actions {
+    width: 20%;
+    padding-right: 0;
+    text-align: right;
+}
+
+.govuk-summary-list__key {
+  display:none;
+}
+</style>
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+  <form id="form-next" class="form" action="/housing/task/list" method="post" novalidate>
+
+
+<!--<span class="govuk-caption-xl">Documents</span>-->
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+      <h1 class="govuk-heading-l">Check your answers</h1>
+
+             {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Document 1"
+            },
+            actions: {
+              items: [
+                {
+                  href: "document-delete",
+                  text: "Delete",
+                  visuallyHiddenText: "from University of Gloucestershire"
+                }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "Type of document"
+              },
+              value: {
+                html: "Passport"
+              }
+            },
+            {
+              key: {
+                text: "File uploaded"
+              },
+              value: {
+                html: "scan-passport_IDBUK572896.pdf"
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Document 2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "document-delete",
+                  text: "Delete",
+                  visuallyHiddenText: "this document"
+                }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: {
+                text: "Type of document"
+              },
+              value: {
+                html: "Birth Certificate"
+              }
+            },
+            {
+              key: {
+                text: "File uploaded"
+              },
+              value: {
+                html: "IMG-74382.png"
+              }
+            }
+          ]
+        }) }}
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add another document",
+  href: "doc-upload"
+}) }}
+
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+<input type="hidden" id="sis-docs-done" name="sis-docs-done" value="Yes">
+<input type="hidden" id="sis-housing-complete" name="sis-housing-complete" value="Yes">
+</form>
+
+</div>
+</div>
+
+{% endblock %}

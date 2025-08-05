@@ -1,0 +1,347 @@
+<div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+   <h2 class="govuk-summary-card__title">Person 1 ({{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }})</h2>
+     <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action">
+        <a class="govuk-link" href="type">Change<span class="govuk-visually-hidden"> information of person 1</span></a>
+      </li>
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="interruption">
+          Delete<span class="govuk-visually-hidden"> person 1</span>
+        </a>
+      </li>
+    </ul>
+  
+  </div>
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+{% if data["start-crime"] == "s24" %}
+{% else %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Person's role
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-housing-person'] }}
+        </dd>
+      </div>
+{% endif %}
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Given names
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person1-first-name'] }}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person1-surname'] }}
+        </dd>
+      </div>
+
+      {% if data["sis-person1-info"] == "yes" %} 
+      {% if data["sis-rep-suspect"] == "Legal representative" %}{% else %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Other names
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person1-alias'] }} 
+        </dd>
+      </div>
+      {% endif %}
+      {% else %}{% endif %}
+
+      {% if data["sis-rep-suspect"] == "Legal representative" %}{% else %}
+
+      {% if data["sis-person1-age"] == "" %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["sis-rep-suspect"] == "Client" %}
+          {{ data['sis-person1-dob'] }} 
+          {% else %}
+      
+          {% endif %}
+        </dd>
+      </div>
+      
+      {% else %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Aproximate age
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["sis-rep-suspect"] == "Client" %}
+          {{ data['sis-person1-age'] }} 
+          {% else %}
+          {{ data['sis-person1-age'] }} 
+          {% endif %}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Sex
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person1-sex'] }}
+        </dd>
+      </div>
+
+      {% if data["sis-rep-suspect"] == "Legal representative" %}{% else %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Country of nationality
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-country'] }}
+        </dd>
+      </div>
+      {% endif %}
+
+
+      {% if data["sis-rep-suspect"] == "Legal representative" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Business or agency name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-rep-biz-name'] }}
+        </dd>
+      </div>
+      {% else %}
+      {% endif %}
+
+      {% if data["start-crime"] == "housing" %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Identity document number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person-id-number'] }}
+        </dd>
+      </div>
+
+          {% else %}
+
+          {% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person-email'] }}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Phone number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person-phone'] }}
+        </dd>
+      </div>
+    {% if data["start-crime"] == "terrorism" %}
+  <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Social media or gaming details
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-social-gaming'] }}
+        </dd>
+      </div>
+
+    {% else %}
+      {% endif %}
+      {% if data["sis-person1-info"] == "yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Home Office reference number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['s24-person-ho-ref1'] }}
+        </dd>
+      </div>
+      {% else %}
+      {% endif %}
+ {% if data["start-crime"] == "s24" %}
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          GRO reference number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['s24-person-gro-ref'] }}
+        </dd>
+      </div>
+      {% else %}
+      {% endif %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address known
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person1-address-known'] }}
+        </dd>
+      </div>
+
+      {% if data["sis-person1-address-known"] == "Yes" or data["sis-rep-suspect"] == "Legal representative"%}
+     
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address in the UK
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Yes
+        </dd>
+      </div>
+{% if data["start-crime"] == "s24" %}{% else %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address type
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sis-person1-uk-address-type'] }}
+
+          {% if data["sis-person1-uk-address-typeb"] == "" %}{% else %}
+          <br/>{{ data['sis-person1-uk-address-typeb'] }}{% endif %}
+
+          {{ data['sis-person1-int-address-type'] }}
+        </dd>
+      </div>
+     {% endif %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {% if data["sis-rep-suspect"] == "Legal representative" %}
+          Business address
+          {% else %}
+          Address
+          {% endif %}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          
+          {% if data["sis-person1-address-uk"] == "Yes" %}
+
+
+          {% if data["sis-person1-address-uk-1"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address-uk-2"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-2'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address-uk-city-1"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-city-1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address-uk-county-1"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-county-1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address-uk-postcode-1"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-postcode-1'] }}<br/>{% endif %}
+
+          <!-- 2nd address start -->
+
+          {% if data["sis-person1-address-uk-1b"] == "" %}{% else %}
+          <br/>{{ data['sis-person1-address-uk-1b'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address-uk-2b"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-2b'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address-uk-city-1b"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-city-1b'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address-uk-county-1b"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-county-1b'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-address-uk-postcode-1b"] == "" %}{% else %}
+          {{ data['sis-person1-address-uk-postcode-1b'] }}{% endif %}
+
+           <!-- 2nd address end -->
+
+          {% else %}
+          
+          {% if data["sis-person1-int-address1"] == "" %}{% else %}
+          {{ data['sis-person1-int-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address1"] == "" %}{% else %}
+          {{ data['sis-person1-int-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address1"] == "" %}{% else %}
+          {{ data['sis-person1-int-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address4"] == "" %}{% else %}
+          {{ data['sis-person1-int-address4'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address4"] == "" %}{% else %}
+          {{ data['sis-person1-int-address4'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address4"] == "" %}{% else %}
+          {{ data['sis-person1-int-address4'] }} <br/>{% endif %}
+
+          {% if data["sis-country"] == "" %}{% else %}
+          {{ data['sis-country'] }}{% endif %}
+
+
+          {% endif %}
+        </dd>
+      </div>
+
+      
+      {% else %}
+      {% endif %}
+
+
+      {% if data["sis-person1-address"] == "sis-address-int" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Type of address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          International address
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["sis-person1-int-address1"] == "" %}{% else %}
+          {{ data['sis-person1-int-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address1"] == "" %}{% else %}
+          {{ data['sis-person1-int-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address1"] == "" %}{% else %}
+          {{ data['sis-person1-int-address1'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address4"] == "" %}{% else %}
+          {{ data['sis-person1-int-address4'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address4"] == "" %}{% else %}
+          {{ data['sis-person1-int-address4'] }} <br/>{% endif %}
+
+          {% if data["sis-person1-int-address4"] == "" %}{% else %}
+          {{ data['sis-person1-int-address4'] }} <br/>{% endif %}
+
+          {% if data["sis-country"] == "" %}{% else %}
+          {{ data['sis-country'] }}{% endif %}
+        </dd>
+      </div>
+      {% else %}
+      {% endif %}
+
+    </dl>
+  </div>
+</div>

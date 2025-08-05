@@ -1,0 +1,164 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="list" method="post" novalidate>
+
+
+
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+     Personal circumstances
+    </label>
+  </h1>
+ <p>Give as much detail as you can about the personal circumstances.</p>
+   {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "circs",
+  fieldset: {
+    legend: {
+      text: "Which personal circumstances are you aware of?",
+    classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Adolescence or period of transition",
+      text: "Adolescence or period of transition"
+    },
+        {
+      value: "Disability victim of crime",
+      text: "Disability victim of crime"
+    },
+        {
+      value: "Domestic abuse",
+      text: "Domestic abuse"
+    },
+        {
+      value: "Extremist material",
+      text: "Extremist material"
+    },
+        {
+      value: "Family breakdown",
+      text: "Family breakdown"
+    },
+        {
+      value: "Family dispute",
+      text: "Family dispute"
+    },
+        {
+      value: "Financial support",
+      text: "Financial support"
+    },
+        {
+      value: "Gang or group membership",
+      text: "Gang or group membership"
+    },
+        {
+      value: "Homelessness",
+      text: "Homelessness"
+    },
+        {
+      value: "Illness",
+      text: "Illness"
+    },
+        {
+      value: "Learning disability",
+      text: "Learning disability"
+    },
+        {
+      value: "Links to criminality",
+      text: "Links to criminality"
+    },
+        {
+      value: "Loss or bereavement",
+      text: "Loss or bereavement"
+    },
+        {
+      value: "Mental health",
+      text: "Mental health"
+    },
+            {
+      value: "Socially excluded",
+      text: "Socially excluded"
+    },
+        {
+      value: "Sexual abuse",
+      text: "Sexual abuse"
+    },
+        {
+      value: "Trauma from conflict",
+      text: "Trauma from conflict"
+    },
+            {
+      value: "Unemployment",
+      text: "Unemployment"
+    },
+        {
+      value: "Unexplained travel",
+      text: "Unexplained travel"
+    },
+        {
+      value: "Victim of hate crime",
+      text: "Victim of hate crime"
+    },
+    
+
+     {
+      divider: "or"
+    },
+    {
+      value: "None of the above",
+      text: "None of the above",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+<br>
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+ <h2 class="govuk-heading-">
+Explain who these circumstances or similar ones relate to and how. 
+    </h2>
+
+  
+  <textarea class="govuk-textarea" id="circs-reason" name="circs-reason" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+ 
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-radicalisation-done" name="sis-radicalisation-done" value="Yes">
+
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

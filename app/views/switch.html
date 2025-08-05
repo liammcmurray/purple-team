@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOV.UK Enhanced Three-State Switch Component</title>
+    <style>
+        /* GOV.UK GDS inspired styles */
+        body {
+            font-family: "GDS Transport", arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.25;
+            color: #0b0c0c;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .govuk-heading-xl {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.09375;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        .govuk-body {
+            font-size: 19px;
+            line-height: 1.31579;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Enhanced Three-State Switch Container */
+        .govuk-enhanced-switch-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        /* Main Label (left side) */
+        .govuk-switch-main-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0b0c0c;
+            margin-right: 30px; /* Minimum 30px gap */
+            min-width: 120px; /* Ensure consistent spacing */
+            user-select: none;
+        }
+
+        /* Switch and side labels container */
+        .govuk-switch-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Side Switch Labels */
+        .govuk-switch-label {
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            user-select: none;
+            cursor: pointer;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .govuk-switch-label--off {
+            color: #626a6e; /* Gray for neutral state */
+        }
+
+        .govuk-switch-label--on {
+            color: #626a6e; /* Gray for neutral state */
+        }
+
+        /* Active label states */
+        .govuk-switch-label--off.active {
+            color: #0b0c0c; /* Black when active */
+            font-weight: 600;
+        }
+
+        .govuk-switch-label--on.active {
+            color: #0b0c0c; /* Black when active */
+            font-weight: 600;
+        }
+
+        /* Three-State Switch Track */
+        .govuk-three-state-switch {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: #ffffff;
+            border: 2px solid #b1b4b6;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        /* Switch sizes */
+        .govuk-three-state-switch--small {
+            width: 75px;
+            height: 25px;
+        }
+
+        .govuk-three-state-switch--medium {
+            width: 90px;
+            height: 30px;
+        }
+
+        .govuk-three-state-switch--large {
+            width: 105px;
+            height: 35px;
+        }
+
+        /* Switch Handle */
+        .govuk-three-state-switch-handle {
+            position: absolute;
+            top: 2px;
+            background-color: #f3f2f1;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border: 1px solid #b1b4b6;
+        }
+
+        /* Handle sizes and positions */
+        .govuk-three-state-switch--small .govuk-three-state-switch-handle {
+            width: 19px;
+            height: 19px;
+            left: 25px; /* Center position for small */
+        }
+
+        .govuk-three-state-switch--medium .govuk-three-state-switch-handle {
+            width: 24px;
+            height: 24px;
+            left: 31px; /* Center position for medium */
+        }
+
+        .govuk-three-state-switch--large .govuk-three-state-switch-handle {
+            width: 29px;
+            height: 29px;
+            left: 36px; /* Center position for large */
+        }
+
+        /* State-specific styling */
+        
+        /* Neutral State (default) */
+        .govuk-three-state-switch[data-state="neutral"] {
+            background-color: #ffffff;
+            border-color: #b1b4b6;
+        }
+
+        .govuk-three-state-switch[data-state="neutral"] .govuk-three-state-switch-handle {
+            background-color: #f3f2f1;
+        }
+
+        /* On State */
+        .govuk-three-state-switch[data-state="on"] {
+            background-color: #00703c;
+            border-color: #00703c;
+        }
+
+        .govuk-three-state-switch[data-state="on"] .govuk-three-state-switch-handle {
+            background-color: #ffffff;
+        }
+
+        .govuk-three-state-switch--small[data-state="on"] .govuk-three-state-switch-handle {
+            transform: translateX(25px);
+        }
+
+        .govuk-three-state-switch--medium[data-state="on"] .govuk-three-state-switch-handle {
+            transform: translateX(31px);
+        }
+
+        .govuk-three-state-switch--large[data-state="on"] .govuk-three-state-switch-handle {
+            transform: translateX(36px);
+        }
+
+        /* Off State */
+        .govuk-three-state-switch[data-state="off"] {
+            background-color: #d4351c;
+            border-color: #d4351c;
+        }
+
+        .govuk-three-state-switch[data-state="off"] .govuk-three-state-switch-handle {
+            background-color: #ffffff;
+        }
+
+        .govuk-three-state-switch--small[data-state="off"] .govuk-three-state-switch-handle {
+            transform: translateX(-25px);
+        }
+
+        .govuk-three-state-switch--medium[data-state="off"] .govuk-three-state-switch-handle {
+            transform: translateX(-31px);
+        }
+
+        .govuk-three-state-switch--large[data-state="off"] .govuk-three-state-switch-handle {
+            transform: translateX(-36px);
+        }
+
+        /* Focus State */
+        .govuk-three-state-switch:focus {
+            outline: 3px solid #ffdd00;
+            outline-offset: 0;
+            box-shadow: inset 0 0 0 2px;
+        }
+
+        /* Hover State */
+        .govuk-three-state-switch:hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Disabled State */
+        .govuk-three-state-switch[data-disabled="true"] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .govuk-three-state-switch[data-disabled="true"]:hover {
+            box-shadow: none;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            border: 1px solid #b1b4b6;
+            padding: 20px;
+            margin: 30px 0;
+            background-color: #f3f2f1;
+        }
+
+        .demo-section h2 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* Status Display */
+        .status-display {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #b1b4b6;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        /* Instructions */
+        .instructions {
+            background-color: #1d70b8;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .instructions h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        /* Reset button */
+        .govuk-button {
+            font-family: "GDS Transport", arial, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.1875;
+            display: inline-block;
+            position: relative;
+            width: auto;
+            margin-top: 0;
+            margin-right: 0;
+            margin-left: 0;
+            margin-bottom: 22px;
+            padding: 8px 10px 7px;
+            border: 2px solid transparent;
+            border-radius: 0;
+            color: #ffffff;
+            background-color: #00703c;
+            box-shadow: 0 2px 0 #002d18;
+            text-align: center;
+            vertical-align: top;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .govuk-button:hover {
+            background-color: #005a30;
+        }
+
+        .govuk-button:active {
+            top: 2px;
+            box-shadow: 0 0 0 #002d18;
+        }
+
+        /* Event log */
+        .event-log {
+            background-color: #ffffff;
+            border: 1px solid #b1b4b6;
+            padding: 15px;
+            margin: 20px 0;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .event-log h4 {
+            margin-top: 0;
+            font-family: "GDS Transport", arial, sans-serif;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="govuk-heading-xl">GOV.UK style Three-State Switch Component</h1>
+  <p class="govuk-body"><b>Code generated by AI. Not user-tested. Proceed with caution!</b></p>  
+    
+    <p class="govuk-body">
+        An enhanced three-state toggle switch component with main labels and customizable JavaScript callbacks. 
+        Designed to match GOV.UK GDS design standards with locking mechanism once moved from neutral.
+    </p>
+
+    <div class="instructions">
+        <h3>How it works:</h3>
+        <ul>
+            <li>Switch starts in neutral position (middle, white background)</li>
+            <li>Click left side or "Off" label to move to OFF state (red background)</li>
+            <li>Click right side or "On" label to move to ON state (green background)</li>
+            <li>Once moved from neutral, the switch locks and cannot return to neutral</li>
+            <li>You can toggle between ON and OFF states after initial activation</li>
+            <li>Custom JavaScript functions are called on state changes (see console and event log)</li>
+        </ul>
+    </div>
+
+    <div class="demo-section">
+        <h2>Small Switch (25px height)</h2>
+        
+        <div class="govuk-enhanced-switch-container">
+            <label class="govuk-switch-main-label">Email Notifications</label>
+            <div class="govuk-switch-controls">
+                <label class="govuk-switch-label govuk-switch-label--off" data-switch="switch-small-1">Block</label>
+                <div class="govuk-three-state-switch govuk-three-state-switch--small" 
+                     id="switch-small-1" 
+                     data-state="neutral" 
+                     data-locked="false"
+                     data-on-callback="handleEmailNotificationOn"
+                     data-off-callback="handleEmailNotificationOff"
+                     tabindex="0"
+                     role="switch"
+                     aria-checked="mixed"
+                     aria-labelledby="label-small-1">
+                    <div class="govuk-three-state-switch-handle"></div>
+                </div>
+                <label class="govuk-switch-label govuk-switch-label--on" data-switch="switch-small-1">Allow</label>
+            </div>
+        </div>
+        
+        <div class="status-display" id="status-small-1">
+            Status: NEUTRAL (Click to activate)
+        </div>
+        
+        <button class="govuk-button" onclick="resetSwitch('switch-small-1')">Reset to Neutral</button>
+    </div>
+
+    <div class="demo-section">
+        <h2>Medium Switch (30px height)</h2>
+        
+        <div class="govuk-enhanced-switch-container">
+            <label class="govuk-switch-main-label">Data Processing</label>
+            <div class="govuk-switch-controls">
+                <label class="govuk-switch-label govuk-switch-label--off" data-switch="switch-medium-1">Disabled</label>
+                <div class="govuk-three-state-switch govuk-three-state-switch--medium" 
+                     id="switch-medium-1" 
+                     data-state="neutral" 
+                     data-locked="false"
+                     data-on-callback="handleDataProcessingOn"
+                     data-off-callback="handleDataProcessingOff"
+                     tabindex="0"
+                     role="switch"
+                     aria-checked="mixed"
+                     aria-labelledby="label-medium-1">
+                    <div class="govuk-three-state-switch-handle"></div>
+                </div>
+                <label class="govuk-switch-label govuk-switch-label--on" data-switch="switch-medium-1">Enabled</label>
+            </div>
+        </div>
+        
+        <div class="status-display" id="status-medium-1">
+            Status: NEUTRAL (Click to activate)
+        </div>
+        
+        <button class="govuk-button" onclick="resetSwitch('switch-medium-1')">Reset to Neutral</button>
+    </div>
+
+    <div class="demo-section">
+        <h2>Large Switch (35px height)</h2>
+        
+        <div class="govuk-enhanced-switch-container">
+            <label class="govuk-switch-main-label">Application Status</label>
+            <div class="govuk-switch-controls">
+                <label class="govuk-switch-label govuk-switch-label--off" data-switch="switch-large-1">Reject</label>
+                <div class="govuk-three-state-switch govuk-three-state-switch--large" 
+                     id="switch-large-1" 
+                     data-state="neutral" 
+                     data-locked="false"
+                     data-on-callback="handleApplicationApprove"
+                     data-off-callback="handleApplicationReject"
+                     tabindex="0"
+                     role="switch"
+                     aria-checked="mixed"
+                     aria-labelledby="label-large-1">
+                    <div class="govuk-three-state-switch-handle"></div>
+                </div>
+                <label class="govuk-switch-label govuk-switch-label--on" data-switch="switch-large-1">Approve</label>
+            </div>
+        </div>
+        
+        <div class="status-display" id="status-large-1">
+            Status: NEUTRAL (Click to activate)
+        </div>
+        
+        <button class="govuk-button" onclick="resetSwitch('switch-large-1')">Reset to Neutral</button>
+    </div>
+
+    <div class="demo-section">
+        <h2>Multiple Switches Example</h2>
+        
+        <div class="govuk-enhanced-switch-container">
+            <label class="govuk-switch-main-label">Marketing Communications</label>
+            <div class="govuk-switch-controls">
+                <label class="govuk-switch-label govuk-switch-label--off" data-switch="switch-marketing">Opt-out</label>
+                <div class="govuk-three-state-switch govuk-three-state-switch--medium" 
+                     id="switch-marketing" 
+                     data-state="neutral" 
+                     data-locked="false"
+                     data-on-callback="handleMarketingOptIn"
+                     data-off-callback="handleMarketingOptOut"
+                     tabindex="0"
+                     role="switch"
+                     aria-checked="mixed">
+                    <div class="govuk-three-state-switch-handle"></div>
+                </div>
+                <label class="govuk-switch-label govuk-switch-label--on" data-switch="switch-marketing">Opt-in</label>
+            </div>
+        </div>
+        
+        <div class="govuk-enhanced-switch-container">
+            <label class="govuk-switch-main-label">Third-party Data Sharing</label>
+            <div class="govuk-switch-controls">
+                <label class="govuk-switch-label govuk-switch-label--off" data-switch="switch-sharing">Deny</label>
+                <div class="govuk-three-state-switch govuk-three-state-switch--medium" 
+                     id="switch-sharing" 
+                     data-state="neutral" 
+                     data-locked="false"
+                     data-on-callback="handleDataSharingAllow"
+                     data-off-callback="handleDataSharingDeny"
+                     tabindex="0"
+                     role="switch"
+                     aria-checked="mixed">
+                    <div class="govuk-three-state-switch-handle"></div>
+                </div>
+                <label class="govuk-switch-label govuk-switch-label--on" data-switch="switch-sharing">Allow</label>
+            </div>
+        </div>
+        
+        <div class="status-display" id="status-marketing">Marketing Communications: NEUTRAL</div>
+        <div class="status-display" id="status-sharing">Third-party Data Sharing: NEUTRAL</div>
+        
+        <button class="govuk-button" onclick="resetAllSwitches()">Reset All Switches</button>
+    </div>
+
+    <div class="demo-section">
+        <h2>Event Log</h2>
+        <div class="event-log" id="event-log">
+            <h4>JavaScript Function Calls:</h4>
+            <div id="log-content">Ready - waiting for switch interactions...</div>
+        </div>
+        <button class="govuk-button" onclick="clearEventLog()">Clear Log</button>
+    </div>
+
+    <script>
+        /**
+         * Enhanced Three-State Switch Controller
+         */
+        class EnhancedThreeStateSwitch {
+            constructor(switchId) {
+                this.switchId = switchId;
+                this.switchElement = document.getElementById(switchId);
+                this.state = 'neutral';
+                this.locked = false;
+                this.onCallback = this.switchElement?.dataset.onCallback;
+                this.offCallback = this.switchElement?.dataset.offCallback;
+                this.init();
+            }
+
+            init() {
+                if (!this.switchElement) return;
+
+                // Add click event listeners
+                this.switchElement.addEventListener('click', (e) => this.handleSwitchClick(e));
+                
+                // Add keyboard support
+                this.switchElement.addEventListener('keydown', (e) => this.handleKeydown(e));
+                
+                // Add label click support
+                const labels = document.querySelectorAll(`[data-switch="${this.switchId}"]`);
+                labels.forEach(label => {
+                    label.addEventListener('click', (e) => this.handleLabelClick(e));
+                });
+            }
+
+            handleSwitchClick(event) {
+                if (this.switchElement.dataset.disabled === 'true') return;
+
+                const rect = this.switchElement.getBoundingClientRect();
+                const clickX = event.clientX - rect.left;
+                const switchWidth = rect.width;
+                const leftThird = switchWidth / 3;
+                const rightThird = (switchWidth * 2) / 3;
+
+                if (clickX < leftThird) {
+                    this.setState('off');
+                } else if (clickX > rightThird) {
+                    this.setState('on');
+                } else if (!this.locked) {
+                    // Only allow neutral if not locked
+                    this.setState('neutral');
+                }
+            }
+
+            handleLabelClick(event) {
+                const label = event.target;
+                if (label.classList.contains('govuk-switch-label--off')) {
+                    this.setState('off');
+                } else if (label.classList.contains('govuk-switch-label--on')) {
+                    this.setState('on');
+                }
+            }
+
+            handleKeydown(event) {
+                if (this.switchElement.dataset.disabled === 'true') return;
+
+                switch(event.key) {
+                    case 'ArrowLeft':
+                        event.preventDefault();
+                        this.setState('off');
+                        break;
+                    case 'ArrowRight':
+                        event.preventDefault();
+                        this.setState('on');
+                        break;
+                    case ' ':
+                    case 'Enter':
+                        event.preventDefault();
+                        // Toggle between on/off, or activate from neutral
+                        if (this.state === 'neutral') {
+                            this.setState('on');
+                        } else if (this.state === 'on') {
+                            this.setState('off');
+                        } else {
+                            this.setState('on');
+                        }
+                        break;
+                }
+            }
+
+            setState(newState) {
+                // Prevent returning to neutral once locked
+                if (this.locked && newState === 'neutral') {
+                    return;
+                }
+
+                const oldState = this.state;
+                this.state = newState;
+
+                // Lock the switch once it moves from neutral
+                if (oldState === 'neutral' && newState !== 'neutral') {
+                    this.locked = true;
+                    this.switchElement.dataset.locked = 'true';
+                }
+
+                // Update visual state
+                this.switchElement.dataset.state = newState;
+                
+                // Update ARIA attributes
+                const ariaChecked = newState === 'on' ? 'true' : newState === 'off' ? 'false' : 'mixed';
+                this.switchElement.setAttribute('aria-checked', ariaChecked);
+
+                // Update labels
+                this.updateLabels();
+
+                // Update status display
+                this.updateStatus();
+
+                // Trigger custom functions
+                this.onStateChange(oldState, newState);
+            }
+
+            updateLabels() {
+                const labels = document.querySelectorAll(`[data-switch="${this.switchId}"]`);
+                labels.forEach(label => {
+                    label.classList.remove('active');
+                    if ((label.classList.contains('govuk-switch-label--off') && this.state === 'off') ||
+                        (label.classList.contains('govuk-switch-label--on') && this.state === 'on')) {
+                        label.classList.add('active');
+                    }
+                });
+            }
+
+            updateStatus() {
+                const statusElement = document.getElementById(`status-${this.switchId}`);
+                if (statusElement) {
+                    let statusText = '';
+                    const baseText = this.getBaseStatusText();
+                    
+                    switch(this.state) {
+                        case 'neutral':
+                            statusText = `${baseText}: NEUTRAL ${this.locked ? '(Locked)' : '(Click to activate)'}`;
+                            break;
+                        case 'on':
+                            statusText = `${baseText}: ON`;
+                            break;
+                        case 'off':
+                            statusText = `${baseText}: OFF`;
+                            break;
+                    }
+                    
+                    statusElement.textContent = statusText;
+                }
+            }
+
+            getBaseStatusText() {
+                const mainLabel = this.switchElement.closest('.govuk-enhanced-switch-container')?.querySelector('.govuk-switch-main-label')?.textContent;
+                return mainLabel || `Switch ${this.switchId}`;
+            }
+
+            onStateChange(oldState, newState) {
+                console.log(`Switch ${this.switchId} changed from ${oldState} to ${newState}`);
+                
+                // Log the event
+                logEvent(`Switch "${this.getBaseStatusText()}" changed from ${oldState.toUpperCase()} to ${newState.toUpperCase()}`);
+                
+                // Call custom functions based on state and execute HTML-defined callbacks
+                if (newState === 'on' && this.onCallback) {
+                    this.executeCallback(this.onCallback, oldState, newState);
+                } else if (newState === 'off' && this.offCallback) {
+                    this.executeCallback(this.offCallback, oldState, newState);
+                }
+
+                // Also call the generic state change functions
+                switch(newState) {
+                    case 'on':
+                        onSwitchActivated(this.switchId, oldState);
+                        break;
+                    case 'off':
+                        onSwitchDeactivated(this.switchId, oldState);
+                        break;
+                    case 'neutral':
+                        onSwitchNeutral(this.switchId, oldState);
+                        break;
+                }
+            }
+
+            executeCallback(callbackName, oldState, newState) {
+                try {
+                    if (typeof window[callbackName] === 'function') {
+                        window[callbackName](this.switchId, oldState, newState);
+                        logEvent(`✓ Executed callback: ${callbackName}(${this.switchId}, ${oldState}, ${newState})`);
+                    } else {
+                        logEvent(`✗ Callback function "${callbackName}" not found`);
+                    }
+                } catch (error) {
+                    logEvent(`✗ Error executing callback "${callbackName}": ${error.message}`);
+                }
+            }
+
+            reset() {
+                this.state = 'neutral';
+                this.locked = false;
+                this.switchElement.dataset.state = 'neutral';
+                this.switchElement.dataset.locked = 'false';
+                this.switchElement.setAttribute('aria-checked', 'mixed');
+                this.updateLabels();
+                this.updateStatus();
+                logEvent(`Switch "${this.getBaseStatusText()}" reset to NEUTRAL`);
+            }
+
+            getState() {
+                return this.state;
+            }
+
+            isLocked() {
+                return this.locked;
+            }
+        }
+
+        // Initialize switches
+        const switches = {};
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const switchElements = document.querySelectorAll('.govuk-three-state-switch');
+            
+            switchElements.forEach(function(switchElement) {
+                const switchId = switchElement.id;
+                switches[switchId] = new EnhancedThreeStateSwitch(switchId);
+            });
+        });
+
+        /**
+         * Event logging functionality
+         */
+        function logEvent(message) {
+            const logContent = document.getElementById('log-content');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}`;
+            
+            if (logContent.textContent === 'Ready - waiting for switch interactions...') {
+                logContent.textContent = logEntry;
+            } else {
+                logContent.textContent = logEntry + '\n' + logContent.textContent;
+            }
+        }
+
+        function clearEventLog() {
+            document.getElementById('log-content').textContent = 'Log cleared - waiting for switch interactions...';
+        }
+
+        /**
+         * Custom callback functions (callable directly from HTML)
+         */
+        
+        // Email notification callbacks
+        function handleEmailNotificationOn(switchId, oldState, newState) {
+            console.log('Email notifications enabled');
+            logEvent('📧 Email notifications have been ENABLED');
+            // Add your custom logic here
+        }
+
+        function handleEmailNotificationOff(switchId, oldState, newState) {
+            console.log('Email notifications blocked');
+            logEvent('🚫 Email notifications have been BLOCKED');
+            // Add your custom logic here
+        }
+
+        // Data processing callbacks
+        function handleDataProcessingOn(switchId, oldState, newState) {
+            console.log('Data processing enabled');
+            logEvent('⚙️ Data processing has been ENABLED');
+            // Add your custom logic here
+        }
+
+        function handleDataProcessingOff(switchId, oldState, newState) {
+            console.log('Data processing disabled');
+            logEvent('⏹️ Data processing has been DISABLED');
+            // Add your custom logic here
+        }
+
+        // Application status callbacks
+        function handleApplicationApprove(switchId, oldState, newState) {
+            console.log('Application approved');
+            logEvent('✅ Application has been APPROVED');
+            // Add your custom logic here
+        }
+
+        function handleApplicationReject(switchId, oldState, newState) {
+            console.log('Application rejected');
+            logEvent('❌ Application has been REJECTED');
+            // Add your custom logic here
+        }
+
+        // Marketing callbacks
+        function handleMarketingOptIn(switchId, oldState, newState) {
+            console.log('Marketing communications opted in');
+            logEvent('📢 Marketing communications: OPTED IN');
+            // Add your custom logic here
+        }
+
+        function handleMarketingOptOut(switchId, oldState, newState) {
+            console.log('Marketing communications opted out');
+            logEvent('🔇 Marketing communications: OPTED OUT');
+            // Add your custom logic here
+        }
+
+        // Data sharing callbacks
+        function handleDataSharingAllow(switchId, oldState, newState) {
+            console.log('Data sharing allowed');
+            logEvent('🔓 Third-party data sharing: ALLOWED');
+            // Add your custom logic here
+        }
+
+        function handleDataSharingDeny(switchId, oldState, newState) {
+            console.log('Data sharing denied');
+            logEvent('🔒 Third-party data sharing: DENIED');
+            // Add your custom logic here
+        }
+
+        /**
+         * Generic state change functions
+         */
+        function onSwitchActivated(switchId, previousState) {
+            console.log(`Generic: Switch ${switchId} activated (ON) from ${previousState}`);
+        }
+
+        function onSwitchDeactivated(switchId, previousState) {
+            console.log(`Generic: Switch ${switchId} deactivated (OFF) from ${previousState}`);
+        }
+
+        function onSwitchNeutral(switchId, previousState) {
+            console.log(`Generic: Switch ${switchId} set to neutral from ${previousState}`);
+        }
+
+        /**
+         * Utility functions
+         */
+        function resetSwitch(switchId) {
+            if (switches[switchId]) {
+                switches[switchId].reset();
+            }
+        }
+
+        function resetAllSwitches() {
+            Object.keys(switches).forEach(switchId => {
+                switches[switchId].reset();
+            });
+            logEvent('🔄 All switches reset to NEUTRAL');
+        }
+
+        function setSwitchState(switchId, state) {
+            if (switches[switchId]) {
+                switches[switchId].setState(state);
+            }
+        }
+
+        function getSwitchState(switchId) {
+            return switches[switchId] ? switches[switchId].getState() : null;
+        }
+
+        function isSwitchLocked(switchId) {
+            return switches[switchId] ? switches[switchId].isLocked() : false;
+        }
+    </script>
+</body>
+</html>

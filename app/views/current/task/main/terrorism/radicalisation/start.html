@@ -1,0 +1,56 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="behaviours" method="post" novalidate>
+
+
+
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+      Vulnerability to radicalisation
+    </label>
+  </h1>
+ <h2 class="govuk-heading-m">Before you start</h2>
+    <p>You will need to give us details about:</p>
+    <ul class="govuk-list govuk-list--bullet">
+  <li>suspicious behaviours you have noticed - for example, expression of extremist views, honour-based violence or self-harm</li>
+  <li>personal circumstances you are aware of - for example, homelessness, gang or group membership, or links to criminality</li>
+  
+</p>
+
+
+ 
+    </div>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

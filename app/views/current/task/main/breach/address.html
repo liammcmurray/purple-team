@@ -1,0 +1,165 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The address where the working is happening
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="list" method="post">
+
+      {% if data["sis-breach-location"] == "Business" %}
+      <h1 class="govuk-heading-l">Business address where the person is working</h1>
+      <p class="govuk-body">Complete as much about the location as you can.</p>
+
+    <h2 class="govuk-heading-m">Name</h2>
+
+      {{ govukInput({
+  label: {
+    text: "Business name"
+  },
+  classes: "govuk-!-width-two-thirds",
+  id: "event-name",
+  name: "sis-breach-address-name",
+  value: data ["sis-breach-address-name"]
+}) }}
+
+      <h2 class="govuk-heading-m">Address</h2>
+
+      {% else %}{% endif %}
+
+
+      {% if data['sis-breach-location'] == "Educational establishment" %}
+      <h1 class="govuk-heading-l">Educational establishment where the person is working</h1>
+      <p class="govuk-body">Complete as much about the location as you can.</p>
+
+      <h2 class="govuk-heading-m">Name</h2>
+
+      {{ govukInput({
+      label: {
+      text: "Establishment name"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "event-name",
+      name: "sis-breach-ed-address-name",
+      value: data ["sis-breach-ed-address-name"]
+      }) }}
+
+      <h2 class="govuk-heading-m">Address</h2>
+
+      {% else %}{% endif %}
+
+
+      {% if data['sis-breach-location'] == "Residential address" %}
+      <h1 class="govuk-heading-l">Residential address where the person is working</h1>
+      <p class="govuk-body">Complete as much about the location as you can.</p>
+      {% else %}{% endif %}
+
+
+      {% if data["sis-breach-location"] == "Other" %}
+      <h1 class="govuk-heading-l">Location where the person is working</h1>
+      <p class="govuk-body">Complete as much about the location as you can.</p>
+
+      <h2 class="govuk-heading-m">Name and location type</h2>
+
+      {{ govukInput({
+      label: {
+      text: "Name of location"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "event-name",
+      name: "sis-breach-other-address-name",
+      value: data ["sis-breach-other-address-name"]
+      }) }}
+
+      {{ govukInput({
+      label: {
+      text: "Type of location"
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "event-name",
+      name: "sis-breach-other-address-type",
+      value: data ["sis-breach-other-address-type"]
+      }) }}
+
+
+      <h2 class="govuk-fieldset__legend--m">Address</h2>
+
+      {% else %}{% endif %}
+
+      {{ govukInput({
+        label: {
+          text: 'Address line 1'
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "sis-breach-location-address1",
+        name: "sis-breach-location-address1",
+        value: data["sis-breach-location-address1"]
+      }) }}
+    
+      {{ govukInput({
+        label: {
+          text: 'Address line 2'
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "sis-breach-location-address2",
+        name: "sis-breach-location-address2",
+        value: data["sis-breach-location-address2"]
+      }) }}
+    
+      {{ govukInput({
+        label: {
+          text: 'Town or city'
+        },
+        classes: "govuk-!-width-one-half",
+        id: "sis-breach-location-city",
+        name: "sis-breach-location-city",
+        value: data["sis-breach-location-city"]
+      }) }}
+    
+      {{ govukInput({
+        label: {
+          text: 'County'
+        },
+        classes: "govuk-!-width-one-half",
+        id: "sis-breach-location-county",
+        name: "sis-breach-location-county",
+        value: data["sis-breach-location-county"]
+      }) }}
+    
+      {{ govukInput({
+        label: {
+          text: 'Postcode'
+        },
+        classes: "govuk-!-width-one-third",
+        id: "sis-breach-location-postcode",
+        name: "sis-breach-location-postcode",
+        value: data["sis-breach-location--postcode"]
+      }) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-main-breach-done" name="sis-main-breach-done" value="Yes">
+
+<input type="hidden" id="sis-main-breach-address" name="sis-main-breach-address" value="Yes">
+
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "layouts/default.html" %}
+{% set serviceName = "Evaluate an allegation" %}
+{% set pageTitle = "Case Allocate" %}
+{% set containerClasses = "govuk-!-margin-top-7" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">1010001318901 <strong class="govuk-tag govuk-tag--blue">New</strong></h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <nav class="hods-header__navigation" style="margin: -30px 0 60px -10px;">
+        <ul aria-label="Top Level Navigation" class="hods-header__navigation-list">
+                    <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-summary">Summary</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-details">Details</a>
+          </li>
+                    <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-history">History</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-assess">Triage</a>
+          </li>
+          <li class="hods-header__navigation-list__item hods-header__navigation-list__item--active">
+            <a class="hods-header__navigation-list__link" href="case-allocate">Allocate</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            Based on your selections, this case will now be reallocated to Casework Intelligence Sheffield Intake IG. <a class="govuk-notification-banner__link" href="#">You should also add a flag on Atlas.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-button-group">
+        <a id="confirm" href="case-list" class="hods-button" data-module="govuk-button">
+          Confirm
+        </a>
+        <button class="hods-button hods-button--secondary" data-module="govuk-button">
+          Start again
+        </button>
+      </div>
+    </div>
+  </div>
+
+</main>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  var selectEl = document.querySelector('#fruit-type')
+  accessibleAutocomplete.enhanceSelectElement({
+    autoselect: true,
+    confirmOnBlur: true,
+    defaultValue: "",
+    minLength: 2,
+    selectElement: selectEl
+  })
+</script>
+{% endblock %}

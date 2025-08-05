@@ -1,0 +1,82 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Illegal working dates
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="list" method="post" novalidate>
+
+    <h1 class="govuk-heading-l">Do you know roughly what the monthly rent is?</h1>
+
+    {% set sisHousingCost %}
+    {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          value: data["sis-housing-cost-amount"],
+          name: "sis-housing-cost-amount",
+          label: {
+            text: "Rent amount"
+          },
+          prefix: {
+            text: "£"
+          },
+          suffix: {
+            text: "per month"
+          },
+          classes: "govuk-input--width-5",
+          spellcheck: false
+        }) }}
+    {% endset -%}
+
+    
+
+    {{ govukRadios({
+      name: "sis-housing-cost",
+      value: data["sis-housing-cost"],
+      fieldset: {
+      legend: {
+      text: "",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: sisHousingCost
+      }
+      },
+      {
+      value: "No",
+      text: "No"
+      }
+      ]
+      }) }}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

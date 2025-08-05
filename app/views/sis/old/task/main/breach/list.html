@@ -1,0 +1,529 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Location details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+
+
+       {% if data["sub-crime"] == "conditions" %}
+  
+       <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+
+   <h2 class="govuk-summary-card__title">Breach of conditions details</h2>
+     <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+          <span class="govuk-visually-hidden"> person 1</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="govuk-summary-card__content">
+
+    <dl class="govuk-summary-list">
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Suspected of breach of conditions
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sisVisaType"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details about the suspects
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+              </dl>
+    </div>
+  </div>
+        {% else %}
+
+
+    {% endif %}
+           {% if data["sub-crime"] == "conditions" %}
+       {% include "pink/current/templates/summary/secondary-person1.html" %}
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of conditions
+          </dt>
+          <dd class="govuk-summary-list__value">
+  
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+      </dl>
+    </div>
+  </div>
+        
+
+            {% else %}
+
+
+
+    <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+      <h2 class="govuk-summary-card__title">Person 1: {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }}</h2>
+      <ul class="govuk-summary-card__actions">
+        <!--<li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> person </span>
+          </a>
+        </li>
+        <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+            Delete<span class="govuk-visually-hidden"> location</span>
+          </a>
+        </li>-->
+      </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of conditions
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sisVisaType"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Breaching conditions by working
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-work"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="work">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        {% if data["sis-breach-work-aware"] == "Yes" %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-location"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="type">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        {% if data["sis-breach-location"] == "Business" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Business name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-address-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+
+        {% if data["sis-breach-location"] == "Educational establishment" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Establishment name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-ed-address-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+
+        {% if data["sis-breach-location"] == "Other" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-other-address-name"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-other-address-type"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+        {% if data["sis-breach-location-link"] == "sis-breach-biz-address1" %}
+            Waterstones<br/>
+            203-206 Piccadilly<br/>
+            St. James<br/>
+            London<br/>
+            W1J 9HD
+        {% else %}
+        {% endif %}
+
+        {% if data["sis-breach-location-link"] == "sis-breach-biz-address2" %}
+          The Queens Arms<br/>
+          5 South Street<br/>
+          Pimlico,<br/>
+          London<br/>
+          SW1 3EA
+        {% else %}
+        {% endif %}
+       
+        {% if data["sis-breach-location-address1"] == "" %}{% else %}
+        {{ data['sis-breach-location-address1'] }} <br/>{% endif %}
+
+        {% if data["sis-breach-location-address2"] == "" %}{% else %}
+        {{ data['sis-breach-location-address2'] }} <br/>{% endif %}
+
+        {% if data["sis-breach-location-city"] == "" %}{% else %}
+        {{ data['sis-breach-location-city'] }} <br/>{% endif %}
+
+        {% if data["sis-breach-location-county"] == "" %}{% else %}
+        {{ data['sis-breach-location-county'] }} <br/>{% endif %}
+
+        {% if data["sis-breach-location-postcode"] == "" %}{% else %}
+        {{ data['sis-breach-location-postcode'] }} <br/>{% endif %}
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="link">
+            Change<span class="govuk-visually-hidden">address</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}
+        {% endif %}
+
+      </dl>
+    </div>
+  </div>
+
+  <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+
+   {% if data["sis-main-breach-done2"] == "Yes" %}
+    <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+      <h2 class="govuk-summary-card__title">Person 1: {{ data['sis-person2-first-name'] }} {{ data['sis-person2-surname'] }}</h2>
+      <ul class="govuk-summary-card__actions">
+        <!--<li class="govuk-summary-card__action"> <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> person </span>
+          </a>
+        </li>
+        <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+            Delete<span class="govuk-visually-hidden"> location</span>
+          </a>
+        </li>-->
+      </ul>
+    </div>
+    <div class="govuk-summary-card__content">
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of conditions
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sisVisaType2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Breaching conditions by working
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-work2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="work2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        {% if data["sis-breach-work-aware2"] == "Yes" %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-location2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="type2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+        {% if data["sis-breach-location2"] == "Business" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Business name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-address-name2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+
+        {% if data["sis-breach-location2"] == "Educational establishment" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Establishment name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-ed-address-name2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+
+        {% if data["sis-breach-location2"] == "Other" %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Name of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-other-address-name2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Type of location
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-breach-other-address-type2"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="address2">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}{% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+        {% if data["sis-breach-location-link2"] == "sis-breach-biz-address1" %}
+            Waterstones<br/>
+            203-206 Piccadilly<br/>
+            St. James<br/>
+            London<br/>
+            W1J 9HD
+        {% else %}
+        {% endif %}
+
+        {% if data["sis-breach-location-link2"] == "sis-breach-biz-address2" %}
+          The Queens Arms<br/>
+          5 South Street<br/>
+          Pimlico,<br/>
+          London<br/>
+          SW1 3EA
+        {% else %}
+        {% endif %}
+       
+        {% if data["sis-breach-location-address1"] == "" %}{% else %}
+        {{ data['sis-breach-location-address1'] }} <br/>{% endif %}
+
+        {% if data["sis-breach-location-address2"] == "" %}{% else %}
+        {{ data['sis-breach-location-address2'] }} <br/>{% endif %}
+
+        {% if data["sis-breach-location-city2"] == "" %}{% else %}
+        {{ data['sis-breach-location-city2'] }} <br/>{% endif %}
+
+        {% if data["sis-breach-location-county2"] == "" %}{% else %}
+        {{ data['sis-breach-location-county2'] }} <br/>{% endif %}
+
+        {% if data["sis-breach-location-postcode2"] == "" %}{% else %}
+        {{ data['sis-breach-location-postcode2'] }} <br/>{% endif %}
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="link2">
+            Change<span class="govuk-visually-hidden">address</span>
+          </a>
+        </dd>
+        </div>
+        {% else %}
+        {% endif %}
+
+      </dl>
+    </div>
+  </div>
+  {% endif %}
+    {% endif %}
+
+        <input type="hidden" id="sis-breach-done" name="sis-breach-done" value="Yes">
+    {% if data["sis-person2-info"] == "yes" %}
+
+{% if data["sis-main-breach-done2"] == "Yes" or data["sub-crime"] == "conditions" %}
+
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue"
+}) }}
+
+
+{% else %}
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue to next person",
+    href: "details2"
+  }) }}
+
+  {% endif %}
+
+{% else %} 
+
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+  {% endif %}
+
+
+
+  <!--{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+        <h1 class="govuk-heading-l">Breach of visa conditions</h1>
+
+      <p class="govuk-body">You have not added a breach of visa conditions yet.</p>
+
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+    classes: "hods-button--secondary",
+    text: "Add a breach of visa conditions",
+    href: "details"
+  }) }}
+
+  <br/>
+
+    {{ govukButton({
+      classes: "hods-button",
+      text: "Continue",
+      href: "/pink/current/task/list"
+    }) }}
+
+    <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="No">
+
+-->
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

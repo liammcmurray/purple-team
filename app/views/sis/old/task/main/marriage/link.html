@@ -1,0 +1,71 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Location of marriage
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<span class="govuk-caption-xl">Person type</span>-->
+
+    <form class="form" action="organiser" method="post">
+
+      <h1 class="govuk-heading-l">
+        Who facilitated the marriage or civil partnership?
+      </h1>
+
+<div class="govuk-form-group">
+<div class="govuk-radios" data-module="govuk-radios">
+
+  {% if data["sis-person1-first-name"] == "" %}{% else %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" name="sis-marriage-person-link" type="radio" value="data ['sis-marriage-person-link']">
+    <label class="govuk-label govuk-radios__label">
+      Person 1: {{ data ["sis-person1-first-name"] }}  {{ data ["sis-person1-surname"] }}
+    </label>
+  </div>
+  {% endif %}
+
+  <!--{% if data["sis-person2-first-name"] == "" %}{% else %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" name="sis-marriage-person-link" type="radio" value=" data ['sis-marriage-person-link'] ">
+    <label class="govuk-label govuk-radios__label">
+      Person 2 {{ data ["sis-person2-first-name"] }}  {{ data ["sis-person2-surname"] }}
+    </label>
+  </div>
+  {% endif %}-->
+
+      <div class="govuk-radios__divider">or</div>
+
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" name="sis-marriage-person-link" type="radio" value="sis-somewhere-else">
+          <label class="govuk-label govuk-radios__label" for="where-do-you-live-6">
+            Someone else
+          </label>
+        </div>
+
+      </div>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <input type="hidden" id="sis-location-link" name="sis-location-link" value="yes">
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

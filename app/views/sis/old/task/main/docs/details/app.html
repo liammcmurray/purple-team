@@ -1,0 +1,97 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Document fraud details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+      {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+      <form class="form" action="app-help" method="post">
+
+        {% call govukFieldset({
+          legend: {
+            text: "What is the application reference number?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: ' '
+            },
+            classes: 'govuk-!-width-one-half',
+            name: 'sis-main-doc-app-number',
+            value: data["sis-main-doc-app-number"]
+          }) }}
+
+<!--{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-main-docs-helper",
+  value: data["sis-main-docs-helper"],
+  classes: "govuk-radios--inline",
+  fieldset: {
+    legend: {
+      text: "Does the individual have a helper for the application process?"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}-->
+
+{% endcall %}
+
+
+        {% set hoBizref %}
+        {{ govukInput({
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: "HO reference number"
+          },
+          name: 'sis-business-ho-ref2'
+        }) }}
+        <br/>
+
+        {{ govukButton({
+          text: "Add another HO reference number",
+          href: "other",
+          classes: "hods-button hods-button--secondary"
+        }) }}
+        {% endset -%}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-main-doc-details2" name="sis-main-doc-details2" value="Yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

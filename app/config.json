@@ -1,8 +1,9 @@
 {
-  "serviceName": "SIS form",
-  "plugins": {
-    "govuk-frontend": {
-      "rebrand": true
+  "serviceName":"Central Operations Platform",
+  "useAuth": false,
+  "pluginConfig": {
+    "home-office-kit": {
+      "logData": true
     }
   }
 }

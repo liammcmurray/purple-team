@@ -1,0 +1,98 @@
+{% extends "layouts/default.html" %}
+{% set serviceName = "Evaluate an allegation" %}
+{% set pageTitle = "Case Allocate" %}
+{% set containerClasses = "govuk-!-margin-top-7" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="hods-status-message" style="margin-bottom: 30px;">
+        <div>
+          <div class="hods-status-message__status">
+            Unassigned
+          </div>
+          <!--<p class="hods-status-message__extra">
+            Due for review 31 May 2021
+          </p>-->
+        </div>
+        <ul class="hods-status-message__actions">
+          <li
+            class="hods-status-message__actions__item hods-status-message__actions__item--active"
+          >
+            <a
+              class="hods-status-message__actions__link hods-status-message__actions__link--active"
+              href="#"
+            >
+              Take this case
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+
+      <h1 class="govuk-heading-xl">1010001318901 <strong class="govuk-tag govuk-tag--blue">New</strong></h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <nav class="hods-header__navigation" style="margin: -30px 0 60px -10px;">
+        <ul aria-label="Top Level Navigation" class="hods-header__navigation-list">
+                    <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-summary">Summary</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-details">Details</a>
+          </li>
+                    <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-history">History</a>
+          </li>
+          <li class="hods-header__navigation-list__item">
+            <a class="hods-header__navigation-list__link" href="case-assess">Triage</a>
+          </li>
+          <li class="hods-header__navigation-list__item hods-header__navigation-list__item--active">
+            <a class="hods-header__navigation-list__link" href="case-allocate">Allocate</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% include "/purple/includes/allocate.html" %}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-button-group">
+        <a id="confirm" href="case-allocate-confirm" class="hods-button" data-module="govuk-button">
+          Allocate case
+        </a>
+        <button class="hods-button hods-button--secondary" data-module="govuk-button">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+</main>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+  var selectEl = document.querySelector('#fruit-type')
+  accessibleAutocomplete.enhanceSelectElement({
+    autoselect: true,
+    confirmOnBlur: true,
+    defaultValue: "",
+    minLength: 2,
+    selectElement: selectEl
+  })
+</script>
+{% endblock %}

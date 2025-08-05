@@ -1,0 +1,68 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Has the person already entered the UK?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="details" method="post" novalidate>
+
+
+
+<fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        
+          <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+            Have you already reported this to the relevant organisation?
+          </h1>
+       
+   <div id="abuse-hint" class="govuk-hint">
+    For example, the Department for Work and Pensions. If you are the first to discover this information, you need to report it.
+
+    </div>
+
+
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+ <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-funds-reported-n" name="sis-funds-reported" type="radio" value="Yes">
+        <label class="govuk-label govuk-radios__label" for="sis-funds-reported-y">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-funds-reported-n" name="sis-funds-reported" type="radio" value="No">
+        <label class="govuk-label govuk-radios__label" for="sis-funds-reported-n">
+          No
+        </label>
+      </div>
+    </div>
+      </fieldset>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-event-done" name="sis-event-done" value="Yes">
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Overstaying visa
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>
+<h1 class="govuk-heading-l">Breach of visa conditions</h1>-->
+
+      <form class="form" action="/pink/current/overstayer-visa-route" method="post">
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+        {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">What type of visa or permission has the suspect or offender overstayed?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">What type of visa or permission has {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} overstayed?</h1>
+        {% endif %}
+
+        {% include "pink/current/templates/list/visa-type.html" %}
+
+      </fieldset>
+       </div> 
+
+        <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The How did the person, or people, enter the country clandestinely?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+<h1 class="govuk-heading-l">About the facilitator</h1>
+
+<form class="form" action="list" method="post">
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% if data["sis-marriage-person-link"] == "sis-somewhere-else" %}
+{{ govukTextarea({
+label: {
+text: "Who facilitated the marriage or civil partnership?",
+isPageHeading: false
+},
+hint: {
+text: "Tell us their name or the business name, and their contact details"
+},
+id: "marriage-facilitator",
+classes: "govuk-input--width-30",
+rows: "4",
+name: "marriage-facilitator",
+value: data ["marriage-facilitator"]
+}) }}
+
+{{ govukTextarea({
+  label: {
+  text: "Why do you suspect them of facilitating it?",
+  isPageHeading: false
+  },
+  id: "marriage-facilitator2",
+  classes: "govuk-input--width-30",
+  rows: "4",
+  name: "marriage-facilitator2",
+  value: data ["marriage-facilitator2"]
+  }) }}
+
+{% else %}
+
+{{ govukTextarea({
+  label: {
+  text: "Why do you suspect them of facilitating the marriage or civil partnership?",
+  isPageHeading: false
+  },
+  id: "marriage-facilitator2",
+  classes: "govuk-input--width-30",
+  rows: "4",
+  name: "marriage-facilitator2",
+  value: data ["marriage-facilitator2"]
+  }) }}
+
+{% endif %}
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-offence-details-done" name="sis-offence-details-done" value="Yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

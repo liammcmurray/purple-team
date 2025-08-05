@@ -1,0 +1,179 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+
+{{ govukSelect({
+    id:ice-teamID or "sis-ice-team",
+    name: "sis-ice-team",
+    value: data["sis-ice-team"],
+    label: {
+      text: iceteamLabelText or ""
+    },
+    hint: {
+      text: iceteamHint | default("", false)
+    },
+    value: iceteamValue or data[iceteamName or iceteamID or "ice-team" or ""],
+    
+    items: [
+         {
+      value: "",
+      text: ""
+  },
+     {
+      value: "ICE Central London",
+      text: "ICE Central London"
+  },
+  {
+      value: "ICE East Midlands ",
+      text: "ICE East Midlands "
+  },
+    {
+      value: "ICE East of England",
+      text: "ICE East of England"
+  },
+    {
+      value: "ICE North East London",
+      text: "ICE North East London"
+  },
+    {
+      value: "ICE North East, Yorkshire & Humber",
+      text: "ICE North East, Yorkshire & Humber"
+  },
+    {
+      value: "ICE North West",
+      text: "ICE North West"
+  },
+    {
+      value: "ICE Northern Ireland",
+      text: "ICE Northern Ireland"
+  },
+    {
+      value: "ICE Scotland",
+      text: "ICE Scotland"
+  },
+    {
+      value: "ICE South Central ",
+      text: "ICE South Central "
+  },
+    {
+      value: "ICE South East",
+      text: "ICE South East"
+  },
+    {
+      value: "ICE South London",
+      text: "ICE South London"
+  },
+    {
+      value: "ICE Volume Crime Team",
+      text: "ICE Volume Crime Team"
+  },
+    {
+      value: "ICE Wales & West England",
+      text: "ICE Wales & West England"
+  },
+    {
+      value: "ICE West London ",
+      text: "ICE West London "
+  },
+    {
+      value: "ICE West Midlands",
+      text: "ICE West MidlandsU"
+  },
+    {
+      value: "ROM Capital Building (Merseyside)",
+      text: "ROM Capital Building (Merseyside)"
+  },
+    {
+      value: "ROM Cardiff (Wales)",
+      text: "ROM Cardiff (Wales)"
+  },
+    {
+      value: "ROM Dallas Court (Lancashire)",
+      text: "ROM Dallas Court (Lancashire)"
+  },
+    {
+      value: "ROM Drumkeen House (Northern Ireland)",
+      text: "ROM Drumkeen House (Northern Ireland)"
+  },
+      {
+      value: "ROM East of England",
+      text: "ROM East of England"
+  },
+      {
+      value: "ROM Eaton House (West London)",
+      text: "ROM Eaton House (West London)"
+  },
+      {
+      value: "ROM Festival Court (Scotland)",
+      text: "ROM Festival Court (Scotland)"
+  },
+
+      {
+      value: "ROM Loughborough (East Midlands)",
+      text: "ROM Loughborough (East Midlands)"
+  },
+      {
+      value: "ROM Lunar House (South London)",
+      text: "ROM Lunar House (South London)"
+  },
+      {
+      value: "ROM Middlesbrough (North East & Cumbria)",
+      text: "ROM Middlesbrough (North East & Cumbria)"
+  },
+      {
+      value: "ROM Sandford House (West Midlands)",
+      text: "ROM Sandford House (West Midlands)"
+  },
+      {
+      value: "ROM Sheffield (South Yorkshire)",
+      text: "ROM Sheffield (South Yorkshire)"
+  },
+      {
+      value: "ROM South Central",
+      text: "ROM South Central"
+  },
+      {
+      value: "ROM South East",
+      text: "ROM South East"
+  },
+      {
+      value: "ROM South West",
+      text: "ROM South West"
+  },
+      {
+      value: "ROM Swansea (Wales)",
+      text: "ROM Swansea (Wales)"
+  },
+      {
+      value: "ROM Waterside Court (West Yorkshire)",
+      text: "ROM Waterside Court (West Yorkshire)"
+  },
+      {
+      value: "IE Rapid Response Team",
+      text: "IE Rapid Response Team"
+  },
+      {
+      value: "National Command & Control Unit (NCCU)",
+      text: "National Command & Control Unit (NCCU)"
+  },
+      {
+      value: "Sham Marriage Coordination & Operational Governance Team",
+      text: "Sham Marriage Coordination & Operational Governance Team"
+  }
+
+
+
+   ]
+
+  }) }}
+  </div>

@@ -1,0 +1,149 @@
+{%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+  {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+  {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+      {% if errorSummary.items.length %}
+        {{ govukErrorSummary({
+          titleText: 'There is a problem',
+          errorList: errorSummary.items
+        }) }}
+      {% endif %}
+
+                        {% set docsOther %}
+                        {{ govukInput({
+                          id: "docs-other",
+                          name: "docs-other",
+                          autocomplete: "docs-other",
+                          classes: "govuk-!-width-one-third",
+                          label: {
+                            text: "Document type"
+                          }
+                        }) }}
+                      {% endset -%}
+
+                      {{ govukRadios({
+                        name: "sis-doc",
+                        hint: {
+                          text: " "
+                        },
+                        items: [
+                          {
+                            value: "Bank document",
+                            text: "Bank document"
+                          },
+                          {
+                            value: "Birth certificate",
+                            text: "Birth certificate"
+                          },
+                           {
+                            value: "Biometric residence permit (BRP)",
+                            text: "Biometric residence permit (BRP)"
+                          },
+                          {
+                            value: "Driving licence",
+                            text: "Driving licence"
+                          },
+                          {
+                            value: "Educational document",
+                            text: "Educational document"
+                          },
+                          {
+                            value: "Identity card",
+                            text: "Identity card"
+                          },
+                          {
+                            value: "Marriage certificate",
+                            text: "Marriage certificate"
+                          },
+                          {
+                            value: "Passport",
+                            text: "Passport"
+                          },
+                          {
+                            value: "Payslip",
+                            text: "Payslip"
+                          },
+                          
+                          {
+                            value: "Photo",
+                            text: "Photo"
+                          },
+                           {
+                            value: "Travel document",
+                            text: "Travel document"
+                          },
+                           {
+                            value: "Visa",
+                            text: "Visa"
+                          },
+
+                          {
+                            divider: "or"
+                          },
+                          {
+                            value: "Other",
+                            text: "Other",
+                            conditional: {
+                              html: docsOther
+                            }
+                          }
+                        ]
+                      }) }}
+                     
+
+        <!--{% set uploadHtml %}
+          {{ govukFileUpload({
+            id: "documents",
+            name: "documents",
+            classes: 'moj-multi-file-upload__input',
+            label: {
+              text: "Upload documents",
+              classes: 'govuk-label--m'
+            },
+            hint: {
+              text: "Documents must be less than 25MB each"
+            },
+            attributes: { multiple: '' },
+            errorMessage: errorMessage
+          }) }}
+
+          {{govukButton({
+            text: 'Upload file',
+            classes: 'govuk-button--secondary moj-multi-file-upload__button'
+          })}}
+        {% endset %}-->
+
+        {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload({
+  id: "file-upload-1",
+  name: "file-upload-1",
+  label: {
+    text: "Upload a file",
+    classes: "govuk-label--m"
+  }
+}) }}
+
+        <!--{{ mojMultiFileUpload({
+          uploadedFiles: {
+            heading: { text: 'Uploaded documents' },
+            items: uploadedFiles
+          },
+          uploadHtml: uploadHtml
+        }) }}-->
+
+
+
+{% block pageScripts %}
+<script type="text/javascript" src="/public/javascripts/moj/all.js"></script>
+<script type="text/javascript">
+
+  if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+    new MOJFrontend.MultiFileUpload({
+      container: $('.moj-multi-file-upload'),
+      uploadUrl: '/ajax-upload-url',
+      deleteUrl: '/ajax-delete-url'
+    });
+  }
+</script>
+{% endblock %}

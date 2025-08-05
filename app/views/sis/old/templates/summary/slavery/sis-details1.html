@@ -1,0 +1,144 @@
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Type of exploitation
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-slavery-type'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="type">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Exploitation still happening
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-victim-event"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="details">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      {% if data["sis-victim-event"] == "No" %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Exact date known
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-victim-event-exact"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="date">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      {% if data["sis-victim-event-exact"] == "Yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Exact date
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-victim-past-doe"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="date">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      {% else %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Aproximate date or date range
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-victim-past-date"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="date">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      {% endif %}
+
+      {% else %}{% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Type of location
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-victim-location"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="address">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Details about the location
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-victim-location-details"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="address">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address
+        </dt>
+        <dd class="govuk-summary-list__value">
+        {% if data["sis-slavery-location"] == "somewhere-else" %}
+
+          {% if data["sis-victim-address-uk-line1"] == "" %}{% else %}
+          {{ data['sis-victim-address-uk-line1'] }} <br/>{% endif %}
+
+          {% if data["sis-victim-address-uk-line2"] == "" %}{% else %}
+          {{ data['sis-victim-address-uk-line2'] }} <br/>{% endif %}
+
+          {% if data["sis-victim-address-uk-city"] == "" %}{% else %}
+          {{ data['sis-victim-address-uk-city'] }} <br/>{% endif %}
+
+          {% if data["sis-victim-address-uk-county"] == "" %}{% else %}
+          {{ data['sis-victim-address-uk-county'] }} <br/>{% endif %}
+
+          {% if data["sis-victim-address-uk-postcode"] == "" %}{% else %}
+          {{ data['sis-victim-address-uk-postcode'] }} <br/>{% endif %}
+
+        {% else %}
+        52 Nunhead Lane<br/>
+        London <br/>
+        SE12 3DG
+        {% endif %}
+          
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="link">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+    </dl>
+  </div>
+  </div>

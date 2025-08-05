@@ -1,0 +1,99 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Illegal wortking details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+ 
+      <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Behaviours
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {{ data ["radicalisation-behaviour"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="behaviours">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+   <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Behaviours details
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {{ data ["behaviour-reason"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="behaviours">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Personal circumstances
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["circs"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="circs">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+   <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Personal circumstances details
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {{ data ["circs-reason"] }}
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="behaviours">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+</dl>
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+ 
+{% if data["sis-person-done"] == "Yes" %}
+
+{% if data["sis-housing-done"] == "Yes" %}
+<li class="app-task-list__item">
+<span class="app-task-list__task-name">
+  <a href="/housing/task/main/housing/list" aria-describedby="eligibility-status">
+    Abuse of access to housing details
+  </a>
+</span>
+<strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+</li>
+{% else %}
+<li class="app-task-list__item">
+<span class="app-task-list__task-name">
+  <a href="/housing/task/main/housing/link" aria-describedby="eligibility-status">
+    Abuse of access to housing details
+  </a>
+</span>
+<strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+</li>
+{% endif %}
+
+
+{% else %}
+<li class="app-task-list__item">
+  <span class="app-task-list__task-name">
+    <p style="margin-bottom: 0;">
+      Abuse of access to housing details
+    </p>
+  </span>
+  <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+</li>
+{% endif %}

@@ -1,0 +1,62 @@
+{% extends "layouts/default.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the immigration offence?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<span class="govuk-caption-xl">Type of abuse</span>-->
+    <h1 class="govuk-heading-l">What is the main offence?</h1>
+
+    <p class="govuk-body">
+     If there is more than one suspected offence, select the one you have more safeguarding concerns about, or more evidence for. We will ask about additional offences later.
+</p>
+    <form class="form" action="sub-crime" method="post">
+
+      {% include "pink/current/templates/crime-list.html" %}
+
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="start-crime" name="start-crime" type="radio" value="other" data-aria-controls="start-crime-conditional">
+        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+          Other
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="start-crime-conditional">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Type of offence
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="" spellcheck="false" autocomplete="">
+      </div>
+    </div>
+
+<!--NOTE: this is an extension from the crime list template. DO NOT REMOVE -->
+  </div>
+</fieldset>
+</div>
+<!-- End of extension -->
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <!--<input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">-->
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

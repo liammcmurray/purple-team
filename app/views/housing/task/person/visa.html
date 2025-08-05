@@ -1,0 +1,49 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="contact" method="post" novalidate>
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+          What is {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }}'s most recent type of visa or permission?
+        </h1>        
+        </legend>
+
+        {% include "/current/templates/list/visa-type.html" %}
+
+      </fieldset>
+      </div>        
+      
+<input type="hidden" id="sis-immigration-done" name="sis-immigration-done" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

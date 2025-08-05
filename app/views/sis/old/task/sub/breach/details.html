@@ -1,0 +1,111 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The person you are reporting
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>-->
+<h1 class="govuk-heading-l">Breach of visa conditions</h1>
+
+      <form class="form" action="/pink/current/task/list" method="post">
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "sis-breach-visa",
+          value: data ["sis-breach-visa"],
+          fieldset: {
+            legend: {
+              text: "Which visa does the person have?",
+              classes: "govuk-label--m",
+              isPageHeading: false
+            }
+          },
+          items: [
+            {
+              value: "Study visa",
+              text: "Study visa"
+            },
+            {
+              value: "Visitor visa",
+              text: "Visitor visa"
+            },
+            {
+              value: "Work visa",
+              text: "Work visa"
+            }
+          ]
+        }) }}
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "sis-breach-working",
+          value: data ["sis-breach-working"],
+          fieldset: {
+            legend: {
+              text: "Has the person breached their visa conditions by working?",
+              classes: "govuk-label--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+<!--{{ govukTextarea({
+label: {
+text: "Give any further information you suspect or have gathered about the breach of visa conditions",
+classes: "govuk-label--m"
+},
+id: "sis-breach-info",
+name: "sis-breach-info",
+value: data ["sis-breach-info"]
+}) }}-->
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-breach-done" name="sis-breach-done" value="Yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

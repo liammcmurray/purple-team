@@ -1,0 +1,203 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="/pink/current/task/main/terrorism/visa-type" method="post" novalidate>
+
+      <!--<span class="govuk-caption-xl">Documents</span>-->
+      <h1 class="govuk-heading-l">Person 1: Identity document </h1>
+ <p class="govuk-body">Complete as much about the identity document as you can.</p>
+      {%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+        {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+        {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+
+                              {% set sisDocsother %}
+                              {{ govukInput({
+                                name: "sis-terrorism-doc-one-type",
+                                value: data["sis-terrorism-doc-one-type"],
+                                classes: "govuk-!-width-one-third",
+                                label: {
+                                  text: "Type of document"
+                                  
+                                }
+                              }) }}
+                            {% endset -%}
+
+                            {{ govukRadios({
+                              name: "sis-terrorism-doc-one-type",
+                              value: data["sis-terrorism-doc-one-type"],
+                              fieldset: {
+                                legend: {
+                                  text: "Type of document",
+                                  classes: "govuk-fieldset__legend--m"
+                                }
+                              },
+                              items: [
+                              
+                                {
+                                  value: "Birth certificate",
+                                  text: "Birth certificate"
+                                },
+                                {
+                                  value: "Driving licence",
+                                  text: "Driving licence"
+                                },
+                               
+                                {
+                                  value: "Identity card",
+                                  text: "Identity card"
+                                },
+                                
+                                {
+                                  value: "Passport",
+                                  text: "Passport"
+                                },
+                                  {
+                                  value: "Other",
+                                  text: "Other",
+                                    conditional: {
+                                    html: sisDocsother
+                                  }
+                                },
+                                
+                                {
+                                  divider: "or"
+                                },
+                                {
+                                  value: "I do not know",
+                                  text: "I do not know"
+                                
+                                }
+                              ]
+                            }) }}
+
+
+          {{ govukInput({
+            label: {
+              text: 'Document number',
+              classes: "govuk-label--m"
+            },
+            
+            classes: 'govuk-!-width-one-half',
+            name: 'sis-terrorism-docs1-number',
+            value: data["sis-terrorism-docs1-number"]
+          }) }}
+
+          <label class="govuk-label--m">Country of issue</label>
+<div id="event-name-hint" class="govuk-hint">
+  Start typing to find countries
+</div>
+  <div class="govuk-form-group">
+    {% include "pink/current/templates/ref-data/sis-country-list.html" %}
+  </div>
+
+  {{ govukDateInput({
+            id: "terrorism-date-issue",
+            name: "terrorism-date-issue",
+            value: data ["terrorism-date-issue"],
+            fieldset: {
+              legend: {
+                text: "Date of issue",
+                classes: "govuk-fieldset__legend--m",
+                isPageHeading: false
+              }
+            },
+            hint: {
+              text: "For example, 18 03 2024"
+            }
+          }) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{{ govukButton({
+          text: "Add another document",
+          href: "",
+          classes: "hods-button hods-button--secondary"
+        }) }}
+        <br/><br/>  
+{{ govukButton({
+text: "Continue"
+}) }}
+
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country2')
+    })
+
+</script>
+<script type="text/javascript">
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('#sis-airline-list')
+  })
+
+</script>
+<script type="text/javascript">
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('#sis-airport-list')
+  })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-air-ports')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-train-stations')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-vehicle-types')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-sea-ports')
+    })
+
+</script>
+{% endblock %}

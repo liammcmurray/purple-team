@@ -1,0 +1,57 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Have you already reported this danger or risk?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   <!--<span class="govuk-caption-xl">Safeguarding</span>-->
+
+    <form class="form" action="/housing/start/team" method="post">
+
+      <h1 class="govuk-heading-l">Which organisation did you report this to?</h1>
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        classes: "govuk-!-width-one-half",
+        label: {
+          text: "Organisation name"
+        },
+        id: "harm-report",
+        name: "harm-report",
+        value: data ["harm-report"]
+      }) }}
+
+      {{ govukInput({
+        classes: "govuk-!-width-one-half",
+        label: {
+          text: "If you reported it to the police, what is the crime reference number? (optional)"
+        },
+        id: "harm-police",
+        name: "harm-police",
+        value: data ["harm-police"]
+      }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

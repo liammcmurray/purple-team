@@ -1,0 +1,427 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+{{ govukSelect({
+    id: seaportID or "sis-uk-air-ports",
+    name: "sis-uk-air-ports",
+    label: {
+      text: seaportText or ""
+    },
+    hint: {
+      text: seaportHint | default("", false)
+    },
+    value: seaportValue or data[seaportName or seaportID or "seaport"] or "",
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  {
+      value: "Aberdeen",
+      text: "Aberdeen"
+  },
+  {
+      value: "Avonmouth",
+      text: "Avonmouth"
+  },
+  {
+      value: "Belfast",
+      text: "Belfast"
+  },
+  {
+      value: "Birkenhead",
+      text: "Birkenhead"
+  },
+  {
+      value: "Blackpool",
+      text: "Blackpool"
+  },
+  {
+      value: "Blyth",
+      text: "Blyth"
+  },
+  {
+      value: "Boulogne",
+      text: "Boulogne"
+  },
+  {
+      value: "Bournemouth",
+      text: "Bournemouth"
+  },
+  {
+      value: "Brighton Marina",
+      text: "Brighton Marina"
+  },
+  {
+      value: "Brussels",
+      text: "Brussels"
+  },
+  {
+      value: "Cairnryan",
+      text: "Cairnryan"
+  },
+  {
+      value: "Calais (Freight)",
+      text: "Calais (Freight)"
+  },
+  {
+      value: "Calais (PAC)",
+      text: "Calais (PAC)"
+  },
+  {
+      value: "Cardiff",
+      text: "Cardiff"
+  },
+  {
+      value: "Cheriton",
+      text: "Cheriton"
+  },
+  {
+      value: "Coquelles (Freight)",
+      text: "Coquelles (Freight)"
+  },
+  {
+      value: "Coquelles (Tourist)",
+      text: "Coquelles (Tourist)"
+  },
+  {
+      value: "Dagenham",
+      text: "Dagenham"
+  },
+  {
+      value: "Dover Eastern Docks (Freight)",
+      text: "Dover Eastern Docks (Freight)"
+  },
+  {
+      value: "Dover Eastern Docks (Tourist)",
+      text: "Dover Eastern Docks (Tourist)"
+  },
+  {
+      value: "Dover Western Docks",
+      text: "Dover Western Docks"
+  },
+  {
+      value: "Dundee",
+      text: "Dundee"
+  },
+  {
+      value: "Dunkirk",
+      text: "Dunkirk"
+  },
+  {
+      value: "Eyemouth",
+      text: "Eyemouth"
+  },
+  {
+      value: "Falmouth",
+      text: "Falmouth"
+  },
+  {
+      value: "Felixstowe",
+      text: "Felixstowe"
+  },
+  {
+      value: "Fraserburgh",
+      text: "Fraserburgh"
+  },
+  {
+      value: "Fishguard",
+      text: "Fishguard"
+  },
+  {
+      value: "Fleetwood",
+      text: "Fleetwood"
+  },
+  {
+      value: "Glasgow Docks",
+      text: "Glasgow Docks"
+  },
+  {
+      value: "Glensanda",
+      text: "Glensanda"
+  },
+  {
+      value: "Goole",
+      text: "Goole"
+  },
+  {
+      value: "Grangemouth",
+      text: "Grangemouth"
+  },
+  {
+      value: "Greenock",
+      text: "Greenock"
+  },
+  {
+      value: "Grimsby",
+      text: "Grimsby"
+  },
+  {
+      value: "Guernsey",
+      text: "Guernsey"
+  },
+  {
+      value: "Harwich",
+      text: "Harwich"
+  },
+  {
+      value: "Heysham",
+      text: "Heysham"
+  },
+  {
+      value: "Holyhead",
+      text: "Holyhead"
+  },
+  {
+      value: "Hull",
+      text: "Hull"
+  },
+  {
+      value: "Hunterston",
+      text: "Hunterston"
+  },
+  {
+      value: "Immingham",
+      text: "Immingham"
+  },
+  {
+      value: "Invergordon",
+      text: "Invergordon"
+  },
+  {
+      value: "Inverkeithing",
+      text: "Inverkeithing"
+  },
+  {
+      value: "Inverness",
+      text: "Inverness"
+  },
+  {
+      value: "Ipswich",
+      text: "Ipswich"
+  },
+  {
+      value: "Jersey",
+      text: "Jersey"
+  },
+  {
+      value: "Killingholme",
+      text: "Killingholme"
+  },
+  {
+      value: "Kings Lynn",
+      text: "Kings Lynn"
+  },
+  {
+      value: "Kirkwall",
+      text: "Kirkwall"
+  },
+  {
+      value: "Langley",
+      text: "Langley"
+  },
+  {
+      value: "Larne",
+      text: "Larne"
+  },
+  {
+      value: "Leith",
+      text: "Leith"
+  },
+  {
+      value: "Lerwick",
+      text: "Lerwick"
+  },
+  {
+      value: "Lille",
+      text: "Lille"
+  },
+  {
+      value: "Liverpool",
+      text: "Liverpool"
+  },
+  {
+      value: "Lochinver",
+      text: "Lochinver"
+  },
+  {
+      value: "Maryport",
+      text: "Maryport"
+  },
+  {
+      value: "Methyl",
+      text: "Methyl"
+  },
+  {
+      value: "Montrose",
+      text: "Montrose"
+  },
+  {
+      value: "Newcastle",
+      text: "Newcastle"
+  },
+  {
+      value: "Newhaven",
+      text: "Newhaven"
+  },
+  {
+      value: "Nigg",
+      text: "Nigg"
+  },
+  {
+      value: "North Shields",
+      text: "North Shields"
+  },
+  {
+      value: "Paris",
+      text: "Paris"
+  },
+  {
+      value: "Pembroke",
+      text: "Pembroke"
+  },
+  {
+      value: "Peterhead",
+      text: "Peterhead"
+  },
+  {
+      value: "Plymouth",
+      text: "Plymouth"
+  },
+  {
+      value: "Poole",
+      text: "Poole"
+  },
+  {
+      value: "Port Edgar",
+      text: "Port Edgar"
+  },
+  {
+      value: "Portsmouth",
+      text: "Portsmouth"
+  },
+  {
+      value: "Purfleet",
+      text: "Purfleet"
+  },
+  {
+      value: "Ramsgate",
+      text: "Ramsgate"
+  },
+  {
+      value: "River Forth",
+      text: "River Forth"
+  },
+  {
+      value: "RN Crombie",
+      text: "RN Crombie"
+  },
+  {
+      value: "Rosyth",
+      text: "Rosyth"
+  },
+  {
+      value: "Scrabster",
+      text: "Scrabster"
+  },
+  {
+      value: "Seaham",
+      text: "Seaham"
+  },
+  {
+      value: "Sheerness",
+      text: "Sheerness"
+  },
+  {
+      value: "Shoreham",
+      text: "Shoreham"
+  },
+  {
+      value: "Silloth",
+      text: "Silloth"
+  },
+  {
+      value: "Southampton",
+      text: "Southampton"
+  },
+  {
+      value: "Stranraer",
+      text: "Stranraer"
+  },
+  {
+      value: "Stromness",
+      text: "Stromness"
+  },
+  {
+      value: "Sumburgh",
+      text: "Sumburgh"
+  },
+  {
+      value: "Swansea",
+      text: "Swansea"
+  },
+  {
+      value: "Teesport",
+      text: "Teesport"
+  },
+  {
+      value: "Thamesport",
+      text: "Thamesport"
+  },
+  {
+      value: "Tilbury",
+      text: "Tilbury"
+  },
+  {
+      value: "Troon",
+      text: "Troon"
+  },
+  {
+      value: "Tyne Port",
+      text: "Tyne Port"
+  },
+  {
+      value: "Ullapool",
+      text: "Ullapool"
+  },
+  {
+      value: "Unst",
+      text: "Unst"
+  },
+  {
+      value: "Warrenpoint",
+      text: "Warrenpoint"
+  },
+  {
+      value: "Weymouth",
+      text: "Weymouth"
+  },
+  {
+      value: "Whitby",
+      text: "Whitby"
+  },
+  {
+      value: "Whitehaven",
+      text: "Whitehaven"
+  },
+  {
+      value: "Wick",
+      text: "Wick"
+  },
+  {
+      value: "Workington",
+      text: "Workington"
+  }
+    ]
+  }) }}
+  </div>

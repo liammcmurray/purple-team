@@ -1,0 +1,147 @@
+{% extends "themis/current/layouts/base.html" %}
+
+{% set pageTitle = "Case Details" %}
+{% set containerClasses = "govuk-!-margin-top-7 themis" %}
+
+{% block header %}
+ {% include "./includes/header.html" %}
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="case-list">Back to case list</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-xl">Case reference</span>
+      <h1 class="govuk-heading-xl">1010001318902</h1>
+    </div>
+  </div>
+
+
+<div class="govuk-grid-row" id="gov-grid-row-content">
+			  <div class="govuk-grid-column-two-thirds">
+			        
+			    
+			    
+			<form action="" method="POST" autocomplete="off" novalidate="true" spellcheck="false">
+    
+
+    <h1>Your referral</h1>
+<p>We can only investigate this referral if you give us enough information. Complete as many sections as thoroughly as you can.</p>
+
+    <div id="" class="hods-task-list">
+        <h2 class="hods-task-list__section">1. Your details</h2>
+    <ol class="hods-task-list__items">
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              Your details
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--completed">completed</strong>
+        </li>
+    </ol>
+    <h2 class="hods-task-list__section">2. Offence category</h2>
+    <ol class="hods-task-list__items">
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              Source of information
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--completed">completed</strong>
+        </li>
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              Offence type
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--completed">completed</strong>
+        </li>
+    </ol>
+    <h2 class="hods-task-list__section">3. Safeguarding</h2>
+    <ol class="hods-task-list__items">
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              <a href="/submit-immigration-national-security-intelligence/safeguarding" data-module="govuk-link" tabindex="0" class="govuk-link">Harm and urgency</a>
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--completed">completed</strong>
+        </li>
+    </ol>
+    <h2 class="hods-task-list__section">4. Parties involved</h2>
+    <ol class="hods-task-list__items">
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              <a href="/submit-immigration-national-security-intelligence/person-role" data-module="govuk-link" tabindex="0" class="govuk-link">Add a person</a>
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--not-started">not started</strong>
+        </li>
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              <a href="/submit-immigration-national-security-intelligence/modern-slavery/organised-crime-group" data-module="govuk-link" tabindex="0" class="govuk-link">Add an organised crime group</a>
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--not-started">not started</strong>
+        </li>
+    </ol>
+    <h2 class="hods-task-list__section">5. About the offence</h2>
+    <ol class="hods-task-list__items">
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              Modern slavery and human trafficking details
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--cannot-start-yet">cannot start yet</strong>
+        </li>
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              <a href="/submit-immigration-national-security-intelligence/public-private-funds-abuse" data-module="govuk-link" tabindex="0" class="govuk-link">Public and private funds abuse</a>
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--not-started">not started</strong>
+        </li>
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              <a href="/submit-immigration-national-security-intelligence/additional-information" data-module="govuk-link" tabindex="0" class="govuk-link">Additional information</a>
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--not-started">not started</strong>
+        </li>
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              <a href="/submit-immigration-national-security-intelligence/modern-slavery/entry-documents" data-module="govuk-link" tabindex="0" class="govuk-link">More details about the potential or recognised victim</a>
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--not-started">not started</strong>
+        </li>
+    </ol>
+    <h2 class="hods-task-list__section">6. Upload evidence</h2>
+    <ol class="hods-task-list__items">
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              <a href="/submit-immigration-national-security-intelligence/upload-document" data-module="govuk-link" tabindex="0" class="govuk-link">Upload documents</a>
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--not-started">not started</strong>
+        </li>
+    </ol>
+    <h2 class="hods-task-list__section">7. Related intelligence</h2>
+    <ol class="hods-task-list__items">
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              <a href="/submit-immigration-national-security-intelligence/related-intelligence" data-module="govuk-link" tabindex="0" class="govuk-link">Related intelligence</a>
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--not-started">not started</strong>
+        </li>
+    </ol>
+    <h2 class="hods-task-list__section">8. Submit form</h2>
+    <ol class="hods-task-list__items">
+        <li class="hods-task-list__item">
+          <span class="hods-task-list__task-name">
+              Send to Intelligence teams to investigate
+          </span>
+          <strong class="hods-tag hods-task-list__tag hods-tag--cannot-start-yet">cannot start yet</strong>
+        </li>
+    </ol>
+  </div>    <p>If you no longer want to continue, <a href="/submit-immigration-national-security-intelligence/delete-answers">delete your answers</a>.</p>
+
+    <input type="hidden" name="x-csrf-token" value="PXMbrAM1-9F0Ovy4DHoi9y0L84SKR3Dvab30">
+</form>
+  </div>
+					  </div>
+
+
+</main>
+
+{% endblock %}

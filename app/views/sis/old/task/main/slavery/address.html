@@ -1,0 +1,145 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Business address
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="list" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Location of the exploitation",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>Complete as much about the location as you can.</p>
+
+        <h2 class="govuk-fieldset__legend--m">Location details</h2>
+
+        {{ govukInput({
+          label: {
+            text: "Type of location"
+          },
+          hint: {
+            text: "For example, a building site, brothel or private residence"
+          },
+          id: "sis-victim-location",
+          name: "sis-victim-location",
+          value: data['sis-victim-location'],
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Give any more details that might help us identify the location."
+          },
+          id: "sis-victim-location-details",
+          name: "sis-victim-location-details",
+          value: data['sis-victim-location-details'],
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        <h2 class="govuk-fieldset__legend--m">Address</h2>
+
+          {{ govukInput({
+            label: {
+              text: 'Address line 1'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-victim-address-uk-line1",
+            name: "sis-victim-address-uk-line1",
+            value: data["sis-victim-address-uk-line1"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Address line 2'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-victim-address-uk-line2",
+            name: "sis-victim-address-uk-line2",
+            value: data["sis-victim-address-uk-line2"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Town or city'
+            },
+            classes: "govuk-!-width-one-half",
+            id: "sis-victim-address-uk-city",
+            name: "sis-victim-address-uk-city",
+            value: data["sis-victim-address-uk-city"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'County'
+            },
+            classes: "govuk-!-width-one-half",
+            id: "sis-victim-address-uk-county",
+            name: "sis-victim-address-uk-county",
+            value: data["sis-victim-address-uk-county"]
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: 'Postcode'
+            },
+            classes: "govuk-!-width-one-third",
+            id: "sis-victim-address-uk-postcode",
+            name: "sis-victim-address-uk-postcode",
+            value: data["sis-victim-address-uk-postcode"]
+          }) }}
+
+
+        {% endcall %}
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+    text: "Add another location",
+    classes: "hods-button--secondary"
+  }) }}
+
+  <br/><br/>
+  
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+<input type="hidden" id="sis-biz-info" name="sis-biz-info" value="yes">
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

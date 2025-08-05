@@ -1,0 +1,205 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Add business
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+  <form id="form-next" class="form" action="/pink/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+      <h1 class="govuk-heading-l">Check your answers</h1>
+{% if data["sub-crime"] == "deception" %}
+{% if data["secondary-offence-role"] == "I do not know" %}
+
+   <dl class="govuk-summary-list">
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          Suspected of leave by deception 
+                    </dt>
+          <dd class="govuk-summary-list__value">
+          
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details about the suspects
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Type of visa or permission
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sisVisaType'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="uk">
+              Change<span class="govuk-visually-hidden">name of educational establishment</span>
+            </a>
+          </dd>
+          </div>
+              </dl>
+
+           {% else %}
+
+       <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+
+   <h2 class="govuk-summary-card__title">Leave by deception details</h2>
+     <ul class="govuk-summary-card__actions">
+      <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+          <span class="govuk-visually-hidden"> person 1</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="govuk-summary-card__content">
+
+    <dl class="govuk-summary-list">
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+          Suspected of leave by deception 
+                    </dt>
+          <dd class="govuk-summary-list__value">
+          
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+     <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details about the suspects
+          </dt>
+          <dd class="govuk-summary-list__value">
+           Yes
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+              </dl>
+    </div>
+  </div>
+  {% endif %}
+        {% else %}{% endif %}
+      <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+        <h2 class="govuk-summary-card__title">Person 1: {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} </h2>
+ 
+   <ul class="govuk-summary-card__actions">
+          <li class="govuk-summary-card__action"> <a class="govuk-link" href="list-empty">
+            <span class="govuk-visually-hidden"> location</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+
+
+        {% if data["secondary-offence-role"] == "Someone else" %}
+       {% include "pink/current/templates/summary/secondary-person1.html" %}
+
+            {% else %}
+              <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+
+        {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Type of visa or permission
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sisVisaType'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="uk">
+              Change<span class="govuk-visually-hidden">name of educational establishment</span>
+            </a>
+          </dd>
+          </div>
+
+        </dl>
+      </div>
+    </div>
+{% if data["sis-deception2-done"] == "Yes" %}
+<div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper" style="background-color: #cbcbcb;">
+        <h2 class="govuk-summary-card__title">Person 2: {{ data['sis-person12-first-name'] }} {{ data['sis-person2-surname'] }} </h2>
+        <ul class="govuk-summary-card__actions">
+          
+          </li>
+        </ul>
+      </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Type of visa or permission
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sisVisaType2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="uk2">
+              Change<span class="govuk-visually-hidden">name of educational establishment</span>
+            </a>
+          </dd>
+          </div>
+
+        </dl>
+      </div>
+    </div>
+{% else %}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<br/>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+ <input type="hidden" id="sis-deception-done" name="sis-deception-done" value="Yes">
+
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

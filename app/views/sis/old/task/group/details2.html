@@ -1,0 +1,79 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – The person you are reporting
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="list" method="post">
+
+        
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+ {% if data["start-crime"] == "other" %}
+  <h1 class="govuk-heading-l">Organised crime group 2: Details</h1>
+   
+      <form class="form" action="list" method="post">
+
+
+  
+     
+        {{ govukInput({
+          label: {
+            text: 'Name of group'
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "sis-ocg-name2",
+          name: "sis-ocg-name2",
+          value: data ["sis-ocg-name2"]
+        }) }}
+    
+
+  {% else %}
+        {{ govukInput({
+          label: {
+            text: "What is the name of the organised crime group responsible for the trafficking?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          id: "sis-group-name",
+          name: "sis-group-name",
+          value:  data["sis-group-name"]
+        }) }}
+  {% endif %}
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-group-done" name="sis-group-done" value="Yes">
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+{% endblock %}

@@ -1,0 +1,492 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Clandestine entry details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="connecting" method="post">
+ 
+        <!-- AIR TRAVEL questions -->
+
+
+
+ {% if data["sis-idp"] == "Air" %}
+
+        <!--<span class="govuk-caption-xl">Person 1</span>-->
+        <h1 class="govuk-heading-l">Air travel details</h1>
+
+        <p class="govuk-body">Complete as much about their travel as you can.</p>
+
+        <h2 class="govuk-heading-m">Departure </h2>
+
+   
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+  <label class="govuk-label">Airline company</label>
+  <div id="sis-airline-company-idp" class="govuk-hint">
+    Start typing to find companies
+  </div>
+  <div class="govuk-form-group">
+    {% include "purple/current/templates/ref-data/sis-airline-list.html" %}
+  </div>
+
+{{ govukInput({
+label: {
+text: "Flight number"
+},
+id: "sis-flight-number-idp",
+name: "sis-flight-number-idp",
+value: data ["sis-flight-number-idp"],
+classes: "govuk-input--width-20"
+}) }}
+
+  <label class="govuk-label">Port of departure</label>
+  <div id="Port of departure" class="govuk-hint">
+    Start typing to find airports
+  </div>
+  <div class="govuk-form-group">
+    {% include "purple/current/templates/ref-data/sis-airport-list.html" %}
+  </div>
+
+
+  {{ govukDateInput({
+            id: "sis-air-dod",
+            name: "sis-air-dod",
+            value: data ["sis-air-dod"],
+            fieldset: {
+              legend: {
+                text: "Date of departure",
+                isPageHeading: false
+              }
+            },
+            hint: {
+              text: "For example, 18 4 2023"
+            }
+          }) }}
+
+          <h2 class="govuk-heading-m">Arrival</h2>
+
+          <label class="govuk-label">Port of arrival</label>
+          <div id="sis-air-port-d-idp" class="govuk-hint">
+            Start typing to find airports
+          </div>
+            <div class="govuk-form-group">
+              {% include "purple/current/templates/ref-data/sis-uk-air-ports.html" %}
+            </div>
+
+            {{ govukDateInput({
+                      id: "sis-air-doa",
+                      name: "sis-air-doa",
+                      value: data ["sis-air-doa"],
+                      fieldset: {
+                        legend: {
+                          text: "Date of arrival",
+                          isPageHeading: false
+                        }
+                      },
+                      hint: {
+                        text: "For example, 18 4 2023"
+                      }
+                    }) }}
+
+                    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+                    {{ govukButton({
+                      text: "Continue",
+                      href: "connecting"
+                    }) }}
+
+
+        {% else %}
+        {% endif %}
+  
+<!--ROAD TRAVEL questions -->
+
+        {% if data["sis-idp"] == "Road" %}
+
+        <h1 class="govuk-heading-l">Road travel details</h1>
+
+        <p class="govuk-body">Complete as much about their travel as you can.</p>
+
+        <h2 class="govuk-heading-m">Vehicle</h2>
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+        label: {
+        text: "Vehicle registration number"
+        },
+        id: "sis-road-vehicle-reg",
+        name: "sis-road-vehicle-reg",
+        value: data ["sis-road-vehicle-reg"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+        {% include "purple/current/templates/ref-data/sis-vehicle-types.html" %}
+
+        {{ govukInput({
+        label: {
+        text: "Make"
+        },
+        id: "sis-road-vehicle-make",
+        name: "sis-road-vehicle-make",
+        value: data ["sis-road-vehicle-make"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+        {{ govukInput({
+        label: {
+        text: "Model"
+        },
+        id: "sis-road-vehicle-model",
+        name: "sis-road-vehicle-model",
+        value: data ["sis-road-vehicle-model"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+        {{ govukInput({
+        label: {
+        text: "Colour"
+        },
+        id: "sis-road-vehicle-colour",
+        name: "sis-road-vehicle-colour",
+        value: data ["sis-road-vehicle-colour"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+        <h2 class="govuk-heading-m">Arrival</h2>
+
+        {{ govukInput({
+        label: {
+        text: "Where did the person enter the country?"
+        },
+        id: "sis-road-vehicle-enter",
+        name: "sis-road-vehicle-enter",
+        value: data ["sis-road-vehicle-enter"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+        {{ govukDateInput({
+            id: "sis-road-doa",
+            name: "sis-road-doa",
+            value: data ["sis-road-doa"],
+            fieldset: {
+              legend: {
+                text: "Date of arrival",
+                isPageHeading: false
+              }
+            },
+            hint: {
+              text: "For example, 18 4 2023"
+            }
+          }) }}
+
+          {{ govukInput({
+          label: {
+          text: "If you do not know the exact date of arrival, what was the date approximately?"
+          },
+          id: "sis-road-doa",
+          name: "sis-road-doa",
+          value: data ["sis-road-doa"],
+          classes: "govuk-input--width-20"
+          }) }}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "list"
+        }) }}
+
+        {% else %}
+        {% endif %}
+
+<!--SEA TRAVEL questions -->
+
+        {% if data["sis-idp"] == "Sea" %}
+        <!--<span class="govuk-caption-xl">Person 1</span>-->
+        <h1 class="govuk-heading-l">Sea travel details</h1>
+
+        <p class="govuk-body">Complete as much about their travel as you can.</p>
+
+        <h2 class="govuk-heading-m">Boat</h2>
+
+        <label class="govuk-label">Type of boat</label>
+        <div class="govuk-form-group">
+        {% include "purple/current/templates/ref-data/sis-boat-types.html" %}
+        </div>
+
+
+
+    {% from "govuk/components/input/macro.njk" import govukInput %}
+
+    {{ govukInput({
+    label: {
+    text: "Name of boat"
+    },
+    id: "sis-sea-boat-name",
+    name: "sis-sea-boat-name",
+    value: data ["sis-sea-boat-name"],
+    classes: "govuk-input--width-20"
+    }) }}
+
+    <h2 class="govuk-heading-m">Departure</h2>
+
+
+     <label class="govuk-label">Port of departure</label>
+          <div id="event-name-hint" class="govuk-hint">
+            Start typing to find ports
+          </div>
+            <div class="govuk-form-group">
+              {% include "purple/current/templates/ref-data/sis-uk-sea-ports.html" %}
+            </div>
+
+    {{ govukDateInput({
+            id: "sis-sea-dod",
+            name: "sis-sea-dod",
+            value: data ["sis-sea-dod"],
+            fieldset: {
+              legend: {
+                text: "Date of departure",
+                isPageHeading: false
+              }
+            },
+            hint: {
+              text: "For example, 18 4 2023"
+            }
+          }) }}
+
+          <h2 class="govuk-heading-m">Arrival</h2>
+
+          <label class="govuk-label">Port of arrival</label>
+          <div id="event-name-hint" class="govuk-hint">
+            Start typing to find ports
+          </div>
+            <div class="govuk-form-group">
+              {% include "purple/current/templates/ref-data/sis-uk-sea-ports.html" %}
+            </div>
+
+            {{ govukInput({
+            label: {
+            text: "Place of arrival, if it was not at a port"
+            },
+            id: "sis-sea-place-a",
+            name: "sis-sea-place-a",
+            value: data ["sis-sea-place-a"],
+            classes: "govuk-input--width-20"
+            }) }}
+
+            {{ govukDateInput({
+                      id: "sis-sea-doa",
+                      name: "sis-sea-doa",
+                      value: data ["sis-sea-doa"],
+                      fieldset: {
+                        legend: {
+                          text: "Date of arrival",
+                          isPageHeading: false
+                        }
+                      },
+                      hint: {
+                        text: "For example, 18 4 2023"
+                      }
+                    }) }}
+
+                    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+                    {{ govukButton({
+                      text: "Continue"
+                    }) }}
+
+        {% else %}
+        {% endif %}
+
+
+        <!--RAIL TRAVEL questions -->
+
+        {% if data["sis-idp"] == "Rail" or data["sis-idp"] == "Inside a vehicle onboard a train" %}
+
+        <!--<span class="govuk-caption-xl">Person 1</span>-->
+        <h1 class="govuk-heading-l">Rail travel details</h1>
+
+           <p class="govuk-body">Complete as much about their travel as you can.</p>
+
+        <h2 class="govuk-heading-m">Departure </h2>
+
+  
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
+            {{ govukInput({
+        label: {
+        text: "Port of departure"
+        },
+          hint: {
+    text: "Start typing to find ports"
+  },
+        id: "sis-rail-port",
+        name: "sis-rail-port",
+        value: data ["sis-rail-port"],
+        classes: "govuk-input--width-20"
+        }) }}
+
+    {{ govukInput({
+            label: {
+            text: "Station of departure, if it was not a port"
+            },
+            id: "sis-rail-place-a",
+            name: "sis-rail-place-a",
+            value: data ["sis-rail-place-a"],
+            classes: "govuk-input--width-20"
+            }) }}
+
+        {{ govukDateInput({
+            id: "sis-rail-dod",
+            name: "sis-rail-dod",
+            value: data ["sis-rail-dod"],
+            fieldset: {
+              legend: {
+                text: "Date of departure",
+                isPageHeading: false
+              }
+            },
+            hint: {
+              text: "For example, 18 4 2023"
+            }
+          }) }}
+
+          <h2 class="govuk-heading-m">Arrival</h2>
+
+          <label class="govuk-label">Port of arrival</label>
+          <div id="event-name-hint" class="govuk-hint">
+            Start typing to find ports
+          </div>
+            <div class="govuk-form-group">
+              {% include "purple/current/templates/ref-data/sis-uk-train-stations.html" %}
+              </div>
+
+    {{ govukInput({
+            label: {
+            text: "Station of arrival, if it was not a port"
+            },
+            id: "sis-rail-place-b",
+            name: "sis-rail-place-b",
+            value: data ["sis-rail-place-b"],
+            classes: "govuk-input--width-20"
+            }) }} 
+              {{ govukDateInput({
+                  id: "sis-rail-doa",
+                  name: "sis-rail-doa",
+                  value: data ["sis-rail-doa"],
+                  fieldset: {
+                    legend: {
+                      text: "Date of arrival",
+                      isPageHeading: false
+                    }
+                  },
+                  hint: {
+                    text: "For example, 18 4 2023"
+                  }
+                }) }}
+
+                {% from "govuk/components/button/macro.njk" import govukButton %}
+
+                {{ govukButton({
+                  text: "Continue"
+                }) }}
+
+        {% else %}
+        {% endif %}
+
+
+        <input type="hidden" id="sis-idp-done" name="sis-idp-done" value="Yes">
+
+        <input type="hidden" id="sis-offence-details-done" name="sis-offence-details-done" value="Yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country2')
+    })
+
+</script>
+<script type="text/javascript">
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('#sis-airline-list')
+  })
+
+</script>
+<script type="text/javascript">
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('#sis-airport-list')
+  })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-air-ports')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-train-stations')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-rail-ports')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-vehicle-types')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-sea-ports')
+    })
+
+</script>
+{% endblock %}

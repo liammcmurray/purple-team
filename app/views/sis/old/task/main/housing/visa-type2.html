@@ -1,0 +1,54 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="list-1" method="post" novalidate>
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+          What is Person n's most recent type of visa or permission?
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+          What is {{ data['sis-person2-first-name'] }} {{ data['sis-person2-surname'] }}'s most recent type of visa or permission?
+        </h1>        
+        {% endif %}
+        </legend>
+
+        {% include "pink/current/templates/list/visa-type.html" %}
+
+      </fieldset>
+      </div>        
+      
+<input type="hidden" id="sis-housing2" name="sis-housing2" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

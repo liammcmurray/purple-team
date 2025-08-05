@@ -1,0 +1,51 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="legal2" method="post" novalidate>
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+        {% if data["sis-person1-victim-first-name"] == "" or data["sis-person2-victim-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">What type of visa or permission did the potential or recognised victim enter the country with?</h1>
+        {% else %}
+
+        
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">What type of visa or permission did {{ data['sis-person2-victim-first-name'] }} {{ data['sis-person2-victim-surname'] }} enter the country with?</h1>
+       
+
+        {% endif %}
+
+        {% include "purple/current/templates/list/visa-type.html" %}
+
+      </fieldset>
+      </div> 
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

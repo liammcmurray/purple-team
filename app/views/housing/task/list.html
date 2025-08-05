@@ -1,0 +1,237 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+  Submit intelligence about immigration or borders – Your referral
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row" style="padding-top: 40px;">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Your referral
+      </h1>
+
+<p class="govuk-body-l"> We can only investigate this referral if you give us enough information. Complete as many sections as thoroughly as you can.</p>
+
+      <ol class="cop-tasklist">
+     
+   <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span>Your details
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                 <p style="margin-bottom: 0;">
+                  Your details
+                </p>
+              </span>
+              <strong class="govuk-tag govuk-tag--blue app-task-list__tag app-task-list__tag-completed">Completed</strong>
+            </li>
+          </ul>
+        </li>
+
+                <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span>Safeguarding
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                 <p style="margin-bottom: 0;">
+                  Harm and urgency
+                </p>
+              </span>
+              <strong class="govuk-tag govuk-tag--blue app-task-list__tag app-task-list__tag-completed">Completed</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <p style="margin-bottom: 0;">
+                  Source of information
+                </p>
+              </span>
+              <strong class="govuk-tag govuk-tag--blue app-task-list__tag app-task-list__tag-completed">Completed</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Parties involved
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+            {% if data["sis-person-done"] == "Yes" %}
+              <span class="app-task-list__task-name">
+                <a href="/housing/task/person/list" aria-describedby="contact-details-status">
+                  Add a person
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+            {% else %}
+              <span class="app-task-list__task-name">
+                <a href="/housing/task/person/confirm" aria-describedby="contact-details-status">
+                  Add a person 
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+            {% endif %}
+            </li>
+
+             <li class="app-task-list__item"> 
+          {% if data["sis-business-done"] == "Yes" %}
+              <span class="app-task-list__task-name">
+                <a href="/housing/task/business/list" aria-describedby="contact-details-status">
+                  Add a business
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+          {% else %}
+              <span class="app-task-list__task-name">
+                <a href="/housing/task/business/confirm" aria-describedby="contact-details-status">
+                  Add a business
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+          {% endif %}
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">4. </span> About the offence
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                 <p style="margin-bottom: 0;">
+                  Offence type
+                </p>
+              </span>
+              <strong class="govuk-tag govuk-tag--blue app-task-list__tag app-task-list__tag-completed">Completed</strong>
+            </li>
+
+            <li class="app-task-list__item">
+             <span class="app-task-list__task-name">
+                <a href="/housing/task/actions/details" aria-describedby="eligibility-status">
+                Related intelligence
+                </a>
+              </span>
+               {% if data["sis-actions-done"] == "Yes" %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+              {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if data["sis-funds-done"] == "Yes" %}
+                <a href="/housing/task/main/funds/list" aria-describedby="eligibility-status">
+                  Public and private funds abuse
+                </a>
+              </span>
+              
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+              {% else %}
+                <a href="/housing/task/main/funds/abuse" aria-describedby="eligibility-status">
+                  Public and private funds abuse
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+              {% endif %}
+            </li>
+            
+            {% include "/housing/templates/sis-main-offence.html" %}
+            {% include "/housing/templates/sis-sub-offence.html" %}
+
+        {% if data["sis-housing-done"] == "Yes"  %}
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            <a href="/housing/task/main/extra" aria-describedby="eligibility-status">
+
+              Additional information
+
+            </a>
+          </span>
+          {% if data["sis-extra-done"] == "Yes" %}
+          <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+          {% else %}
+          <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+          {% endif %}
+        </li>
+        {% else %}
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            <p style="margin-bottom: 0;">
+              Additional information
+            </p>
+          </span>
+          <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+        </li>
+        {% endif %}
+
+        <!-- END -->
+
+        </ul>
+      </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">5. </span> Upload evidence
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              {% if data["sis-docs-done"] == "Yes" %}
+              <span class="app-task-list__task-name">
+                <a href="/housing/task/docs/list.html" aria-describedby="contact-details-status">
+                Upload documents
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-completed">Completed</strong>
+              {% else %}
+              <span class="app-task-list__task-name">
+                <a href="/housing/task/docs/doc-upload.html" aria-describedby="contact-details-status">
+                Upload documents
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">6. </span> Submit form
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                {% if data["sis-housing-complete"] == "Yes" %}
+                <a href="/housing/complete/declaration" aria-describedby="eligibility-status">
+                Send to Intelligence teams to investigate
+                </a>
+                {% else %}
+                <p style="margin-bottom: 0;">Send to Intelligence teams to investigate</p>
+                {% endif %}
+              </span>
+              {% if data["sis-housing-complete"] == "Yes" %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Not started</strong>
+              {% else %}
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag app-task-list__tag-not-started">Cannot start yet</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+
+  <p style="margin-bottom: 0;">If you no longer want to continue, <a href="/purple/current/complete/delete" aria-describedby="eligibility-status">delete your answers</a>.</p>
+      </ol>
+
+    </div>
+  </div>
+
+{% endblock %}

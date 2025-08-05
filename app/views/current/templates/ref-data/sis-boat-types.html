@@ -1,0 +1,118 @@
+<style>
+    .autocomplete__input {
+      background-color:#ffffff;
+    }
+  </style>
+  
+  <div class="cop-autocomplete govuk-!-width--one-half">
+
+{{ govukSelect({
+    id: boattypeID or "sis-boat-types",
+    name: "sis-boat-types",
+    label: {
+      text: boattypeLabelText or ""
+    },
+    hint: {
+      text: boattypeHint | default("", false)
+    },
+    value: boattypeValue or data[boattypeName or boattypeID or "boattype"] or "",
+    items: [
+  {
+      value: "",
+      text: "Select type of boat"
+  },
+  {
+      value: "Containership",
+      text: "Containership"
+  },
+  {
+      value: "Bulk Carrier",
+      text: "Bulk Carrier"
+  },
+  {
+      value: "Tanker",
+      text: "Tanker"
+  },
+  {
+      value: "Reefer",
+      text: "Reefer"
+  },
+  {
+      value: "General Cargo",
+      text: "General Cargo"
+  },
+  {
+      value: "General Cargo with container capacity",
+      text: "General Cargo with container capacity"
+  },
+  {
+      value: "Barge",
+      text: "Barge"
+  },
+  {
+      value: "Vehicle Carrier",
+      text: "Vehicle Carrier"
+  },
+  {
+      value: "Vessel Carrier",
+      text: "Vessel Carrier"
+  },
+  {
+      value: "Research vessel",
+      text: "Research vessel"
+  },
+  {
+      value: "Cable/Pipe layer",
+      text: "Cable/Pipe layer"
+  },
+  {
+      value: "Support vessel",
+      text: "Support vessel"
+  },
+  {
+      value: "Supply vessel",
+      text: "Supply vessel"
+  },
+  {
+      value: "Ferry",
+      text: "Ferry"
+  },
+  {
+      value: "Cruise ship",
+      text: "Cruise ship"
+  },
+  {
+      value: "Yacht",
+      text: "Yacht"
+  },
+  {
+      value: "Cabin Cruiser",
+      text: "Cabin Cruiser"
+  },
+  {
+      value: "Rhib",
+      text: "Rhib"
+  },
+  {
+      value: "Ketch",
+      text: "Ketch"
+  },
+  {
+      value: "Dayboat",
+      text: "Dayboat"
+  },
+  {
+      value: "Fishing boat",
+      text: "Fishing boat"
+  },
+  {
+      value: "Tug",
+      text: "Tug"
+  },
+  {
+      value: "Dinghy",
+      text: "Dinghy"
+  }
+    ]
+  }) }}
+  </div>

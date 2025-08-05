@@ -1,0 +1,99 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Clandestine entry
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Abuse of public or private funds
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-funds-abuse"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="abuse">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+
+         {% if data["sis-funds-abuse"] == "Yes" or data["sis-funds-abuse"] == "No" %}
+             <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Reported to the relevant organisation
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-funds-reported"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="abuse">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+             <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Details about the abuse of public or private funds
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data ["sis-funds"] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="details">
+            Change<span class="govuk-visually-hidden">answer</span>
+          </a>
+        </dd>
+        </div>
+   
+           {% else %}
+         {% endif %}
+     </dl>
+    </div>
+  </div>
+  <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue"
+}) }}
+
+
+
+
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

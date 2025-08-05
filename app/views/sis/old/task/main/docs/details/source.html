@@ -1,0 +1,153 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/pink/current/sis-main-docsource" method="post">
+
+      <!--<span class="govuk-caption-xl">Documents</span>-->
+
+      {%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+        {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+        {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+       {% if data["sis-doc-two-done"] == "yes" %}
+        {% set docOther %}
+{{ govukInput({
+  id: "sis-main-doc-other-method",
+  name: "sis-main-doc-other-method",
+  value: data["sis-main-doc-other-method"],
+  classes: "govuk-!-width-two-thirds",
+  label: {
+    text: "Method of discovery"
+  }
+}) }}
+{% endset -%}
+
+                            {{ govukRadios({
+                              name: 'sis-main-doc-source1-other',
+                              value: data['sis-main-doc-source1-other'],
+                              fieldset: {
+                                legend: {
+                                  text: "How were the documents discovered?",
+                                  isPageHeading: true,
+                                  classes: "govuk-fieldset__legend--l"
+                                }
+                              },
+                              items: [
+                                {
+                                  value: "Online application to the Home Office",
+                                  text: "Online application to the Home Office"
+                                },
+                                {
+                                  value: "Postal application to the Home Office",
+                                  text: "Postal application to the Home Office"
+                                },
+                                {
+                                  value: "Intercepted during postage or delivery",
+                                  text: "Intercepted during postage or delivery"
+                                },
+                                {
+                                  value: "Identified during an operational visit or caseworking",
+                                  text: "Identified during an operational visit or caseworking"
+                                },
+                                {
+                                  value: "Referred from other government departments",
+                                  text: "Referred from other government departments"
+                                },
+                                {
+                                  divider: "or"
+                                },
+                                {
+                                  value: "Other",
+                                  text: "Other method",
+                                  conditional: {
+                                    html: docOther
+                                  }
+                                }
+                              ]
+                            }) }}
+{% else %}
+ {% set docOther %}
+{{ govukInput({
+  id: "sis-main-doc-other-method",
+  name: "sis-main-doc-other-method",
+  value: data["sis-main-doc-other-method"],
+  classes: "govuk-!-width-two-thirds",
+  label: {
+    text: "Method of discovery"
+  }
+}) }}
+{% endset -%}
+
+                            {{ govukRadios({
+                              name: 'sis-main-doc-source1-other',
+                              value: data['sis-main-doc-source1-other'],
+                              fieldset: {
+                                legend: {
+                                  text: "How was the document discovered?",
+                                  isPageHeading: true,
+                                  classes: "govuk-fieldset__legend--l"
+                                }
+                              },
+                              items: [
+                                {
+                                  value: "Online application to the Home Office",
+                                  text: "Online application to the Home Office"
+                                },
+                                {
+                                  value: "Postal application to the Home Office",
+                                  text: "Postal application to the Home Office"
+                                },
+                                {
+                                  value: "Intercepted during postage or delivery",
+                                  text: "Intercepted during postage or delivery"
+                                },
+                                {
+                                  value: "Identified during an operational visit or caseworking",
+                                  text: "Identified during an operational visit or caseworking"
+                                },
+                                {
+                                  value: "Referred from other government departments",
+                                  text: "Referred from other government departments"
+                                },
+                                {
+                                  divider: "or"
+                                },
+                                {
+                                  value: "Other",
+                                  text: "Other method",
+                                  conditional: {
+                                    html: docOther
+                                  }
+                                }
+                              ]
+                            }) }}
+{% endif %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

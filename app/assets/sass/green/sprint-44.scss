@@ -1,0 +1,13 @@
+// Parent wrapper to contain all styles to the green team (and not override any other prorotype work).
+.green-team {
+  .govuk-link-margin-bottom {
+    display: inline-block;
+    margin-bottom: 60px;
+  }
+  .cop-delete-link {
+    margin-right: 20px;
+  }
+  .cop-home-card__container {
+    margin-bottom: 20px;
+  }
+}

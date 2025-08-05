@@ -1,0 +1,106 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Add document details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% if data["sis-victim-person-done"] == "Yes" %}
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+{% if data["sis-victim2"] == "Yes" %}
+{% include "purple/current/templates/summary/slavery/sis-details2.html" %}
+{% include "purple/current/templates/summary/slavery/sis-details2-2.html" %}
+{% else %}
+{% include "purple/current/templates/summary/slavery/sis-details2.html" %}
+
+  {% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+ {% if data["sis-victim2"] == "Yes" %}
+
+{{ govukButton({
+  classes: "hods-button",
+  text: "Continue"
+}) }}
+
+
+{% else %}
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue to next person",
+    href: "docs-type2"
+  }) }}
+
+  {% endif %}
+
+
+{% if data["sis-person1-victim-info"] == "yes" %}
+
+{% if data["sis-person2-victim-info"] == "yes" %}{% else %} 
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+  {% endif %}
+
+{% else %}  {% endif %}
+
+  <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+
+  <!--  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  <h1 class="govuk-heading-l">Add document details</h1>
+
+    <p class="govuk-body">You have not added document details yet.</p>
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  {{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Add document details",
+  href: "type"
+  }) }}
+
+  <br/>
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue without adding",
+    href: "/purple/current/task/list"
+  }) }}
+
+  <input type="hidden" id="sis-main-offence-victim-done" name="sis-main-offence-victim-done" value="No">
+
+  {% endif %}
+-->
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

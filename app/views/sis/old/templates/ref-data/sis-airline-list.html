@@ -1,0 +1,310 @@
+<style>
+    .autocomplete__input {
+      background-color:#ffffff;
+    }
+  </style>
+  
+  <div class="cop-autocomplete govuk-!-width-one-half">
+
+{{ govukSelect({
+    id: airlineID or "sis-airline-list",
+    name: "sis-airline-list",
+    label: {
+      text: airlineLabelText or ""
+    },
+    hint: {
+      text: airlineHint | default("", false)
+    },
+    value: airlineValue or data[airlineName or airlineID or "airline company"] or "",
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  {
+      value: "Adria Airways",
+      text: "Adria Airways"
+  },
+  {
+      value: "Aegean Airlines",
+      text: "Aegean Airlines"
+  },
+  {
+      value: "Aer Arann",
+      text: "Aer Arann"
+  },
+  {
+      value: "Aer Lingus",
+      text: "Aer Lingus"
+  },
+  {
+      value: "Aeroflot Russian Airlines",
+      text: "Aeroflot Russian Airlines"
+  },
+  {
+      value: "Aerolineas Argentinas",
+      text: "Aerolineas Argentinas"
+  },
+  {
+      value: "Aeromexico",
+      text: "Aeromexico"
+  },
+  {
+      value: "Air Algerie",
+      text: "Air Algerie"
+  },
+  {
+      value: "Air Astana",
+      text: "Air Astana"
+  },
+  {
+      value: "Air Berlin",
+      text: "Air Berlin"
+  },
+  {
+      value: "Air Canada",
+      text: "Air Canada"
+  },
+  {
+      value: "Air France",
+      text: "Air France"
+  },
+  {
+      value: "Air New Zealand",
+      text: "Air New Zealand"
+  },
+  {
+      value: "American Airlines",
+      text: "American Airlines"
+  },
+  {
+      value: "Atlantic Airways",
+      text: "Atlantic Airways"
+  },
+  {
+      value: "British Airways",
+      text: "British Airways"
+  },
+  {
+      value: "Cathay Pacific",
+      text: "Cathay Pacific"
+  },
+  {
+      value: "Delta Air Lines",
+      text: "Delta Air Lines"
+  },
+  {
+      value: "Eastern Airways",
+      text: "Eastern Airways"
+  },
+  {
+      value: "Emirates",
+      text: "Emirates"
+  },
+  {
+      value: "Etihad Airways",
+      text: "Etihad Airways"
+  },
+  {
+      value: "Eva Air",
+      text: "Eva Air"
+  },
+  {
+      value: "Finnair",
+      text: "Finnair"
+  },
+  {
+      value: "Flybe",
+      text: "Flybe"
+  },
+  {
+      value: "Gulf Air",
+      text: "Gulf Air"
+  },
+  {
+      value: "Hong Kong Airlines",
+      text: "Hong Kong Airlines"
+  },
+  {
+      value: "Iberia",
+      text: "Iberia"
+  },
+  {
+      value: "Japan Airlines",
+      text: "Japan Airlines"
+  },
+  {
+      value: "Jet Airways",
+      text: "Jet Airways"
+  },
+  {
+      value: "KLM Royal Dutch Airlines",
+      text: "KLM Royal Dutch Airlines"
+  },
+  {
+      value: "Korean Air",
+      text: "Korean Air"
+  },
+  {
+      value: "Kuwait Airways",
+      text: "Kuwait AirwaysT"
+  },
+  {
+      value: "Lufthansa",
+      text: "Lufthansa"
+  },
+  {
+      value: "Luxair",
+      text: "Luxair"
+  },
+  {
+      value: "Malaysia Airlines",
+      text: "Malaysia Airlines"
+  },
+  {
+      value: "Middle East Airlines",
+      text: "Middle East Airlines"
+  },
+  {
+      value: "Monarch Airlines",
+      text: "Monarch Airlines"
+  },
+  {
+      value: "Norwegian Air Shuttle",
+      text: "Norwegian Air Shuttle"
+  },
+  {
+      value: "Olympic Air",
+      text: "Olympic Air"
+  },
+  {
+      value: "Qantas Airways",
+      text: "Qantas Airways"
+  },
+  {
+      value: "Qatar Airways",
+      text: "Qatar Airways"
+  },
+  {
+      value: "Royal Brunei Airlines",
+      text: "Royal Brunei Airlines"
+  },
+  {
+      value: "Saudi Arabian Airlines",
+      text: "Saudi Arabian Airlines"
+  },
+  {
+      value: "Singapore Airlines",
+      text: "Singapore Airlines"
+  },
+  {
+      value: "SriLankan Airlines",
+      text: "SriLankan Airlines"
+  },
+  {
+      value: "Turkish Airlines",
+      text: "Turkish Airlines"
+  },
+  {
+      value: "United Airlines",
+      text: "United Airlines"
+  },
+  {
+      value: "US Airways",
+      text: "US Airways"
+  },
+  {
+      value: "Virgin Atlantic Airways",
+      text: "Virgin Atlantic Airways"
+  },
+  {
+      value: "Aero Asia International",
+      text: "Aero Asia International"
+  },
+  {
+      value: "Air Fiji",
+      text: "Air Fiji"
+  },
+  {
+      value: "Air Italy",
+      text: "Air Italy"
+  },
+  {
+      value: "America West Airlines",
+      text: "America West Airlines"
+  },
+  {
+      value: "BAE Systems",
+      text: "BAE Systems"
+  },
+  {
+      value: "Caribbean Airlines",
+      text: "Caribbean Airlines"
+  },
+  {
+      value: "CityJet",
+      text: "CityJet"
+  },
+  {
+      value: "easyJet Switzerland",
+      text: "easyJet Switzerland"
+  },
+  {
+      value: "easyJet UK",
+      text: "easyJet UK"
+  },
+  {
+      value: "Eurowings",
+      text: "Eurowings"
+  },
+  {
+      value: "First Choice Airways",
+      text: "First Choice Airways"
+  },
+  {
+      value: "Iraqi Airways",
+      text: "Iraqi Airways"
+  },
+  {
+      value: "Israir",
+      text: "Israir"
+  },
+  {
+      value: "Jet2.com",
+      text: "Jet2.com"
+  },
+  {
+      value: "Martinair",
+      text: "Martinair"
+  },
+  {
+      value: "Rwandair Express",
+      text: "Rwandair Express"
+  },
+  {
+      value: "Ryanair",
+      text: "Ryanair"
+  },
+  {
+      value: "Wizz Air",
+      text: "Wizz Air"
+  },
+  {
+      value: "Private Aircraft",
+      text: "Private Aircraft"
+  },
+  {
+      value: "Pegasus Airlines",
+      text: "Pegasus Airlines"
+  },
+  {
+      value: "Thomson Airways",
+      text: "Thomson Airways"
+  },
+  {
+      value: "TUI Airways UK",
+      text: "TUI Airways UK"
+  }
+    ]
+  }) }}
+  </div>

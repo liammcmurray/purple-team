@@ -1,0 +1,105 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What are the details of the person you are completing this on behalf of?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Intelligence source</span>-->
+
+      <form class="form" action="/purple/current/start/crime" method="post">
+
+
+{% call govukFieldset({
+  legend: {
+    text: "Details of the person you are completing this on behalf of",
+    classes: "govuk-fieldset__legend--l",
+    isPageHeading: true
+  }
+}) %}
+
+
+  {{ govukInput({
+  label: {
+    text: "Given names"
+  },
+  hint: {
+    text: "Their first and middle names"
+  },
+  classes: "govuk-!-width-two-thirds",
+  id: "sis-first-name",
+  value: "",
+  name: "sis-first-name"
+}) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Surname'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "sis-surname",
+    name: "sis-surname",
+    value: ""
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Email address'
+    },
+    classes: "govuk-!-width-two-thirds",
+    id: "sis-email",
+    name: "sis-email",
+    value: ""
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Phone number (optional)'
+    },
+    classes: "govuk-!-width-one-third",
+    id: "sis-phone",
+    name: "sis-phone",
+    value: ""
+  }) }}
+
+{% endcall %}
+
+<p class="govuk-body">We may need to contact them for more information.</p>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-team')
+    })
+
+</script>
+{% endblock %}

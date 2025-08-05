@@ -1,0 +1,66 @@
+{% extends "layouts/default.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Have you already reported this danger or risk?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+   <!--<span class="govuk-caption-xl">Safeguarding</span>-->
+
+    <form class="form" action="/pink/current/harm-previous" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      name: "harm-previous",
+      value: data ["harm-previous"],
+      fieldset: {
+        legend: {
+          text: "Have you already reported this danger or risk to the relevant organisation?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+       hint: {
+    text: "For example, the police. If you are the first responder, you need to report it."
+  },
+      items: [
+        {
+          value: "already-yes",
+          text: "Yes",
+          conditional: {
+            html: harmReport
+          }
+        },
+        {
+          value: "already-no",
+          text: "No"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

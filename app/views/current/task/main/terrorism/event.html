@@ -1,0 +1,136 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="list" method="post" novalidate>
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+             <h1 class="govuk-heading-l" style="margin-bottom:10px;">
+Location 1: Event details
+    </h1>  
+    </legend>
+          <p class="govuk-body">Complete as much about the event as you can.</p>
+
+      <h2 class="govuk-heading-m">Date and frequency</h2>
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukDateInput({
+  id: "event-date",
+  namePrefix: "event-date",
+  fieldset: {
+    legend: {
+      text: "Date"
+    }
+  },
+  hint: {
+    text: "For example, 27 3 2024"
+  }
+}) }}
+ {{ govukDateInput({
+          id: "event-time",
+          namePrefix: "event-time",
+          name: "event-time",
+
+          fieldset: {
+            legend: {
+              text: "Time"
+            }
+          },
+          hint: {
+            text: "For example, 15 30"
+          },
+          items: [
+                {
+                  classes: "govuk-input--width-2",
+                  name: "hour",
+                  value: data["event-time-hour"]
+                },
+                {
+                  classes: "govuk-input--width-2",
+                  name: "minute",
+                  value: data["event-time-minute"]
+                }]
+        }) }}
+
+
+
+{{ govukInput({
+  label: {
+    text: "If you do not know the exact date, enter what you know about when the event happened or will happen."
+  },
+  classes: "govuk-!-width-two-thirds",
+  id: "estimate-time",
+  name: "estimate-time"
+}) }}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+
+{{ govukInput({
+  label: {
+    text: "If this is a recurring event, how often does it take place?"
+  },
+  classes: "govuk-!-width-two-thirds",
+  id: "frequency",
+  name: "frequency"
+}) }}
+ <hr>
+          <br>
+
+          <h2 class="govuk-heading-m">Social media</h2>
+{{ govukInput({
+  label: {
+    text: "Where was the event advertised? Enter the full URL if you know it."
+  },
+  classes: "govuk-!-width-two-thirds",
+  id: "event-social-media",
+  name: "event-social-media"
+}) }}
+
+ <hr>
+          <br>
+
+          <h2 class="govuk-heading-m">About the event</h2>
+          {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{{ govukTextarea({
+  label: {
+    text: "What else do you know about the event? "
+  },
+  classes: "govuk-!-width-two-thirds",
+  id: "event",
+  name: "event"
+}) }}
+      </fieldset>
+      </div>        
+      
+<input type="hidden" id="sis-location-done" name="sis-location-done" value="Yes">
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue"
+}) }}
+
+</form>
+    </div>
+  </div>
+
+
+{% endblock %}

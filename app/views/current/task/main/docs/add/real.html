@@ -1,0 +1,118 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who are you reporting for illegal working?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<span class="govuk-caption-xl">Person type</span>-->
+
+<form class="form" action="/purple/current/document-fraud-secondary" method="post">
+
+  {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+  {% call govukFieldset({
+    legend: {
+      text: "Document 1: Verification",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  }) %}
+
+  {% from "govuk/components/input/macro.njk" import govukInput %}
+
+  {% set docVerify %}
+{{ govukInput({
+  label: {
+    text: "Which agency or department verified it?"
+  },
+  name: 'sis-main-docs-verifier',
+  value: data["sis-main-docs-verifier"],
+  classes: "govuk-!-width-one-half"
+}) }}
+{% endset -%}
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-add-docs-real",
+  value: data ['sis-add-docs-real'],
+  fieldset: {
+    legend: {
+      text: "Do you believe this document is genuine or fraudulent?"
+    }
+  },
+  items: [
+    {
+      value: "Genuine",
+      text: "Genuine"
+    },
+    {
+      value: "Fraudulent",
+      text: "Fraudulent"
+    },
+         {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-main-docs-verify",
+  value: data["sis-main-docs-verify"],
+  fieldset: {
+    legend: {
+      text: "Has this been verified?"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+          html: docVerify
+        }
+    },
+    {
+      value: "No",
+      text: "No"
+    },
+         {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know"
+    }
+  ]
+}) }}
+
+{% endcall %}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

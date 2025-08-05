@@ -1,0 +1,73 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Who are you reporting for illegal working?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<form class="form" action="/purple/current/sis-victim-vehicle2" method="post">
+
+  {% if data data["sis-person2-victim-first-name"] == "" %}
+  <h1 class="govuk-heading-l" style="margin-bottom:0;" >Did the person arrive inside a vehicle?</h1>
+  {% else %}
+
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Did {{ data['sis-person2-victim-first-name'] }} {{ data['sis-person2-victim-surname'] }} arrive inside a vehicle?</h1>
+       
+  
+        {% endif %}
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+  {{ govukRadios({
+    name: "sis-victim-vehicle2",
+    value: data [sis-victim-vehicle2],
+    fieldset: {
+      legend: {
+        text: " ",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [
+      {
+        value: "Yes",
+        text: "Yes"
+      },
+      {
+        value: "No",
+        text: "No"
+      },
+      {
+              divider: "or"
+            },
+      {
+        value: "I do not know",
+        text: "I do not know"
+      }
+    ]
+  }) }}
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <input type="hidden" id="sis-victim-person-done2" name="sis-victim-person-done2" value="Yes">
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

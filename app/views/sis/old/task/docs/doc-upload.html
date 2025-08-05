@@ -1,0 +1,54 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Which documents are you uploading as evidence?
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Documents</span>-->
+      <h1 class="govuk-heading-l">Upload document</h1>
+<p class="govuk-body">You can upload any evidence, if you have it.</p>
+
+        <h2 class="govuk-heading-m">Type of document</h2>
+{% include "pink/current/templates/doc-uploader.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue",
+href: "/pink/current/task/docs/list"
+}) }}
+
+
+
+    </div>
+  </div>
+
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/public/javascripts/moj/all.js"></script>
+<script type="text/javascript">
+
+  if(typeof MOJFrontend.MultiFileUpload !== 'undefined') {
+    new MOJFrontend.MultiFileUpload({
+      container: $('.moj-multi-file-upload'),
+      uploadUrl: '/ajax-upload-url',
+      deleteUrl: '/ajax-delete-url'
+    });
+  }
+</script>
+{% endblock %}

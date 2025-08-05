@@ -1,0 +1,196 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<form class="form" action="booking-more" method="post">
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Booking details 2
+      </h1>
+    </legend>
+<p class="govuk-body">Complete as much as you can about the booking.</p>
+
+        <h2 class="govuk-heading-m">Payment method</h2>
+ <label class="govuk-label" for="more-detail">
+   How were the tickets paid for?
+  </label>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="idp-ticket-pay2" name="idp-ticket-pay2" type="radio" value="Bank transfer">
+        <label class="govuk-label govuk-radios__label" for="idp-ticket-pay2">
+          Bank transfer
+        </label>
+      </div>
+     <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="idp-ticket-pay2" name="idp-ticket-pay2" type="radio" value="Cash">
+        <label class="govuk-label govuk-radios__label" for="idp-ticket-pay2">
+          Cash
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="idp-ticket-pay2" name="idp-ticket-pay2" type="radio" value="Credit or debit card">
+        <label class="govuk-label govuk-radios__label" for="idp-ticket-pay2">
+          Credit or debit card
+        </label>
+      </div>
+     <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="idp-ticket-pay" name="idp-ticket-pay" type="radio" value="Other">
+        <label class="govuk-label govuk-radios__label" for="idp-ticket-pay">
+          Other
+        </label>
+      </div>
+        <div class="govuk-radios__divider">or</div>
+           <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="idp-ticket-pay2" name="idp-ticket-pay2" type="radio" value="I do not know">
+        <label class="govuk-label govuk-radios__label" for="idp-ticket-pay2">
+          I do not know
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+</div>
+
+ <hr>
+        <br>
+       <h2 class="govuk-heading-m">Bank account</h2>
+
+{{ govukInput({
+    name: 'sis-idp-ticket-bank-card-name2',
+    value: data['sis-idp-ticket-acc-holder-name2'],
+    classes: "govuk-!-width-one-half",
+    label: {
+      text: "Account holder's name"
+    }
+  }) }}
+
+
+{{ govukInput({
+  name: 'sis-idp-ticket-acc2',
+  value: data['sis-idp-ticket-acc2'],
+  classes: "govuk-!-width-one-third",
+ 
+  label: {
+    text: "Account number"
+  }
+}) }}
+
+{{ govukInput({
+  name: 'sis-idp-ticket-sort-code2',
+  value: data['sis-idp-ticket-sort-code2'],
+  hint: {
+    text: "This could be the sort code, or the BIC or SWIFT code"
+  },
+  classes: "govuk-!-width-one-quarter",
+  label: {
+    text: "Bank code"
+  }
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+ <hr>
+        <br>
+  <h2 class="govuk-heading-m">Card details</h2>
+
+  {{ govukInput({
+    name: 'sis-idp-bank-card-name2',
+    value: data['sis-idp-bank-card-name2'],
+    classes: "govuk-!-width-one-half",
+    label: {
+      text: "Cardholder's name"
+    }
+  }) }}
+
+  {{ govukInput({
+    name: 'sis-idp-bank-card-number2',
+    value: data['sis-idp-bank-card-number2'],
+    classes: "govuk-!-width-one-third",
+      hint: {
+    text: "If you do not know the card number, enter the first or last 4 digits"
+  },
+    label: {
+      text: "Card number"
+    }
+  }) }}
+
+
+  {{ govukInput({
+    name: 'sis-idp-bank-card-type2',
+    value: data['sis-idp-bank-card-type2'],
+    classes: "govuk-!-width-one-third",
+    hint: {
+      text: "For example, Visa or MasterCard"
+    },
+    label: {
+      text: "Card type"
+    }
+
+    
+  }) }}
+<hr>
+        <br>
+  <h2 class="govuk-heading-m">Travel agent</h2>
+
+
+ {{ govukInput({
+    name: 'sis-idp-travel-agent2',
+    value: data['sis-idp-travel-agent2'],
+    classes: "govuk-!-width-one-half",
+    label: {
+      text: "Name of agent or company "
+    }
+  }) }}
+<hr>
+        <br>
+  <h2 class="govuk-heading-m">Contact details</h2>
+
+ 
+ 
+ {{ govukInput({
+    name: 'sis-idp-ticket-email2',
+    value: data['sis-idp-ticket-email2'],
+    classes: "govuk-!-width-one-half",
+    label: {
+      text: "Email address"
+    }
+  }) }}
+
+  {{ govukInput({
+    name: 'sis-idp-ticket-phone-number2',
+    value: data['sis-idp-ticket-phone-number2'],
+    classes: "govuk-!-width-one-half",
+    label: {
+      text: "Phone number"
+    }
+  }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="details3" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% set housing3Other %}
+{{ govukInput({
+  id: "sis-housing-person3",
+  name: "sis-housing-person3",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Person's role"
+  }
+}) }}
+{% endset -%}
+
+      {{ govukRadios({
+        name: "sis-housing-person3",
+        value: data ["sis-housing-person3"],
+        fieldset: {
+          legend: {
+            text: "Who do you want to add?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: " "
+        },
+        items: [
+          {
+            value: "Tenant or lodger living in the accommodation",
+            text: "Tenant or lodger living in the accommodation"
+          },
+          {
+            value: "Landlord, letting agent or tenant subletting the accommodation",
+            text: "Landlord, letting agent or tenant subletting the accommodation"
+          },
+          {
+            value: "Visitor to the accommodation or location",
+            text: "Visitor to the accommodation or location"
+          },
+          {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: housing3Other
+      }
+    }
+        ]
+      }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

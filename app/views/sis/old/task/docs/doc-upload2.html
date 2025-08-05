@@ -1,0 +1,190 @@
+{% extends "training/template-project/current/template-form/base-form.html" %}
+
+
+{% block pageStyle %}
+  .moj-multi-file-upload {
+	margin-bottom: 40px;
+}
+
+.moj-multi-file-upload--enhanced .moj-multi-file-upload__button {
+	display: none;
+}
+
+.moj-multi-file-upload__dropzone {
+  outline: 3px dashed govuk-colour('black');
+	display: flex;
+	text-align: center;
+	padding: govuk-spacing(9) govuk-spacing(3);
+	transition: outline-offset .1s ease-in-out, background-color .1s linear;
+}
+
+.moj-multi-file-upload__dropzone label {
+	margin-bottom: 0;
+	display: inline-block;
+	width: auto;
+}
+
+.moj-multi-file-upload__dropzone p {
+  margin-bottom: 0;
+  margin-right: 10px;
+  padding-top: 7px;
+}
+
+.moj-multi-file-upload__dropzone [type=file] {
+	position: absolute;
+	left: -9999em;
+}
+
+.moj-multi-file-upload--dragover {
+	background: #b1b4b6;
+	outline-color: #6f777b;
+}
+
+.moj-multi-file-upload--focused {
+	background-color: $govuk-focus-colour;
+  color: $govuk-focus-text-colour;
+  box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-text-colour;
+  outline: none;
+}
+
+.moj-multi-file-upload__error {
+	color: govuk-colour('red');
+	font-weight: bold;
+}
+
+.moj-multi-file-upload__success {
+	color: govuk-colour('green');
+	font-weight: bold;
+}
+
+.moj-multi-file-upload__error svg {
+   fill: currentColor;
+   float: left;
+   margin-right: govuk-spacing(2);
+}
+
+.moj-multi-file-upload__success svg {
+	fill: currentColor;
+	float: left;
+	margin-right: govuk-spacing(2);
+}
+
+.moj-multi-file-upload__image-preview {
+	height: 128px;
+  display: block;
+}
+
+  pre.code {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 3px solid transparent;
+    outline: 1px solid #b1b4b6;
+    background-color: #f3f2f1;
+    overflow: auto;
+  }
+
+  code.code {
+    color: #d13118;
+    background-color: #f3f2f1;
+    outline: 1px solid #b1b4b6;
+    padding: 0 5px;
+  }
+
+  .unstaged-changes {
+    color: #d13118;
+  }
+
+  .staged-changes {
+    color: #00A600;
+  }
+
+{% endblock %}
+
+{% set pageHeading = "Photo evidence" %}
+
+{% set nextPage = "check-answers" %}
+
+{% block pageContent %}
+
+        <div class="moj-multi-file-upload">
+          <div class="moj-multi-file__uploaded-files {% if (not data['photo-uploads']) or (data['photo-uploads'] and data['photo-uploads'] | length == 0) %}moj-hidden{% endif %}">
+            <h2 class="govuk-heading-m">Photos added</h2>
+            <div class="govuk-summary-list moj-multi-file-upload__list">
+              {% for photo in data['photo-uploads'] %}
+                <div class="govuk-summary-list__row moj-multi-file-upload__row">
+                  <div class="govuk-summary-list__value moj-multi-file-upload__message">
+                    <span class="moj-multi-file-upload__success">
+                      <svg class="moj-banner__icon" fill="currentColor" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" height="25" width="25"><path d="M25,6.2L8.7,23.2L0,14.1l4-4.2l4.7,4.9L21,2L25,6.2z"></path></svg>
+                      <a href="/./public/uploads/{{ photo.name }}" class="govuk-link">{{ photo.name }}</a> has been uploaded
+                      {% if photo.type in ['image/png', 'image/gif', 'image/jpg', 'image/jpeg'] %}<img src="/public/uploads/{{ photo.name }}" class="moj-multi-file-upload__image-preview" alt="">{% endif %}
+                    </span>
+                  </div>
+                  <div class="govuk-summary-list__actions moj-multi-file-upload__actions">
+                    <button class="moj-multi-file-upload__delete hods-button hods-button--secondary govuk-!-margin-bottom-0" type="button" name="delete" value="{{ photo.name }}">
+                      Delete <span class="govuk-visually-hidden">{{ photo.name }}</span>
+                    </button>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="moj-multi-file-upload__upload">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="photo-evidence">
+                Upload photos
+              </label>
+              <div id="photo-evidence-hint" class="govuk-hint">
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>Only include photos of the people that were hiding, if you think it might be facilitation</li>
+                  <li>Include photos that can help to identity possible company details</li>
+              </div>
+              <input class="govuk-file-upload moj-multi-file-upload__input" id="photo-evidence" name="photo-evidence" type="file" multiple="">
+            </div>
+
+            <button class="hods-button hods-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+              Upload file
+            </button>
+
+          </div>
+        </div>
+
+        <p class="govuk-body">To use:</p>
+        <ol class="govuk-list govuk-list--number">
+          <li>In your sprint <code class="code">_routes.js</code> file add <code class="code">fs = require('fs')</code> to the top.</li>
+          <li>From the <code class="code">training/template-project/current/template-form/current/_routes.js</code> file copy from 'Image upload' to the end, and put in your sprint <code class="code">_routes.js</code> file.</li>
+          <li>Copy the <code class="code">&lcub;% pageScripts %&rcub;</code> on this page into your HTML file.</li>
+          <li>Copy from <code class="code">&lt;form&gt;</code> to just above these instructions into your HTML file.</li>
+        </ol>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/public/javascripts/moj/all.js"></script>
+<script type="text/javascript">
+
+  if (typeof MOJFrontend.MultiFileUpload !== "undefined") {
+    new MOJFrontend.MultiFileUpload({
+      container: $(".moj-multi-file-upload"),
+      uploadUrl: "ajax-upload?name=photo-uploads",
+      deleteUrl: "ajax-delete?name=photo-uploads",
+      uploadFilesFinishedHook: function (object, files) {
+        const Http = new XMLHttpRequest();
+        const url = 'set-photos';
+        Http.open("POST", url);
+        Http.setRequestHeader("Accept", "application/json")
+        Http.setRequestHeader("Content-Type", "application/json")
+        Http.send(JSON.stringify({
+          files: files,
+          type: "photos"
+        }));
+
+        Http.onreadystatechange = (e) => {
+          console.log(Http.responseText)
+        }
+      }
+    });
+  }
+</script>
+{% endblock %}

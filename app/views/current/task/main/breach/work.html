@@ -1,0 +1,100 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Breach of visa conditions
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>
+<h1 class="govuk-heading-l">Breach of visa conditions</h1>-->
+
+      <form class="form" action="/purple/current/sis-breach-work-aware" method="post">
+
+        {% if data["sis-person1-first-name"] == "" or data["sis-person2-first-name"] == "" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Has the suspect or offender breached their conditions by working?</h1>
+        {% else %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Has {{ data['sis-person1-first-name'] }} {{ data['sis-person1-surname'] }} breached their conditions by working?</h1>
+        {% endif %}
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {% set breachWorking %}
+        {{ govukRadios({
+          name: "sis-breach-work-aware",
+          value: data ["sis-breach-work-aware"],
+          classes: "govuk-radios--inline",
+          fieldset: {
+            legend: {
+              text: "Do you know where they are working?"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {% endset -%}
+
+        {{ govukRadios({
+          name: "sis-breach-work",
+          value: data ["sis-breach-work"],
+          fieldset: {
+            legend: {
+              text: "",
+              classes: "govuk-label--l",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+        html: breachWorking
+      }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        <input type="hidden" id="sis-main-breach-done" name="sis-main-breach-done" value="Yes">
+
+        <input type="hidden" id="sis-offence-details-done" name="sis-offence-details-done" value="Yes">
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

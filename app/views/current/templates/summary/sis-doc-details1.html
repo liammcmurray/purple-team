@@ -1,0 +1,234 @@
+
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          How were the documents discovered?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ['sis-main-doc-source1'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="source">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          What is the application reference number?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-main-doc-app-number"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="app">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Did someone else help the person complete the application?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-main-docs-helper"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="app-help">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      {% if data["sis-main-docs-helper"] == "Yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name of the person who helped the applicant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["sis-helper-name"] == "sis-helper-person" %}
+          {{data ["sis-person3-first-name"]}} {{data ["sis-person3-surname"]}}
+          {% else %}
+          {{data ["sis-docs-helper-name"]}}
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="helper">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+{% if data["sis-helper-name"] == "someone-else" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address of the person who helped the applicant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-docs-helper-email"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="helper">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Was the helper's address included?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-docs-helper-address"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="helper2">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+      {% if data["sis-docs-helper-address"] == "Yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Is the helper's address in the UK?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-docs-helper-uk"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="helper2">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+{% if data["sis-docs-helper-uk"] == "Yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          What is the helper's address?
+        </dt>
+
+        {% if data["sis-helper-address"] == "sis-helper-address" %}
+          2 Woodbury Lane, Manchester MS18 3LR
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="link-help">
+              Change<span class="govuk-visually-hidden">answer</span>
+            </a>
+          </dd>
+          {% else %}    
+        <dd class="govuk-summary-list__value">
+          {% if data["sis-doc-address-uk-line1"] == "" %}{% else %}
+          {{ data ["sis-doc-address-uk-line1"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-address-uk-line2"] == "" %}{% else %}
+          {{ data ["sis-doc-address-uk-line2"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-address-uk-city"] == "" %}{% else %}
+          {{ data ["sis-doc-address-uk-city"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-address-uk-county"] == "" %}{% else %}
+          {{ data ["sis-doc-address-uk-county"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-address-uk-postcode"] == "" %}{% else %}
+          {{ data ["sis-doc-address-uk-postcode"] }}<br/>{% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="address">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      {% endif %}
+      </div>
+{% else %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          What is the helper's non-UK address?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data["sis-doc-int-address1"] == "" %}{% else %}
+          {{ data ["sis-doc-int-address1"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-int-address2"] == "" %}{% else %}
+          {{ data ["sis-doc-int-address2"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-int-address3"] == "" %}{% else %}
+          {{ data ["sis-doc-int-address3"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-int-address4"] == "" %}{% else %}
+          {{ data ["sis-doc-int-address4"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-int-address5"] == "" %}{% else %}
+          {{ data ["sis-doc-int-address5"] }}<br/>{% endif %}
+
+          {% if data["sis-doc-int-address6"] == "" %}{% else %}
+          {{ data ["sis-doc-int-address6"] }}<br/>{% endif %}
+
+          {% if data["sis-country"] == "" %}{% else %}
+          {{ data ["sis-country"] }}<br/>{% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="address">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+{% endif %}
+
+{% else %}{% endif %}
+
+{% else %}
+{% endif %}
+
+{% else %}
+{% endif %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Documents seized or detained
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-main-docs-seized"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="seized">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+
+{% if data["sis-main-docs-seized"] == "Yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+         Documents seized by
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-main-docs-seized-details"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="seized">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+               <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of seizing
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data ["sis-seized-future-doe"] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="seized">
+          Change<span class="govuk-visually-hidden">answer</span>
+        </a>
+      </dd>
+      </div>
+      {% else %}
+      {% endif %}
+
+    </dl>
+  </div>
+  </div>

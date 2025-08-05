@@ -1,0 +1,162 @@
+{% set serviceName = "Evaluate an allegation" %}
+{% set pageTitle = "Case List" %}
+{% set containerClasses = "govuk-!-margin-top-7" %}
+
+{% extends "layouts/default.html" %}
+{% block pageTitle %} Case list {% endblock %}
+{% block backLink %} {% endblock %}
+{% block content %}
+
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-xl">Saddiqah Ashraf</span>
+      <h1 class="govuk-heading-xl">RED Intake</h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+      <button
+        data-module="govuk-button"
+        class="govuk-button govuk-button--secondary"
+      >
+        All cases
+      </button>
+
+      <button
+        data-module="govuk-button"
+        class="govuk-button govuk-button--secondary"
+      >
+        My cases
+      </button>
+
+      <button
+        data-module="govuk-button"
+        class="govuk-button govuk-button--secondary"
+      >
+        Find a case
+      </button>
+    </div>
+  </div>
+
+
+  <div class="govuk-grid-row" style="border: solid 3px grey; padding-top: 20px; margin-bottom:30px;">
+    <div class="govuk-grid-column-one-half">
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" style="font-weight:bold; margin-bottom: 20px" for="event-name">
+          Case reference number
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="event-name" name="eventName" type="text">
+      </div>
+
+      <button data-module="govuk-button" class="govuk-button">Apply filter</button>
+
+    </div>
+
+    <div class="govuk-grid-column-one-half">
+
+
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            <h1 class="govuk-fieldset__heading">
+              Harm level
+            </h1>
+          </legend>
+          <div class="govuk-checkboxes govuk-checkboxes--small" style="display:flex;" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="harm-level" name="harm-level" type="checkbox" value="hmrc">
+              <label class="govuk-label govuk-checkboxes__label" for="harm-level">Red</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="harm-level-2" name="harm-level" type="checkbox" value="employment-tribunal">
+              <label class="govuk-label govuk-checkboxes__label" for="harm-level-2">
+                Amber
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="harm-level-3" name="harm-level" type="checkbox" value="MOD">
+              <label class="govuk-label govuk-checkboxes__label" for="harm-level-3">
+                Green
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="harm-level-4" name="harm-level" type="checkbox" value="DfT">
+              <label class="govuk-label govuk-checkboxes__label" for="harm-level-4">
+                Unassessed
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <table class="govuk-table" data-module="moj-sortable-table">
+        <caption class="govuk-table__caption">Queue</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header" aria-sort="none">Reference</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Harm level</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Details</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Route</th>
+            <th scope="col" class="govuk-table__header" aria-sort="ascending">Created</th>
+          </tr>
+        </thead>
+
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" data-sort-value="1010001318899"><a class="govuk-link govuk-link--no-visited-state" href="case-email">1010001318899</a></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Amber</strong></td>
+            <td class="govuk-table__cell"><strong>Immigration</strong><p class="govuk-body-s">Checking passport</p></td>
+            <td class="govuk-table__cell">email</td>
+            <td class="govuk-table__cell" data-sort-value="0501">1st May</td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" data-sort-value="1010001318901"><a class="govuk-link govuk-link--no-visited-state" href="case-summary">1010001318901</a></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">New</strong></td>
+            <td class="govuk-table__cell"><strong>Fake marriage</strong></td>
+            <td class="govuk-table__cell">Public Allegation Form</td>
+            <td class="govuk-table__cell" data-sort-value="0428">28th April</td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" data-sort-value="1010001318900"><a class="govuk-link govuk-link--no-visited-state" href="#">1010001318900</a></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Green</strong></td>
+            <td class="govuk-table__cell"><strong>Alcohol smuggling</strong><p class="govuk-body-s">Just needs assigning</p></td>
+            <td class="govuk-table__cell">Public Allegation Form</td>
+            <td class="govuk-table__cell" data-sort-value="0427">27th April</td>  
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" data-sort-value="1010001318902"><a class="govuk-link govuk-link--no-visited-state" href="case-sis-details">1010001318902</a></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">New</strong></td>
+            <td class="govuk-table__cell"><strong>Human trafficking / smuggling / slavery</strong></td>
+            <td class="govuk-table__cell">Internal Referral Form</td>
+            <td class="govuk-table__cell" data-sort-value="0429">29th April</td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell" data-sort-value="1010001318903"><a class="govuk-link govuk-link--no-visited-state" href="#">1010001318903</a></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Amber</strong></td>
+            <td class="govuk-table__cell"><strong>Drug smuggling</strong></td>
+            <td class="govuk-table__cell">Public Allegation Form</td>
+            <td class="govuk-table__cell" data-sort-value="0430">30th April</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+{% endblock %}
+

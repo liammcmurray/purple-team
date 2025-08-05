@@ -1,0 +1,161 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="list" method="post" novalidate>
+
+    <!--<span class="govuk-caption-xl">Immigration abuse details</span>-->
+
+
+    <div class="govuk-form-group">
+
+
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--l" for="more-detail">
+          Reasons for making a section 24 report
+        </label>
+      </h1>
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% set knowlittleHtml %}
+{{ govukTextarea({
+  name: "know-little",
+  id: "know-little",
+  label: {
+    text: "Give details, if known.",
+    classes: "govuk-label--s",
+    isPageHeading: true
+  }
+}) }}
+{% endset -%}
+
+{% set arrangementsHtml %}
+{{ govukTextarea({
+  name: "arrangements",
+  id: "arrangements",
+  label: {
+    text: "Give details, if known.",
+    classes: "govuk-label--s",
+    isPageHeading: true
+  }
+}) }}
+{% endset -%}
+
+{% set facilitatorHtml %}
+{{ govukTextarea({
+  name: "facilitator",
+  id: "facilitator",
+  label: {
+    text: "Give details - include names, addresses and phone numbers, if known.",
+    classes: "govuk-label--s",
+    isPageHeading: true
+  }
+}) }}
+{% endset -%}
+
+{% set thirdpersonHtml %}
+{{ govukTextarea({
+  name: "third-person",
+  id: "third-person",
+  label: {
+    text: "Give details, if known.",
+    classes: "govuk-label--s",
+    isPageHeading: true
+  }
+}) }}
+{% endset -%}
+
+{% set otherreasonHtml %}
+{{ govukTextarea({
+  name: "other-reason",
+  id: "other-reason",
+  label: {
+    text: "Give details, if known.",
+    classes: "govuk-label--s",
+    isPageHeading: true
+  }
+}) }}
+{% endset -%}
+
+{{ govukCheckboxes({
+  name: "suspect-s24",
+  fieldset: {
+    legend: {
+      text: ""
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "One person giving the impression of knowing very little about the other person",
+      text: "One person giving the impression of knowing very little about the other person",
+      conditional: {
+        html: knowlittleHtml
+      }
+    },
+    {
+      value: "Arrangements",
+      text: "Arrangements",
+      conditional: {
+        html: arrangementsHtml
+      }
+    },
+    {
+      value: "Suspected use of a facilitator",
+      text: "Suspected use of a facilitator",
+      conditional: {
+        html: facilitatorHtml
+      }
+    },
+     {
+      value: "Credible third person",
+      text: "Credible third person",
+      conditional: {
+        html: thirdpersonHtml
+      }
+    },
+     {
+      value: "Any other reasons",
+      text: "Any other reasons",
+      conditional: {
+        html: otherreasonHtml
+      }
+    }
+  ]
+}) }}
+<br>
+ 
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+<input type="hidden" id="s24-extra-done" name="s24-extra-done" value="Yes">
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

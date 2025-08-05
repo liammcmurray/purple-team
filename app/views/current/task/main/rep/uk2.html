@@ -1,0 +1,70 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<span class="govuk-caption-xl">Person type</span>-->
+
+<form class="form" action="list" method="post">
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Is {{ data['sis-person2-first-name'] }} {{ data['sis-person2-surname'] }} currently in the UK?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-rep2-uk" name="sis-rep2-uk" type="radio" value="Yes">
+        <label class="govuk-label govuk-radios__label" for="sis-rep-uk">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-rep2-uk" name="sis-rep2-uk" type="radio" value="No">
+        <label class="govuk-label govuk-radios__label" for="sis-rep-uk">
+          No
+        </label>
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="sis-rep2-uk" name="sis-rep2-uk" type="radio" value="I do not know">
+        <label class="govuk-label govuk-radios__label" for="sis-rep-uk">
+          I do not know
+        </label>
+      </div>
+      
+    </div>
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  <input type="hidden" id="sis-rep2-done" name="sis-rep2-done" value="Yes">
+    <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

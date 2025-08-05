@@ -1,0 +1,115 @@
+<!--BIZ INFO - ADDRESS 1-->
+
+{% if data["sis-business-name1"] == "" and data["sis-biz-address1-line1"] == "" and data["sis-biz-address1-line2"] == "" and data["sis-biz-address1-city"] == "" and data["sis-biz-address1-county"] == "" and data["sis-biz-address1-postcode"] == "" %}
+{% else %}
+
+{% if data["sis-biz-info"] == "yes" %}
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="sis-location-1a" name="sis-location-link" type="radio" value="sis-address1">
+  <label class="govuk-label govuk-radios__label" for="sis-address1">
+
+    {% if data["sis-business-name1"] == "" %}{% else %}
+    {{ data ["sis-business-name1"]}},{% endif %}
+
+    {% if data["sis-biz-address1-line1"] == "" %}{% else %}
+    {{ data ["sis-biz-address1-line1"]}},{% endif %}
+
+    {% if data["sis-biz-address1-line2"] == "" %}{% else %}
+    {{ data ["sis-biz-address1-line2"]}},{% endif %}
+
+    {% if data["sis-biz-address1-city"] == "" %}{% else %}
+    {{ data ["sis-biz-address1-city"]}},{% endif %}
+
+    {% if data["sis-biz-address1-county"] == "" %}{% else %}
+    {{ data ["sis-biz-address1-county"]}}{% endif %}
+
+    {% if data["sis-biz-address1-postcode"] == "" %}{% else %}
+    {{ data ["sis-biz-address1-postcode"]}}{% endif %}
+
+  </label>
+</div>
+{% else %}
+{% endif %}
+
+{% endif %}
+
+<!--BIZ INFO - ADDRESS 2-->
+
+{% if data["sis-business-name2"] == "" and data["sis-biz-address2-line1"] == "" and data["sis-biz-address2-line2"] == "" and data["sis-biz-address2-city"] == "" and data["sis-biz-address2-county"] == "" and data["sis-biz-address2-postcode"] == "" %}
+{% else %}
+
+{% if data["sis-biz-info2"] == "yes" %}
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="sis-location-1b" name="sis-location-link" type="radio" value="sis-address1">
+  <label class="govuk-label govuk-radios__label" for="sis-address1">
+
+    {% if data["sis-business-name2"] == "" %}{% else %}
+    {{ data ["sis-business-name2"]}},{% endif %}
+
+    {% if data["sis-biz-address2-line1"] == "" %}{% else %}
+    {{ data ["sis-biz-address2-line1"]}},{% endif %}
+
+    {% if data["sis-biz-address2-line2"] == "" %}{% else %}
+    {{ data ["sis-biz-address2-line2"]}},{% endif %}
+
+    {% if data["sis-biz-address2-city"] == "" %}{% else %}
+    {{ data ["sis-biz-address2-city"]}},{% endif %}
+
+    {% if data["sis-biz-address2-county"] == "" %}{% else %}
+    {{ data ["sis-biz-address2-county"]}}{% endif %}
+
+    {% if data["sis-biz-address2-postcode"] == "" %}{% else %}
+    {{ data ["sis-biz-address2-postcode"]}}{% endif %}
+
+  </label>
+</div>
+{% else %}
+{% endif %}
+
+{% endif %}
+
+<!--<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="sis-location-1" name="sis-location" type="radio" value="sis-address1>
+  <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+    <p>Waterstones, 203-206 Piccadilly, St. James, London W1J 9HD</p>
+  </label>
+</div>--->
+
+
+<!--PERSON INFO--->
+
+{% if data["sis-person-info"] == "yes" %}
+
+{% if data["sis-person1-address"] == "sis-address-yes" %}
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="sis-location-2" name="sis-location" type="radio" value="sis-address2">
+  <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+    {{ data["sis-person1-address-uk-1"] }}, {{ data["sis-person1-address-uk-2"] }}, {{ data["sis-person1-address-uk-city-1"] }}, {{ data["sis-person1-address-uk-county-1"] }} {{ data["sis-person1-address-uk-postcode-1"] }}
+  </label>
+</div>
+{% else %}
+{% endif %}
+
+{% if data["sis-person1-address"] == "sis-address-int" %}
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="sis-location-3" name="sis-location" type="radio" value="address2">
+  <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+    {{ data['sis-person1-int-address1'] }}, {{ data['sis-person1-int-address2'] }}, {{ data['sis-person1-int-address3'] }}, {{ data['sis-person1-int-address4'] }}, {{ data['sis-person1-int-address5'] }}, {{ data['sis-person1-int-address6'] }} {{ data['sis-country'] }}
+  </label>
+</div>
+{% else %}
+{% endif %}
+
+{% else %}
+{% endif %}
+
+
+  {% if data["sis-ed-done"] == "Yes" %}
+<div class="govuk-radios__item">
+  <input class="govuk-radios__input" id="sis-location-2" name="sis-location" type="radio" value="address2">
+  <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+    {{ data['sis-ed-name'] }}, {{ data ["sis-ed-address1"]}}, {{ data ["sis-ed-address2"]}}, {{ data ["sis-ed-city"]}}, {{ data ["sis-ed-county"]}} {{ data ["sis-ed-postcode"]}}
+  </label>
+</div
+{% else %}
+{% endif %}

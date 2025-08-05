@@ -1,0 +1,155 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Overstaying visa
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>
+<h1 class="govuk-heading-l">Breach of visa conditions</h1>-->
+
+      <form class="form" action="list" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+  {% if data["sis-facilitation-date"] == "Already happened" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Which immigration offences have been facilitated?</h1>
+        {% else %}
+             {% endif %}
+               {% if data["sis-facilitation-date"] == "Ongoing" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Which immigration offences are being facilitated?</h1>
+  {% else %}
+        {% endif %}
+          {% if data["sis-facilitation-date"] == "Will happen in the future" %}
+        <h1 class="govuk-heading-l" style="margin-bottom:10px;">Which immigration offences will be facilitated?</h1>
+  {% else %}
+        {% endif %}
+ <div id="waste-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <!--<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Is there an additional offence?
+      </h1>
+    </legend>-->
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Abuse of access to housing">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Abuse of access to housing
+        </label>
+      </div>
+  
+    <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Breach of visa conditions">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Breach of conditions
+        </label>
+      </div>
+    <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Clandestine entry">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Clandestine entry
+        </label>
+      </div>
+  <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Document fraud">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Document fraud
+        </label>
+      </div>
+   
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Illegal working">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Illegal working
+        </label>
+      </div>
+    <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Inadequately documented passengers">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Inadequately documented passengers
+        </label>
+          <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          This includes: denied boarding, inadequately documented arrival and non-genuine standard visitor
+        </div>
+      </div>
+     <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Leave by deception">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Leave by deception
+        </label>
+      </div>
+     <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Modern slavery and human trafficking">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Modern slavery and human trafficking
+        </label>
+      </div>
+  <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Overstaying visa">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Overstaying visa
+        </label>
+      </div>
+  <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Representative abuse">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Representative abuse
+        </label>
+      </div>
+   
+  <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Sham marriage or civil partnership">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Sham marriage or civil partnership
+        </label>
+      </div> 
+   
+    
+      <div class="govuk-checkboxes__divider">or</div>
+  <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="facilitaton-crime" name="facilitaton-crime" type="checkbox" value="Other" data-aria-controls="conditional-contact">
+        <label class="govuk-label govuk-checkboxes__label" for="facilitaton-crime">
+          Other
+        </label>
+      </div>
+ <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="contact-by-email">
+            Type of offence
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="" spellcheck="false" autocomplete="">
+      </div>
+    </div>
+
+      </fieldset>
+    </div> 
+<br>
+        <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+ <input type="hidden" id="sis-facilitation-done" name="sis-facilitation-done" value="Yes">
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,213 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Marriage abuse
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+ <h1 class="govuk-heading-l">Check your answers</h1>
+
+
+      <dl class="govuk-summary-list">
+        
+
+              <div class="govuk-summary-list__row" >
+        
+
+                {% if data["sis-s24-event-exact"] == "Yes" %}
+                <dt class="govuk-summary-list__key">
+                  Exact date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-s24-future-doe"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="details">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                </dd>
+                {% else %}
+                <dt class="govuk-summary-list__key">
+                  Aproximate date
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-s24-future-date"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="details">
+                    Change<span class="govuk-visually-hidden">answer</span>
+                  </a>
+                </dd>
+                {% endif %}
+
+                
+              </div>
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Name of location
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ["sis-s24-location-name"]}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="address">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+             
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {% if data["sis-location-other-address1"] == "" %}{% else %}
+                  {{ data['sis-location-other-address1'] }} <br/>{% endif %}
+
+                  {% if data["sis-location-other-address2"] == "" %}{% else %}
+                  {{ data['sis-location-other-address2'] }} <br/>{% endif %}
+
+                  {% if data["sis-location-other-city"] == "" %}{% else %}
+                  {{ data['sis-location-other-city'] }}<br/>{% endif %}
+
+                  {% if data["sis-location-other-county"] == "" %}{% else %}
+                  {{ data['sis-location-other-county'] }}<br/>{% endif %}
+
+                  {% if data["sis-location-other-postcode"] == "" %}{% else %}
+                  {{ data['sis-location-other-postcode'] }}<br/>{% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="address">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+
+              
+<div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Reasons for making a section 24 report
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ['suspect-s24']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="s24-report">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+             
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Details about one person knowing very little about the other
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ['know-little']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="s24-report">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+         
+                 <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Details about arrangements
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ['arrangements']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="s24-report">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+ 
+                 <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Details about suspected use of a facilitator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ['facilitator']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="s24-report">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+                 <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Details about credible third person
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ['third-person']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="s24-report">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+                 <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Details about any other reasons
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{ data ['other-reason']}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="s24-report">
+                  Change<span class="govuk-visually-hidden">answer</span>
+                </a>
+              </dd>
+              </div>
+
+       
+
+            </dl>
+
+          </div>
+        </div>
+
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+
+  <input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+
+  </form>
+
+  </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/pink/current/sis-slavery-role3" method="post">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-slavery-role3",
+  value: datas[sis-slavery-role3],
+  fieldset: {
+    legend: {
+      text: "Who do you want to add?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Potential or recognised victim of modern slavery and human traficking",
+      text: "Potential or recognised victim of modern slavery and human traficking"
+    },
+    {
+      value: "Trafficker",
+      text: "Trafficker"
+    },
+    {
+      value: "First responder",
+      text: "First responder"
+    }
+  ]
+}) }}
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

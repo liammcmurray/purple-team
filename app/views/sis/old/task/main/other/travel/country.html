@@ -1,0 +1,113 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Clandestine entry details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="route" method="post">
+
+        <!-- AIR TRAVEL questions -->
+
+        
+
+        <!--<span class="govuk-caption-xl">Person 1</span>-->
+       
+
+
+   <h1 class="govuk-heading-l">Country of departure</h1>
+<div id="event-name-hint" class="govuk-hint">
+  Start typing to find countries
+</div>
+  <div class="govuk-form-group">
+    {% include "pink/current/templates/ref-data/sis-country-list.html" %}
+  </div>
+    
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+                {{ govukButton({
+                  text: "Continue"
+                }) }}
+        <input type="hidden" id="sis-cland-done" name="sis-cland-done" value="Yes">
+
+        <input type="hidden" id="sis-offence-details-done" name="sis-offence-details-done" value="Yes">
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-country2')
+    })
+
+</script>
+<script type="text/javascript">
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('#sis-airline-list')
+  })
+
+</script>
+<script type="text/javascript">
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: document.querySelector('#sis-airport-list')
+  })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-air-ports')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-train-stations')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-vehicle-types')
+    })
+
+</script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-uk-sea-ports')
+    })
+
+</script>
+{% endblock %}

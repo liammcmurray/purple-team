@@ -1,0 +1,67 @@
+{% extends "pink/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="terrorism-check-route" method="post" novalidate>
+
+
+
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+     Links to extremist groups
+    </label>
+  </h1>
+ <p>
+Tell us any information you have about links to extremist or <a href="https://www.gov.uk/government/publications/proscribed-terror-groups-or-organisations--2/proscribed-terrorist-groups-or-organisations-accessible-version#list-of-proscribed-international-terrorist-groups" class="govuk-link govuk-link--no-visited-state" target="_blank">proscribed terrorist groups (opens in a new tab)</a>.
+    </p>
+
+    <p>This could be:</p>
+    <ul class="govuk-list govuk-list--bullet">
+
+<li>claimed involvement in their activities</li>
+<li>receiving financial support from them</li>
+<li>skills and knowledge gained from training with them</li>
+<li>anything else you found suspicious</li>
+
+</ul>
+</p>
+      <h2 class="govuk-heading-m">
+Describe in detail who has links to extremist groups and how.
+  </h2>
+  <textarea class="govuk-textarea" id="extremist-group-detail" name="extremist-group-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+ 
+
+ 
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-terrorism-extremist-done" name="sis-terrorism-extremist-done" value="Yes">
+
+<input type="hidden" id="sis-terrorism-activities-done" name="sis-terrorism-activities-done" value="Yes">
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

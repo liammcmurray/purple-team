@@ -1,0 +1,21 @@
+
+@media (min-width: 1024px) {
+  .green-team .green-sprint-4-6 {
+
+    .align-filter-button {
+      position: relative;
+      min-height: 68px;
+
+      .filter-button {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+      }
+    }
+    .background-color {
+      background-color: white;
+      padding: 10px;
+    }
+  }
+}

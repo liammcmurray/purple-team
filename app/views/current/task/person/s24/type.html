@@ -1,0 +1,109 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Select your first document to tell us about
+{% endblock %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="../list" method="post" novalidate>
+
+      <!--<span class="govuk-caption-xl">Documents</span>-->
+      <h1 class="govuk-heading-l">Party 1: Identity document</h1>
+     <p class="govuk-body">Complete as much about the identity document as you can.</p>
+      {%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
+        {%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
+        {%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+
+
+                              {% set sisDocsother %}
+                              {{ govukInput({
+                                name: "sis-s24-doc-one-type",
+                                value: data["sis-s24-doc-one-type"],
+                                classes: "govuk-!-width-one-third",
+                                label: {
+                                  text: "Type of document"
+                                }
+                              }) }}
+                            {% endset -%}
+
+                            {{ govukRadios({
+                              name: "sis-s24-doc-one-type",
+                              value: data["sis-s24-doc-one-type"],
+                              fieldset: {
+                               legend: {
+                                 text: "Type of document",
+                                 classes: "govuk-fieldset__legend--s"
+                                 }
+                              },
+                              items: [
+                                {
+                                  value: "Biometric Residence Permit (BRP)",
+                                  text: "Biometric Residence Permit (BRP)"
+                                },
+                                {
+                                  value: "Birth certificate",
+                                  text: "Birth certificate"
+                                },
+                             
+                                {
+                                  value: "Identity card",
+                                  text: "Identity card"
+                                },
+                                
+                                {
+                                  value: "Passport",
+                                  text: "Passport"
+                                },
+                              
+                      
+                                {
+                                  value: "Other",
+                                  text: "Other",
+                                  conditional: {
+                                    html: sisDocsother
+                                  }
+                                },
+                                        {
+                                  divider: "or"
+                                },
+                                {
+                                  value: "I do not know",
+                                  text: "I do not know"
+                                
+                                }
+                              ]
+                            }) }}
+
+
+          {{ govukInput({
+            label: {
+              text: 'Document number',
+              classes: "govuk-label--s"
+            },
+            classes: 'govuk-!-width-one-half',
+            name: 'sis-s24-docs1-number',
+            value: data["sis-s24-docs1-number"]
+          }) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+ 
+{{ govukButton({
+text: "Continue"
+}) }}
+</form>
+    </div>
+  </div>
+
+{% endblock %}

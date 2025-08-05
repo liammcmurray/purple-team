@@ -1,0 +1,86 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Has one of the couple been paid, or promised money, for getting married?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>
+<h1 class="govuk-heading-l">Payment in marriage</h1>-->
+
+<form class="form" action="arrange" method="post">
+
+{% set marriagePayment %}
+
+  {% from "govuk/components/input/macro.njk" import govukInput %}
+
+  {{ govukInput({
+    label: {
+      text: "Who is being paid?",
+      isPageHeading: false
+    },
+    id: "marriage-paid",
+    classes: "govuk-input--width-20",
+    name: "marriage-paid",
+    value: data ["marriage-paid"]
+  }) }}
+
+{% endset -%}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "marriage-payment",
+  value: data["marriage-payment"],
+  fieldset: {
+    legend: {
+      text: "Has one of the couple been paid, or promised money, for entering the marriage or civil partnership?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: marriagePayment
+      }
+    },
+    {
+      value: "No",
+      text: "No"
+    },
+    {
+              divider: "or"
+            },
+    {
+      value: "I do not know",
+      text: "I do not know"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
