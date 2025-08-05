@@ -54,7 +54,8 @@ Home – {{serviceName}} – Has the person already entered the UK?
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {{ govukButton({
-  text: "Continue"
+  text: "Continue",
+  classes: "hods-button"
 }) }}
 
 <input type="hidden" id="sis-event-done" name="sis-event-done" value="Yes">

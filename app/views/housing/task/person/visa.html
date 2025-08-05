@@ -28,7 +28,7 @@ Submit intelligence about immigration or borders – Select your first document 
         </h1>        
         </legend>
 
-        {% include "/current/templates/list/visa-type.html" %}
+        {% include "/housing/templates/list/visa-type.html" %}
 
       </fieldset>
       </div>        
@@ -38,7 +38,8 @@ Submit intelligence about immigration or borders – Select your first document 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {{ govukButton({
-text: "Continue"
+text: "Continue",
+classes: "hods-button"
 }) }}
 
 </form>

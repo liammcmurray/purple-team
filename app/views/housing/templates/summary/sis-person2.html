@@ -26,6 +26,16 @@
       </div>
 {% endif %}
 
+{% if data["sisVisaType"] != "" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Visa type
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['sisVisaType'] }}
+        </dd>
+      </div>
+{% endif %}
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">

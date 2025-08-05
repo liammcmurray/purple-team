@@ -1,0 +1,181 @@
+  {% if data["start-crime"] == "terrorism" %}
+  <div class="govuk-radios" data-module="govuk-radios">
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType" name="sisVisaType" type="radio" value="Asylum claimant">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+      Asylum
+    </label>
+  </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-2" name="sisVisaType" type="radio" value="Citizenship">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+      British citizenship
+    </label>
+  </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-2" name="sisVisaType" type="radio" value="EU Settlement Scheme (EUSS)">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+      EU Settlement Scheme (EUSS)
+    </label>
+  </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Family visa">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Family visa
+    </label>
+  </div>
+
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-2" name="sisVisaType" type="radio" value="Settlement">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+      Settlement
+    </label>
+  </div>
+
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Study visa">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Study visa
+    </label>
+  </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Visit visa">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Visit visa
+    </label>
+  </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Work visa">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Work visa
+    </label>
+  </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Other" data-aria-controls="sis-housing-other">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Other
+    </label>
+  </div>
+  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="sis-housing-other">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="contact-by-phone">
+       Type of visa or permission
+      </label>
+      <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactByPhone" type="tel" autocomplete="tel">
+    </div>
+  </div>
+  <div class="govuk-radios__divider">or</div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-4" name="sisVisaType" type="radio" value="I do not know">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-4">
+      I do not know
+    </label>
+  </div>
+</div>
+
+    {% else %}
+  <div class="govuk-radios" data-module="govuk-radios">
+      {% if data["start-crime"] == "other" or data["start-crime"] == "slavery" or data["start-crime"] == "overstayer" or data["start-crime"] == "housing" %}   {% else %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType" name="sisVisaType" type="radio" value="Asylum">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+      Asylum
+    </label>
+  </div>
+     {% endif %}
+  {% if data["start-crime"] == "deception" and data["sub-crime"] !== "conditions"  %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-2" name="sisVisaType" type="radio" value="Citizenship">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+      British citizenship
+    </label>
+  </div>
+  {% else %}{% endif %}
+        {% if data["start-crime"] == "overstayer" or data["start-crime"] == "housing"%}   {% else %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-2" name="sisVisaType" type="radio" value="EU Settlement Scheme (EUSS)">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+      EU Settlement Scheme (EUSS)
+    </label>
+  </div>
+  {% endif %}
+    {% if data["start-crime"] == "conditions" or data["sub-crime"] == "conditions" %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-2" name="sisVisaType" type="radio" value="Citizenship">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+     Immigration bail
+    </label>
+  </div>
+  {% else %}{% endif %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Family">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Family visa
+    </label>
+  </div>
+  {% if data["start-crime"] == "deception" or data["start-crime"] == "housing" %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-2" name="sisVisaType" type="radio" value="Settlement">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+      Settlement
+    </label>
+  </div>
+  {% else %}{% endif %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Study">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Study visa
+    </label>
+  </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Visit">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Visit visa
+    </label>
+  </div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Work">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Work visa
+    </label>
+  </div>
+      {% if data["start-crime"] == "conditions" %}
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Other" data-aria-controls="sis-housing-other">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Other
+    </label>
+  </div>
+  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="sis-housing-other">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="contact-by-phone">
+        Type of conditions
+      </label>
+      <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactByPhone" type="tel" autocomplete="tel">
+    </div>
+  </div>
+{% else %}
+    <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-3" name="sisVisaType" type="radio" value="Other" data-aria-controls="sis-housing-other">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+      Other
+    </label>
+  </div>
+  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="sis-housing-other">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="contact-by-phone">
+        Type of visa or permission
+      </label>
+      <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactByPhone" type="tel" autocomplete="tel">
+    </div>
+  </div>
+{% endif %}
+  <div class="govuk-radios__divider">or</div>
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="sisVisaType-4" name="sisVisaType" type="radio" value="I do not know">
+    <label class="govuk-label govuk-radios__label" for="whereDoYouLive-4">
+      I do not know
+    </label>
+  </div>
+</div>
+{% endif %}

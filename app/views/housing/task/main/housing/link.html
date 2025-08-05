@@ -31,85 +31,15 @@ Submit intelligence about immigration or borders – Where is the illegal workin
               <div class="govuk-checkboxes" data-module="govuk-radios">
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="sis-housing-location-link" name="sis-housing-location-link0" type="checkbox" value="sis-housing-address1">
+                  <input class="govuk-checkboxes__input" id="sis-housing-location-link" name="sis-housing-location-link" type="checkbox" value="sis-housing-address1">
                   <label class="govuk-label govuk-checkboxes__label" for="sis-housing-location-link">
                     112 Rosewood Terrace, Leicester, LE3 5DA
                   </label>
                 </div>
-                
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="sis-housing-location-link" name="sis-housing-location-link" type="checkbox" value="sis-housing-address1">
-                  <label class="govuk-label govuk-checkboxes__label" for="sis-housing-location-link">
-
-                    {% if data["sis-person1-address-uk-1"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-1'] }}, {% endif %}
-
-                    {% if data["sis-person1-address-uk-2"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-2'] }}, {% endif %}
-
-                    {% if data["sis-person1-address-uk-city-1"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-city-1'] }}, {% endif %}
-          
-                    {% if data["sis-person1-address-uk-county-1"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-county-1'] }} {% endif %}
-          
-                    {% if data["sis-person1-address-uk-postcode-1"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-postcode-1'] }}{% endif %}
-
-                  </label>
-                </div>
-
-                {% if data["sis-person1-address-uk-1b"] == "" %}{% else %}
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="sis-housing-location-link2" name="sis-housing-location-link" type="checkbox" value="sis-housing-address2">
-                  <label class="govuk-label govuk-checkboxes__label" for="sis-housing-location-link">  
-                    
-                    {% if data["sis-person1-address-uk-1b"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-1b'] }}, {% endif %}
-
-                    {% if data["sis-person1-address-uk-2b"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-2b'] }}, {% endif %}
-
-                    {% if data["sis-person1-address-uk-city-1b"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-city-1b'] }}, {% endif %}
-          
-                    {% if data["sis-person1-address-uk-county-1b"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-county-1b'] }} {% endif %}
-          
-                    {% if data["sis-person1-address-uk-postcode-1b"] == "" %}{% else %}
-                    {{ data['sis-person1-address-uk-postcode-1b'] }}{% endif %}
-
-                  </label>
-                </div>
-                {% endif %}
-
-                {% if data["sis-biz-address-next"] == "Yes" %}
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="sis-housing-location-link3" name="sis-housing-location-link" type="checkbox" value="sis-housing-address3">
-                  <label class="govuk-label govuk-checkboxes__label" for="sis-housing-location-link">  
-                    
-                    {% if data["sis-biz-address1-line1"] == "" %}{% else %}
-                    {{ data['sis-biz-address1-line1'] }}, {% endif %}
-
-                    {% if data["sis-biz-address1-line2"] == "" %}{% else %}
-                    {{ data['sis-biz-address1-line2'] }}, {% endif %}
-
-                    {% if data["sis-biz-address1-city"] == "" %}{% else %}
-                    {{ data['sis-biz-address1-city'] }}, {% endif %}
-          
-                    {% if data["sis-biz-address1-county"] == "" %}{% else %}
-                    {{ data['sis-biz-address1-county'] }} {% endif %}
-          
-                    {% if data["sis-biz-address1-postcode"] == "" %}{% else %}
-                    {{ data['sis-biz-address1-postcode'] }}{% endif %}
-
-                  </label>
-                </div>
-                {% else %}{% endif %}
 
                 <div class="govuk-checkboxes__divider">or</div>
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="sis-housing-location-link4" name="sis-housing-location-link" type="checkbox" value="somewhere-else">
+                  <input class="govuk-checkboxes__input" id="sis-housing-location-link1" name="sis-housing-location-link" type="checkbox" value="somewhere-else">
                   <label class="govuk-label govuk-checkboxes__label" for="sis-housing-location-link">
                     Somewhere else
                   </label>
@@ -119,7 +49,8 @@ Submit intelligence about immigration or borders – Where is the illegal workin
           </div>
 
     {{ govukButton({
-      text: "Continue"
+      text: "Continue",
+      classes: "hods-button"
     }) }}
 
     </form>

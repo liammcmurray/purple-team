@@ -400,12 +400,15 @@ router.post('/housing-tenant-permission', function (req, res) {
 router.post('/sis-housing-location', function (request, response) {
 
   var sisHousinglocation = request.session.data['sis-housing-location-link']
-  if (sisHousinglocation.includes("somewhere-else")){
+  if (sisHousinglocation == null){
+    response.redirect("/housing/task/main/housing/details");
+  }
+
+  else if (sisHousinglocation.includes("somewhere-else")){
     response.redirect("/housing/task/main/housing/address");
   } else {
     response.redirect("/housing/task/main/housing/details")
   }
 })
-
 
 
