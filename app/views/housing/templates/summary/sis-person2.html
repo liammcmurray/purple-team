@@ -42,7 +42,7 @@
           Given names
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-person2-first-name'] }}
+          {{ data['sis-person2-first-name'] or "Not provided" }}
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -50,7 +50,7 @@
           Surname
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-person2-surname'] }}
+          {{ data['sis-person2-surname'] or "Not provided" }}
         </dd>
       </div>
 
@@ -61,7 +61,7 @@
           Other names
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-person2-alias'] }} 
+          {{ data['sis-person2-alias'] or "Not provided" }} 
         </dd>
       </div>
       {% endif %}
@@ -77,9 +77,9 @@
         </dt>
         <dd class="govuk-summary-list__value">
           {% if data["sis-rep-suspect"] == "Client" %}
-          {{ data['sis-person2-dob'] }} 
+          {{ data['sis-person2-dob'] or "Not provided" }} 
           {% else %}
-      
+          Not provided
           {% endif %}
         </dd>
       </div>
@@ -91,9 +91,9 @@
         </dt>
         <dd class="govuk-summary-list__value">
           {% if data["sis-rep-suspect"] == "Client" %}
-          {{ data['sis-person2-age'] }} 
+          {{ data['sis-person2-age'] or "Not provided" }} 
           {% else %}
-          {{ data['sis-person2-age'] }} 
+          {{ data['sis-person2-age'] or "Not provided" }} 
           {% endif %}
         </dd>
       </div>
@@ -106,7 +106,7 @@
           Sex
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-person2-sex'] }}
+          {{ data['sis-person2-sex'] or "Not provided" }}
         </dd>
       </div>
 
@@ -116,7 +116,7 @@
           Country of nationality
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-country'] }}
+          {{ data['sis-country'] or "Not provided" }}
         </dd>
       </div>
       {% endif %}
@@ -128,7 +128,7 @@
           Business or agency name
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-rep-biz-name'] }}
+          {{ data['sis-rep-biz-name'] or "Not provided" }}
         </dd>
       </div>
       {% else %}
@@ -141,7 +141,7 @@
           Identity document number
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-person-id-number'] }}
+          {{ data['sis-person-id-number'] or "Not provided" }}
         </dd>
       </div>
 
@@ -154,7 +154,7 @@
           Email address
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-person-email'] }}
+          {{ data['sis-person-email'] or "Not provided" }}
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -162,7 +162,7 @@
           Phone number
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-person-phone'] }}
+          {{ data['sis-person-phone'] or "Not provided" }}
         </dd>
       </div>
     {% if data["start-crime"] == "terrorism" %}
@@ -171,7 +171,7 @@
           Social media or gaming details
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-social-gaming'] }}
+          {{ data['sis-social-gaming'] or "Not provided" }}
         </dd>
       </div>
 
@@ -183,7 +183,7 @@
           Home Office reference number
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['s24-person-ho-ref1'] }}
+          {{ data['s24-person-ho-ref1'] or "Not provided" }}
         </dd>
       </div>
       {% else %}
@@ -194,7 +194,7 @@
           GRO reference number
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['s24-person-gro-ref'] }}
+          {{ data['s24-person-gro-ref'] or "Not provided" }}
         </dd>
       </div>
       {% else %}
@@ -204,7 +204,7 @@
           Address known
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['sis-person2-address-known'] }}
+          {{ data['sis-person2-address-known'] or "Not provided" }}
         </dd>
       </div>
 
