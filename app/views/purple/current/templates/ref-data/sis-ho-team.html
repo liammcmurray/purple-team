@@ -1,0 +1,100 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+{% set sisTeamOther %}
+{{ govukInput({
+  id: "contact-by-email",
+  name: "contactByEmail",
+  classes: "govuk-!-width-one-half",
+  label: {
+    text: "What is the team?"
+  }
+}) }}
+{% endset -%}
+
+
+{{ govukRadios({
+    id: ho-teamID or "sis-ho-team",
+    name: "sis-ho-team",
+    label: {
+      text: ho-teamLabelText or ""
+    },
+    value: ho-teamValue or data[ho-teamName or ho-teamID or "ho-team"] or "",
+    items: [
+  {
+      value: "UKVI: ECAA",
+      text: "UKVI: ECAA"
+  },
+  {
+      value: "CWI Croydon​",
+      text: "CWI Croydon​"
+  },
+  {
+      value: "CWI Leeds​",
+      text: "CWI Leeds​"
+  },
+  {
+      value: "CWI Liverpool​",
+      text: "CWI Liverpool​"
+  },
+  {
+      value: "UKVI: PM European​",
+      text: "UKVI: PM European​"
+  },
+  {
+      value: "UKVI: PM BN(O)​",
+      text: "UKVI: PM BN(O)​"
+  },
+  {
+      value: "UKVI: TM Tier 1​",
+      text: "UKVI: TM Tier 1​"
+  },
+  {
+      value: "UKVI: TM Tier 2​",
+      text: "UKVI: TM Tier 2​"
+  },
+  {
+    value: "UKVI: TM Tier 4​",
+    text: "UKVI: TM Tier 4​"
+},
+  {
+      value: "UKVI: TM Tier 5​",
+      text: "UKVI: TM Tier 5​"
+  },
+  {
+      value: "CWI Sheffield​",
+      text: "CWI Sheffield​"
+  },
+  {
+      value: "UKVI PM EU Settlement Scheme​​",
+      text: "UKVI PM EU Settlement Scheme​​"
+  },
+  {
+      value: "IE Clandestine Brigade",
+      text: "IE Clandestine Brigade"
+  },
+  {
+      value: "Other",
+      text: "Other",
+      conditional: {
+        html: sisTeamOther
+      }
+  }
+    ]
+  }) }}
+ 
+</div>

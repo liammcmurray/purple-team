@@ -1,0 +1,73 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the role of this person?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<span class="govuk-caption-xl">Person type</span>-->
+
+   
+<form class="form" action="group2" method="post">
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
+
+{{ govukCheckboxes({
+  name: "sis-terrorism-group2",
+  value: data ["sis-terrorism-group2"],
+  fieldset: {
+    legend: {
+      text: "Group 2: What is this group's role?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Select all that apply. You can add another group later."
+  },
+  items: [
+    {
+      value: "Vulnerable to radicalisation",
+      text: "Vulnerable to radicalisation"
+    },
+     {
+      value: "Suspected of radicalising others",
+      text: "Suspected of radicalising others"
+    },
+     {
+      value: "Suspected links to terrorism",
+      text: "Suspected links to terrorism"
+    }
+  ]
+}) }}
+
+  
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+  
+
+
+  </div>
+</div>
+
+{% endblock %}

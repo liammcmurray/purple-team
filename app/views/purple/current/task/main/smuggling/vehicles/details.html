@@ -1,0 +1,85 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Does the crime involve any vehicles, transport or travel?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<span class="govuk-caption-xl">Person 1</span>
+<h1 class="govuk-heading-l" style="margin-bottom: 0;">How did the person, or people, enter the country clandestinely?</h1>-->
+
+      <form class="form" action="/purple/current/smuggling-vehicles" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {% set otherHtml %}
+        {{ govukInput({
+          id: "smuggleRouteOther",
+          name: "smuggleRouteOther",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Provide details"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          name: "smuggle-transport",
+          value: data ["smuggle-transport"],
+          fieldset: {
+          legend: {
+            text: "How are the items being smuggled?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+            text: "You can add another mode of transport later"
+          },
+          items: [
+            {
+              value: "Road",
+              text: "Road"
+            },
+            {
+              value: "Sea",
+              text: "Sea"
+            },
+            {
+              value: "Rail",
+              text: "Rail"
+            },
+            {
+              value: "Air",
+              text: "Air"
+            },
+            {
+              value: "I do not know",
+              text: "I do not know"
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

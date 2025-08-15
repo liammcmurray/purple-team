@@ -1,0 +1,89 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+
+{{ govukSelect({
+    id: ie-teamID or "sis-ie-team",
+    name: "sis-ie-team",
+    value: data["sis-ie-team"],
+    label: {
+      text: ieteamLabelText or ""
+    },
+    hint: {
+      text: ieteamHint | default("", false)
+    },
+    value: ieteamValue or data[ieteamName or ieteamID or "ie-team" or ""],
+    
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  
+  {
+      value: "IRC Brook House",
+      text: "IRC Brook House"
+  },
+    {
+      value: "IRC Campsfield",
+      text: "IRC Campsfield"
+  },
+  
+  {
+      value: "IRC Colnbrook",
+      text: "IRC Colnbrook"
+  },
+  {
+      value: "IRC Derwentside",
+      text: "IRC Derwentside"
+  },
+  
+  {
+      value: "IRC Dungavel House",
+      text: "IRC Dungavel House"
+  },
+    {
+      value: "IRC Harmondsworth",
+      text: "IRC Harmondsworth"
+  },
+  
+  {
+      value: "IRC Larne House",
+      text: "IRC Larne House"
+  },
+    {
+      value: "IRC Manchester",
+      text: "IRC Manchester"
+  },
+  
+  {
+      value: "IRC Morton Hall",
+      text: "IRC Morton Hall"
+  },
+    {
+      value: "IRC Swinderby",
+      text: "IRC Swinderby"
+  },
+  
+  {
+      value: "IRC Tinsley House",
+      text: "IRC Tinsley House"
+  },
+    {
+      value: "IRC Yarl's Wood",
+      text: "IRC Yarl's Wood"
+  }
+   ]
+
+  }) }}
+  </div>

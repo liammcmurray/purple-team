@@ -1,0 +1,64 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+{{ govukSelect({
+    id: "sis-op-list",
+  name: "sis-op-list",
+  value: data ["sis-op-list"],
+  label: {
+    text: "Operation name"
+  },
+    hint: {
+      text: countryHint | default("", false)
+    },
+    value: countryValue or data[countryName or countryID or "country"] or "",
+    items: [
+  {
+      value: "",
+      text: "Select operation name"
+  },
+  {
+    value: "Gateway",
+    text: "Gateway"
+  },
+  {
+    value: "Clematin",
+    text: "Clematin"
+  },
+  {
+    value: "Swinley",
+    text: "Swinley"
+  },
+  {
+    value: "Yomba",
+    text: "Yomba"
+  },
+  {
+    value: "Mandeville",
+    text: "Mandeville"
+  },
+  {
+    value: "Checkstone",
+    text: "Checkstone"
+  },
+  {
+    value: "Hartseed",
+    text: "Hartseed"
+  },
+  {
+    value: "Europo",
+    text: "Europo"
+  }
+    ]
+  }) }}
+  </div>

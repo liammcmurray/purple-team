@@ -1,0 +1,161 @@
+<style>
+
+    .autocomplete__wrapper {
+      width:400px;
+    }
+
+    .autocomplete__input {
+      background-color:#ffffff;
+    }
+      </style>
+
+    <div class="cop-autocomplete">
+{{ govukSelect({
+  id: "sis-forgery",
+        name: "sis-forgery",
+        value: data["sis-forgery"],
+    label: {
+      text: forgeryLabelText or ""
+    },
+    hint: {
+      text: forgeryHint | default("", false)
+    },
+    value: forgeryValue or data[forgeryName or forgeryID or "forgery"] or "",
+    items: [
+ {
+      value: "",
+      text: "Select the type of forgery"
+  },
+
+
+      {
+          value: "F1A Substituted (old-style) photograph only",
+          text: "F1A Substituted (old-style) photograph only"
+      },
+     
+      {
+          value: "F1AD Substituted digital image only (excluding e-documents)",
+          text: "F1AD Substituted digital image only (excluding e-documents)"
+      },
+
+      {
+          value: "F1AEw Substituted digital image only (e-documents) - chip functional",
+          text: "F1AEw Substituted digital image only (e-documents) - chip functional"
+      },
+
+      {
+          value: "F1AEd Substituted digital image only (e-documents) - chip non-functional",
+          text: "F1AEd Substituted digital image only (e-documents) - chip non-functional"
+      },
+
+      {
+          value: "F1B Substituted bio data page (excluding e-documents)",
+          text: "F1B Substituted bio data page (excluding e-documents)"
+      },
+      
+      {
+          value: "F1BEw Substituted bio data page (e-documents) - chip functional",
+          text: "F1BEw Substituted bio data page (e-documents) - chip functional"
+      },
+
+      {
+          value: "F1BEd Substituted bio data page (e-documents) - chip non-functional",
+          text: "F1BEd Substituted bio data page (e-documents) - chip non-functional"
+      },
+
+      {
+          value: "F2 Substituted other page",
+          text: "F2 Substituted other page"
+      },
+
+      {
+          value: "F3 Altered details",
+          text: "F3 Altered details"
+      },
+
+      {
+          value: "F4AC Falsified UK (uniform format) visa - cat A, B or C",
+          text: "F4AC Falsified UK (uniform format) visa - cat A, B or C"
+      },
+
+      {
+          value: "F4AD Falsified UK visa – cat D",
+          text: "F4AD Falsified UK visa – cat D"
+      },
+
+      {
+          value: "F4AO Falsified UK vignette – other (residence permits, RoA etc)",
+          text: "F4AO Falsified UK vignette – other (residence permits, RoA etc)"
+      },
+      
+      {
+          value: "F4B Falsified UK stamp",
+          text: "F4B Falsified UK stamp"
+      },
+        {
+          value: "F4C Falsified other country visa (incl. residence permits) – excl. Schengen",
+          text: "F4C Falsified other country visa (incl. residence permits) – excl. Schengen"
+      },
+          {
+          value: "F4CSch Falsified other country visa (incl. residence permits) – Schengen",
+          text: "F4CSch Falsified other country visa (incl. residence permits) – Schengen"
+      },
+          {
+          value: "F4D Falsified other country stamp",
+          text: "F4D Falsified other country stamp"
+      },
+          {
+          value: "F5 Counterfeit document (excluding e-documents)",
+          text: "F5 Counterfeit document (excluding e-documents)"
+      },
+          {
+          value: "F5E Counterfeit document (e-documents)",
+          text: "F5E Counterfeit document (e-documents)"
+      },
+          {
+          value: "F6A Stolen blank doc (excluding e-documents)",
+          text: "F6A Stolen blank doc (excluding e-documents)"
+      },
+          {
+          value: "F6AE Stolen blank doc (e-documents)",
+          text: "F6AE Stolen blank doc (e-documents)"
+      },
+          {
+          value: "F6B Fraudulently obtained document (excluding e-documents)",
+          text: "F6B Fraudulently obtained document (excluding e-documents)"
+      },
+          {
+          value: "F6BE Fraudulently obtained document (e-documents)",
+          text: "F6BE Fraudulently obtained document (e-documents)"
+      },
+          {
+          value: "F7 Other false document (including supporting documents- see subsets)",
+          text: "F7 Other false document (including supporting documents- see subsets)"
+      },
+          {
+          value: "F8 Impersonation",
+          text: "F8 Impersonation"
+      },
+            {
+          value: "F9 Pseudo / fantasy document",
+          text: "F9 Pseudo / fantasy document"
+      },
+          {
+          value: "F10 Mutilated document",
+          text: "F10 Mutilated document"
+      },
+          {
+          value: "F11 No document",
+          text: "F11 No document"
+      },
+          {
+          value: "FGEN Genuine document",
+          text: "FGEN Genuine document"
+      },
+          {
+          value: "FINC Inconclusive – to be used by forgery units only",
+          text: "FINC Inconclusive – to be used by forgery units only"
+      }
+        ]
+      }) }}
+      </div>

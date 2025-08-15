@@ -1,0 +1,197 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Tell us about the offence
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+
+
+
+    <div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+     Travel
+    </label>
+  </h1>
+   <h2 class="govuk-heading-m">Initial point of departure</h2>
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set concealTrue %}
+{{ govukTextarea({
+  id: "conceal-start",
+  name: "conceal-start",
+  type: "conceal-start",
+  autocomplete: "conceal-start",
+  spellcheck: false,
+  label: {
+    text: "Give details"
+  }
+}) }}
+{% endset -%}
+
+
+
+
+
+{{ govukRadios({
+  name: "concealJourney",
+  fieldset: {
+    legend: {
+      text: "Have they tried to conceal where they started their journey?"
+    }
+  },
+
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      conditional: {
+        html: concealTrue
+      }
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+  <hr>
+  <br/>
+  <h2 class="govuk-heading-m">Reason for application or travel </h2>
+   {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "travel-reason",
+  fieldset: {
+    
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Family visits to key threat areas",
+      text: "Family visits to key threat areas"
+    },
+    {
+      value: "Study when travelling to the UK",
+      text: "Study when travelling to the UK"
+    },
+    {
+      value: "Business when travelling to the UK",
+      text: "Business when travelling to the UK"
+    },
+     {
+      value: "Tourism when travelling to the UK",
+      text: "Tourism when travelling to the UK"
+    },
+    
+     {
+      divider: "or"
+    },
+    {
+      value: "none of the above",
+      text: "none of the above",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <p>
+      Give details
+    </p>
+
+  
+  <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+ 
+    </div>
+  <hr>
+  <br/>
+  <h2 class="govuk-heading-m">Solo or group applicant or traveller</h2>
+   {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "traveller",
+  fieldset: {
+    
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Operational need",
+      text: "Operational need"
+    },
+    {
+      value: "Maintenance of cover story",
+      text: "Maintenance of cover story"
+    },
+    {
+      value: "Watch list",
+      text: "Watch list"
+    },
+     {
+      value: "Routes",
+      text: "Routes"
+    },
+     {
+      value: "Budget and cost",
+      text: "Budget and cost"
+    },
+     {
+      divider: "or"
+    },
+    {
+      value: "none of the above",
+      text: "none of the above",
+      behaviour: "exclusive"
+    }
+  ]
+}) }}
+
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <p>
+      Give details
+    </p>
+
+  
+  <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+ 
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+ 
+
+</form>
+
+  </div>
+</div>
+
+{% endblock %}

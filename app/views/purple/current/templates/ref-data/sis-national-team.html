@@ -1,0 +1,66 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+
+{{ govukSelect({
+    id: national-teamID or "sis-national-team",
+    name: "sis-national-team",
+    value: data["sis-national-team"],
+    label: {
+      text: nationalteamLabelText or ""
+    },
+    hint: {
+      text: nationalteamHint | default("", false)
+    },
+    value: nationalteamValue or data[nationalteamName or nationalteamID or "national-team" or ""],
+    
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+
+  {
+      value: "  NRPC Core Casework (Non-Detention)",
+      text: "  NRPC Core Casework (Non-Detention)"
+  },
+    {
+      value: "NRPC Detained",
+      text: "NRPC Detained"
+  },
+  
+  {
+      value: "NRPC Family Returns Unit",
+      text: "NRPC Family Returns Unit"
+  },
+  {
+      value: "NRPC Operational Support",
+      text: "NRPC Operational Support"
+  },
+  
+  {
+      value: "NRPC Voluntary Returns Service",
+      text: "NRPC Voluntary Returns Service"
+  },
+    {
+      value: "NRPC Third Country Unit (TCU)",
+      text: "NRPC Third Country Unit (TCU)"
+  }
+  
+ 
+   ]
+
+
+
+  }) }}
+  </div>

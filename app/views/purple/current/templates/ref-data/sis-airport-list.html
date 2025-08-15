@@ -1,0 +1,135 @@
+<style>
+
+    .autocomplete__wrapper {
+      width:400px;
+    }
+    
+    .autocomplete__input {
+      background-color:#ffffff;
+    }
+      </style>
+    
+    <div class="cop-autocomplete">
+
+{{ govukSelect({
+    id: airports or "sis-airport-list",
+    name: "sis-airport-list",
+    label: {
+      text: airportslText or ""
+    },
+    hint: {
+      text: airportsHint | default("", false)
+    },
+    value: airporteValue or data[airporteName or airportID or "port of departure"] or "",
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  {
+      value: "Edinburgh Airport",
+      text: "Edinburgh Airport"
+  },
+  {
+      value: "Charles-de-Gaulle Apt/Paris",
+      text: "Charles-de-Gaulle Apt/Paris"
+  },
+  {
+      value: "Arbroath",
+      text: "Arbroath"
+  },
+  {
+      value: "Haneda Apt/Tokyo",
+      text: "Haneda Apt/Tokyo"
+  },
+  {
+      value: "Berlin Brandenburg Airport",
+      text: "Berlin Brandenburg Airport"
+  },
+  {
+      value: "John F Kennedy International Airport - New York",
+      text: "John F Kennedy International Airport - New York"
+  },
+  {
+      value: "Toronto/Oshawa Executive Airport",
+      text: "Toronto/Oshawa Executive Airport"
+  },
+  {
+      value: "Licenciado Benito Juarez International Airport - Mexico City",
+      text: "Licenciado Benito Juarez International Airport - Mexico City"
+  },
+  {
+      value: "Campo Delio Jardim de Mattos Airport - Rio De Janeiro",
+      text: "Campo Delio Jardim de Mattos Airport - Rio De Janeiro"
+  },
+  {
+      value: "Buenos Aires Airport",
+      text: "Buenos Aires Airport"
+  },
+  {
+      value: "General La Madrid Airport",
+      text: "General La Madrid Airport"
+  },
+  {
+      value: "Barcelona International Airport",
+      text: "Barcelona International Airport"
+  },
+  {
+      value: "Vergiate Airport - Milan",
+      text: "Vergiate Airport - Milan"
+  },
+  {
+      value: "Amsterdam Airport Schiphol",
+      text: "Amsterdam Airport Schiphol"
+  },
+  {
+      value: "Cairo International Airport",
+      text: "Cairo International Airport"
+  },
+  {
+      value: "Murtala Muhammed International Airport - Lagos",
+      text: "Murtala Muhammed International Airport - Lagos"
+  },
+  {
+      value: "Rand Airport - Johannesburg",
+      text: "Rand Airport - Johannesburg"
+  },
+  {
+      value: "Delhi Municipal Airport",
+      text: "Delhi Municipal Airport"
+  },
+  {
+      value: "Dubai International Airport",
+      text: "Dubai International Airport"
+  },
+  {
+      value: "King Abdulaziz International Airport - Jeddah",
+      text: "King Abdulaziz International Airport - Jeddah"
+  },
+  {
+      value: "Singapore Changi Airport",
+      text: "Singapore Changi Airport"
+  },
+  {
+      value: "Bali Airport",
+      text: "Bali Airport"
+  },
+  {
+      value: "Beijing Capital International Airport",
+      text: "Beijing Capital International Airport"
+  },
+  {
+      value: "Hong Kong International Airport Kai Tak",
+      text: "Hong Kong International Airport Kai Tak"
+  },
+  {
+      value: "Sydney Bankstown Airport",
+      text: "Sydney Bankstown Airport"
+  },
+  {
+      value: "Wellington International Airport",
+      text: "Wellington International Airport"
+  }
+    ]
+  }) }}
+  </div>

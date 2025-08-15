@@ -1,0 +1,77 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Clandestine entry
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+<form id="form-next" class="form" action="/purple/current/task/list" method="post" novalidate>
+
+<!--<span class="govuk-caption-xl">Location</span>-->
+
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+<h1 class="govuk-heading-l">Check your answers</h1>
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      What is being smuggled?
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data ["sis-smuggle-details"] }}
+      {% if data["sis-smuggle-details-other"] != "" %}({{ data ["sis-smuggle-details-other"] }}) {% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="details">Change<span class="govuk-visually-hidden"> what is being smuggled</span></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      When is the smuggling happening?
+    </dt>
+    <dd class="govuk-summary-list__value">
+       {{ data ["sis-smuggling-crime-time"] }}<br />
+       {{ data ["sis-smuggle-date-future"] }}<br />
+       12/12/2024<br>
+       18:00
+    </dd>
+
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="date">Change<span class="govuk-visually-hidden"> when the smuggling is happening</span></a>
+    </dd>
+  </div>
+</dl>
+
+
+
+<input type="hidden" id="sis-main-offence-done" name="sis-main-offence-done" value="Yes">
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+  </form>
+
+  </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+
+{{ govukSelect({
+    id: imm-teamID or "sis-imm-team",
+    name: "sis-imm-team",
+    value: data["sis-imm-team"],
+    label: {
+      text: immteamLabelText or ""
+    },
+    hint: {
+      text: immteamHint | default("", false)
+    },
+    value: immteamValue or data[immteamName or immteamID or "imm-team" or ""],
+    
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  {
+      value: "IE NSEC (National Safeguarding Engagement and Co-ordination Team)",
+      text: "IE NSEC (National Safeguarding Engagement and Co-ordination Team)"
+  },
+    {
+      value: "IE Interventions, Sanctions & Compliance (ISC)",
+      text: "IE Interventions, Sanctions & Compliance (ISC)"
+  },
+  
+  {
+      value: "IE Competent Authority (IECA)",
+      text: "IE Competent Authority (IECA)"
+  },
+  {
+      value: "IE Contact Management",
+      text: "IE Contact Management"
+  },
+  
+  {
+      value: "IE Joint Enhanced Casework Team",
+      text: "IE Joint Enhanced Casework Team"
+  },
+    {
+      value: "IE FNO Returns Command",
+      text: "IE FNO Returns Command"
+  },
+  
+  {
+      value: "IE Other",
+      text: "IE Other"
+  },
+    {
+      value: "IE International Returns & Services Command - OSCU",
+      text: "IE International Returns & Services Command - OSCU"
+  }
+   ]
+
+
+
+  }) }}
+  </div>

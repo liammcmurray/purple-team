@@ -1,0 +1,327 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+
+{{ govukSelect({
+    id:cfi-teamID or "sis-hoi-team",
+    name: "sis-hoi-team",
+    value: data["sis-hoi-team"],
+    label: {
+      text: hoiteamLabelText or ""
+    },
+    hint: {
+      text: hoiteamHint | default("", false)
+    },
+    value: hoiteamValue or data[hoiteamName or hoiteamID or "hoi-team" or ""],
+    
+    items: [
+         {
+      value: "",
+      text: ""
+  },
+     {
+      value: "Analysis",
+      text: "Analysis"
+  },
+  {
+      value: "BFNIH",
+      text: "BFNIH"
+  },
+    {
+      value: "CCU",
+      text: "CCU"
+  },
+    {
+      value: "CDT Cardiff",
+      text: "CDT Cardiff"
+  },
+    {
+      value: "CDT Croydon",
+      text: "CDT Croydon"
+  },
+    {
+      value: "CDT Liverpool",
+      text: "CDT Liverpool"
+  },
+    {
+      value: "CDT MSOIC Leeds",
+      text: "CDT MSOIC Leeds"
+  },
+    {
+      value: "CDT Sheffield",
+      text: "CDT Sheffield"
+  },
+    {
+      value: "CFCLT",
+      text: "CFCLT"
+  },
+    {
+      value: "CWI Croydon",
+      text: "CWI Croydon"
+  },
+    {
+      value: "CWI Liverpool",
+      text: "CWI Liverpool"
+  },
+    {
+      value: "CWI Sheffield",
+      text: "CWI Sheffield"
+  },
+    {
+      value: "Gateway MAH",
+      text: "Gateway MAH"
+  },
+    {
+      value: "IIC",
+      text: "IIC"
+  },
+    {
+      value: "NDFU",
+      text: "NDFU"
+  },
+    {
+      value: "OIU East of England / East Midlands / West Midlands",
+      text: "OIU East of England / East Midlands / West Midlands"
+  },
+    {
+      value: "OIU Greater Manchester / Merseyside / South West / Wales",
+      text: "OIU Greater Manchester / Merseyside / South West / Wales"
+  },
+    {
+      value: "OIU London Central and East ",
+      text: "OIU London Central and East "
+  },
+    {
+      value: "OIU London North and South ",
+      text: "OIU London North and South "
+  },
+    {
+      value: "OIU London West ",
+      text: "OIU London West "
+  },
+    {
+      value: "OIU North East, Yorkshire and Humber ",
+      text: "OIU North East, Yorkshire and Humber "
+  },
+    {
+      value: "OIU Scotland and Northern Ireland ",
+      text: "OIU Scotland and Northern Ireland "
+  },
+    {
+      value: "OIU South Central",
+      text: "OIU South Central"
+  },
+    {
+      value: "OIU South East",
+      text: "OIU South East"
+  },
+    {
+      value: "Other",
+      text: "Other"
+  },
+    {
+      value: "RED North",
+      text: "RED North"
+  },
+    {
+      value: "RED South",
+      text: "RED South"
+  },
+    {
+      value: "Specialist Intelligence",
+      text: "Specialist Intelligence"
+  },
+    {
+      value: "HOIO Albania",
+      text: "HOIO Albania"
+  },
+     {
+      value: "HOIO Azerbaijan",
+      text: "HOIO Azerbaijan"
+  },
+        {
+      value: "HOIO Bangladesh",
+      text: "HOIO Bangladesh"
+  },
+       {
+      value: "HOIO Belgium",
+      text: "HOIO Belgium"
+  }, 
+       {
+      value: "HOIO Brazil",
+      text: "HOIO Brazil"
+  },
+       {
+      value: "HOIO Carriers Liaison Section (CLS)",
+      text: "HOIO Carriers Liaison Section (CLS)"
+  },
+       {
+      value: "HOIO China",
+      text: "HOIO China"
+  },
+       {
+      value: "HOIO Colombia",
+      text: "HOIO Colombia"
+  },
+       {
+      value: "HOIO Ecuador",
+      text: "HOIO Ecuador"
+  },
+       {
+      value: "HOIO Ethiopia",
+      text: "HOIO Ethiopia"
+  },
+       {
+      value: "HOIO France (Calais)",
+      text: "HOIO France (Calais)"
+  },
+       {
+      value: "HOIO France (Paris)",
+      text: "HOIO France (Paris)"
+  },
+       {
+      value: "HOIO Germany",
+      text: "HOIO Germany"
+  },
+       {
+      value: "HOIO Ghana",
+      text: "HOIO Ghana"
+  },
+       {
+      value: "HOIO Greece",
+      text: "HOIO Greece"
+  },
+       {
+      value: "HOIO Hungary",
+      text: "HOIO Hungary"
+  },
+       {
+      value: "HOIO India/Nepal",
+      text: "HOIO India/Nepal"
+  },
+       {
+      value: "HOIO Ireland",
+      text: "HOIO Ireland"
+  },
+       {
+      value: "HOIO Italy",
+      text: "HOIO Italy"
+  },
+       {
+      value: "HOIO Jamaica",
+      text: "HOIO Jamaica"
+  },
+       {
+      value: "HOIO Kenya",
+      text: "HOIO Kenya"
+  },
+       {
+      value: "HOIO Malaysia",
+      text: "HOIO Malaysia"
+  },
+       {
+      value: "HOIO Montenegro",
+      text: "HOIO Montenegro"
+  },
+       {
+      value: "HOIO Morocco",
+      text: "HOIO Morocco"
+  },
+       {
+      value: "HOIO NBTC",
+      text: "HOIO NBTC"
+  },
+       {
+      value: "HOIO Netherlands",
+      text: "HOIO Netherlands"
+  },
+       {
+      value: "HOIO Nigeria",
+      text: "HOIO Nigeria"
+  },
+       {
+      value: "HOIO Nordics",
+      text: "HOIO Nordics"
+  },
+       {
+      value: "HOIO Other",
+      text: "HOIO Other"
+  },
+       {
+      value: "HOIO Pakistan",
+      text: "HOIO Pakistan"
+  },
+       {
+      value: "HOIO Panama",
+      text: "HOIO Panama"
+  },
+       {
+      value: "HOIO Peru",
+      text: "HOIO Peru"
+  },
+       {
+      value: "HOIO Poland",
+      text: "HOIO Poland"
+  },
+       {
+      value: "HOIO Qatar and Saudi Arabia",
+      text: "HOIO Qatar and Saudi Arabia"
+  },
+       {
+      value: "HOIO Romania",
+      text: "HOIO Romania"
+  },
+         {
+      value: "HOIO South Africa",
+      text: "HOIO South Africa"
+  },
+       {
+      value: "HOIO Spain",
+      text: "HOIO Spain"
+  },
+       {
+      value: "HOIO Sri Lanka",
+      text: "HOIO Sri Lanka"
+  },
+       {
+      value: "HOIO Thailand",
+      text: "HOIO Thailand"
+  },
+       {
+      value: "HOIO Tunisia",
+      text: "HOIO Tunisia"
+  },
+         {
+      value: "HOIO Turkey",
+      text: "HOIO Turkey"
+  },
+       {
+      value: "HOIO UAE (Abu Dhabi)",
+      text: "HOIO UAE (Abu Dhabi)"
+  },
+       {
+      value: "HOIO UAE (Dubai)",
+      text: "HOIO UAE (Dubai)"
+  },
+       {
+      value: "HOIO United States of America",
+      text: "HOIO United States of America"
+  },
+       {
+      value: "HOIO Vietnam",
+      text: "HOIO Vietnam"
+  }
+   ]
+
+  }) }}
+  </div>

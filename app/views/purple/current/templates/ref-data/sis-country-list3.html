@@ -1,0 +1,1015 @@
+<style>
+  .autocomplete__input {
+    background-color:#ffffff;
+  }
+</style>
+
+<div class="cop-autocomplete govuk-!-width-two-thirds">
+
+{{ govukSelect({
+    id: countryID or "sis-country3",
+    name: "sis-country2",
+    label: {
+      text: countryLabelText or ""
+    },
+    hint: {
+      text: countryHint | default("", false)
+    },
+    value: countryValue or data[countryName or countryID or "country"] or "",
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  {
+      value: "Afghanistan",
+      text: "Afghanistan - AFG"
+  },
+  {
+      value: "Albania",
+      text: "Albania - ALB"
+  },
+  {
+      value: "Algeria",
+      text: "Algeria - DZA"
+  },
+  {
+      value: "American Samoa",
+      text: "American Samoa - ASM"
+  },
+  {
+      value: "Andorra",
+      text: "Andorra - AND"
+  },
+  {
+      value: "Angola",
+      text: "Angola - AGO"
+  },
+  {
+      value: "Anguilla",
+      text: "Anguilla - AIA"
+  },
+  {
+      value: "Antarctica",
+      text: "Antarctica - ATA"
+  },
+  {
+      value: "Antigua and Barbuda",
+      text: "Antigua and Barbuda - ATG"
+  },
+  {
+      value: "Argentina",
+      text: "Argentina - ARG"
+  },
+  {
+      value: "Armenia",
+      text: "Armenia - ARM"
+  },
+  {
+      value: "Aruba",
+      text: "Aruba - ABW"
+  },
+  {
+      value: "Australia",
+      text: "Australia - AUS"
+  },
+  {
+      value: "Austria",
+      text: "Austria - AUT"
+  },
+  {
+      value: "Azerbaijan",
+      text: "Azerbaijan - AZE"
+  },
+  {
+      value: "Bahamas (the)",
+      text: "Bahamas (the) - BHS"
+  },
+  {
+      value: "Bahraini",
+      text: "Bahraini - BHR"
+  },
+  {
+      value: "Bangladesh",
+      text: "Bangladesh - BGD"
+  },
+  {
+      value: "Barbados",
+      text: "Barbados - BRB"
+  },
+  {
+      value: "Belarus",
+      text: "Belarus - BLR"
+  },
+  {
+      value: "Belgium",
+      text: "Belgium - BEL"
+  },
+  {
+      value: "Belize",
+      text: "Belize - BLZ"
+  },
+  {
+      value: "Benin",
+      text: "Benin - BEN"
+  },
+  {
+      value: "Bermuda",
+      text: "Bermuda - BMU"
+  },
+  {
+      value: "Bhutan",
+      text: "Bhutan - BTN"
+  },
+  {
+      value: "Bolivia (Plurinational State Of)",
+      text: "Bolivia (Plurinational State Of) - BOL"
+  },
+  {
+      value: "Bonaire, Sint Eustatius and Saba",
+      text: "Bonaire, Sint Eustatius and Saba - BES"
+  },
+  {
+      value: "Bosnia and Herzegovina",
+      text: "Bosnia and Herzegovina - BIH"
+  },
+  {
+      value: "Botswana",
+      text: "Botswana - BWA"
+  },
+  {
+      value: "Bouvet Island",
+      text: "Bouvet Island - BVT"
+  },
+  {
+      value: "Brazil",
+      text: "Brazil - BRA"
+  },
+  {
+      value: "British Indian Ocean Territory (the)",
+      text: "British Indian Ocean Territory (the) - IOT"
+  },
+  {
+      value: "Brunei Darussalam",
+      text: "Brunei Darussalam - BRN"
+  },
+  {
+      value: "Bulgaria",
+      text: "Bulgaria - BGR"
+  },
+  {
+      value: "Burkina Faso",
+      text: "Burkina Faso - BFA"
+  },
+  {
+      value: "Burundi",
+      text: "Burundi - BDI"
+  },
+  {
+      value: "Cabo Verde",
+      text: "Cabo Verde - CPV"
+  },
+  {
+      value: "Cambodia",
+      text: "Cambodia - KHM"
+  },
+  {
+      value: "Cameroon",
+      text: "Cameroon - CMR"
+  },
+  {
+      value: "Canada",
+      text: "Canada - CAN"
+  },
+  {
+      value: "Cayman Islands (the)",
+      text: "Cayman Islands (the) - CYM"
+  },
+  {
+      value: "Central African Republic (the)",
+      text: "Central African Republic (the) - CAF"
+  },
+  {
+      value: "Chad",
+      text: "Chad - TCD"
+  },
+  {
+      value: "Chile",
+      text: "Chile - CHL"
+  },
+  {
+      value: "China",
+      text: "China - CHN"
+  },
+  {
+      value: "Christmas Island",
+      text: "Christmas Island - CXR"
+  },
+  {
+      value: "Cocos (Keeling) Islands (the)",
+      text: "Cocos (Keeling) Islands (the) - CCK"
+  },
+  {
+      value: "Colombia",
+      text: "Colombia - COL"
+  },
+  {
+      value: "Comoros (the)",
+      text: "Comoros (the) - COM"
+  },
+  {
+      value: "Congo (the Democratic Republic of the)",
+      text: "Congo (the Democratic Republic of the) - COD"
+  },
+  {
+      value: "Congo (the)",
+      text: "Congo (the) - COG"
+  },
+  {
+      value: "Cook Islands (the)",
+      text: "Cook Islands (the) - COK"
+  },
+  {
+      value: "Costa Rica",
+      text: "Costa Rica - CRI"
+  },
+  {
+      value: "Croatia",
+      text: "Croatia - HRV"
+  },
+  {
+      value: "Cuba",
+      text: "Cuba - CUB"
+  },
+  {
+      value: "Curaçao",
+      text: "Curaçao - CUW"
+  },
+  {
+      value: "Cyprus",
+      text: "Cyprus - CYP"
+  },
+  {
+      value: "Czechia",
+      text: "Czechia - CZE"
+  },
+  {
+      value: "Denmark",
+      text: "Denmark - DNK"
+  },
+  {
+      value: "Djibouti",
+      text: "Djibouti - DJI"
+  },
+  {
+      value: "Dominica",
+      text: "Dominica - DMA"
+  },
+  {
+      value: "Dominican Republic (the)",
+      text: "Dominican Republic (the) - DOM"
+  },
+  {
+      value: "East Timor",
+      text: "East Timor - TLS"
+  },
+  {
+      value: "Ecuador",
+      text: "Ecuador - ECU"
+  },
+  {
+      value: "Egypt",
+      text: "Egypt - EGY"
+  },
+  {
+      value: "El Salvador",
+      text: "El Salvador SLV"
+  },
+  {
+      value: "Equatorial Guinea",
+      text: "Equatorial Guinea - GNQ"
+  },
+  {
+      value: "Eritrea",
+      text: "Eritrea - ERI"
+  },
+  {
+      value: "Estonia",
+      text: "Estonia - EST"
+  },
+  {
+      value: "Eswatini",
+      text: "Eswatini - SWZ"
+  },
+  {
+      value: "Ethiopia",
+      text: "Ethiopia - ETH"
+  },
+  {
+      value: "Falkland Islands (the) [Malvinas]",
+      text: "Falkland Islands (the) [Malvinas] - FLK"
+  },
+  {
+      value: "Faroe Islands (the)",
+      text: "Faroe Islands (the) - FRO"
+  },
+  {
+      value: "Fiji",
+      text: "Fiji - FJI"
+  },
+  {
+      value: "Finland",
+      text: "Finland - FIN"
+  },
+  {
+      value: "France (European territory)",
+      text: "France (European territory) - FRA"
+  },
+  {
+      value: "French Guiana",
+      text: "French Guiana - GUF"
+  },
+  {
+      value: "French Polynesia",
+      text: "French Polynesia - PYF"
+  },
+  {
+      value: "French Southern Territories (the)",
+      text: "French Southern Territories (the) - ATF"
+  },
+  {
+      value: "Gabon",
+      text: "Gabon - GAB"
+  },
+  {
+      value: "Gambia (the)",
+      text: "Gambia (the) - GMB"
+  },
+  {
+      value: "Georgia",
+      text: "Georgia - GEO"
+  },
+  {
+      value: "Germany",
+      text: "Germany - DEU"
+  },
+  {
+      value: "Ghana",
+      text: "Ghana - GHA"
+  },
+  {
+      value: "Gibraltar",
+      text: "Gibraltar - GIB"
+  },
+  {
+      value: "Greece",
+      text: "Greece - GRC"
+  },
+  {
+      value: "Greenland",
+      text: "Greenland - GRL"
+  },
+  {
+      value: "Grenada",
+      text: "Grenada - GRD"
+  },
+  {
+      value: "Guadeloupe",
+      text: "Guadeloupe - GLP"
+  },
+  {
+      value: "Guam",
+      text: "Guam - GUM"
+  },
+  {
+      value: "Guatemala",
+      text: "Guatemala - GTM"
+  },
+  {
+      value: "Guernsey",
+      text: "Guernsey - GGY"
+  },
+  {
+      value: "Guinea",
+      text: "Guinea - GIN"
+  },
+  {
+      value: "Guinea-Bissau",
+      text: "Guinea-Bissau - GNB"
+  },
+  {
+      value: "Guyana",
+      text: "Guyana - GUY"
+  },
+  {
+      value: "Haiti",
+      text: "Haiti - HTI"
+  },
+  {
+      value: "Heard Island and McDonald Islands",
+      text: "Heard Island and McDonald Islands - HMD"
+  },
+  {
+      value: "Holy See (the)",
+      text: "Holy See (the) - VAT"
+  },
+  {
+      value: "Honduras",
+      text: "Honduras - HND"
+  },
+  {
+      value: "Hong Kong",
+      text: "Hong Kong - HKG"
+  },
+  {
+      value: "Hungary",
+      text: "Hungary - HUN"
+  },
+  {
+      value: "Iceland",
+      text: "Iceland - ISL"
+  },
+  {
+      value: "India",
+      text: "India - IND"
+  },
+  {
+      value: "Indonesia",
+      text: "Indonesia - IDN"
+  },
+  {
+      value: "Iran (Islamic Republic of)",
+      text: "Iran (Islamic Republic of) - IRN"
+  },
+  {
+      value: "Iraq",
+      text: "Iraq - IRQ"
+  },
+  {
+      value: "Ireland",
+      text: "Ireland - IRL"
+  },
+  {
+      value: "Isle of Man",
+      text: "Isle of Man - IMN"
+  },
+  {
+      value: "Israel",
+      text: "Israel - ISR"
+  },
+  {
+      value: "Italy",
+      text: "Italy - ITA"
+  },
+  {
+      value: "Ivory Coast",
+      text: "Ivory Coast - CIV"
+  },
+  {
+      value: "Jamaica",
+      text: "Jamaica - JAM"
+  },
+  {
+      value: "Japan",
+      text: "Japan - JPN"
+  },
+  {
+      value: "Jersey",
+      text: "Jersey - JEY"
+  },
+  {
+      value: "Jordan",
+      text: "Jordan - JOR"
+  },
+  {
+      value: "Kazakhstan",
+      text: "Kazakhstan - KAZ"
+  },
+  {
+      value: "Kenya",
+      text: "Kenya - KEN"
+  },
+  {
+      value: "Kiribati",
+      text: "Kiribati - KIR"
+  },
+  {
+      value: "Korea (North)",
+      text: "Korea (North) - PRK"
+  },
+  {
+      value: "Korea (South)",
+      text: "Korea (South) - KOR"
+  },
+  {
+      value: "Kosovo",
+      text: "Kosovo - KOV"
+  },
+  {
+      value: "Kuwait",
+      text: "Kuwait - KWT"
+  },
+  {
+      value: "Kyrgyzstan",
+      text: "Kyrgyzstan - KGZ"
+  },
+  {
+      value: "Laos",
+      text: "Laos - LAO"
+  },
+  {
+      value: "Latvia",
+      text: "Latvia - LVA"
+  },
+  {
+      value: "Lebanon",
+      text: "Lebanon - LBN"
+  },
+  {
+      value: "Lesotho",
+      text: "Lesotho - LSO"
+  },
+  {
+      value: "Liberia",
+      text: "Liberia - LBR"
+  },
+  {
+      value: "Libya",
+      text: "Libya - LBY"
+  },
+  {
+      value: "Liechtenstein",
+      text: "Liechtenstein - LIE"
+  },
+  {
+      value: "Lithuania",
+      text: "Lithuania - LTU"
+  },
+  {
+      value: "Luxembourg",
+      text: "Luxembourg - LUX"
+  },
+  {
+      value: "Madagascar",
+      text: "Madagascar - MDG"
+  },
+  {
+      value: "Malawi",
+      text: "Malawi - MWI"
+  },
+  {
+      value: "Malaysia",
+      text: "Malaysia - MYS"
+  },
+  {
+      value: "Maldives",
+      text: "Maldives - MDV"
+  },
+  {
+      value: "Mali",
+      text: "Mali - MLI"
+  },
+  {
+      value: "Malta",
+      text: "Malta - MLT"
+  },
+  {
+      value: "Marshall Islands (the)",
+      text: "Marshall Islands (the) - MHL"
+  },
+  {
+      value: "Mauritania",
+      text: "Mauritania - MRT"
+  },
+  {
+      value: "Mauritius",
+      text: "Mauritius - MUS"
+  },
+  {
+      value: "Mayotte",
+      text: "Mayotte - MYT"
+  },
+  {
+      value: "Mexico",
+      text: "Mexico - MEX"
+  },
+  {
+      value: "Micronesia (Federated States of)",
+      text: "Micronesia (Federated States of) - FSM"
+  },
+  {
+      value: "Moldova (the Republic of)",
+      text: "Moldova (the Republic of) - MDA"
+  },
+  {
+      value: "Monaco",
+      text: "Monaco - MCO"
+  },
+  {
+      value: "Mongolia",
+      text: "Mongolia - MNG"
+  },
+  {
+      value: "Montenegro",
+      text: "Montenegro - MNE"
+  },
+  {
+      value: "Montserrat",
+      text: "Montserrat - MSR"
+  },
+  {
+      value: "Morocco",
+      text: "Morocco - MAR"
+  },
+  {
+      value: "Mozambique",
+      text: "Mozambique - MOZ"
+  },
+  {
+      value: "Myanmar",
+      text: "Myanmar - MMR"
+  },
+  {
+      value: "Namibia",
+      text: "Namibia - NAM"
+  },
+  {
+      value: "Nauru",
+      text: "Nauru - NRU"
+  },
+  {
+      value: "Nepal",
+      text: "Nepal - NPL"
+  },
+  {
+      value: "Netherlands (Europe)",
+      text: "Netherlands (Europe) - NLD"
+  },
+  {
+      value: "New Caledonia",
+      text: "New Caledonia - NCL"
+  },
+  {
+      value: "New Zealand",
+      text: "New Zealand - NZL"
+  },
+  {
+      value: "Nicaragua",
+      text: "Nicaragua - NIC"
+  },
+  {
+      value: "Niger (the)",
+      text: "Niger (the) - NER"
+  },
+  {
+      value: "Nigeria",
+      text: "Nigeria - NGA"
+  },
+  {
+      value: "Niue",
+      text: "Niue - NIU"
+  },
+  {
+      value: "Norfolk Island",
+      text: "Norfolk Island - NFK"
+  },
+  {
+      value: "North Macedonia",
+      text: "North Macedonia - MKD"
+  },
+  {
+      value: "Northern Mariana Islands (the)",
+      text: "Northern Mariana Islands (the) - MNP"
+  },
+  {
+      value: "Norway",
+      text: "Norway - NOR"
+  },
+  {
+      value: "Oman",
+      text: "Oman - OMN"
+  },
+  {
+      value: "Pakistan",
+      text: "Pakistan - PAK"
+  },
+  {
+      value: "Palau",
+      text: "Palau - PLW"
+  },
+  {
+      value: "Panama",
+      text: "Panama - PAN"
+  },
+  {
+      value: "Papua New Guinea",
+      text: "Papua New Guinea - PNG"
+  },
+  {
+      value: "Paraguay",
+      text: "Paraguay - PRY"
+  },
+  {
+      value: "Peru",
+      text: "Peru - PER"
+  },
+  {
+      value: "Philippines (the)",
+      text: "Philippines (the) - PHL"
+  },
+  {
+      value: "Pitcairn",
+      text: "Pitcairn - PCN"
+  },
+  {
+      value: "Poland",
+      text: "Poland - POL"
+  },
+  {
+      value: "Portugal",
+      text: "Portugal - PRT"
+  },
+  {
+      value: "Qatar",
+      text: "Qatar - QAT"
+  },
+  {
+      value: "Romania",
+      text: "Romania - ROU"
+  },
+  {
+      value: "Russian Federation (the)",
+      text: "Russian Federation (the) - RUS"
+  },
+  {
+      value: "Rwanda",
+      text: "Rwanda - RWA"
+  },
+  {
+      value: "Réunion",
+      text: "Réunion - REU"
+  },
+  {
+      value: "Saint Barthélemy",
+      text: "Saint Barthélemy - BLM"
+  },
+  {
+      value: "Saint Helena, Ascension and Tristan da Cunha",
+      text: "Saint Helena, Ascension and Tristan da Cunha - SHN"
+  },
+  {
+      value: "Saint Kitts And Nevis",
+      text: "Saint Kitts And Nevis - KNA"
+  },
+  {
+      value: "Saint Lucia",
+      text: "Saint Lucia - LCA"
+  },
+  {
+      value: "Saint Martin (French part)",
+      text: "Saint Martin (French part) - MAF"
+  },
+  {
+      value: "Saint Pierre and Miquelon",
+      text: "Saint Pierre and Miquelon - SPM"
+  },
+  {
+      value: "Saint Vincent and the Grenadines",
+      text: "Saint Vincent and the Grenadines - VCT"
+  },
+  {
+      value: "Samoa",
+      text: "Samoa - WSM"
+  },
+  {
+      value: "San Marino",
+      text: "San Marino - SMR"
+  },
+  {
+      value: "Sao Tome And Principe",
+      text: "Sao Tome And Principe - STP"
+  },
+  {
+      value: "Saudi Arabia",
+      text: "Saudi Arabia - SAU"
+  },
+  {
+      value: "Senegal",
+      text: "Senegal - SEN"
+  },
+  {
+      value: "Serbia",
+      text: "Serbia - SRB"
+  },
+  {
+      value: "Seychelles",
+      text: "Seychelles - SYC"
+  },
+  {
+      value: "Sierra Leone",
+      text: "Sierra Leone - SLE"
+  },
+  {
+      value: "Singapore",
+      text: "Singapore - SGP"
+  },
+  {
+      value: "Sint Maarten (Dutch part)",
+      text: "Sint Maarten (Dutch part) - SXM"
+  },
+  {
+      value: "Slovakia",
+      text: "Slovakia - SVK"
+  },
+  {
+      value: "Slovenia",
+      text: "Slovenia - SVN"
+  },
+  {
+      value: "Solomon Islands",
+      text: "Solomon Islands - SLB"
+  },
+  {
+      value: "Somalia",
+      text: "Somalia - SOM"
+  },
+  {
+      value: "South Africa",
+      text: "South Africa - ZAF"
+  },
+  {
+      value: "South Georgia and the South Sandwich Islands",
+      text: "South Georgia and the South Sandwich Islands - SGS"
+  },
+  {
+      value: "South Sudan",
+      text: "South Sudan - SSD"
+  },
+  {
+      value: "Spain",
+      text: "Spain - ESP"
+  },
+  {
+      value: "Sri Lanka",
+      text: "Sri Lanka - LKA"
+  },
+  {
+      value: "Sudan (the)",
+      text: "Sudan (the) - SDN"
+  },
+  {
+      value: "Suriname",
+      text: "Suriname - SUR"
+  },
+  {
+      value: "Svalbard and Jan Mayen",
+      text: "Suriname - SJM"
+  },
+  {
+      value: "Sweden",
+      text: "Sweden - SWE"
+  },
+  {
+      value: "Switzerland",
+      text: "Switzerland - CHE"
+  },
+  {
+      value: "Syrian Arab Republic (the)",
+      text: "Syrian Arab Republic (the) - SYR"
+  },
+  {
+      value: "Taiwan (Province of China)",
+      text: "Taiwan (Province of China) - TWN"
+  },
+  {
+      value: "Tajikistan",
+      text: "Tajikistan - TJK"
+  },
+  {
+      value: "Tanzania, the United Republic of",
+      text: "Tanzania, the United Republic of - TZA"
+  },
+  {
+      value: "Thailand",
+      text: "Thailand - THA"
+  },
+  {
+      value: "Timor-Leste",
+      text: "Timor-Leste - TLS"
+  },
+  {
+      value: "Togo",
+      text: "Togo - TOG"
+  },
+  {
+      value: "Tokelau",
+      text: "Tokelau - TKL"
+  },
+  {
+      value: "Tonga",
+      text: "Tonga - TON"
+  },
+  {
+      value: "Trinidad And Tobago",
+      text: "Trinidad And Tobago - TTO"
+  },
+  {
+      value: "Tunisia",
+      text: "Tunisia - TUN"
+  },
+  {
+      value: "Turkey",
+      text: "Turkey - TUR"
+  },
+  {
+      value: "Turkmenistan",
+      text: "Turkmenistan - TKM"
+  },
+  {
+      value: "Turks and Caicos Islands (the)",
+      text: "Turks and Caicos Islands (the) - TCA"
+  },
+  {
+      value: "Tuvalu",
+      text: "Tuvalu - TUV"
+  },
+  {
+      value: "Uganda",
+      text: "Uganda - UGA"
+  },
+  {
+      value: "Ukraine",
+      text: "Ukraine - UKR"
+  },
+  {
+      value: "United Arab Emirates (the)",
+      text: "United Arab Emirates (the) - ARE"
+  },
+  {
+      value: "United Kingdom of Great Britain and Northern Ireland",
+      text: "United Kingdom of Great Britain and Northern Ireland - GBR",
+      attributes: {'data-synonyms': ["GB", "UK", "GBR"]}
+  },
+  {
+      value: "United States Minor Outlying Islands (the)",
+      text: "United States Minor Outlying Islands (the) - UMI"
+  },
+  {
+      value: "United States of America (the)",
+      text: "United States of America (the) - USA"
+  },
+  {
+      value: "Uruguay",
+      text: "Uruguay - URY"
+  },
+  {
+      value: "Uzbekistan",
+      text: "Uzbekistan - UZB"
+  },
+  {
+      value: "Vanuatu",
+      text: "Vanuatu - VUT"
+  },
+  {
+      value: "Venezuela (Bolivarian Republic of)",
+      text: "Venezuela (Bolivarian Republic of) - VEN"
+  },
+  {
+      value: "Vietnam",
+      text: "Vietnam - VNM"
+  },
+  {
+      value: "Virgin Islands (British)",
+      text: "Virgin Islands (British) - VGB"
+  },
+  {
+      value: "Virgin Islands (U.S.)",
+      text: "Virgin Islands (U.S.) - VIR"
+  },
+  {
+      value: "Wallis and Futuna",
+      text: "Wallis and Futuna - WLF"
+  },
+  {
+      value: "Western Sahara",
+      text: "Western Sahara - ESH"
+  },
+  {
+      value: "Yemen",
+      text: "Yemen - YEM"
+  },
+  {
+      value: "Zambia",
+      text: "Zambia - ZMB"
+  },
+  {
+      value: "Zimbabwe",
+      text: "Zimbabwe - ZWE"
+  },
+  {
+      value: "Åland Islands",
+      text: "Åland Islands - ALA"
+  }
+    ]
+  }) }}
+  </div>
