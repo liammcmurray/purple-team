@@ -1,0 +1,160 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+
+{{ govukSelect({
+    id:cfi-teamID or "sis-cfi-team",
+    name: "sis-cfi-team",
+    value: data["sis-cfi-team"],
+    label: {
+      text: cfiteamLabelText or ""
+    },
+    hint: {
+      text: cfiteamHint | default("", false)
+    },
+    value: cfiteamValue or data[cfiteamName or cfiteamID or "cfi-team" or ""],
+    
+    items: [
+     {
+      value: "",
+      text: ""
+  },
+  {
+      value: "CFI Basingstoke",
+      text: "CFI Basingstoke"
+  },
+  {
+      value: "CFI Belfast",
+      text: "CFI Belfast"
+  },
+  {
+      value: "CFI Cardiff",
+      text: "CFI Cardiff"
+  },
+   {
+      value: "CFI Croydon",
+      text: "CFI Croydon"
+  },
+   {
+      value: "CFI Durham",
+      text: "CFI Durham"
+  },
+   {
+      value: "CFI East of England (Stansted/Bedford)",
+      text: "CFI East of England (Stansted/Bedford)"
+  },
+   {
+      value: "CFI Glasgow",
+      text: "CFI Glasgow"
+  },
+   {
+      value: "CFI Heathrow",
+      text: "CFI Heathrow"
+  },
+   {
+      value: "CFI International Desk",
+      text: "CFI International Desk"
+  },
+   {
+      value: "CFI Learning & Development",
+      text: "CFI Learning & Development"
+  },
+   {
+      value: "CFI Leeds",
+      text: "CFI Leeds"
+  },
+   {
+      value: "CFI Liverpool",
+      text: "CFI Liverpool"
+  },
+   {
+      value: "CFI London West (Eaton House)",
+      text: "CFI London West (Eaton House)"
+  },
+   {
+      value: "CFI Manchester",
+      text: "CFI Manchester"
+  },
+   {
+      value: "CFI Midlands",
+      text: "CFI Midlands"
+  },
+   {
+      value: "CFI Ops Support & Assurance",
+      text: "CFI Ops Support & Assurance"
+  },
+   {
+      value: "CFI Sheffield",
+      text: "CFI Sheffield"
+  },
+   {
+      value: "CFI South East",
+      text: "CFI South East"
+  },
+   {
+      value: "FI Belfast",
+      text: "FI Belfast"
+  },
+   {
+      value: "FI Cardiff",
+      text: "FI Cardiff"
+  },
+   {
+      value: "FI Croydon",
+      text: "FI Croydon"
+  },
+   {
+      value: "FI Dover",
+      text: "FI Dover"
+  },
+   {
+      value: "FI Durham",
+      text: "FI Durham"
+  },
+   {
+      value: "FI East Midlands",
+      text: "FI East Midlands"
+  },
+   {
+      value: "FI Glasgow",
+      text: "FI Glasgow"
+  },
+   {
+      value: "FI Leeds",
+      text: "FI Leeds"
+  },
+   {
+      value: "FI Liverpool",
+      text: "FI Liverpool"
+  },
+   {
+      value: "FI London (Eaton House)",
+      text: "FI London (Eaton House)"
+  },
+   {
+      value: "FI National Cash Team",
+      text: "FI National Cash Team"
+  },
+   {
+      value: "FI Salford",
+      text: "FI Salford"
+  },
+   {
+      value: "FI Sheffield",
+      text: "FI Sheffield"
+  }
+
+   ]
+
+  }) }}
+  </div>

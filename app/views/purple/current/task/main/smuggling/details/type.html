@@ -1,0 +1,75 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – Smuggling details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="date" method="post" novalidate>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "sis-smuggling-details-type",
+          fieldset: {
+            legend: {
+              text: "How is it being smuggled?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Freight or cargo",
+              text: "Freight or cargo"
+            },
+            {
+              value: "Express mail or courier",
+              text: "Express mail or courier"
+            },
+            {
+              value: "Post",
+              text: "Post"
+            },
+            {
+              value: "None of these",
+              text: "None of these"
+            }
+            ,
+            {
+              value: "I do not know",
+              text: "I do not know"
+            }
+          ]
+        }) }}
+
+
+
+
+<input type="hidden" id="sis-smuggling-details-done" name="sis-smuggling-details-done" value="Yes">
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

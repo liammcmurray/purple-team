@@ -1,0 +1,69 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Home – {{serviceName}} – When is the illegal working happening?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form id="form-next" class="form" action="/purple/current/sis-working-date" method="post" novalidate>
+
+    <!--<span class="govuk-caption-xl">Immigration abuse details</span>
+    <h1 class="govuk-heading-l">When did the offence happen?</h1>-->
+
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukRadios({
+      name: "sis-terrorism-date",
+      value: data ["sis-terrorism-date"],
+      fieldset: {
+        legend: {
+          text: "When did the illegal working happen?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "Already happened",
+          text: "Already happened"
+        },
+        {
+          value: "Ongoing",
+          text: "Ongoing"
+        },
+        {
+      divider: "or"
+    },
+        {
+          value: "Will happen in the future",
+          text: "Will happen in the future"
+        }
+      ]
+    }) }}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<input type="hidden" id="sis-event-done" name="sis-event-done" value="Yes">
+
+</form>
+
+
+  </div>
+</div>
+
+{% endblock %}

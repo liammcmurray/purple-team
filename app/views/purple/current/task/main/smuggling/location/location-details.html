@@ -1,0 +1,161 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the residential address where the illegal working is happening?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="event-y-n" method="post">
+
+
+      <h1 class="govuk-heading-l">Location 1: Details</h1>
+      <p class="govuk-body">Complete as much about the location as you can.</p>
+
+
+{% set terrorismOther %}
+{{ govukInput({
+  id: "terrorism-other-location",
+  name: "terrorism-other-location",
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "Type of location"
+  }
+}) }}
+{% endset -%}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "sis-terrorism-location-type",
+  value: data ["sis-terrorism-location-type"],
+  fieldset: {
+    legend: {
+      text: "Type of location",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Business",
+      text: "Business"
+    },
+    {
+      value: "Residential address",
+      text: "Residential address"
+    },
+    {
+      value: "Educational establishment",
+      text: "Educational establishment"
+    },
+    {
+      value: "Other type of location",
+      text: "Other type of location",
+      conditional: {
+        html: terrorismOther
+      }
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "I do not know",
+      text: "I do not know"
+    }
+  ]
+}) }}
+
+<label class="govuk-label" for="subject">
+    If this is a business, what is the sector?
+  </label>
+
+{% include "/purple/current/templates/ref-data/sis-sector-list.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "If the business sector is not on the list, what is the sector?"
+  },
+  id: "sis-biz-sector-new",
+  name: "sis-biz-sector-new",
+  classes: "govuk-!-width-two-thirds"
+}) }}
+
+<hr><br/>
+
+<h2 class="govuk-heading-m">Contact</h2>
+
+      {{ govukInput({
+  label: {
+    text: "Name of contact at location"
+  },
+  classes: "govuk-!-width-two-thirds",
+  id: "event-name",
+  name: "sis-terrorism-location-contact",
+  value: data ["sis-terrorism-location-contact"]
+}) }}
+
+{{ govukInput({
+label: {
+text: "What is this person's role?"
+},
+hint: {
+    text: "You could say business owner or landlord"
+  },
+classes: "govuk-!-width-two-thirds",
+id: "event-name",
+name: "sis-terrorism-location-role",
+value: data ["sis-terrorism-location-role"]
+}) }}
+
+<hr><br/>
+<input type="hidden" id="sis-location-done" name="sis-location-done" value="Yes">
+
+      {{ govukInput({
+  label: {
+    text: "Name of location",
+classes: "govuk-label--m"
+  },
+  classes: "govuk-!-width-two-thirds",
+  id: "sis-terrorism-location-name",
+  name: "sis-terrorism-location-name",
+  value: data ["sis-terrorism-location-name"]
+}) }}
+
+{% include "purple/current/templates/other-location-form.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-biz-sector')
+    })
+
+</script>
+{% endblock %}

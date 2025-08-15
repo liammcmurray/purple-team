@@ -1,0 +1,153 @@
+{% extends "purple/current/layouts/base.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – What is the residential address where the illegal working is happening?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="list" method="post">
+        <h1 class="govuk-heading-l">Where is the crime being commited?</h1>
+        <p>Answer with as much detail as you can.</p>
+
+        <h2 class="govuk-heading-m">Country</h2>
+        <div id="event-name-hint" class="govuk-hint">
+          Start typing to find countries
+        </div>
+        <div class="govuk-form-group">
+         {% include "purple/current/templates/ref-data/sis-country-list.html" %}
+        </div>
+
+
+
+        <hr>
+        <br>
+
+        <h2 class="govuk-heading-m">Address</h2>
+
+        {{ govukInput({
+          label: {
+            text: 'Address line 1'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "sis-person1-address-uk-1",
+          value: data ["sis-person1-address-uk-1"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Address line 2'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "sis-person1-address-uk-2",
+          value: data ["sis-person1-address-uk-2"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Town or city'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "sis-person1-address-uk-city-1",
+          value: data ["sis-person1-address-uk-city-1"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'County'
+          },
+          classes: "govuk-!-width-two-thirds",
+          name: "sis-person1-address-uk-county-1",
+          value: data ["sis-person1-address-uk-county-1"]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: 'Postcode'
+          },
+          classes: "govuk-!-width-one-third",
+          name: "sis-person1-address-uk-postcode-1",
+          value: data ["sis-person1-address-uk-postcode-1"]
+        }) }}
+
+        <hr>
+        <br>
+
+
+       <h2 class="govuk-heading-m">Contact details</h2>
+
+        {% call govukFieldset({
+          legend: {
+            text: ""
+          }
+        }) %}
+      
+          {{ govukInput({
+            label: {
+              text: 'Email address'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-email",
+            name: "sis-person-email",
+            value: data ["sis-person-email"]
+          }) }}
+      
+          {{ govukInput({
+            label: {
+              text: 'Phone number'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-phone",
+            name: "sis-person-phone",
+            value: data ["sis-person-phone"]
+          }) }}
+        {% if data["start-crime"] == "terrorism" %}
+  {{ govukInput({
+            label: {
+              text: 'Social media or gaming details'
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "sis-social-gaming",
+            name: "sis-social-gaming",
+            value: data ["sis-social-gaming"]
+          }) }}
+    {% else %} 
+    {% endif %}   
+   {% endcall %}
+
+        
+        <br>
+   {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/assets/javascripts/accessible-autocomplete.min.js"></script>
+<script type="text/javascript">
+
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: document.querySelector('#sis-biz-sector')
+    })
+
+</script>
+{% endblock %}

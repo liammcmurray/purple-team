@@ -1,0 +1,242 @@
+<style>
+    .autocomplete__input {
+      background-color:#ffffff;
+    }
+  </style>
+  
+  <div class="cop-autocomplete govuk-!-width--two-thirds">
+
+{{ govukSelect({
+    id: ukairportsID or "sis-uk-air-ports2",
+    name: "sis-uk-air-ports2",
+    label: {
+      text: ukairportsText or ""
+    },
+    hint: {
+      text: ukairportsHint | default("", false)
+    },
+    value: ukairportsValue or data[ukairportsName or ukairportsID or "Port of arrival"] or "",
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  {
+      value: "Aberdeen",
+      text: "Aberdeen"
+  },
+  {
+      value: "Abuja",
+      text: "Abuja"
+  },
+  {
+      value: "Accra",
+      text: "Accra"
+  },
+  {
+      value: "Belfast International",
+      text: "Belfast International"
+  },
+  {
+      value: "Biggin Hill",
+      text: "Biggin Hill"
+  },
+  {
+      value: "Birmingham Airport",
+      text: "Birmingham Airport"
+  },
+  {
+      value: "Bournemouth",
+      text: "Bournemouth"
+  },
+  {
+      value: "Bristol Airport",
+      text: "Bristol Airport"
+  },
+  {
+      value: "Brize Norton",
+      text: "Brize Norton"
+  },
+  {
+      value: "Cardiff Airport",
+      text: "Cardiff Airport"
+  },
+  {
+      value: "Carlisle Airport",
+      text: "Carlisle Airport"
+  },
+  {
+      value: "City of Derry Airport",
+      text: "City of Derry Airport"
+  },
+  {
+      value: "Doncaster Airport",
+      text: "Doncaster Airport"
+  },
+  {
+      value: "Durham Tees Valley",
+      text: "Durham Tees Valley"
+  },
+  {
+      value: "East Midlands Airport",
+      text: "East Midlands Airport"
+  },
+  {
+      value: "Edinburgh",
+      text: "Edinburgh"
+  },
+  {
+      value: "Exeter Airport",
+      text: "Exeter Airport"
+  },
+  {
+      value: "Farnborough",
+      text: "Farnborough"
+  },
+  {
+      value: "Gatwick (N)",
+      text: "Gatwick (N)"
+  },
+  {
+      value: "Gatwick (other)",
+      text: "Gatwick (other)"
+  },
+  {
+      value: "Gatwick (S)",
+      text: "Gatwick (S)L"
+  },
+  {
+      value: "George Best City Airport",
+      text: "George Best City Airport"
+  },
+  {
+      value: "Glasgow Airport",
+      text: "Glasgow Airport"
+  },
+  {
+      value: "Guernsey",
+      text: "Guernsey"
+  },
+  {
+      value: "Heathrow (other)",
+      text: "Heathrow (other)"
+  },
+  {
+      value: "Heathrow Cargo",
+      text: "Heathrow Cargo"
+  },
+  {
+      value: "Heathrow TN1",
+      text: "Heathrow TN1"
+  },
+  {
+      value: "Heathrow TN2",
+      text: "Heathrow TN2"
+  },
+  {
+      value: "Heathrow TN3",
+      text: "Heathrow TN3"
+  },
+  {
+      value: "Heathrow TN4",
+      text: "Heathrow TN4"
+  },
+  {
+      value: "Heathrow TN5",
+      text: "Heathrow TN5"
+  },
+  {
+      value: "Humberside International Airport",
+      text: "Humberside International Airport"
+  },
+  {
+      value: "Jersey",
+      text: "Jersey"
+  },
+  {
+      value: "Kingston",
+      text: "Kingston"
+  },
+  {
+      value: "Lagos",
+      text: "Lagos"
+  },
+  {
+      value: "Leeds Bradford Airport",
+      text: "Leeds Bradford Airport"
+  },
+  {
+      value: "Liverpool John Lennon Airport",
+      text: "Liverpool John Lennon Airport"
+  },
+  {
+      value: "London City Airport",
+      text: "London City Airport"
+  },
+  {
+      value: "Luton Airport",
+      text: "Luton Airport"
+  },
+  {
+      value: "Lydd Airport",
+      text: "Lydd Airport"
+  },
+  {
+      value: "Manchester Airport",
+      text: "Manchester Airport"
+  },
+  {
+      value: "Manston Airport",
+      text: "Manston AirportF"
+  },
+  {
+      value: "Montego Bay",
+      text: "Montego Bay"
+  },
+  {
+      value: "Newcastle",
+      text: "Newcastle"
+  },
+  {
+      value: "Newquay Airport",
+      text: "Newquay Airport"
+  },
+  {
+      value: "Northolt",
+      text: "Northolt"
+  },
+  {
+      value: "Norwich Airport",
+      text: "Norwich Airport"
+  },
+  {
+      value: "Port of Spain",
+      text: "Port of Spain"
+  },
+  {
+      value: "Prestwick Airport",
+      text: "Prestwick Airport"
+  },
+  {
+      value: "Robin Hood Airport",
+      text: "Robin Hood Airport"
+  },
+  {
+      value: "Shoreham Airport",
+      text: "Shoreham Airport"
+  },
+  {
+      value: "Southampton Airport",
+      text: "Southampton Airport"
+  },
+  {
+      value: "Southend Airport",
+      text: "Southend Airport"
+  },
+  {
+      value: "Stansted Airport",
+      text: "Stansted AirportV"
+  }
+    ]
+  }) }}
+  </div>

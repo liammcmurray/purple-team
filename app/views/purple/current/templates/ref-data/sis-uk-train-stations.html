@@ -1,0 +1,75 @@
+<style>
+
+.autocomplete__wrapper {
+  width:400px;
+}
+
+.autocomplete__input {
+  background-color:#ffffff;
+}
+  </style>
+
+<div class="cop-autocomplete">
+
+{{ govukSelect({
+    id: trainstationID or "sis-uk-train-stations",
+    name: "sis-uk-train-stations",
+    label: {
+      text: trainstationText or ""
+    },
+    hint: {
+      text: trainstationHint | default("", false)
+    },
+    value: trainstationValue or data[trainstationName or trainstationID or "trainstation"] or "",
+    items: [
+  {
+      value: "",
+      text: ""
+  },
+  {
+      value: "Ashford International",
+      text: "Ashford International"
+  },
+  {
+      value: "Brussels",
+      text: "Brussels"
+  },
+  {
+      value: "Cheriton",
+      text: "Cheriton"
+  },
+  {
+      value: "Coquelles (Freight)",
+      text: "Coquelles (Freight)"
+  },
+  {
+      value: "Coquelles (Tourist)",
+      text: "Coquelles (Tourist)"
+  },
+  {
+      value: "Ebbsfleet International",
+      text: "Ebbsfleet International"
+  },
+  {
+      value: "Frethun",
+      text: "Frethun"
+  },
+  {
+      value: "Lille",
+      text: "Lille"
+  },
+  {
+      value: "Paris",
+      text: "Paris"
+  },
+  {
+      value: "St. Pancras International",
+      text: "St. Pancras International"
+  },
+  {
+      value: "Stratford International",
+      text: "Stratford International"
+  }
+    ]
+  }) }}
+  </div>
