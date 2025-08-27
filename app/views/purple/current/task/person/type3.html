@@ -192,6 +192,62 @@ Submit intelligence about immigration or borders – What is the role of this pe
   
     {% else %}{% endif %}
 
+    {% if data["start-crime"] == "smuggling" %} 
+  <form class="form" action="details3" method="post">
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+    {% from "govuk/components/input/macro.njk" import govukInput %}
+
+    {% set textOther %}
+    {{ govukInput({
+      id: "sis-smuggling-person-other",
+      name: "sis-smuggling-person-other",
+      classes: "govuk-!-width-one-third",
+      label: {
+        text: "Person's role"
+      }
+    }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+      name: "smuggling",
+      fieldset: {
+        legend: {
+          text: "Who do you want to add?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "You can add another person later"
+      },
+      items: [
+        {
+          value: "Suspect or offender",
+          text: "Suspect or offender"
+        },
+        {
+          value: "Witness",
+          text: "Witness"
+        },
+        {
+          value: "Other",
+          text: "Other",
+          conditional: {
+            html: textOther
+          }
+        }
+      ]
+    }) }}
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>  
+{% endif %}
+
  {% if data["start-crime"] == "terrorism" %}
 
  

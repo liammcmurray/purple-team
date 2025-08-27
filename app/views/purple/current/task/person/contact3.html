@@ -16,7 +16,7 @@ Submit intelligence about immigration or borders – Other details
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data["start-crime"] == "other" or data["start-crime"] == "illegal-working" or data["start-crime"] == "conditions" or data["start-crime"] == "slavery" or data["start-crime"] == "marriage" or data["start-crime"] == "clandestine" or data["start-crime"] == "overstayer" or data["start-crime"] == "deception" or data["start-crime"] == "housing" %}
+      {% if data["start-crime"] == "other" or data["start-crime"] == "illegal-working" or data["start-crime"] == "conditions" or data["start-crime"] == "slavery" or data["start-crime"] == "marriage" or data["start-crime"] == "clandestine" or data["start-crime"] == "overstayer" or data["start-crime"] == "deception" or data["start-crime"] == "housing" or data["start-crime"] == "smuggling" %}
       <h1 class="govuk-heading-l">Person 3: Address</h1>
       <form class="form" action="/purple/current/sis-person3-address" method="post">
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
