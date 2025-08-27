@@ -780,7 +780,7 @@ router.post('/sis-person1-address-terrorism', function (req, res) {
   }
   })
 
-   // SIS - smuggling person1 address - GENERAL
+   // SIS - smuggling person1 address - SMUGGLING
 router.post('/sis-person1-address-smuggling', function (req, res) {
 
   // address branching
@@ -810,6 +810,22 @@ router.post('/sis-person2-address-terrorism', function (req, res) {
   }
   })
   
+
+  // SIS - terrorism person2 address - SMUGGLING
+router.post('/sis-person2-address-smuggling', function (req, res) {
+
+  // address branching
+  var sisAddress2 = req.session.data['sis-person2-address-known']
+
+  // Check whether the variable matches a condition
+  if (sisAddress2 === 'Yes'){
+    res.redirect('/purple/current/task/person/address2');
+  }
+  if (sisAddress2 === 'No'){
+    res.redirect('/purple/current/task/person/smuggling/type2');
+  }
+  })
+
  // SIS - S24 person2 address - GENERAL
  router.post('/sis-person2-address-s24', function (req, res) {
 

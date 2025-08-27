@@ -41,7 +41,7 @@ Submit intelligence about immigration or borders – The person you are reportin
 {% endif %}
       <!--END-->
 
-            <form class="form" action="/housing/person-visa-check2" method="post">
+            <form class="form" action="/housing/housing-person-visa-check2" method="post">
 
         {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
@@ -178,7 +178,7 @@ Submit intelligence about immigration or borders – The person you are reportin
     Start typing to find countries
   </div>
   <div class="govuk-form-group">
-   {% include "/current/templates/ref-data/sis-country-list.html" %}
+   {% include "/housing/templates/ref-data/sis-country-list.html" %}
   </div>
   {% endif %}
 

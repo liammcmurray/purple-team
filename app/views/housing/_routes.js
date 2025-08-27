@@ -3,7 +3,7 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter('/housing')
 
 // SIS - If harm is involved
-router.post('/sis-harm', function (req, res) {
+router.post('/housing-sis-harm', function (req, res) {
 
   // Make a variable and give it the value from 'team'
   var sisHarm = req.session.data['sis-harm']
@@ -19,7 +19,7 @@ router.post('/sis-harm', function (req, res) {
 })
 
 // SIS - If harm is previously reported
-router.post('/harm-previous', function (req, res) {
+router.post('/housing-harm-previous', function (req, res) {
 
   // Make a variable and give it the value from 'team'
   var sisHarmprev = req.session.data['harm-previous']
@@ -35,7 +35,7 @@ router.post('/harm-previous', function (req, res) {
 })
 
 // SIS - Run this code when a form is submitted to 'team'
-router.post('/start/sis-team', function (req, res) {
+router.post('/start/housing-sis-team', function (req, res) {
 
   // Make a variable and give it the value from 'team'
   var sisTeam = req.session.data['sis-team-source']
@@ -88,41 +88,8 @@ router.post('/start/sis-team', function (req, res) {
 
 })
 
-// SIS - Other 'team'
-router.post('/sis-team-other-source', function (req, res) {
-
-  // Make a variable and give it the value from 'team'
-  var sisTeamother = req.session.data['sis-team-other-source']
-
-  // Check whether the variable matches a condition
-  if (sisTeamother === 'crimestoppers'){
-    // Send user to next page
-    res.redirect('/housing/start/crime');
-  }
-  if (sisTeamother === 'ndfu'){
-    // Send user to next page
-    res.redirect('/housing/start/crime');
-  }
-  if (sisTeamother === 'ct'){
-    // Send user to next page
-    res.redirect('/housing/start/crime');
-  }
-  if (sisTeamother === 'HM Revenue & Customs (HMRC)'){
-    // Send user to next page
-    res.redirect('/housing/start/crime');
-  }
-  if (sisTeamother === 'Department for Work and Pensions (DWP)'){
-    // Send user to next page
-    res.redirect('/housing/start/crime');
-  }
-  if (sisTeamother === 'Driver and Vehicle Licensing Agency (DVLA)'){
-    // Send user to next page
-    res.redirect('/housing/start/crime');
-  }
-})
-
 // SIS - Main offence
-router.post('/sis-main-crime', function (req, res) {
+router.post('/housing-sis-main-crime', function (req, res) {
 
   // Make a variable and give it the value from 'team'
   var sisMainoffence = req.session.data['start-crime']
@@ -194,7 +161,7 @@ router.post('/sis-main-crime', function (req, res) {
   }
   })
 
-router.post('/sub-offence', function (req, res) {
+router.post('/housing-sub-offence', function (req, res) {
 
   let subCrime = req.session.data['sub-offence-source'];
   let DocIDPCrime = req.session.data['start-crime']
@@ -245,7 +212,7 @@ router.post('/sub-idp-route', function (req, res) {
 })
 
 // SIS - Main - public and private funds abuse
-router.post('/sis-funds-abuse', function (req, res) {
+router.post('/housing-sis-funds-abuse', function (req, res) {
 
   // Make a variable and give it the value
   var sisDocshelper = req.session.data['sis-funds-abuse']
@@ -295,7 +262,7 @@ router.post('/sis-business-check', function (req, res) {
 
 
 // SIS - person1 address - GENERAL
-router.post('/sis-person1-address', function (req, res) {
+router.post('/housing-sis-person1-address', function (req, res) {
 
   // address branching
   var sisAddress = req.session.data['sis-person1-address-known']
@@ -310,7 +277,7 @@ router.post('/sis-person1-address', function (req, res) {
   })
 
 // SIS - person1 address - VISA
-router.post('/person-visa-check', function (req, res) {
+router.post('/housing-person-visa-check', function (req, res) {
 
   // address branching
   var sisPersonVisa = req.session.data['sis-housing-person']
@@ -324,7 +291,7 @@ router.post('/person-visa-check', function (req, res) {
   })
 
 // SIS - person2 address - GENERAL
-router.post('/sis-person2-address', function (req, res) {
+router.post('/housing-sis-person2-address', function (req, res) {
 
   // address branching
   var sisAddress2 = req.session.data['sis-person2-address-known']
@@ -339,7 +306,7 @@ router.post('/sis-person2-address', function (req, res) {
   })
 
 // SIS - person2 address - VISA
-router.post('/person-visa-check2', function (req, res) {
+router.post('/housing-person-visa-check2', function (req, res) {
 
   // address branching
   var sisPerson2Visa = req.session.data['sis-housing-person2']
@@ -353,7 +320,7 @@ router.post('/person-visa-check2', function (req, res) {
   })
 
 // SIS - person3 address - GENERAL
-router.post('/sis-person3-address', function (req, res) {
+router.post('/housing-sis-person3-address', function (req, res) {
 
   // address branching
   var sisAddress3 = req.session.data['sis-person3-address-known']
@@ -368,7 +335,7 @@ router.post('/sis-person3-address', function (req, res) {
   })
 
 // SIS - person3 address - VISA
-router.post('/person-visa-check3', function (req, res) {
+router.post('/housing-person-visa-check3', function (req, res) {
 
   // address branching
   var sisPerson3Visa = req.session.data['sis-housing-person3']
@@ -382,7 +349,7 @@ router.post('/person-visa-check3', function (req, res) {
   })
 
 // SIS - Housing - permission - multiple people
-router.post('/housing-tenant-permission', function (req, res) {
+router.post('/housing-housing-tenant-permission', function (req, res) {
 
   // Make a variable and give it the value
   var Housing2 = req.session.data['sis-housing-person2']
@@ -397,7 +364,7 @@ router.post('/housing-tenant-permission', function (req, res) {
 })
 
 // SIS - Location link
-router.post('/sis-housing-location', function (request, response) {
+router.post('/housing-sis-housing-location', function (request, response) {
 
   var sisHousinglocation = request.session.data['sis-housing-location-link']
   if (sisHousinglocation == null){

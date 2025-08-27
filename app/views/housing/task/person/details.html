@@ -20,7 +20,7 @@ Submit intelligence about immigration or borders – The person you are reportin
       <p class="govuk-body">Complete as much about the person as you can.</p>
 
 
-      <form class="form" action="/housing/person-visa-check" method="post">
+      <form class="form" action="/housing/housing-person-visa-check" method="post">
 
         {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
@@ -156,7 +156,7 @@ Submit intelligence about immigration or borders – The person you are reportin
           Start typing to find countries
         </div>
         <div class="govuk-form-group">
-         {% include "/current/templates/ref-data/sis-country-list.html" %}
+         {% include "/housing/templates/ref-data/sis-country-list.html" %}
         </div>
         {% endif %}
 
