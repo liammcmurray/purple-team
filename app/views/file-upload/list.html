@@ -1,0 +1,75 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Which documents are you uploading as evidence?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Check supporting documents</h1>
+      <form  action="list" method="post">
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header">File</th>
+      <th scope="col" class="govuk-table__header">Document type</th>
+      <th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Action</span></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell"><a href="/public/images/example.png">scan-passport_IDBUK572896.png</a>, 514Kb</td>
+      <td class="govuk-table__cell">Passport</td>
+      <td class="govuk-table__cell"><a href="remove" style="color: #d4351c;">Remove</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell"><a href="/public/images/example.png">IMG108655.pdf</a>, 3Mb</td>
+      <td class="govuk-table__cell">Birth certificate</td>
+      <td class="govuk-table__cell"><a href="remove" style="color: #d4351c;">Remove</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell"><a href="/public/images/example.png">TUI_travel_official884_2(2).pdf</a>, 128Kb</td>
+      <td class="govuk-table__cell">Travel document</td>
+      <td class="govuk-table__cell"><a href="remove" style="color: #d4351c;">Remove</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  classes: "hods-button--secondary",
+  text: "Upload another document",
+  href: "upload"
+}) }}
+<br>
+  {{ govukButton({
+    classes: "hods-button",
+    text: "Continue"
+  }) }}
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}
+
+chel 2-1
+man u win
+sun bren draw?
+spurs 2-1
+wol eve draw?
+leeds draw?
+forest win

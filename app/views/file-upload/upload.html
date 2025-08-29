@@ -1,0 +1,134 @@
+{% extends "layouts/default-sis.html" %}
+
+{% block pageTitle %}
+Submit intelligence about immigration or borders – Which documents are you uploading as evidence?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Upload supporting documents</h1>
+      <p class="govuk-body govuk-!-padding-bottom-9">You can upload multiple documents.</p>
+      <form  action="page-check" method="post">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {% set docsOther %}
+          {{ govukInput({
+            id: "docs-other",
+            name: "docs-other",
+            autocomplete: "docs-other",
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Document type"
+            }
+          }) }}
+        {% endset -%}
+
+        {{ govukRadios({
+          name: "sis-doc",
+          fieldset: {
+            legend: {
+              text: "What type of document is this?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Bank document",
+              text: "Bank document"
+            },
+            {
+              value: "Birth certificate",
+              text: "Birth certificate"
+            },
+             {
+              value: "Biometric residence permit (BRP)",
+              text: "Biometric residence permit (BRP)"
+            },
+            {
+              value: "Driving licence",
+              text: "Driving licence"
+            },
+            {
+              value: "Educational document",
+              text: "Educational document"
+            },
+            {
+              value: "Identity card",
+              text: "Identity card"
+            },
+            {
+              value: "Marriage certificate",
+              text: "Marriage certificate"
+            },
+            {
+              value: "Passport",
+              text: "Passport"
+            },
+            {
+              value: "Payslip",
+              text: "Payslip"
+            },
+            
+            {
+              value: "Photo",
+              text: "Photo"
+            },
+             {
+              value: "Travel document",
+              text: "Travel document"
+            },
+             {
+              value: "Visa",
+              text: "Visa"
+            },
+
+            {
+              divider: "or"
+            },
+            {
+              value: "Other",
+              text: "Other",
+              conditional: {
+                html: docsOther
+              }
+            }
+          ]
+        }) }}
+                     
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+        {{ govukFileUpload({
+          id: "file-upload-1",
+          name: "fileUpload1",
+          label: {
+            text: "Upload a file"
+          },
+          javascript: true
+        }) }}
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+        text: "Continue",
+        href: "list"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}
