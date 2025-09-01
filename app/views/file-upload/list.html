@@ -16,7 +16,7 @@ Submit intelligence about immigration or borders – Which documents are you upl
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Check supporting documents</h1>
-      <form  action="/purple/current/task/list" method="post">
+      <form  action="list" method="post">
 
 <table class="govuk-table">
   <thead class="govuk-table__head">
@@ -51,15 +51,13 @@ Submit intelligence about immigration or borders – Which documents are you upl
 {{ govukButton({
   classes: "hods-button--secondary",
   text: "Upload another document",
-  href: "doc-upload"
+  href: "upload"
 }) }}
 <br>
   {{ govukButton({
     classes: "hods-button",
     text: "Continue"
   }) }}
-
-  <input type="hidden" id="sis-docs-done" name="sis-docs-done" value="Yes">
       </form>
 
     </div>
